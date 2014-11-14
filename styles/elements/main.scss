@@ -1,0 +1,18 @@
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-top: 1px solid #EFEDEB;
+	border-bottom: 1px solid #E0DCD8;
+	padding: 2em;
+	background: white;
+	
+	@media (max-width: $page-width) {
+		border: 1px solid #EFEDEB;
+		margin: .5em;
+	}
+	
+	@media (max-width: $iPhoneLandscape) {
+		padding: 1em 0 0;
+	}
+}

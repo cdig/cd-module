@@ -1,0 +1,56 @@
+// Reset
+@import 'bower_components/cd-reset/dist/reset.scss';
+
+// Branding
+$dk_orange:#A74E15;
+$dk_grey:#3E4545;
+$lt_grey: #AAA;
+$trican:#BBB0A6;
+$brown:#4B3C30;
+$yellow:#B49402;
+$turquois:#44687D;
+$trican_light: rgba(187, 176, 166, 0.5);
+$red: #E62641;
+
+// Breakpoints
+$iPadLandscape: 1024px;
+$iPadPortrait: 768px;
+$iPhoneLandscape: 667px;
+$iPhonePortrait: 375px;
+
+// Design
+$page-width: 64rem;
+$border-radius: 4px;
+
+// Mixins
+@import 'global-styles/mixins/magic-underlines.scss';
+
+// Classes
+@import 'global-styles/classes/alignments.scss';
+@import 'global-styles/classes/callouts.scss';
+@import 'global-styles/classes/caution.scss';
+@import 'global-styles/classes/label-colors.scss';
+@import 'global-styles/classes/legend.scss';
+@import 'global-styles/classes/panel.scss';
+@import 'global-styles/classes/size.scss';
+@import 'global-styles/classes/stack.scss';
+
+// Components
+@import 'global-styles/components/cd-row.scss';
+@import 'global-styles/components/cd-text-bubble.scss';
+
+// Elements
+@import 'global-styles/elements/body.scss';
+@import 'global-styles/elements/em.scss';
+@import 'global-styles/elements/figure.scss';
+@import 'global-styles/elements/headings.scss';
+@import 'global-styles/elements/html.scss';
+@import 'global-styles/elements/img.scss';
+@import 'global-styles/elements/lists.scss';
+@import 'global-styles/elements/main.scss';
+@import 'global-styles/elements/object.scss';
+@import 'global-styles/elements/p.scss';
+@import 'global-styles/elements/page.scss';
+
+// Pages
+@import 'global-pages/title.scss';
