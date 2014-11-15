@@ -1,5 +1,3 @@
-# @codekit-prepend "utilities.coffee"
-
 # Compatability Note:
 # This code uses Element.classList, which is IE 10+
 # This code uses CustomEvent, which is non-IE — polyfil: https://developer.mozilla.org/en/docs/Web/API/CustomEvent
@@ -107,6 +105,15 @@ do ()->
 			detail:
 				page: page
 				pageIndex: pageIndex
+	
+	
+	easeInOutCubic = (t, b, c, d)->
+		t /= d/2
+		if (t < 1)
+			return c/2*t*t*t + b
+		else
+			t -= 2
+			return c/2*(t*t*t + 2) + b
 	
 	
 	scrollTo = (startHeight, heightDiff)->

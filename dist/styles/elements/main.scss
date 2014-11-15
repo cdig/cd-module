@@ -2,13 +2,13 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	border-top: 1px solid #EFEDEB;
-	border-bottom: 1px solid #E0DCD8;
+	border-top: 1px solid #EEE;
+	border-bottom: 1px solid #DDD;
 	padding: 2em;
 	background: white;
 	
 	@media (max-width: $page-width) {
-		border: 1px solid #EFEDEB;
+		border: 1px solid #EEE;
 		margin: .5em;
 	}
 	

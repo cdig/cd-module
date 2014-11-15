@@ -14,6 +14,8 @@ So, here's hoping this works as well as could be expected.
 
 Common stuff to be used in all modules. Anything that is specific to a particular project or client is not to be included here. So.. we're punting on that stuff.
 
+Now, there's a lot of common styles. So, in a sense, this is like an anti-reset. It's an opinionated set of default styles and behaviours that should help standardize our modules. It's not a framework, per se. You don't use this to design your own modules. This should force your modules to look and act a certain way.
+
 ### Dependencies
 Requires cdReset, I think?
 

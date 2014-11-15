@@ -1,8 +1,4 @@
-$selectionColor: #b4d5fe;
-
-@mixin magic-underline($color, $backgroundColor) {
-	color: $color;
-	text-decoration: none;
+@mixin magic-underline($color, $backgroundColor, $selectionColor) {
 	@include textShadowToCropUnderline($backgroundColor);
 	background-image:
 		linear-gradient($backgroundColor, $backgroundColor),
@@ -20,20 +16,16 @@ $selectionColor: #b4d5fe;
 	&:before, &:after, *, *:before, *:after {
 		text-shadow: none;
 	}
-	
-	&:visited {
-		color: $color;
-	}
 }
 
-@mixin textShadowToCropUnderline($color) {
+@mixin textShadowToCropUnderline($shadowColor) {
 	text-shadow:
-		0  2px $color,
-		0 -2px $color,
-		0 -3px $color, // Helps  g
-		 2px 0 $color,
-		-2px 0 $color,
-		 3px 0 $color, // Helps y
-		 4px 0 $color,
-		-4px 0 $color;
+		0  2px $shadowColor,
+		0 -2px $shadowColor,
+		0 -3px $shadowColor, // Helps  g
+		 2px 0 $shadowColor,
+		-2px 0 $shadowColor,
+		 3px 0 $shadowColor, // Helps y
+		 4px 0 $shadowColor,
+		-4px 0 $shadowColor;
 }
