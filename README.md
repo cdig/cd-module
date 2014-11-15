@@ -10,6 +10,10 @@ This project contains a whole bunch of common HTML, CSS, and JS files (well, Kit
 
 So, here's hoping this works as well as could be expected.
 
+### Wait wait wait.. so what does this repo actually contain?
+
+Common stuff to be used in all modules. Anything that is specific to a particular project or client is not to be included here. So.. we're punting on that stuff.
+
 ### Dependencies
 Requires cdReset, I think?
 
