@@ -19,7 +19,9 @@ do ()->
 			navbarButtons.push(navbarButton)
 			navbar.appendChild(navbarButton)
 		
-		window.cdHUD.addElement(navbar)
+		# Hack to make it come last in the list
+		setTimeout ()->
+			window.cdHUD.addElement(navbar)
 
 	
 	makeNavbarButton = (page, pageIndex)->
