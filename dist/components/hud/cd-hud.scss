@@ -1,0 +1,42 @@
+cd-hud {
+	position: fixed;
+	display: flex;
+	left: 0;
+	bottom: 0;
+	
+	color: rgba(black, .5);
+	fill: rgba(black, .5);
+	background: rgba(white, .93);
+	
+	// Need to figure out how to deal with styling this _very prominent_ UI element.
+	// These aren't actually a part of the cd-module SCSS API.. yet.
+	border-top: 1px solid $mainBorderColor;
+	border-right: 1px solid $darkBorderColor;
+	
+	animation: fade-in 2s 1s both;
+	line-height: 2em;
+	& > * {
+		margin: 0 1em;
+	}
+	
+	& > * + * {
+		margin-left: 0;
+	}
+	
+	* {
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	
+	&:hover {
+		color: black;
+		fill: black;
+	}
+	
+	transition: color .5s, fill .5s;
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}

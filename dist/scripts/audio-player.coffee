@@ -4,30 +4,28 @@ do ()->
 	audioEnabled = false
 	currentPageName = null
 	requestPending = false
-	context = new (@AudioContext || @webkitAudioContext)()
+	context = null
 	source = null
 	
-	# @addEventListener "click", ()->
-	# 	@dispatchEvent new CustomEvent(if audioEnabled then "disableAudio" else "enableAudio")
-			
 	request = new XMLHttpRequest()
 	request.responseType = "arraybuffer"
 	request.addEventListener "load", ()->
 		requestPending = false
 		context.decodeAudioData request.response, setBuffer, decodeFailure
 	
-	@addEventListener "disableAudio", (e)->
+	window.addEventListener "disableAudio", (e)->
 		if audioEnabled
 			audioEnabled = false
 			request.abort() if requestPending
 			source.stop 0 if source?
 	
-	@addEventListener "enableAudio", (e)->
+	window.addEventListener "enableAudio", (e)->
 		unless audioEnabled
 			audioEnabled = true
+			context ?= new (@AudioContext || @webkitAudioContext)()
 			loadAudioForCurrentPage()
 	
-	@addEventListener "pageChange", (e)->
+	window.addEventListener "cdPageChange", (e)->
 		currentPageName = e.detail.page.id
 		loadAudioForCurrentPage()
 	
