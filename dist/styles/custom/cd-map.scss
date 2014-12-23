@@ -8,5 +8,9 @@ cd-map {
 	[pin] {
 		position: absolute;
 		top: 0;
+		
+		// Overridden by local styles — these are just helpful defaults to avoid 'auto' errors
+		margin-top: 0;
+		left: 0;
 	}
 }

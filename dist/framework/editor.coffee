@@ -65,6 +65,7 @@ Take "load", ()->
 	
 	vecFromElementPos = (elm)->
 		style = window.getComputedStyle(elm)
+		left = 0 if left is 'auto'
 		left = parseInt(style.left)/100 * elm.offsetParent.offsetWidth
 		marginTop = parseInt(style.marginTop)
 		return vec.create(left, marginTop)
