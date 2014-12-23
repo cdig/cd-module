@@ -1,40 +1,36 @@
-# Compatability Note:
-# CustomEvent is non-IE — polyfill: https://developer.mozilla.org/en/docs/Web/API/CustomEvent
+# Compatability:
 #	pageYOffset is an IE-compatable version of scrollY
 
 do ()->
-	PAGE_SELECTOR = "cd-page"
-	pages = null
-	currentPageIndex = null
+	EVENTS =
+		scroll: "scroll"
+	
+	pageChangeListeners = []
 	
 	
-	window.addEventListener "load", ()->
-		setupPages()
-		setupScrolling()
-		firePagesReady()
-		updateScroll()
-	
-	
-	setupPages = ()->
-		pages = document.querySelectorAll(PAGE_SELECTOR) # Mutation
-	
-	
-	setupScrolling = ()->
-		window.addEventListener("scroll", updateScroll)
-	
-	
-	firePagesReady = ()->
-		window.dispatchEvent new CustomEvent "cdPagesReady",
-			detail:
-				pages: pages
+	Take "Pages", (pages)->
+		setupScrollWatching(pages)
 		
-	
-	updateScroll = ()->
-		for page, pageIndex in pages
-			if pageIsCurrent(page)
-				if pageIndex isnt currentPageIndex
-					newCurrentPage(page, pageIndex)
-					break
+		Make "PageScrollWatcher",
+			onPageChange: (listener)->
+				pageChangeListeners.push(listener)
+		
+		
+	setupScrollWatching = (pages)->
+		prevPageIndex = null
+		prevPage = null
+		
+		scrollHandlerFn = ()->
+			for page, pageIndex in pages
+				if pageIsCurrent(page)
+					if pageIndex isnt prevPageIndex
+						pageChange(page, pageIndex, prevPage, prevPageIndex)
+						prevPageIndex = pageIndex
+						prevPage = page
+					return
+		
+		window.addEventListener(EVENTS.scroll, scrollHandlerFn)
+		setTimeout(scrollHandlerFn)
 	
 	
 	pageIsCurrent = (page)->
@@ -44,17 +40,6 @@ do ()->
 		return pageTop < scrollPosition and scrollPosition < pageBottom
 	
 	
-	newCurrentPage = (newPage, newPageIndex)->
-		prevPage = pages[currentPageIndex]
-		prevPageIndex = currentPageIndex
-		currentPageIndex = newPageIndex # Mutation
-		dispatchPageChangeEvent(newPage, newPageIndex, prevPage, prevPageIndex)
-	
-	
-	dispatchPageChangeEvent = (page, pageIndex, previousPage, previousPageIndex)->
-		window.dispatchEvent new CustomEvent "cdPageChange",
-			detail:
-				page: page
-				pageIndex: pageIndex
-				previousPage: previousPage
-				previousPageIndex: previousPageIndex
+	pageChange = (page, pageIndex, previousPage, previousPageIndex)->
+		for callback in pageChangeListeners
+			callback(page, pageIndex, previousPage, previousPageIndex)

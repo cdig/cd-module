@@ -1,42 +1,47 @@
 cd-hud {
+	$pad: .6em;
+	
 	position: fixed;
+	
 	display: flex;
+	align-items: center;
+	z-index: 1002; // Above ModalPopup and PageSwitcher
+	
 	left: 0;
 	bottom: 0;
 	
-	color: rgba(black, .5);
-	fill: rgba(black, .5);
-	background: rgba(white, .93);
+	padding: .2em 0 .1em;
 	
-	// Need to figure out how to deal with styling this _very prominent_ UI element.
-	// These aren't actually a part of the cd-module SCSS API.. yet.
-	border-top: 1px solid $mainBorderColor;
-	border-right: 1px solid $darkBorderColor;
+	font-size: 1.1em;
+	color: rgba(black, .2);
+	background: rgba(white, .5);
+	box-shadow: -2px 5px 16px -3px black;
 	
-	animation: fade-in 2s 1s both;
-	line-height: 2em;
-	& > * {
-		margin: 0 1em;
+	animation: cd-hud-container-fade-in .5s .5s both;
+	transition: color .5s, background .5s, border-color .5s;
+	
+	
+	&:hover {
+		color: rgba(black, .5);
+		background: white;
 	}
 	
-	& > * + * {
-		margin-left: 0;
+	& > * {
+		padding: 0 $pad;
+	}
+	
+	& > *:hover {
+		color: black;
 	}
 	
 	* {
-		cursor: pointer;
+		display: inline-block;
+		line-height: 1.6em;
 		vertical-align: middle;
 	}
-	
-	&:hover {
-		color: black;
-		fill: black;
-	}
-	
-	transition: color .5s, fill .5s;
 }
 
-@keyframes fade-in {
+@keyframes cd-hud-container-fade-in {
 	from { opacity: 0; }
 	to   { opacity: 1; }
 }

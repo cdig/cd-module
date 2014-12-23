@@ -1,4 +1,11 @@
-cd-mute-button {
+mute-button {
+	
+	order: 2;
+	fill: currentColor;
+	
+	* {
+		cursor: pointer;
+	}
 	
 	path {
 		animation: slide-in .3s both ease-out;

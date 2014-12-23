@@ -1,9 +1,8 @@
-// Main
+// HUD Component
 @import 'hud/cd-hud.scss';
 
-// Buttons
-@import 'hud/buttons/cd-menu-button.scss';
-@import 'hud/buttons/cd-mute-button.scss';
-
-// Controls
-@import 'hud/controls/navbar.scss';
+// HUD Items
+@import 'hud/current-page-indicator.scss';
+@import 'hud/menu-button.scss';
+@import 'hud/mute-button.scss';
+@import 'hud/score-display.scss';

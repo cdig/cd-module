@@ -1,0 +1,10 @@
+scalable-container {
+	display: block;
+	position: relative; // Contain absolutes
+	margin: 0 auto;
+	width: 100%;
+	
+	[scalable] {
+		width: 100%;
+	}
+}

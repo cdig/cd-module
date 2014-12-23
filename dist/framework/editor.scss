@@ -1,0 +1,27 @@
+[editable], [editable] * {
+	cursor: move;
+}
+
+body.editor-dragging * {
+	cursor: none;
+}
+
+editor-button {
+	cursor: pointer;
+}
+
+editor-container {
+	display: none;
+	
+	&.show { display: block; }
+	
+	textarea {
+		position: fixed;
+		padding: .2em;
+		left: .3em;
+		bottom: 2em;
+		width: 12em;
+		height: calc(100vh - 2.3em);
+		background: rgba(white, 0.95);
+	}
+}
