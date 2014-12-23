@@ -1,0 +1,12 @@
+cd-map {
+	position: relative;
+	
+	&[fit], [fit] {
+		width: 100%;
+	}
+	
+	[pin] {
+		position: absolute;
+		top: 0;
+	}
+}
