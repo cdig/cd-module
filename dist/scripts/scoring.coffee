@@ -1,4 +1,4 @@
-window.localStorage.clear()
+# window.localStorage.clear()
 
 Take ["PageManager", "KVStore", "Params"], (PageManager, KVStore, Params)->
 	hasPoints = document.querySelector("cd-activity")?
