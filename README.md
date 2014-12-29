@@ -1,24 +1,5 @@
 # cdModule
 
-## Guides
-
-### Updating to the latest version
-
-1. Open Terminal.
-2. cd to the module folder.
-3. Run `bower update`.
-4. Refresh CodeKit.
-5. Re-compile styles.scss. Fix any errors.
-6. Re-compile scripts.coffee and index.kit. Fix any errors.
-7. Open libs.js, delete everything, and add the following two lines:
-
-```
-// Bower Libs
-// @codekit-append '../bower_components/cd-module/dist/libs.js'
-```
-
-8. Find all instances of _global and replace with _project (use command-shift-f to do a project-wide find and replace)
-
 ## Documentation
 
 ### Z-indexes
