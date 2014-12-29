@@ -17,6 +17,17 @@
 
 8. Find all instances of _global and replace with _project (use command-shift-f to do a project-wide find and replace)
 
+## Documentation
+
+### Z-indexes
+10: call-out[open] (Call Outs)
+1000: cd-modal (Modal Popup)
+1001:	page-switcher (Switcher Container)
+1002: cd-hud (HUD)
+2000: score-area (Score Animation)
+9999: .browser-support (Browser Support)
+10000: editor-container textarea (Editor)
+
 ## Motivation
 
 A standard library for CDIG modules.

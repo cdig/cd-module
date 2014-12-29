@@ -17,6 +17,7 @@ editor-container {
 	
 	textarea {
 		position: fixed;
+		z-index: 10000;
 		padding: .2em;
 		left: .3em;
 		bottom: 2em;
