@@ -1,6 +1,8 @@
 # cdModule
 
-## HOW TO UPDATE TO VERSION 1.0
+## Guides
+
+### Updating to the latest version
 
 1. Open Terminal.
 2. cd to the module folder.
