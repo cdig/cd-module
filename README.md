@@ -2,19 +2,162 @@
 
 A solid foundation for CDIG modules.
 
-### What's included?
 
-In a sense, this is like an anti-reset. It's an opinionated set of default styles and behaviours that should help standardize our modules. It's not a framework, per se. You don't use this to design your own modules. CD-Module should force your modules to look and act a certain way.
+#### What's included?
+cdModule gives you a carefully chosen set of styles, scripts, and HTML components, to make all our modules look and act consistently.
 
-### What's not included?
 
-Anything that is specific to a particular project or client is not to be included here. That belongs in an _project folder. TODO(Ivan): Explain how _project works.
+#### What's not included?
+Anything specific to an individual project or client belongs in an _project, to be shared by all modules in the project.
 
-## Dependencies
 
-Assumes that cdReset is also included. Includes modernizr and jquery. Requires an _project folder.
+#### How do I use it?
+Go to the [module template](https://github.com/cdig/cd-module-template) and follow the instructions there.
 
-## Documentation
+Make sure [cdReset](https://github.com/cdig/cd-reset) is also included on the page.
+
+
+
+## Included Features
+
+
+### Libs
+TODO: Maybe these should be included through bower? Just a thought, you know.
+
+#### [modernizr](https://modernizr.com)
+Works with browser-support to warn users when they're using an unsupported browser.
+
+#### [jQuery](https://jquery.com)
+Is used by the matching game. We're gonna remove this PDQ.
+
+
+### Tools (nee Framework)
+
+#### Take & Make
+A nice dependency resolution / service discovery system. It ensures that services exist before dependent code executes.
+
+#### Editor
+Drag-and-drop positioning of elements using `left` and `margin-top`.
+
+
+### Components
+
+#### browser-support
+TODO: Add description.
+
+
+#### call-outs
+TODO: Add description.
+
+
+#### hud
+TODO: Add description.
+
+
+#### modal-popup
+TODO: Add description.
+
+
+#### page-locking
+TODO: Add description.
+
+
+#### page-switcher
+TODO: Add description.
+
+
+#### score-animation
+TODO: Add description.
+
+
+#### scroll-hint
+TODO: Add description.
+
+
+
+### Scripts
+
+#### Backend: LocalStorage
+TODO: Add description.
+
+#### Backend: SCORM 2004
+TODO: Add description.
+
+#### Easing
+TODO: Add description.
+
+#### Flash Interface
+TODO: Add description.
+
+#### KV Store
+TODO: Add description.
+
+#### Matches Selector
+TODO: Add description.
+
+#### Page Audio
+TODO: Add description.
+
+#### Page Manager
+TODO: Add description.
+
+#### Page Scroll Watcher
+TODO: Add description.
+
+#### Page Title
+TODO: Add description.
+
+#### Pages
+TODO: Add description.
+
+#### Params Service
+TODO: Add description.
+
+#### Save Before Unload
+TODO: Add description.
+
+#### Save With Popup
+TODO: Add description.
+
+#### Scoring
+TODO: Add description.
+
+#### Scroll Regions
+TODO: Add description.
+
+#### Scroll To
+TODO: Add description.
+
+#### Welcome Popup
+TODO: Add description.
+
+
+### Styles: Custom
+TODO: These are an awful lot like components... but they're different from the (above/real) components. They're to be used in the content; they're not part of the foundational system. We may have a crisis of naming here.
+
+#### cd-flow-arrow
+#### cd-map
+#### cd-page
+#### cd-row
+#### cd-text-bubble
+
+
+### Styles: Elements
+#### body
+#### figure
+#### headings
+#### img
+#### lists
+#### main
+#### object
+#### p
+
+
+### Styles: Mixins
+#### magic-underlines
+
+
+## Documentation of Decisions
 
 ### Z-indexes
 
@@ -25,6 +168,7 @@ Assumes that cdReset is also included. Includes modernizr and jquery. Requires a
 * 2000: score-area (Score Animation)
 * 9999: .browser-support (Browser Support)
 * 10000: editor-container textarea (Editor)
+
 
 ## License
 Copyright (c) 2014 CD Industrial Group Inc., released under MIT license.
