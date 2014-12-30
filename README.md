@@ -12,10 +12,7 @@ Anything specific to an individual project or client belongs in an _project, to 
 
 
 #### How do I use it?
-Go to the [module template](https://github.com/cdig/cd-module-template) and follow the instructions there.
-
-Make sure [cdReset](https://github.com/cdig/cd-reset) is also included on the page.
-
+Consult the [module template](https://github.com/cdig/cd-module-template) and seek the wisdom of its way.
 
 
 ## Included Features
@@ -24,133 +21,133 @@ Make sure [cdReset](https://github.com/cdig/cd-reset) is also included on the pa
 ### Libs
 TODO: Maybe these should be included through bower? Just a thought, you know.
 
-*[modernizr](https://modernizr.com)* works with browser-support to warn users when they're using an unsupported browser.
+**[modernizr](https://modernizr.com)** works with browser-support to warn users when they're using an unsupported browser.
 
-*[jQuery](https://jquery.com)* is used by the matching game. We're gonna remove this PDQ.
+**[jQuery](https://jquery.com)** is used by the matching game. We're gonna remove this PDQ.
 
 
 ### Tools (nee Framework)
 
-*Take & Make* are a nice dependency resolution / service discovery system. It ensures that services exist before dependent code executes.
+**Take & Make** are a nice dependency resolution / service discovery system. It ensures that services exist before dependent code executes.
 
-*Editor* gives us drag-and-drop positioning of elements using `left` and `margin-top`.
+**Editor** gives us drag-and-drop positioning of elements using `left` and `margin-top`.
 
 
 ### Components
 
-*browser-support*
+**browser-support**
 TODO: Add description.
 
 
-*call-outs*
+**call-outs**
 TODO: Add description.
 
 
-*hud*
+**hud**
 TODO: Add description.
 
 
-*modal-popup*
+**modal-popup**
 TODO: Add description.
 
 
-*page-locking*
+**page-locking**
 TODO: Add description.
 
 
-*page-switcher*
+**page-switcher**
 TODO: Add description.
 
 
-*score-animation*
+**score-animation**
 TODO: Add description.
 
 
-*scroll-hint*
+**scroll-hint**
 TODO: Add description.
 
 
 
 ### Scripts
 
-*Backend: LocalStorage*
+**Backend: LocalStorage**
 TODO: Add description.
 
-*Backend: SCORM 2004*
+**Backend: SCORM 2004**
 TODO: Add description.
 
-*Easing*
+**Easing**
 TODO: Add description.
 
-*Flash Interface*
+**Flash Interface**
 TODO: Add description.
 
-*KV Store*
+**KV Store**
 TODO: Add description.
 
-*Matches Selector*
+**Matches Selector**
 TODO: Add description.
 
-*Page Audio*
+**Page Audio**
 TODO: Add description.
 
-*Page Manager*
+**Page Manager**
 TODO: Add description.
 
-*Page Scroll Watcher*
+**Page Scroll Watcher**
 TODO: Add description.
 
-*Page Title*
+**Page Title**
 TODO: Add description.
 
-*Pages*
+**Pages**
 TODO: Add description.
 
-*Params Service*
+**Params Service**
 TODO: Add description.
 
-*Save Before Unload*
+**Save Before Unload**
 TODO: Add description.
 
-*Save With Popup*
+**Save With Popup**
 TODO: Add description.
 
-*Scoring*
+**Scoring**
 TODO: Add description.
 
-*Scroll Regions*
+**Scroll Regions**
 TODO: Add description.
 
-*Scroll To*
+**Scroll To**
 TODO: Add description.
 
-*Welcome Popup*
+**Welcome Popup**
 TODO: Add description.
 
 
 ### Styles: Custom
 TODO: These are an awful lot like components... but they're different from the (above/real) components. They're to be used in the content; they're not part of the foundational system. We may have a crisis of naming here.
 
-*cd-flow-arrow*
-*cd-map*
-*cd-page*
-*cd-row*
-*cd-text-bubble*
+**cd-flow-arrow**
+**cd-map**
+**cd-page**
+**cd-row**
+**cd-text-bubble**
 
 
 ### Styles: Elements
-*body*
-*figure*
-*headings*
-*img*
-*lists*
-*main*
-*object*
-*p*
+**body**
+**figure**
+**headings**
+**img**
+**lists**
+**main**
+**object**
+**p**
 
 
 ### Styles: Mixins
-*magic-underlines*
+**magic-underlines**
 
 
 ## Documentation of Decisions
