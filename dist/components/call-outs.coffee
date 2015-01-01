@@ -1,22 +1,49 @@
 Take "load", ()->
 	
-	makeNestedLabel = (callOut)->
+	show = (callout)->
+		callout.setAttribute("open", true)
+		callout.setAttribute("seen", true)
+	
+	hide = (callout)->
+		callout.removeAttribute("open")
+	
+	extractLabel = (callout)->
 		label = document.createElement("call-out-label")
-		label.innerHTML = callOut.innerHTML
-		callOut.innerHTML = ""
-		callOut.appendChild(label)
+		label.innerHTML = callout.innerHTML
+		callout.innerHTML = ""
+		callout.appendChild(label)
 	
-	show = (e)->
-		e.currentTarget.setAttribute("open", true)
-		e.currentTarget.setAttribute("seen", true)
+	makePoint = (callout)->
+		point = document.createElement("call-out-point")
+		point.addEventListener("mouseover", (e)-> show(callout))
+		point.addEventListener("mouseout", (e)-> hide(callout))
+		callout.appendChild(point)
+
+
+# SETUP
 	
-	hide = (e)->
-		e.currentTarget.removeAttribute("open")
+	for callout in document.querySelectorAll("call-out")
+		extractLabel(callout) # Gross Mutation
+		makePoint(callout) # Less gross Mutation
 	
-	for callOut in document.querySelectorAll("call-out")
-		callOut.addEventListener("mouseover", show)
-		callOut.addEventListener("mouseout", hide)
+
+# SCORING
+	
+	# If we have scoring, wrap the show() function with points
+	Take "Scoring", (Scoring)->
 		
-		# We need the label to be nested for the CSS.
-		# It's easiest to do this nesting with JS, rather than in the HTML.
-		makeNestedLabel(callOut)
+		# Store the original show function so we can still refer to it
+		oldShow = show
+		
+		allHaveBeenSeen = (callouts)->
+			for callout in callouts
+				return false unless callout.hasAttribute("seen")
+			return true
+		
+		show = (callout)->
+			Scoring.addPoints(callout, 1) unless callout.hasAttribute("seen")
+				
+			oldShow(callout)
+			
+			if allHaveBeenSeen(callout.parentElement.querySelectorAll("call-out"))
+				Scoring.addScore(callout, 1)

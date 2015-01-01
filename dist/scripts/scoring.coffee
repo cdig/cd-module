@@ -1,47 +1,26 @@
 # window.localStorage.clear()
 
-Take ["PageManager", "KVStore", "Params"], (PageManager, KVStore, Params)->
-	hasPoints = document.querySelector("cd-activity")?
+Take ["PageManager", "KVStore", "Params", "PureDom"], (PageManager, KVStore, Params, PureDom)->
+	hasActivities = document.querySelector("cd-activity")?
 	moduleTotalPoints = 0
-	pointsToAward = 0
 	projectNode = null
 	chapterNode = null
 	moduleNode = null
 	updateCallbacks = []
 	
 	
-	setTimeout ()->
-		loadScoringTree()
-		if hasPoints
-			crawlActivityPoints()
-			updateModuleScore()
-			saveScoringTree()
-			runCallbacks()
-		makeAPI()
-	
-
 # PUBLIC
 	
 	makeAPI = ()->
 		Make "Scoring",
-			addPoints: (id, percent = 0, exact = 0)->
-				throw new Error("You must add a points attribute to your activity: #{id}") unless hasPoints
+			addPoints: (target, points)->
+				activityNode = findActivitiyNodeFor(target)
+				scoreToAward = points / activityNode.points
+				applyAward(activityNode, score)
 				
-				activityNode = moduleNode.activities[id]
-				scoreBefore = activityNode.score
-				
-				scoreToAward = percent + (exact / activityNode.points)
-				
-				activityNode.score ?= 0
-				activityNode.score += scoreToAward
-				activityNode.score = Math.min(activityNode.score, 1)
-				activityNode.score = Math.round(activityNode.score * 1000)/1000 # Helps avoid rounding errors
-				
-				pointsToAward = (activityNode.score - scoreBefore) * activityNode.points
-				
-				updateModuleScore()
-				saveScoringTree()
-				runCallbacks()
+			addScore: (target, score)->
+				activityNode = findActivitiyNodeFor(target)
+				applyAward(activityNode, score)
 			
 			getActivityScore: (id)->
 				return moduleNode.activities[id].score
@@ -57,7 +36,7 @@ Take ["PageManager", "KVStore", "Params"], (PageManager, KVStore, Params)->
 		
 		
 
-# SETUP
+# PRIVATE
 	
 	loadScoringTree = ()->
 		projectNode = KVStore.get(Params.project) or createNodeWith("chapters")
@@ -81,9 +60,37 @@ Take ["PageManager", "KVStore", "Params"], (PageManager, KVStore, Params)->
 			moduleNode.activities[name].score ?= 0
 			moduleNode.activities[name].points = points # Always overwrite
 			moduleTotalPoints += points
-
-
-# INTERNAL
+	
+	
+	findActivitiyNodeFor = (target)->
+		throw new Error("We can't find any cd-activity elements in the module.") unless hasActivities
+		
+		if PureDom.isElement(target)
+			id = PureDom.querySelectorParent(target, "[id]").id
+			
+		else if (typeof target) is "string"
+			id = target
+		
+		else
+			throw new Error("We can't figure out what sort of scoring target you've provided.")
+		
+		activityNode = moduleNode.activities[id]
+	
+	
+	applyAward = (activityNode, scoreToAward)->
+		scoreBefore = activityNode.score
+		
+		activityNode.score ?= 0
+		activityNode.score += scoreToAward
+		activityNode.score = Math.round(activityNode.score * 1000)/1000 # Helps avoid rounding errors
+		activityNode.score = Math.min(activityNode.score, 1)
+		
+		pointsAwarded = Math.floor((activityNode.score - scoreBefore) * activityNode.points)
+		
+		updateModuleScore()
+		saveScoringTree()
+		runCallbacks(pointsAwarded)
+	
 	
 	updateModuleScore = ()->
 		earnedPoints = 0
@@ -94,19 +101,20 @@ Take ["PageManager", "KVStore", "Params"], (PageManager, KVStore, Params)->
 	
 	saveScoringTree = ()->
 		KVStore.set(Params.project, projectNode)
-		KVStore.save() # DEBUG
+		console.log("Debug: saving after awarding points.")
+		KVStore.save()
 	
-	runCallbacks = ()->
-		call(moduleNode.score, pointsToAward) for call in updateCallbacks
-
-
-# Map scoring events into the Scoring system
-
-Take "Scoring", (Scoring)->
-	window.addEventListener "cdAwardPoints", (e)->
-		id = e.detail.id
-		percent = e.detail.percent
-		exact = e.detail.exact
-		throw new Error("Activity events must provide an id.") unless id?
-		throw new Error("Activity events must provide either a percent or exact: #{id}") unless percent? or exact?
-		Scoring.addPoints(id, percent, exact)
+	
+	runCallbacks = (pointsAwarded)->
+		call(moduleNode.score, pointsAwarded) for call in updateCallbacks
+		
+		
+# SETUP
+	
+	loadScoringTree()
+	if hasActivities
+		crawlActivityPoints()
+		updateModuleScore()
+		saveScoringTree()
+		runCallbacks(0)
+	makeAPI()

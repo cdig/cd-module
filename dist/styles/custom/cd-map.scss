@@ -1,6 +1,7 @@
 cd-map {
 	position: relative;
-	
+	display: block;
+		
 	&[fit], [fit] {
 		width: 100%;
 	}
