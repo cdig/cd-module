@@ -135,4 +135,4 @@ TODO: These are an awful lot like components... but they're different from the (
 
 
 ## License
-Copyright (c) 2014 CD Industrial Group Inc., released under MIT license.
+Copyright (c) 2014-2015 CD Industrial Group Inc., released under MIT license.
