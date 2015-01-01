@@ -1,16 +1,23 @@
+// 1. API
 // You must provide values for these variables wherever you import this file
 // Here are recommended defaults:
 // $maxPageWidth: 64rem;
 // $maxLineLength: 42em;
 // $borderRadius: .5em;
 
-// Breakpoints
+// 2. Breakpoints
 $iPadLandscape: 1024px;
 $iPadPortrait: 768px;
 $iPhoneLandscape: 667px;
 $iPhonePortrait: 375px;
 
-// Component Styles
+// 3. Sibling Dependencies
+@import '../../cd-foundation/dist/cd-foundation.scss';
+
+// 4. Mixins
+@import 'styles/mixins/magic-underlines.scss';
+
+// 5. Components
 @import 'components/browser-support.scss';
 @import 'components/call-outs.scss';
 @import 'components/hud.scss';
@@ -20,17 +27,14 @@ $iPhonePortrait: 375px;
 @import 'components/scroll-hint.scss';
 @import 'components/score-animation/score-animation.scss';
 
-// Mixins
-@import 'styles/mixins/magic-underlines.scss';
-
-// Custom Elements
+// 6. Custom Elements
 @import 'styles/custom/cd-flow-arrow.scss';
 @import 'styles/custom/cd-map.scss';
 @import 'styles/custom/cd-page.scss';
 @import 'styles/custom/cd-row.scss';
 @import 'styles/custom/cd-text-bubble.scss';
 
-// Standard Elements
+// 7. Standard Elements
 @import 'styles/elements/body.scss';
 @import 'styles/elements/figure.scss';
 @import 'styles/elements/headings.scss';

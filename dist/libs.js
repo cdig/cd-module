@@ -1,2 +1,5 @@
-// @codekit-append "libs/jquery-2.1.1.min.js";
+// 1. Custom Modernizr build
 // @codekit-append "libs/modernizr.js";
+
+// 2. Sibling Dependencies
+// @codekit-append "../../jquery/jquery.js";

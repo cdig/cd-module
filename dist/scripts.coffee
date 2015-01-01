@@ -1,4 +1,7 @@
-# Components
+# 1. Sibling Dependencies
+# @codekit-append '../../cd-foundation/dist/cd-foundation.coffee'
+
+# 2. Components
 # @codekit-append 'components/browser-support.coffee'
 # @codekit-append 'components/call-outs.coffee'
 # @codekit-append 'components/hud.coffee'
@@ -9,7 +12,7 @@
 # @codekit-append 'components/score-animation/particle.coffee'
 # @codekit-append 'components/score-animation/score-animation.coffee'
 
-# Scripts
+# 3. Scripts
 # @codekit-append 'scripts/backend-local-storage.coffee'
 # #codekit-append 'scripts/backend-scorm-2004.coffee'
 # @codekit-append 'scripts/cd-award-points.coffee'

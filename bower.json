@@ -11,6 +11,7 @@
     "dist/styles.scss"
   ],
   "dependencies": {
+    "jquery":"latest",
     "cd-foundation":"cdig/cd-foundation"
   },
   "ignore": [],
