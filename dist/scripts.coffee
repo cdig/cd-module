@@ -1,7 +1,3 @@
-# Framework
-# @codekit-append 'framework/make-and-take.coffee'
-# @codekit-append 'framework/editor.coffee'
-
 # Components
 # @codekit-append 'components/browser-support.coffee'
 # @codekit-append 'components/call-outs.coffee'
@@ -13,9 +9,10 @@
 # @codekit-append 'components/score-animation/particle.coffee'
 # @codekit-append 'components/score-animation/score-animation.coffee'
 
-# Module Scripts
+# Scripts
 # @codekit-append 'scripts/backend-local-storage.coffee'
 # #codekit-append 'scripts/backend-scorm-2004.coffee'
+# @codekit-append 'scripts/cd-award-points.coffee'
 # @codekit-append 'scripts/easing.coffee'
 # @codekit-append 'scripts/flash-interface.coffee'
 # @codekit-append 'scripts/kv-store.coffee'
