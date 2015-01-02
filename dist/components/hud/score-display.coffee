@@ -1,35 +1,57 @@
-Take ["cdHUD", "Scoring", "ScoreDisplayGraphic"], (cdHUD, Scoring, Graphic)->
+Take ["cdHUD", "Scoring", "ScoreDisplayGraphic", "load"], (cdHUD, Scoring, Graphic)->
+	
+	hasActivities = document.querySelectorAll("cd-activity").length > 0
+	
 	display = document.createElement("score-display")
 	display.innerHTML = Graphic
 	cdHUD.addElement(display)
 	
 	ring = display.querySelector(".ring")
-	
-	update = (score)->
+
+
+# POPUP
+
+	Take "ModalPopup", (ModalPopup)->
+		display.addEventListener "click", ()->
+			if hasActivities
+				score = Math.round(Scoring.getModuleScore() * 100)
+				ModalPopup.open("Progress", "You are #{score}% done the activities in this module.")
+			else
+				ModalPopup.open("Progress", "There are no activities in this module.")
+
+
+# UPDATE
+
+	updateDisplay = (score)->
 		radius = ring.getAttribute("r")
 		circumference = 2 * Math.PI * radius
 		strokeOffset = (1-score) * circumference
 		ring.style.strokeDashoffset = strokeOffset
 		display.className = "complete" if score >= 1
-	
-	update(Scoring.getModuleScore())
-	
-	Take "ModalPopup", (ModalPopup)->
-		display.addEventListener "click", ()->
-			score = Math.round(Scoring.getModuleScore() * 100)
-			ModalPopup.open("Progress", "You are #{score}% done the activities in this module.")
-	
+
+
+# PUBLIC
+
 	Make "ScoreDisplay",
 		getElement: ()->
 			return display
-			
+		
 		update: (remainingPoints)->
 			currentScore = Scoring.getModuleScore()
 			
 			totalPoints = Scoring.getModulePoints()
 			currentPoints = currentScore * totalPoints
-			displayed = currentScore * (1 - remainingPoints/currentPoints)
-			update(displayed)
+			displayedScore = currentScore * (1 - remainingPoints/currentPoints)
+			updateDisplay(displayedScore)
+
+
+# INITIALIZE
+	
+	if hasActivities
+		updateDisplay(Scoring.getModuleScore())
+	else
+		updateDisplay(1)
+	
 
 
 Make "ScoreDisplayGraphic",
