@@ -40,11 +40,10 @@ call-out {
 		}
 	}
 	
-	&[open] { // [open] for mobile, :hover for desktop
+	&[open], &[closing] {
 		z-index: 10;
 		call-out-label {
 			display: block;
-			animation: call-out-appear .1s ease-out;
 		}
 		call-out-point {
 			animation: none;
@@ -53,16 +52,16 @@ call-out {
 		}
 	}
 	
-	&[closing] {
-		call-out-label {
-			animation: call-out-appear .2s ease-out reverse both;
-		}
+	&[open] call-out-label {
+		animation: call-out-appear .1s ease-out both;
 	}
 	
-	&[seen] {
-		call-out-point {
-			border: 4px solid #777;
-		}
+	&[closing] call-out-label {
+		animation: call-out-disappear .2s ease-in both;
+	}
+	
+	&[seen] call-out-point {
+		border: 4px solid #777;
 	}
 	
 	&[top] {
@@ -107,7 +106,7 @@ call-out {
 			right: -$arrow-size -$point-size/2;
 			transform-origin: left;
 			&::after {
-				transform: translate(-98%, -50%);
+				transform: translate(-95%, -50%); // 95% because of crappy pixel rounding errors
 				border-right: $arrow-size solid white;
 			}
 		}
@@ -123,7 +122,7 @@ call-out {
 			bottom: -$arrow-size -$point-size/2;
 			transform-origin: top;
 			&::after {
-				transform: translate(-50%, -98%);
+				transform: translate(-50%, -95%); // 95% because of crappy pixel rounding errors
 				border-bottom: $arrow-size solid white;
 			}
 		}
@@ -140,4 +139,9 @@ call-out {
 @keyframes call-out-appear {
 	from { transform: scale(.8); opacity: .4; }
 	to   { transform: scale(1);  opacity: 1; }
+}
+
+@keyframes call-out-disappear {
+	from { transform: scale(1);  opacity: 1; }
+	to   { transform: scale(.5); opacity: .4; }
 }

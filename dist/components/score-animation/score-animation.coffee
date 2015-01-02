@@ -15,9 +15,20 @@ Take ["Particle", "Scoring", "ScoreDisplay", "load"], (Particle, Scoring, ScoreD
 	
 # DEBUG
 	
-	testParticles = ()->
-		fireParticles(1000)
-		setTimeout(testParticles, 4000)
+	# streamOn = false
+	# testStream = ()->
+	# 	fireParticles(1)
+	# 	setTimeout(testStream, 1) if streamOn
+	#
+	# window.addEventListener "mousedown", ()->
+	# 	streamOn = true
+	# 	testStream()
+	# window.addEventListener "mouseup", ()->
+	# 	streamOn = false
+
+	# testParticles = ()->
+	# 	fireParticles(200)
+	# 	setTimeout(testParticles, 4000)
 	
 	
 # SETUP
@@ -27,7 +38,7 @@ Take ["Particle", "Scoring", "ScoreDisplay", "load"], (Particle, Scoring, ScoreD
 		createParticles()
 		attachScoreArea()
 		updateTargetPos()
-		# setTimeout(testParticles, 3000)
+		# setTimeout(testParticles, 2000)
 	
 	
 	createScoreArea = ()->

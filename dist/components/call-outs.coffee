@@ -7,11 +7,11 @@ Take "load", ()->
 	beginClosing = (callout)->
 		unless callout.hasAttribute("closing")
 			callout.setAttribute("closing", true)
+			callout.removeAttribute("open")
 			setTimeout((()-> finishClosing(callout)), 200)
 	
 	finishClosing = (callout)->
 		if callout.hasAttribute("closing")
-			callout.removeAttribute("open")
 			callout.removeAttribute("closing")
 	
 	extractLabel = (callout)->

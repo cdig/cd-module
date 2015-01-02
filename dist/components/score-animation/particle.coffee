@@ -1,7 +1,7 @@
 do ()->
 	SCALE = 1.5
-	MAX_TRAVEL_TIME = 1.5 * SCALE # How long does it take to get to the score indicator
-	MIN_TRAVEL_TIME = 1.0 * SCALE
+	MAX_TRAVEL_TIME = 1.6 * SCALE # How long does it take to get to the score indicator
+	MIN_TRAVEL_TIME = 1.2 * SCALE
 	MAX_SCATTER_SPEED = 240 / SCALE # How quickly do the points spread out from their initial position
 	MIN_SCATTER_SPEED = 180 / SCALE
 	
@@ -16,16 +16,13 @@ do ()->
 			x: vec.x * scalar
 			y: vec.y * scalar
 	
-	map = (input, inputMin, inputMax, outputMin, outputMax, clip = true)->
+	map = (input, inputMin, inputMax, outputMin, outputMax, clip = false)->
 		input = Math.max(Math.min(input, inputMax), inputMin) if clip
 		input -= inputMin
 		input /= inputMax - inputMin
 		input *= outputMax - outputMin
 		input += outputMin
 		return input
-		
-	getRandomInRange = (max, min)->
-		return Math.random() * (max - min) + min
 	
 	
 	Make "Particle", class Particle
@@ -51,9 +48,11 @@ do ()->
 			@y = sY
 			@scatterTrajectory = { x: sX, y: sY }
 			
-			@travelSpeed = 1 / getRandomInRange(MAX_TRAVEL_TIME, MIN_TRAVEL_TIME)
-			@scatterSpeed = getRandomInRange(MAX_SCATTER_SPEED, MIN_SCATTER_SPEED)
-			@scatterAngle = getRandomInRange(2 * Math.PI, 0)
+			rand = Math.random()
+			
+			@travelSpeed = 1 / map(Math.random(), 0, 1, MIN_TRAVEL_TIME, MAX_TRAVEL_TIME)
+			@scatterSpeed = map(Math.random(), 0, 1, MIN_SCATTER_SPEED, MAX_SCATTER_SPEED)
+			@scatterAngle = map(Math.random(), 0, 1, 0, 2 * Math.PI)
 			@scatterForce =
 				x: Math.cos(@scatterAngle) * @scatterSpeed
 				y: Math.sin(@scatterAngle) * @scatterSpeed
@@ -71,11 +70,11 @@ do ()->
 			@pos = Math.min(@pos, 1)
 			@scatterTrajectory = addVectors(@scatterTrajectory, scalarMultiply(@scatterForce, dT))
 			@x = map(@pos*@pos, 0, 1, @scatterTrajectory.x, targetX)
-			@y = map(@pos*@pos*@pos, 0, 1, @scatterTrajectory.y, targetY)
-			@scale = Math.abs Math.sin @pos * Math.PI * 4
+			@y = map(@pos*@pos*@pos*@pos, 0, 1, @scatterTrajectory.y, targetY)
+			@scale = map(Math.sin(@pos * Math.PI * 8), -1, 1, 0.2, 1.2)
 			return @pos >= 1
 		
-			
+		
 		draw: ()=>
 			x = @x
 			y = @y
