@@ -72,10 +72,10 @@ Take ["PageLocking", "load"], (PageLocking)->
 		
 		else if tallEnoughToHaveScrollHints
 			if window.pageYOffset < deadband
-				ScrollHint.show("Scroll down to begin.", "⬇︎")
+				ScrollHint.show("Scroll down to begin", "⬇︎")
 			else if window.pageYOffset + deadband >= scrollMax
 				if lockedPage?
-					ScrollHint.show("Complete the activity on this page.", "!")
+					ScrollHint.show("Complete the activity on this page", "!")
 	
 	
 # EVENT LISTENING
@@ -89,5 +89,5 @@ Take ["PageLocking", "load"], (PageLocking)->
 	
 	PageLocking.onUpdate (newLockedPage)->
 		if lockedPage?
-			ScrollHint.show("Good job. Scroll down to continue.", "✓")
+			ScrollHint.show("Scroll down to continue", "✓")
 		lockedPage = newLockedPage
