@@ -25,6 +25,9 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 			getActivityScore: (id)->
 				return moduleNode.activities[id].score
 			
+			getPageScore: (page)->
+				return PureDom.querySelectorAll(page, "cd-activity").reduce(sumActivityScore, 0)
+
 			getModulePoints: ()->
 				return moduleTotalPoints
 			
@@ -36,7 +39,39 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 		
 		
 
-# PRIVATE
+# IMMUTABLE
+
+	sumActivityScore = (sum, activity)->
+		id = getNearestId(activity)
+		activity = moduleNode.activities[id]
+		return sum + activity.score
+
+
+	createNodeWith = (groupName)->
+		node = {}
+		node.score = 0
+		node[groupName] = {}
+		return node
+	
+	
+	getNearestId = (element)->
+		return PureDom.querySelectorParent(element, "[id]").id
+	
+	
+	findActivitiyNodeFor = (target)->
+		throw new Error("Didn't find any cd-activity elements in the module.") unless hasActivities
+		
+		if PureDom.isElement(target)
+			id = PureDom.querySelectorParent(target, "[id]").id
+		else if (typeof target) is "string"
+			id = target
+		else
+			throw new Error("Couldn't figure out what sort of scoring target you've provided.")
+		
+		return moduleNode.activities[id]
+
+
+# MUTATION
 	
 	loadScoringTree = ()->
 		projectNode = KVStore.get(Params.project) or createNodeWith("chapters")
@@ -44,19 +79,12 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 		moduleNode = chapterNode.modules[Params.module] ?= createNodeWith("activities")
 		
 	
-	createNodeWith = (groupName)->
-		node = {}
-		node.score = 0
-		node[groupName] = {}
-		return node
-
-
 	crawlActivityPoints = ()->
 		moduleTotalPoints = 0
-		for activity in document.querySelectorAll("cd-activity")
-			name = activity.id
-			points = parseInt(activity.getAttribute("points"))
-			activityNode = moduleNode.activities[name] ?= {}
+		for activityElement in document.querySelectorAll("cd-activity")
+			id = getNearestId(activityElement)
+			points = parseInt(activityElement.getAttribute("points"))
+			activityNode = moduleNode.activities[id] ?= {}
 			activityNode.score ?= 0
 			
 			# Always overwrite and recompute these, because the points attribute may have changed
@@ -64,21 +92,6 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 			activityNode.earnedPoints = points * activityNode.score
 			
 			moduleTotalPoints += points
-	
-	
-	findActivitiyNodeFor = (target)->
-		throw new Error("We can't find any cd-activity elements in the module.") unless hasActivities
-		
-		if PureDom.isElement(target)
-			id = PureDom.querySelectorParent(target, "[id]").id
-			
-		else if (typeof target) is "string"
-			id = target
-		
-		else
-			throw new Error("We can't figure out what sort of scoring target you've provided.")
-		
-		activityNode = moduleNode.activities[id]
 	
 	
 	applyAward = (activityNode, pointsToAward)->
@@ -101,7 +114,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 	
 	updateModuleScore = ()->
 		earnedPoints = 0
-		for name, activityNode of moduleNode.activities
+		for id, activityNode of moduleNode.activities
 			earnedPoints += activityNode.score * activityNode.points
 		moduleNode.score = earnedPoints / moduleTotalPoints
 	
