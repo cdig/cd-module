@@ -1,10 +1,9 @@
 # Pages
-# All the pages in the module
+# Frozen (immutable-ish) array of the pages in the module.
 
-Take "load", ()->
-	
+Take ["PureDom", "load"], (PureDom)->
 	pagesNodeList = document.querySelectorAll("cd-page")
-	pages = Array.prototype.slice.call(pagesNodeList)
+	pages = PureDom.nodeListToArray(pagesNodeList)
 	Object.freeze(pages)
 	
 	Make "Pages", pages
