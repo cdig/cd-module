@@ -5,9 +5,6 @@
 Take ["Pages", "Scoring"], (Pages, Scoring)->
 	lockedPage = null
 	callbacks = []
-	
-	setTimeout ()->
-		PageLocking.update()
 
 	
 	Make "PageLocking", PageLocking =
@@ -16,7 +13,7 @@ Take ["Pages", "Scoring"], (Pages, Scoring)->
 		
 		
 		update: ()->
-			lockedPage?.classList.remove("locked-page")
+			lockedPage.classList.remove("locked-page") if lockedPage?
 			lockedPage = null
 			
 			for page in Pages
@@ -45,5 +42,9 @@ Take ["Pages", "Scoring"], (Pages, Scoring)->
 		
 	
 	Scoring.onUpdate ()->
-		if Scoring.getPageScore(lockedPage) >= 1
+		if lockedPage? and Scoring.getPageScore(lockedPage) >= 1
 			PageLocking.update()
+
+# SETUP
+	
+	PageLocking.update()
