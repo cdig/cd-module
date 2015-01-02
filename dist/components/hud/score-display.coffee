@@ -17,7 +17,7 @@ Take ["cdHUD", "Scoring", "ScoreDisplayGraphic"], (cdHUD, Scoring, Graphic)->
 	Take "ModalPopup", (ModalPopup)->
 		display.addEventListener "click", ()->
 			score = Math.round(Scoring.getModuleScore() * 100)
-			ModalPopup.open("Scoring Status", "You are #{score}% done the activities in this module.")
+			ModalPopup.open("Progress", "You are #{score}% done the activities in this module.")
 	
 	Make "ScoreDisplay",
 		getElement: ()->
