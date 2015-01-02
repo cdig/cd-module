@@ -40,8 +40,7 @@ Take ["PageLocking", "load"], (PageLocking)->
 	show = ()->
 		if not showing
 			showing = true
-			scrollHintTab.style["-webkit-transform"] = "translateY(0)"
-			scrollHintTab.style.transform = "translateY(0)"
+			scrollHint.setAttribute("showing", true)
 	
 	
 	prepareToHide = ()->
@@ -53,15 +52,14 @@ Take ["PageLocking", "load"], (PageLocking)->
 	hide = ()->
 		if aboutToHide and showing
 			showing = false
-			scrollHintTab.style["-webkit-transform"] = "translateY(100%)"
-			scrollHintTab.style.transform = "translateY(100%)"
+			scrollHint.removeAttribute("showing")
 		aboutToHide = false
 		
 	
 # EVENT HANDLING
 	
 	do scrollUpdate = ()->
-		tallEnoughToHaveScrollHints = document.body.scrollHeight > window.innerHeight * 2
+		tallEnoughToHaveScrollHints = document.body.scrollHeight > window.innerHeight
 		scrollMax = document.body.scrollHeight - window.innerHeight
 		
 		if showing
@@ -86,6 +84,7 @@ Take ["PageLocking", "load"], (PageLocking)->
 	
 	window.addEventListener("scroll", scrollUpdate)
 	window.addEventListener("resize", scrollUpdate)
+	scrollHintTab.addEventListener("click", prepareToHide)
 	
 	
 # SYSTEM EVENTS
