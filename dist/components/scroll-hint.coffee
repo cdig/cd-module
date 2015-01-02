@@ -76,8 +76,6 @@ Take ["PageLocking", "load"], (PageLocking)->
 			else if window.pageYOffset + deadband >= scrollMax
 				if lockedPage?
 					ScrollHint.show("Complete the activity on this page.", "!")
-				else
-					ScrollHint.show("Good job.")
 	
 	
 # EVENT LISTENING
