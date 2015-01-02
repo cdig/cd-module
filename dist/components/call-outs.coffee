@@ -1,11 +1,18 @@
 Take "load", ()->
-	
-	show = (callout)->
+	open = (callout)->
 		callout.setAttribute("open", true)
 		callout.setAttribute("seen", true)
+		callout.removeAttribute("closing")
 	
-	hide = (callout)->
-		callout.removeAttribute("open")
+	beginClosing = (callout)->
+		unless callout.hasAttribute("closing")
+			callout.setAttribute("closing", true)
+			setTimeout((()-> finishClosing(callout)), 200)
+	
+	finishClosing = (callout)->
+		if callout.hasAttribute("closing")
+			callout.removeAttribute("open")
+			callout.removeAttribute("closing")
 	
 	extractLabel = (callout)->
 		label = document.createElement("call-out-label")
@@ -15,8 +22,8 @@ Take "load", ()->
 	
 	makePoint = (callout)->
 		point = document.createElement("call-out-point")
-		point.addEventListener("mouseover", (e)-> show(callout))
-		point.addEventListener("mouseout", (e)-> hide(callout))
+		point.addEventListener("mouseover", (e)-> open(callout))
+		point.addEventListener("mouseout", (e)-> beginClosing(callout))
 		callout.appendChild(point)
 
 
@@ -29,21 +36,23 @@ Take "load", ()->
 
 # SCORING
 	
-	# If we have scoring, wrap the show() function with points
+	# If we have scoring, wrap the open() function with points
 	Take "Scoring", (Scoring)->
 		
-		# Store the original show function so we can still refer to it
-		oldShow = show
+		# Store the original open function so we can still refer to it
+		oldOpen = open
 		
 		allHaveBeenSeen = (callouts)->
 			for callout in callouts
 				return false unless callout.hasAttribute("seen")
 			return true
 		
-		show = (callout)->
-			Scoring.addPoints(callout, 1) unless callout.hasAttribute("seen")
-				
-			oldShow(callout)
+		open = (callout)->
+			shouldAwardPoint = not callout.hasAttribute("seen")
+			
+			oldOpen(callout)
 			
 			if allHaveBeenSeen(callout.parentElement.querySelectorAll("call-out"))
 				Scoring.addScore(callout, 1)
+			else if shouldAwardPoint
+				Scoring.addPoints(callout, 1)
