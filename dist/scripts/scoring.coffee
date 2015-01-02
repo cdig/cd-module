@@ -1,4 +1,4 @@
-# window.localStorage.clear()
+window.localStorage.clear()
 
 Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 	hasActivities = document.querySelector("cd-activity")?
@@ -15,12 +15,12 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 		Make "Scoring",
 			addPoints: (target, points)->
 				activityNode = findActivitiyNodeFor(target)
-				scoreToAward = points / activityNode.points
-				applyAward(activityNode, score)
+				applyAward(activityNode, points)
 				
 			addScore: (target, score)->
 				activityNode = findActivitiyNodeFor(target)
-				applyAward(activityNode, score)
+				points = score * activityNode.points
+				applyAward(activityNode, points)
 			
 			getActivityScore: (id)->
 				return moduleNode.activities[id].score
@@ -56,9 +56,13 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 		for activity in document.querySelectorAll("cd-activity")
 			name = activity.id
 			points = parseInt(activity.getAttribute("points"))
-			moduleNode.activities[name] ?= {}
-			moduleNode.activities[name].score ?= 0
-			moduleNode.activities[name].points = points # Always overwrite
+			activityNode = moduleNode.activities[name] ?= {}
+			activityNode.score ?= 0
+			
+			# Always overwrite and recompute these, because the points attribute may have changed
+			activityNode.points = points
+			activityNode.earnedPoints = points * activityNode.score
+			
 			moduleTotalPoints += points
 	
 	
@@ -77,15 +81,18 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 		activityNode = moduleNode.activities[id]
 	
 	
-	applyAward = (activityNode, scoreToAward)->
-		scoreBefore = activityNode.score
+	applyAward = (activityNode, pointsToAward)->
+		return if activityNode.score >= 1
 		
-		activityNode.score ?= 0
-		activityNode.score += scoreToAward
-		activityNode.score = Math.round(activityNode.score * 1000)/1000 # Helps avoid rounding errors
-		activityNode.score = Math.min(activityNode.score, 1)
+		pointsBefore = activityNode.earnedPoints
 		
-		pointsAwarded = Math.floor((activityNode.score - scoreBefore) * activityNode.points)
+		activityNode.earnedPoints += pointsToAward
+		activityNode.earnedPoints = Math.min(activityNode.earnedPoints, activityNode.points)
+		
+		activityNode.score = activityNode.earnedPoints / activityNode.points
+		activityNode.score = Math.round(10000 * activityNode.score)/10000
+		
+		pointsAwarded = activityNode.earnedPoints - pointsBefore
 		
 		updateModuleScore()
 		saveScoringTree()
