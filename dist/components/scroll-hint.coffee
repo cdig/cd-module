@@ -2,7 +2,7 @@
 #	pageYOffset is an IE-compatable version of scrollY
 
 
-Take ["PageLocking", "load"], (PageLocking)->
+Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 
 # STATE
 	lastSetPosition = 0
@@ -59,7 +59,7 @@ Take ["PageLocking", "load"], (PageLocking)->
 # EVENT HANDLING
 	
 	do scrollUpdate = ()->
-		tallEnoughToHaveScrollHints = document.body.scrollHeight > window.innerHeight
+		tallEnoughToHaveScrollHints = Pages.length > 1
 		scrollMax = document.body.scrollHeight - window.innerHeight
 		
 		if showing
