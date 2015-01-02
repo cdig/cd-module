@@ -1,6 +1,6 @@
 # window.localStorage.clear()
 
-Take ["PageManager", "KVStore", "Params", "PureDom"], (PageManager, KVStore, Params, PureDom)->
+Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 	hasActivities = document.querySelector("cd-activity")?
 	moduleTotalPoints = 0
 	projectNode = null

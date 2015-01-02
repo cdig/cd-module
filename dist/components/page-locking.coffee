@@ -2,7 +2,7 @@
 # Find the first page with unearned points, and hide all the pages after it.
 
 
-Take ["PageManager", "Scoring"], (PageManager, Scoring)->
+Take ["Pages", "Scoring"], (Pages, Scoring)->
 	lockedPage = null
 	callbacks = []
 	
@@ -19,7 +19,7 @@ Take ["PageManager", "Scoring"], (PageManager, Scoring)->
 			lockedPage?.classList.remove("locked-page")
 			lockedPage = null
 			
-			for page in PageManager.getPages()
+			for page in Pages
 				
 				# It's less efficient, but easier to reason about, if we clear this class and then add it back if we need it
 				page.classList.remove("hidden-by-locked-page")
