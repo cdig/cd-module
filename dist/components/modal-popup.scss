@@ -8,19 +8,19 @@ cd-modal {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(white, .8);
+	background: rgba(#F3F3F3, .8);
 	transition: opacity .2s;
 	
 	&.hiding {
 		opacity: 0;
 		transition: opacity .5s;
 	}
-
+	
 	&.hide {
 		opacity: 0;
 		display: none;
 	}
-
+	
 	
 	modal-popup {
 		display: flex;
@@ -32,7 +32,7 @@ cd-modal {
 		padding: 1.2em 1.6em;
 		
 		background: white;
-		box-shadow: 0 .8em 2em -.8em black;
+		box-shadow: 0 .4em 2.4em -.8em black;
 	}
 	
 	
@@ -45,7 +45,7 @@ cd-modal {
 	p {
 		flex: 1 0 auto; // Consume extra space, so our text is right under the header.
 	}
-
+	
 	
 	modal-buttons {
 		align-self: flex-end;
