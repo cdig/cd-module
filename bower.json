@@ -11,8 +11,9 @@
     "dist/styles.scss"
   ],
   "dependencies": {
+    "cd-foundation":"cdig/cd-foundation",
     "jquery":"latest",
-    "cd-foundation":"cdig/cd-foundation"
+    "modernizr":"latest"
   },
   "ignore": [
     "**/.*"
