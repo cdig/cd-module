@@ -14,13 +14,15 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 	makeAPI = ()->
 		Make "Scoring",
 			addPoints: (target, points)->
-				activityNode = findActivitiyNodeFor(target)
-				applyAward(activityNode, points)
+				if hasActivities
+					activityNode = findActivitiyNodeFor(target)
+					applyAward(activityNode, points)
 				
 			addScore: (target, score)->
-				activityNode = findActivitiyNodeFor(target)
-				points = score * activityNode.points
-				applyAward(activityNode, points)
+				if hasActivities
+					activityNode = findActivitiyNodeFor(target)
+					points = score * activityNode.points
+					applyAward(activityNode, points)
 			
 			getActivityScore: (id)->
 				return moduleNode.activities[id].score
@@ -28,7 +30,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 			getPageScore: (page)->
 				return PureDom.querySelectorAll(page, "cd-activity").reduce(sumActivityScore, 0)
 
-			getModulePoints: ()->
+			getModuleTotalPoints: ()->
 				return moduleTotalPoints
 			
 			getModuleScore: ()->
@@ -59,8 +61,6 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 	
 	
 	findActivitiyNodeFor = (target)->
-		throw new Error("Didn't find any cd-activity elements in the module.") unless hasActivities
-		
 		if PureDom.isElement(target)
 			id = PureDom.querySelectorParent(target, "[id]").id
 		else if (typeof target) is "string"
@@ -69,7 +69,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 			throw new Error("Couldn't figure out what sort of scoring target you've provided.")
 		
 		return moduleNode.activities[id]
-
+			
 
 # MUTATION
 	
