@@ -1,7 +1,7 @@
 # Params
 # Pull all the query params out of the URL and turn them into a hash.
 
-Make "Params", do ()->
+do ()->
 	
 	params = {}
 	paramStrings = window.location.search.substr(1).split("&")
@@ -10,4 +10,6 @@ Make "Params", do ()->
 		paramParts = paramString.split("=")
 		params[paramParts[0]] = paramParts[1] or true
 	
-	return Object.freeze(params)
+	Object.freeze(params)
+	
+	Make("Params", params)
