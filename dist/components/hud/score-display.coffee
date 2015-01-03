@@ -39,7 +39,7 @@ Take ["cdHUD", "Scoring", "ScoreDisplayGraphic", "load"], (cdHUD, Scoring, Graph
 		update: (remainingPoints)->
 			currentScore = Scoring.getModuleScore()
 			
-			totalPoints = Scoring.getModulePoints()
+			totalPoints = Scoring.getModuleTotalPoints()
 			currentPoints = currentScore * totalPoints
 			displayedScore = currentScore * (1 - remainingPoints/currentPoints)
 			updateDisplay(displayedScore)
