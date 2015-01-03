@@ -3,11 +3,14 @@
 
 
 Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
-
+	DELAY_BEFORE_TOP_HINT = 4000
+	
+	
 # STATE
 	lastSetPosition = 0
 	lockedPage = null
 	aboutToHide = false
+	aboutToShowTopHint = false
 	showing = false
 	deadband = 50
 	icon = null
@@ -36,6 +39,8 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 		hide: ()->
 			prepareToHide()
 	
+
+# PRIVATE
 	
 	show = ()->
 		if not showing
@@ -46,6 +51,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 	prepareToHide = ()->
 		if showing and not aboutToHide
 			aboutToHide = true
+			aboutToShowTopHint = false
 			setTimeout(hide, 100)
 	
 	
@@ -54,11 +60,39 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 			showing = false
 			scrollHint.removeAttribute("showing")
 		aboutToHide = false
+	
+	
+	showHints = (scrollMax)->
+		atTop = window.pageYOffset < deadband
+		atEnd = window.pageYOffset + deadband >= scrollMax
 		
+		switch
+			when atTop then showTopHint()
+			when atEnd then showEndHint()
+			else
+				aboutToShowTopHint = false
+		
+	
+	showTopHint = ()->
+		unless aboutToShowTopHint
+			aboutToShowTopHint = true
+			setTimeout(doShowTopHint, DELAY_BEFORE_TOP_HINT)
+	
+	
+	doShowTopHint = ()->
+		if aboutToShowTopHint
+			aboutToShowTopHint = false
+			ScrollHint.show("Scroll down to begin", "⬇︎")
+	
+	
+	showEndHint = ()->
+		if lockedPage?
+			ScrollHint.show("Complete the activity on this page", "!")
+
 	
 # EVENT HANDLING
 	
-	do scrollUpdate = ()->
+	scrollUpdate = ()->
 		tallEnoughToHaveScrollHints = Pages.length > 1
 		scrollMax = document.body.scrollHeight - window.innerHeight
 		
@@ -71,11 +105,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 				prepareToHide()
 		
 		else if tallEnoughToHaveScrollHints
-			if window.pageYOffset < deadband
-				ScrollHint.show("Scroll down to begin", "⬇︎")
-			else if window.pageYOffset + deadband >= scrollMax
-				if lockedPage?
-					ScrollHint.show("Complete the activity on this page", "!")
+			showHints(scrollMax)
 	
 	
 # EVENT LISTENING
@@ -91,3 +121,8 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 		if lockedPage?
 			ScrollHint.show("Scroll down to continue", "✓")
 		lockedPage = newLockedPage
+
+
+# INIT
+	
+	scrollUpdate()
