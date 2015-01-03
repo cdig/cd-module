@@ -3,12 +3,16 @@
 
 Take "load", ()->
 	
+# ELEMENTS
+	
 	main = document.createElement("cd-modal")
 	popup = document.createElement("modal-popup")
 	title = document.createElement("h1")
 	content = document.createElement("p")
 	buttons = document.createElement("modal-buttons")
 	okayButton = document.createElement("okay-button")
+
+	okayButton.textContent = "Okay"
 	
 	buttons.appendChild(okayButton)
 	popup.appendChild(title)
@@ -18,20 +22,10 @@ Take "load", ()->
 	document.body.appendChild(main)
 	
 	
-	do hide = ()->
-		main.className = "hide"
-		
-	fadeOut = ()->
-		main.className = "hiding"
-		setTimeout(hide, 500) # There's no transitionend in IE9, so we do this crap
-	
-	
-	okayButton.textContent = "Okay"
-	okayButton.addEventListener("click", fadeOut)
-	
+# PUBLIC
 	
 	Make "ModalPopup",
-	
+		
 		open: (givenTitle, givenContent, showButtons = true)->
 			title.textContent = givenTitle
 			
@@ -52,3 +46,20 @@ Take "load", ()->
 		
 		close: ()->
 			fadeOut()
+	
+	
+# PRIVATE
+	
+	fadeOut = ()->
+		main.className = "hiding"
+		setTimeout(hide, 500)
+	
+	
+	hide = ()->
+		main.className = "hide"
+	
+	
+# INIT
+	
+	okayButton.addEventListener("click", fadeOut)
+	hide()
