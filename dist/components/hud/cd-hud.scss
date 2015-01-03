@@ -17,7 +17,7 @@ cd-hud {
 	background: rgba(white, .5);
 	box-shadow: -2px 5px 16px -3px black;
 	
-	animation: cd-hud-container-fade-in .5s .5s both;
+	animation: cd-hud-container-fade-in 2s 1s both;
 	transition: color .5s, background .5s, border-color .5s;
 	
 	
