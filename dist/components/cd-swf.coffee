@@ -4,6 +4,6 @@
 # Currently designed to work with SWFObject 2.3beta.
 
 Take "load", ()->
-	for elm in document.querySelectorAll("cd-swf")
-		path = elm.getAttribute("path")
-		swfobject.embedSWF("flash/JS Wrapper.swf?path=#{path}", elm, 960, 540, 11.4)
+	for elm in document.querySelectorAll("[cd-swf]")
+		path = elm.getAttribute("cd-swf")
+		swfobject.embedSWF("flash/js-wrapper.swf?path=#{path}", elm, "100%", 540, 11.4)
