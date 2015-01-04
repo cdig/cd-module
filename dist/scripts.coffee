@@ -4,6 +4,7 @@
 # 2. Components
 # @codekit-append 'components/browser-support.coffee'
 # @codekit-append 'components/call-outs.coffee'
+# @codekit-append 'components/cd-swf.coffee'
 # @codekit-append 'components/hud.coffee'
 # @codekit-append 'components/modal-popup.coffee'
 # @codekit-append 'components/page-locking.coffee'
