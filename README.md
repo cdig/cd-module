@@ -19,9 +19,11 @@ Consult the [module template](https://github.com/cdig/cd-module-template) and se
 
 ### Libs
 
+**[jQuery](https://jquery.com)** is used by the matching game. We're gonna remove this PDQ.
+
 **[modernizr](https://modernizr.com)** works with browser-support to warn users when they're using an unsupported browser.
 
-**[jQuery](https://jquery.com)** is used by the matching game. We're gonna remove this PDQ.
+**[swfobject](https://github.com/swfobject/swfobject)** gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
 
 Note: At some point in the future, we need to figure out how to (automatically?) use CDN-hosted libs in production, for the sake of caching.
 
@@ -31,6 +33,8 @@ Note: At some point in the future, we need to figure out how to (automatically?)
 **browser-support** TODO: Add description.
 
 **call-outs** TODO: Add description.
+
+**cd-swf** makes it easier to embed standards-compliant, js-wrapped SWFs. To use it, include `<object cd-swf="path/to/media.swf"></object>` in your page.
 
 **hud** TODO: Add description.
 
