@@ -30,13 +30,14 @@ Take ["Pages", "Scoring"], (Pages, Scoring)->
 			call(lockedPage) for call in callbacks
 		
 		
-		onUpdate: (callback)->
-			callbacks.push(callback)
+		onUpdate: (call)->
+			callbacks.push(call)
+			call(lockedPage) # Give them an immediate update with our current lockedPage
 	
 	
 	pageShouldLock = (page)->
 		for activity in page.querySelectorAll("cd-activity")
-			if Scoring.getActivityScore(activity.id) < 1
+			if Scoring.getActivityScore(activity) < 1
 				return true
 		return false
 		

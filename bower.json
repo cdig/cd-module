@@ -13,7 +13,8 @@
   "dependencies": {
     "cd-foundation":"cdig/cd-foundation",
     "jquery":"latest",
-    "modernizr":"latest"
+    "modernizr":"latest",
+    "swfobject":"latest"
   },
   "ignore": [
     "**/.*"

@@ -10,9 +10,18 @@ scroll-hint {
 	
 	&[showing] {
 		transform: translateY(-2em);
+		transition-delay: 3s;
 		
 		scroll-hint-tab {
 			animation: scroll-hint-wiggle .5s;
+			animation-delay: 3s;
+		}
+		
+		&[fast] {
+			transition-delay: 1s;
+			scroll-hint-tab {
+				animation-delay: 1s;
+			}
 		}
 	}
 	

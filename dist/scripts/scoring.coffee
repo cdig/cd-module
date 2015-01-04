@@ -24,12 +24,16 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 					points = score * activityNode.points
 					applyAward(activityNode, points)
 			
-			getActivityScore: (id)->
-				return moduleNode.activities[id].score
+			getActivityScore: (target)->
+				activityNode = findActivitiyNodeFor(target)
+				return activityNode.score
 			
 			getPageScore: (page)->
-				return PureDom.querySelectorAll(page, "cd-activity").reduce(sumActivityScore, 0)
-
+				activityElementsOnPage = PureDom.querySelectorAll(page, "cd-activity")
+				summedScores = activityElementsOnPage.reduce(sumActivityScore, 0)
+				totalScore = summedScores / activityElementsOnPage.length
+				return totalScore
+			
 			getModuleTotalPoints: ()->
 				return moduleTotalPoints
 			
@@ -43,12 +47,12 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 
 # IMMUTABLE
 
-	sumActivityScore = (sum, activity)->
-		id = getNearestId(activity)
-		activity = moduleNode.activities[id]
-		return sum + activity.score
-
-
+	sumActivityScore = (sum, activityElement)->
+		name = activityElement.getAttribute("name")
+		activityNode = moduleNode.activities[name]
+		return sum + activityNode.score
+	
+	
 	createNodeWith = (groupName)->
 		node = {}
 		node.score = 0
@@ -56,19 +60,13 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 		return node
 	
 	
-	getNearestId = (element)->
-		return PureDom.querySelectorParent(element, "[id]").id
-	
-	
 	findActivitiyNodeFor = (target)->
-		if PureDom.isElement(target)
-			id = PureDom.querySelectorParent(target, "[id]").id
-		else if (typeof target) is "string"
-			id = target
-		else
-			throw new Error("Couldn't figure out what sort of scoring target you've provided.")
+		switch
+			when PureDom.isElement(target) then return moduleNode.activities[target.getAttribute("name")]
+			when (typeof target) is "string" then return moduleNode.activities[target]
+			else throw new Error("Couldn't figure out what sort of scoring target you've provided.")
 		
-		return moduleNode.activities[id]
+		
 			
 
 # MUTATION
@@ -82,9 +80,9 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 	crawlActivityPoints = ()->
 		moduleTotalPoints = 0
 		for activityElement in document.querySelectorAll("cd-activity")
-			id = getNearestId(activityElement)
+			name = activityElement.getAttribute("name")
 			points = parseInt(activityElement.getAttribute("points"))
-			activityNode = moduleNode.activities[id] ?= {}
+			activityNode = moduleNode.activities[name] ?= {}
 			activityNode.score ?= 0
 			
 			# Always overwrite and recompute these, because the points attribute may have changed
@@ -114,7 +112,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 	
 	updateModuleScore = ()->
 		earnedPoints = 0
-		for id, activityNode of moduleNode.activities
+		for name, activityNode of moduleNode.activities
 			earnedPoints += activityNode.score * activityNode.points
 		moduleNode.score = earnedPoints / moduleTotalPoints
 	

@@ -3,14 +3,10 @@
 
 
 Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
-	DELAY_BEFORE_TOP_HINT = 4000
-	
 	
 # STATE
 	lastSetPosition = 0
 	lockedPage = null
-	aboutToHide = false
-	aboutToShowTopHint = false
 	showing = false
 	deadband = 50
 	icon = null
@@ -26,103 +22,74 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 # PUBLIC
 	
 	Make "ScrollHint", ScrollHint =
-		show: (text, iconText)->
+		show: (text, iconText, fast = false)->
 			scrollHintTab.textContent = text
 			if iconText?
 				scrollHintTab.setAttribute("icon-text", iconText)
 			else
 				scrollHintTab.removeAttribute("icon-text")
 			lastSetPosition = window.pageYOffset
-			show()
+			show(fast)
 			
 			
 		hide: ()->
-			prepareToHide()
+			hide()
 	
 
 # PRIVATE
 	
-	show = ()->
+	show = (fast)->
 		if not showing
 			showing = true
 			scrollHint.setAttribute("showing", true)
-	
-	
-	prepareToHide = ()->
-		if showing and not aboutToHide
-			aboutToHide = true
-			aboutToShowTopHint = false
-			setTimeout(hide, 100)
-	
+			
+			if fast
+				scrollHint.setAttribute("fast", true)
+			else
+				scrollHint.removeAttribute("fast")
+		
 	
 	hide = ()->
-		if aboutToHide and showing
+		if showing
 			showing = false
 			scrollHint.removeAttribute("showing")
-		aboutToHide = false
 	
 	
-	showHints = (scrollMax)->
-		atTop = window.pageYOffset < deadband
-		atEnd = window.pageYOffset + deadband >= scrollMax
-		
-		switch
-			when atTop then showTopHint()
-			when atEnd then showEndHint()
-			else
-				aboutToShowTopHint = false
-		
-	
-	showTopHint = ()->
-		unless aboutToShowTopHint
-			aboutToShowTopHint = true
-			setTimeout(doShowTopHint, DELAY_BEFORE_TOP_HINT)
+	showBeginHint = ()->
+		ScrollHint.show("Scroll down to begin", "⬇︎")
 	
 	
-	doShowTopHint = ()->
-		if aboutToShowTopHint
-			aboutToShowTopHint = false
-			ScrollHint.show("Scroll down to begin", "⬇︎")
-	
-	
-	showEndHint = ()->
+	showLockedHint = ()->
 		if lockedPage?
-			ScrollHint.show("Complete the activity on this page", "!")
+			ScrollHint.show("Complete the activity on this page", "!", true)
 
 	
 # EVENT HANDLING
 	
-	scrollUpdate = ()->
-		tallEnoughToHaveScrollHints = Pages.length > 1
-		scrollMax = document.body.scrollHeight - window.innerHeight
+	update = ()->
+		scrollRange = document.body.scrollHeight - window.innerHeight
+		nearTop = window.pageYOffset < deadband
+		nearEnd = window.pageYOffset + deadband >= scrollRange
+		moved = Math.abs(window.pageYOffset - lastSetPosition) > deadband
 		
 		if showing
-			if window.pageYOffset < 0 or window.pageYOffset >= scrollMax
-				return
-			if Math.abs(window.pageYOffset - lastSetPosition) > deadband
-				prepareToHide()
-			else if not tallEnoughToHaveScrollHints
-				prepareToHide()
-		
-		else if tallEnoughToHaveScrollHints
-			showHints(scrollMax)
+			hide() if moved and not (nearTop or nearEnd)
+		else
+			showBeginHint() if nearTop
+			showLockedHint() if nearEnd
 	
 	
-# EVENT LISTENING
-	
-	window.addEventListener("scroll", scrollUpdate)
-	window.addEventListener("resize", scrollUpdate)
-	scrollHintTab.addEventListener("click", prepareToHide)
-	
-	
-# SYSTEM EVENTS
-	
-	PageLocking.onUpdate (newLockedPage)->
-		if lockedPage?
-			ScrollHint.show("Scroll down to continue", "✓")
-		lockedPage = newLockedPage
-
-
 # INIT
 	
-	scrollUpdate()
+	if Pages.length > 1
+		
+		update()
+		
+		window.addEventListener("scroll", update)
+		window.addEventListener("resize", update)
+		scrollHintTab.addEventListener("click", hide)
+		
+		PageLocking.onUpdate (newLockedPage)->
+			if lockedPage?
+				ScrollHint.show("Scroll down to continue", "✓")
+			lockedPage = newLockedPage
