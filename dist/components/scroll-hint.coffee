@@ -8,7 +8,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 	lastSetPosition = 0
 	lockedPage = null
 	showing = false
-	deadband = 50
+	deadband = 20
 	icon = null
 
 	
