@@ -2,6 +2,7 @@
 # @codekit-append '../../cd-foundation/dist/cd-foundation.coffee'
 
 # 2. Components
+# @codekit-append 'components/backend-reset-button.coffee'
 # @codekit-append 'components/browser-support.coffee'
 # @codekit-append 'components/call-outs.coffee'
 # @codekit-append 'components/cd-swf.coffee'

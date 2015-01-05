@@ -10,8 +10,7 @@
 Take "load", ()->
 	KEY = "Backend-LocalStorage"
 	
-	Make "Backend",
-		
+	BackendLocalStorage =
 		getPersistedData: ()->
 			json = window.localStorage[KEY]
 			return JSON.parse(json) if json?
@@ -28,3 +27,7 @@ Take "load", ()->
 		
 		complete: ()->
 			return true
+	
+	# TODO: Add a different system that takes BackendLocalStorage or BackendScorm2004 and turns it into the real Backend, decided at runtime
+	Make("Backend", BackendLocalStorage)
+	Make("BackendLocalStorage", BackendLocalStorage)

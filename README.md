@@ -30,6 +30,8 @@ Note: At some point in the future, we need to figure out how to (automatically?)
 
 ### Components
 
+**backend-reset-button** — If you're using BackendLocalStorage, shows a Reset button in the HUD, which clears LocalStorage.
+
 **browser-support** TODO: Add description.
 
 **call-outs** TODO: Add description.

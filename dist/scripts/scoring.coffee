@@ -1,5 +1,3 @@
-# window.localStorage.clear()
-
 Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 	hasActivities = document.querySelector("cd-activity")?
 	moduleTotalPoints = 0
