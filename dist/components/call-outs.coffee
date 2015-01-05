@@ -80,26 +80,28 @@ Take "load", ()->
 # SCORING
 	
 	# If we have scoring, wrap the open() function with points
-	Take "Scoring", (Scoring)->
+	Take ["Scoring", "PureDom"], (Scoring, PureDom)->
 		
 		# Store the original open function so we can still refer to it
 		oldOpen = open
 		
-		allHaveBeenSeen = (callouts)->
-			for callout in callouts
-				return false unless callout.hasAttribute("seen")
-			return true
+		hasBeenSeen = (callout)->
+			callout.hasAttribute("seen")
 		
 		open = (callout)->
-			shouldAwardPoint = not callout.hasAttribute("seen")
+			shouldAwardPoint = not hasBeenSeen(callout)
 			
 			oldOpen(callout)
 			
-			if allHaveBeenSeen(callout.parentElement.querySelectorAll("call-out"))
-				Scoring.addScore(callout, 1)
-			else if shouldAwardPoint
-				Scoring.addPoints(callout, 1)
-
+			try
+				# Will throw an error if the call-out isn't inside an activity — in that case, we don't need to do scoring
+				activity = PureDom.querySelectorParent(callout, "cd-activity")
+				callouts = PureDom.querySelectorAll(activity, "call-out")
+				
+				if callouts.every(hasBeenSeen)
+					Scoring.addScore(callout, 1)
+				else if shouldAwardPoint
+					Scoring.addPoints(callout, 1)
 
 # SETUP
 	
