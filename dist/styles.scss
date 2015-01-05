@@ -18,6 +18,7 @@ $iPhonePortrait: 375px;
 @import 'styles/mixins/magic-underlines.scss';
 
 // 5. Components
+@import 'components/backend-reset-button.scss';
 @import 'components/browser-support.scss';
 @import 'components/call-outs.scss';
 @import 'components/hud.scss';
