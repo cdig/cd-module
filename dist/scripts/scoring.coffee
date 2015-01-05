@@ -58,11 +58,19 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 		return node
 	
 	
+	findActivityNameFor = (target)->
+		activityElm = PureDom.querySelectorParent(target, "cd-activity")
+		name = activityElm.getAttribute("name")
+		return name
+		
+	
 	findActivitiyNodeFor = (target)->
-		switch
-			when PureDom.isElement(target) then return moduleNode.activities[target.getAttribute("name")]
-			when (typeof target) is "string" then return moduleNode.activities[target]
-			else throw new Error("Couldn't figure out what sort of scoring target you've provided.")
+		if (typeof target) is "string"
+			return moduleNode.activities[target]
+		else if PureDom.isElement(target)
+			return moduleNode.activities[findActivityNameFor(target)]
+		else
+			throw new Error("Couldn't figure out what sort of scoring target you've provided.")
 		
 		
 			
