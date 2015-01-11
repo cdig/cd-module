@@ -67,7 +67,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 	
 # EVENT HANDLING
 	
-	update = ()->
+	updateScroll = ()->
 		scrollRange = document.body.scrollHeight - window.innerHeight
 		nearTop = window.pageYOffset < deadband
 		nearEnd = window.pageYOffset + deadband >= scrollRange
@@ -84,10 +84,10 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 	
 	if Pages.length > 1
 		
-		update()
+		updateScroll()
 		
-		window.addEventListener("scroll", update)
-		window.addEventListener("resize", update)
+		window.addEventListener("scroll", updateScroll)
+		window.addEventListener("resize", updateScroll)
 		scrollHintTab.addEventListener("click", hide)
 		
 		PageLocking.onUpdate ()->
