@@ -137,10 +137,13 @@ do ()->
 			console.log("#{failureMsg} Not Connected")
 		
 		
+	hasNoError = ()->
+		return parseInt(scormAPI.GetLastError(), 10) is 0
+	
+	
 	getSucceeded = (value)->
 		hasValue = value isnt ""
-		noError = parseInt(scormAPI.GetLastError(), 10) is 0
-		return hasValue or noError
+		return hasValue or hasNoError()
 	
 	
 	setSucceeded = (value)->

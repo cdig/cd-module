@@ -6,7 +6,7 @@
 Take "Backend", (Backend)->
 	disconnectPrevented = false
 	
-	Make "Disconnecter", Disconnecter
+	Make "Disconnecter", Disconnecter =
 		prevent: ()->
 			disconnectPrevented = true
 	
