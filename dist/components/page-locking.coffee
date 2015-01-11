@@ -34,12 +34,12 @@ Take ["Pages", "Scoring"], (Pages, Scoring)->
 					lockedPageIndex = index
 					page.classList.add("locked-page")
 			
-			call(lockedPage, lockedPageIndex) for call in callbacks
+			call() for call in callbacks
 		
 		
 		onUpdate: (call)->
 			callbacks.push(call)
-			call(lockedPage, lockedPageIndex) # Give them an immediate update with our current lockedPage
+			call()
 	
 	
 	pageShouldLock = (page)->

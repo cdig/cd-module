@@ -6,8 +6,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 	
 # STATE
 	lastSetPosition = 0
-	lockedPage = null
-	lockedPageIndex = null
+	locked = false
 	showing = false
 	deadband = 20
 	icon = null
@@ -57,12 +56,12 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 	
 	
 	showBeginHint = ()->
-		unless lockedPageIndex is 0
+		unless PageLocking.getLockedPageIndex() is 0
 			ScrollHint.show("Scroll down to begin", "⬇︎")
 	
 	
 	showLockedHint = ()->
-		if lockedPage?
+		if locked
 			ScrollHint.show("Complete the activity on this page", "!", true)
 
 	
@@ -91,8 +90,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 		window.addEventListener("resize", update)
 		scrollHintTab.addEventListener("click", hide)
 		
-		PageLocking.onUpdate (newLockedPage, newLockedPageIndex)->
-			if lockedPage?
+		PageLocking.onUpdate ()->
+			if locked
 				ScrollHint.show("Scroll down to continue", "✓")
-			lockedPage = newLockedPage
-			lockedPageIndex = newLockedPageIndex
+			locked = PageLocking.getLockedPage()?
