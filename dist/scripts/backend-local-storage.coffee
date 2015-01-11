@@ -6,16 +6,17 @@
 # LocalStorage - IE8
 # JSON - IE8
 
-
 Take "load", ()->
-	KEY = "Backend-LocalStorage"
+	KEY = "BackendLocalStorage"
 	
-	BackendLocalStorage =
-		getPersistedData: ()->
-			json = window.localStorage[KEY]
-			return JSON.parse(json) if json?
+	Make "BackendLocalStorage", BackendLocalStorage =
+		initialize: ()->
+			return true
 		
-
+		getPersistedData: ()->
+			json = window.localStorage[KEY] or "{}"
+			return JSON.parse(json)
+		
 		setPersistedData: (data)->
 			if data?
 				json = JSON.stringify(data)
@@ -24,8 +25,8 @@ Take "load", ()->
 			else
 				return false
 		
+		disconnect: ()->
+			return true
 		
 		complete: ()->
 			return true
-	
-	Make("BackendLocalStorage", BackendLocalStorage)

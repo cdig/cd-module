@@ -1,49 +1,47 @@
 # Backend: SCORM 2004
 # This service wraps the SCORM 2004 API and exposes a standard interface to the rest of the system.
-# It will automatically set itself up, and fire an event when it is ready. It will also tear itself
-# down when `unload` fires. Other backend services may be swapped in place of this one. Just make
-# sure they place the same properties on `window.Backend`.
-#
-# Compatability:
-# Only works with SCORM 2004
-# Throws an error if it can't find the SCORM API Object
 
-do ()->
+
+Take "load", ()->
 	scormAPI = null
 	connected = false
 	
-	
-	Take "load", ()->
-		setupScormAPI()
-		setupConnection()
-		setupStatuses()
-		setupNavigation()
+	Make "BackendScorm2004", BackendScorm2004 =
+		initialize: ()->
+			try
+				setupScormAPI()
+				setupConnection()
+				setupStatuses()
+				setupNavigation()
+				return true
+			catch error
+				Take "ModalPopup", (ModalPopup)-> ModalPopup.open("Error", "Could not connect to SCORM 2004", false)
+				return false
 		
-		Make "BackendScorm2004",
-			getPersistedData: ()->
-				json = getValue("cmi.suspend_data") || "{}"
-				return JSON.parse(json)
+		getPersistedData: ()->
+			json = getValue("cmi.suspend_data") || "{}"
+			return JSON.parse(json)
+		
+		setPersistedData: (data)->
+			json = JSON.stringify(data)
+			success = setValue("cmi.suspend_data", json)
+			return success and commit()
+		
+		disconnect: ()->
+			commit() # Ensures that our navigation status (etc) is saved
+			disconnect()
+		
+		complete: ()->
+			# Assumption: we should only set a score on completion, and not when the user is incomplete
+			s = setValue("cmi.score.scaled", 1)
+			m = setValue("cmi.score.min", 0)
+			M = setValue("cmi.score.max", 1)
+			r = setValue("cmi.score.raw", 1)
 			
-			setPersistedData: (data)->
-				json = JSON.stringify(data)
-				success = setValue("cmi.suspend_data", json)
-				return success and commit()
+			c = setValue("cmi.completion_status", "completed")
+			p = setValue("cmi.success_status", "passed")
 			
-			disconnect: ()->
-				commit() # Ensures that our navigation status (etc) is saved
-				disconnect()
-			
-			complete: ()->
-				# Assumption: we should only set a score on completion, and not when the user is incomplete
-				s = setValue("cmi.score.scaled", 1)
-				m = setValue("cmi.score.min", 0)
-				M = setValue("cmi.score.max", 1)
-				r = setValue("cmi.score.raw", 1)
-				
-				c = setValue("cmi.completion_status", "completed")
-				p = setValue("cmi.success_status", "passed")
-				
-				return s and m and M and r and c and p and commit()
+			return s and m and M and r and c and p and commit()
 			
 	
 # SETUP
@@ -52,12 +50,12 @@ do ()->
 		return if (scormAPI = findScormAPIObject(window))?
 		return if (scormAPI = findScormAPIObject(window.top?.opener))?
 		return if (scormAPI = findScormAPIObject(window.top?.opener?.document))? # Special handling for Plateau
-		throw new Error("SCORM 2004 API not found.")
+		throw new Error("SCORM 2004 API not found")
 	
 	
 	setupConnection = ()->
 		connected = scormGet("Initialize", "", true)
-		console.log("Connecting failed.") unless connected
+		console.log("Connected to SCORM: #{connected}")
 		
 		
 	setupStatuses = ()->
@@ -86,12 +84,9 @@ do ()->
 	
 	
 	disconnect = ()->
-		console.log "DISCONNECT DISABLED"
-		# if connected
-		# 	if scormGet("Terminate", "")
-		# 		connected = false
-		# return !connected
-		return true
+		if connected and scormGet("Terminate", "")
+			connected = false
+		return !connected
 		
 	
 # LOW LEVEL RAW SCORM UGLINESS
