@@ -1,10 +1,10 @@
 # Menu Button
 
-Take ["cdHUD", "SaveWithPopup", "Params", "Disconnecter"], (cdHUD, SaveWithPopup, Params, Disconnecter)->
+Take ["cdHUD", "SaveWithPopup", "Disconnecter"], (cdHUD, SaveWithPopup, Disconnecter)->
 	
 	goToLauncher = ()->
 		Disconnecter.prevent()
-		location.href = Params["launcher-url"]
+		window.history.back()
 	
 	button = document.createElement("menu-button")
 	button.textContent = "Menu"
