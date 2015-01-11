@@ -15,7 +15,7 @@ Take ["Pages", "SwitcherButton"], (Pages, SwitcherButton)->
 	Take "PageLocking", (PageLocking)->
 		PageLocking.onUpdate ()->
 			for page, pageIndex in Pages
-				if page.classList.contains("locked")
+				if page.classList.contains("hidden-by-locked-page")
 					switcherButtons[pageIndex].classList.add("locked")
 				else
 					switcherButtons[pageIndex].classList.remove("locked")
