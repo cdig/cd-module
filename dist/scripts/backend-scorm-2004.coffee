@@ -11,12 +11,12 @@ Take "load", ()->
 		initialize: ()->
 			try
 				setupScormAPI()
-				if setupConnection()
+				if initialize()
 					setupStatuses()
 					setupNavigation()
 				return true
 			catch error
-				Take "ModalPopup", (ModalPopup)-> ModalPopup.open("Error", "Could not connect to SCORM 2004", false)
+				Take "ModalPopup", (ModalPopup)-> ModalPopup.open("Error", error.errorMessage, false)
 				return false
 		
 		getPersistedData: ()->
@@ -54,19 +54,19 @@ Take "load", ()->
 		throw new Error("SCORM 2004 API not found")
 	
 	
-	setupConnection = ()->
-		initialized = scormGet("Initialize", "", true)
-		if initialized is true # We were not connected, and now we are
-			connected = true
-			return true
-		else if initialized is false # We were already connected
-			connected = true
-			return false
-		else # initialized is null — an error occurred
-			connected = false
-			return false
-		
-		console.log("Connected to SCORM: #{connected}")
+	initialize = ()->
+		switch scormGet("Initialize", "", true)
+			when true
+				console.log("SCORM Initialize: success")
+				connected = true
+				return true
+			when false
+				console.log("SCORM Initialize: already initialized")
+				connected = true
+				return false
+			else
+				throw new Error("SCORM 2004 Initialize caused an error")
+			
 		
 		
 	setupStatuses = ()->
