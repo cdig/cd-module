@@ -28,6 +28,4 @@ Take "load", ()->
 		complete: ()->
 			return true
 	
-	# TODO: Add a different system that takes BackendLocalStorage or BackendScorm2004 and turns it into the real Backend, decided at runtime
-	Make("Backend", BackendLocalStorage)
 	Make("BackendLocalStorage", BackendLocalStorage)

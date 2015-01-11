@@ -19,7 +19,7 @@ do ()->
 		setupStatuses()
 		setupNavigation()
 		
-		Make "Backend",
+		Make "BackendScorm2004",
 			getPersistedData: ()->
 				json = getValue("cmi.suspend_data") || "{}"
 				return JSON.parse(json)
