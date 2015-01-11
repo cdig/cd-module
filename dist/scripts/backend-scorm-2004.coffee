@@ -5,6 +5,7 @@
 Take "load", ()->
 	scormAPI = null
 	connected = false
+	lastErrorCode = null
 	
 	Make "BackendScorm2004", BackendScorm2004 =
 		initialize: ()->
@@ -104,6 +105,7 @@ Take "load", ()->
 	
 	scormGet = (name, parameter, force = false)->
 		failureMsg = "API.#{name}(#{parameter}) failed:"
+		clearLastError()
 		
 		if connected or force
 			result = String(scormAPI[name](parameter))
@@ -119,6 +121,7 @@ Take "load", ()->
 	
 	scormSet = (name, parameter, value, force = false)->
 		failureMsg = "API.#{name}(#{parameter}, #{value}) failed:"
+		clearLastError()
 		
 		if connected or force
 			result = String(scormAPI[name](parameter, value))
@@ -130,10 +133,18 @@ Take "load", ()->
 
 		else
 			console.log("#{failureMsg} Not Connected")
-		
-		
+	
+
+	clearLastError = ()->
+		lastErrorCode = 0
+
+	
+	getLastError = ()->
+		return lastErrorCode ?= parseInt(scormAPI.GetLastError(), 10)
+
+
 	hasNoError = ()->
-		return parseInt(scormAPI.GetLastError(), 10) is 0
+		return getLastError() is 0
 	
 	
 	getSucceeded = (value)->
@@ -150,7 +161,7 @@ Take "load", ()->
 	
 	
 	failure = (message)->
-		errorCode = parseInt(scormAPI.GetLastError(), 10)
+		errorCode = getLastError()
 		errorString = scormAPI.GetErrorString(String(errorCode))
 		diagnostics = scormAPI.GetDiagnostic(String(errorCode))
 		console.log(message)
