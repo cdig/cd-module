@@ -11,9 +11,9 @@ Take "load", ()->
 		initialize: ()->
 			try
 				setupScormAPI()
-				setupConnection()
-				setupStatuses()
-				setupNavigation()
+				if setupConnection()
+					setupStatuses()
+					setupNavigation()
 				return true
 			catch error
 				Take "ModalPopup", (ModalPopup)-> ModalPopup.open("Error", "Could not connect to SCORM 2004", false)
@@ -55,7 +55,17 @@ Take "load", ()->
 	
 	
 	setupConnection = ()->
-		connected = scormGet("Initialize", "", true)
+		initialized = scormGet("Initialize", "", true)
+		if initialized is true # We were not connected, and now we are
+			connected = true
+			return true
+		else if initialized is false # We were already connected
+			connected = true
+			return false
+		else # initialized is null — an error occurred
+			connected = false
+			return false
+		
 		console.log("Connected to SCORM: #{connected}")
 		
 		
@@ -148,7 +158,7 @@ Take "load", ()->
 	
 	
 	getSucceeded = (value)->
-		hasValue = value isnt ""
+		hasValue = value? and value isnt ""
 		return hasValue or hasNoError()
 	
 	
