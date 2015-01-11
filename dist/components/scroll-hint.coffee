@@ -57,7 +57,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 	
 	
 	showBeginHint = ()->
-		if not lockedPage? or lockedPageIndex > 1
+		unless lockedPageIndex is 1
 			ScrollHint.show("Scroll down to begin", "⬇︎")
 	
 	
