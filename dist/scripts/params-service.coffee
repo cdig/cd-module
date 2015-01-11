@@ -4,11 +4,12 @@
 do ()->
 	
 	params = {}
-	paramStrings = window.location.search.substr(1).split("&")
+	search = window.location.search
+	paramStrings = search.substr(1).split("&")
 	
 	for paramString in paramStrings
 		paramParts = paramString.split("=")
-		params[paramParts[0]] = paramParts[1] or true
+		params[paramParts[0]] = decodeURIComponent(paramParts[1] or true)
 	
 	Object.freeze(params)
 	

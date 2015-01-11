@@ -18,6 +18,7 @@
 # @codekit-prepend 'scripts/backend-local-storage.coffee'
 # #codekit-prepend 'scripts/backend-scorm-2004.coffee'
 # @codekit-prepend 'scripts/cd-award-points.coffee'
+# @codekit-prepend 'scripts/disconnecter.coffee'
 # @codekit-prepend 'scripts/easing.coffee'
 # @codekit-prepend 'scripts/flash-interface.coffee'
 # @codekit-prepend 'scripts/kv-store.coffee'

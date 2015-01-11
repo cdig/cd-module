@@ -19,10 +19,6 @@ do ()->
 		setupStatuses()
 		setupNavigation()
 		
-		Take "unload", ()->
-			commit() # Ensures that we our navigation status (etc) is saved
-			disconnect()
-				
 		Make "Backend",
 			getPersistedData: ()->
 				json = getValue("cmi.suspend_data") || "{}"
@@ -32,6 +28,10 @@ do ()->
 				json = JSON.stringify(data)
 				success = setValue("cmi.suspend_data", json)
 				return success and commit()
+			
+			disconnect: ()->
+				commit() # Ensures that our navigation status (etc) is saved
+				disconnect()
 			
 			complete: ()->
 				# Assumption: we should only set a score on completion, and not when the user is incomplete
