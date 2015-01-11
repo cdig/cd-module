@@ -136,7 +136,7 @@ Take "load", ()->
 	
 
 	clearLastError = ()->
-		lastErrorCode = 0
+		lastErrorCode = null
 
 	
 	getLastError = ()->
