@@ -92,6 +92,8 @@ Note: At some point in the future, we need to figure out how to (automatically?)
 ### Styles: Custom
 TODO: These are an awful lot like components... but they're different from the (above/real) components. They're to be used in the content; they're not part of the foundational system. We may have a crisis of naming here.
 
+**cd-activity**
+
 **cd-flow-arrow**
 
 **cd-map**
