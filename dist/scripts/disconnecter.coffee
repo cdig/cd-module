@@ -4,12 +4,12 @@
 # calls Disconnecter.prevent() to prevent the disconnect action.
 
 Take "Backend", (Backend)->
-	disconnectPrevented = false
-	
-	Make "Disconnecter", Disconnecter =
-		prevent: ()->
-			disconnectPrevented = true
-	
-	Take "unload", ()->
-		unless disconnectPrevented
-			Backend.disconnect()
+  disconnectPrevented = false
+  
+  Make "Disconnecter", Disconnecter =
+    prevent: ()->
+      disconnectPrevented = true
+  
+  Take "unload", ()->
+    unless disconnectPrevented
+      Backend.disconnect()

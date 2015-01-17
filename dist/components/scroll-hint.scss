@@ -1,57 +1,57 @@
 scroll-hint {
-	display: block;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	text-align: center;
-	transform: translateY(150%);
-	transition: transform .3s cubic-bezier(.8,.8,.5,1.0);
-	
-	&[showing] {
-		transform: translateY(-2em);
-		transition-delay: 3s;
-		
-		scroll-hint-tab {
-			animation: scroll-hint-wiggle .5s;
-			animation-delay: 3s;
-		}
-		
-		&[fast] {
-			transition-delay: 1s;
-			scroll-hint-tab {
-				animation-delay: 1s;
-			}
-		}
-	}
-	
-	scroll-hint-tab {
-		display: inline-block;
-		padding: .5em;
-		font-size: 1.2em;
-		color: rgba(black, .66);
-		background: linear-gradient(rgba(#F5F5F5, .94), rgba(#F5F5F5, 1), rgba(#F5F5F5, .94));
-		box-shadow: 0 2px 24px -12px black;
-		
-		&[icon-text]::before {
-			content: attr(icon-text);
-			display: inline-block;
-			width: 1.8em;
-			height: 1.8em;
-			margin-right: .3em;
-			font-size: 1.2em;
-			line-height: 2em;
-			color: currentColor;
-			background: white;
-			box-shadow: 0 1px 12px -6px black;
-		}
-	}
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  transform: translateY(150%);
+  transition: transform .3s cubic-bezier(.8,.8,.5,1.0);
+  
+  &[showing] {
+    transform: translateY(-2em);
+    transition-delay: 3s;
+    
+    scroll-hint-tab {
+      animation: scroll-hint-wiggle .5s;
+      animation-delay: 3s;
+    }
+    
+    &[fast] {
+      transition-delay: 1s;
+      scroll-hint-tab {
+        animation-delay: 1s;
+      }
+    }
+  }
+  
+  scroll-hint-tab {
+    display: inline-block;
+    padding: .5em;
+    font-size: 1.2em;
+    color: rgba(black, .66);
+    background: linear-gradient(rgba(#F5F5F5, .94), rgba(#F5F5F5, 1), rgba(#F5F5F5, .94));
+    box-shadow: 0 2px 24px -12px black;
+    
+    &[icon-text]::before {
+      content: attr(icon-text);
+      display: inline-block;
+      width: 1.8em;
+      height: 1.8em;
+      margin-right: .3em;
+      font-size: 1.2em;
+      line-height: 2em;
+      color: currentColor;
+      background: white;
+      box-shadow: 0 1px 12px -6px black;
+    }
+  }
 }
 
 @keyframes scroll-hint-wiggle {
-	from { transform: rotate( -3deg); }
-	25%  { transform: rotate(  6deg); }
-	50%  { transform: rotate( -4deg); }
-	75%  { transform: rotate(  1deg); }
-	to   { transform: rotate(  0deg); }
+  from { transform: rotate( -3deg); }
+  25%  { transform: rotate(  6deg); }
+  50%  { transform: rotate( -4deg); }
+  75%  { transform: rotate(  1deg); }
+  to   { transform: rotate(  0deg); }
 }

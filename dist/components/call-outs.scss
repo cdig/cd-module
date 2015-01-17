@@ -2,146 +2,146 @@ $point-size: 1em;
 $arrow-size: .8em;
 
 call-out {
-	position: absolute;
-	top: 0;
-	
-	// Overridden by local styles — these are just helpful defaults to avoid 'auto' errors
-	margin-top: 0;
-	left: 0;
-	
-	call-out-point {
-		position: absolute;
-		display: block;
-		z-index: 11;
-		width: $point-size;
-		height: $point-size;
-		margin: -$point-size/2;
-		border: 5px solid #0F7;
-		border-radius: $point-size;
-		background: rgba(white, .3);
-		animation: call-out-pulse 4s linear infinite;
-	}
-	
-	call-out-label {
-		display: none;
-		position: relative;
-		padding: .5em;
-		max-width: 12em;
-		text-align: center;
-		background: #F9F9F9;
-		box-shadow: 0 .2em 2em -.5em black;
-		
-		&::after {
-			content: "";
-			position: absolute;
-			width: 0;
-			height: 0;
-			border: $arrow-size solid transparent;
-		}
-	}
-	
-	&[open], &[closing] {
-		z-index: 10;
-		call-out-label {
-			display: block;
-		}
-		call-out-point {
-			animation: none;
-			opacity: 0;
-			transform: scale(3); // This makes it easier to avoid moving the mouse out of the circle by accident
-		}
-	}
-	
-	&[open] call-out-label {
-		animation: call-out-appear .1s ease-out both;
-	}
-	
-	&[closing] call-out-label {
-		animation: call-out-disappear .2s ease-in both;
-	}
-	
-	&[seen] call-out-point {
-		border: 4px solid #777;
-	}
-	
-	&[top] {
-		transform: translate(-50%, -100%);
-		call-out-point, call-out-label::after {
-			top: 100%;
-			left: 50%;
-		}
-		call-out-label {
-			top: -$arrow-size -$point-size/2;
-			transform-origin: bottom;
-			&::after {
-				transform: translate(-50%, 0%);
-				border-top: $arrow-size solid #F9F9F9;
-			}
-		}
-	}
-	
-	&[left] {
-		transform: translate(-100%, -50%);
-		call-out-point, call-out-label::after {
-			top: 50%;
-			left: 100%;
-		}
-		call-out-label {
-			left: -$arrow-size -$point-size/2;
-			transform-origin: right;
-			&::after {
-				transform: translate(0%, -50%);
-				border-left: $arrow-size solid #F9F9F9;
-			}
-		}
-	}
-	
-	&[right] {
-		transform: translate(0%, -50%);
-		call-out-point, call-out-label::after {
-			top: 50%;
-			left: 0%;
-		}
-		call-out-label {
-			right: -$arrow-size -$point-size/2;
-			transform-origin: left;
-			&::after {
-				transform: translate(-95%, -50%); // 95% because of crappy pixel rounding errors
-				border-right: $arrow-size solid #F9F9F9;
-			}
-		}
-	}
-	
-	&[bottom] {
-		transform: translate(-50%, 0%);
-		call-out-point, call-out-label::after {
-			top: 0%;
-			left: 50%;
-		}
-		call-out-label {
-			bottom: -$arrow-size -$point-size/2;
-			transform-origin: top;
-			&::after {
-				transform: translate(-50%, -95%); // 95% because of crappy pixel rounding errors
-				border-bottom: $arrow-size solid #F9F9F9;
-			}
-		}
-	}
+  position: absolute;
+  top: 0;
+  
+  // Overridden by local styles — these are just helpful defaults to avoid 'auto' errors
+  margin-top: 0;
+  left: 0;
+  
+  call-out-point {
+    position: absolute;
+    display: block;
+    z-index: 11;
+    width: $point-size;
+    height: $point-size;
+    margin: -$point-size/2;
+    border: 5px solid #0F7;
+    border-radius: $point-size;
+    background: rgba(white, .3);
+    animation: call-out-pulse 4s linear infinite;
+  }
+  
+  call-out-label {
+    display: none;
+    position: relative;
+    padding: .5em;
+    max-width: 12em;
+    text-align: center;
+    background: #F9F9F9;
+    box-shadow: 0 .2em 2em -.5em black;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: $arrow-size solid transparent;
+    }
+  }
+  
+  &[open], &[closing] {
+    z-index: 10;
+    call-out-label {
+      display: block;
+    }
+    call-out-point {
+      animation: none;
+      opacity: 0;
+      transform: scale(3); // This makes it easier to avoid moving the mouse out of the circle by accident
+    }
+  }
+  
+  &[open] call-out-label {
+    animation: call-out-appear .1s ease-out both;
+  }
+  
+  &[closing] call-out-label {
+    animation: call-out-disappear .2s ease-in both;
+  }
+  
+  &[seen] call-out-point {
+    border: 4px solid #777;
+  }
+  
+  &[top] {
+    transform: translate(-50%, -100%);
+    call-out-point, call-out-label::after {
+      top: 100%;
+      left: 50%;
+    }
+    call-out-label {
+      top: -$arrow-size -$point-size/2;
+      transform-origin: bottom;
+      &::after {
+        transform: translate(-50%, 0%);
+        border-top: $arrow-size solid #F9F9F9;
+      }
+    }
+  }
+  
+  &[left] {
+    transform: translate(-100%, -50%);
+    call-out-point, call-out-label::after {
+      top: 50%;
+      left: 100%;
+    }
+    call-out-label {
+      left: -$arrow-size -$point-size/2;
+      transform-origin: right;
+      &::after {
+        transform: translate(0%, -50%);
+        border-left: $arrow-size solid #F9F9F9;
+      }
+    }
+  }
+  
+  &[right] {
+    transform: translate(0%, -50%);
+    call-out-point, call-out-label::after {
+      top: 50%;
+      left: 0%;
+    }
+    call-out-label {
+      right: -$arrow-size -$point-size/2;
+      transform-origin: left;
+      &::after {
+        transform: translate(-95%, -50%); // 95% because of crappy pixel rounding errors
+        border-right: $arrow-size solid #F9F9F9;
+      }
+    }
+  }
+  
+  &[bottom] {
+    transform: translate(-50%, 0%);
+    call-out-point, call-out-label::after {
+      top: 0%;
+      left: 50%;
+    }
+    call-out-label {
+      bottom: -$arrow-size -$point-size/2;
+      transform-origin: top;
+      &::after {
+        transform: translate(-50%, -95%); // 95% because of crappy pixel rounding errors
+        border-bottom: $arrow-size solid #F9F9F9;
+      }
+    }
+  }
 }
 
 @keyframes call-out-pulse {
-	from { transform: scale(1); opacity: 0; }
-	25%  { transform: scale(1); opacity: 1; }
-	50%  { transform: scale(2); opacity: 0; }
-	to   { transform: scale(2); opacity: 0; }
+  from { transform: scale(1); opacity: 0; }
+  25%  { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(2); opacity: 0; }
+  to   { transform: scale(2); opacity: 0; }
 }
 
 @keyframes call-out-appear {
-	from { transform: scale(.8); opacity: .4; }
-	to   { transform: scale(1);  opacity: 1; }
+  from { transform: scale(.8); opacity: .4; }
+  to   { transform: scale(1);  opacity: 1; }
 }
 
 @keyframes call-out-disappear {
-	from { transform: scale(1);  opacity: 1; }
-	to   { transform: scale(.5); opacity: .4; }
+  from { transform: scale(1);  opacity: 1; }
+  to   { transform: scale(.5); opacity: .4; }
 }

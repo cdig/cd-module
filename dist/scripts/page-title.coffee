@@ -4,4 +4,4 @@
 # Currently, we're generating a title based on the page's ID. This is a hack.
 
 Make "PageTitle", (page)->
-	return page.id.replace(/-/g, " ")
+  return page.id.replace(/-/g, " ")
