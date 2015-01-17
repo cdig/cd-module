@@ -36,7 +36,7 @@ do ()->
           return
     
     window.addEventListener(EVENTS.scroll, scrollHandlerFn)
-    setTimeout(scrollHandlerFn)
+    scrollHandlerFn()
   
   
   pageIsCurrent = (page)->
