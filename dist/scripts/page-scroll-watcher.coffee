@@ -22,6 +22,7 @@ do ()->
         
       onPageChange: (listener)->
         pageChangeListeners.push(listener)
+        listener(prevPage, prevPageIndex)
     
     
   setupScrollWatching = (pages)->
