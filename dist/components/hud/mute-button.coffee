@@ -20,7 +20,7 @@ Take ["cdHUD", "PageAudio", "load"], (cdHUD, PageAudio)->
   
 # FUNCTIONS
   
-  upate = ()->
+  update = ()->
     if PageAudio.isEnabled()
       graphic.removeAttribute("muted")
     else
