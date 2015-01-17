@@ -47,4 +47,4 @@ do ()->
   
   pageChange = (page, pageIndex, previousPage, previousPageIndex)->
     for callback in pageChangeCallbacks
-      callback(page, pageIndex, previousPage, previousPageIndex)
+      callback()

@@ -7,11 +7,11 @@ Take ["cdHUD", "PageScrollWatcher", "PageTitle", "PageSwitcher"], (cdHUD, PageSc
   
 # FUNCTIONS
   
-  update = ()->
+  updateIndicator = ()->
     currentPage = PageScrollWatcher.getCurrentPage()
     indicator.textContent = PageTitle(currentPage)
   
-  updatePosition = ()->
+  updateSwitcherPosition = ()->
     left = indicator.offsetLeft
     bottom = parseInt(window.getComputedStyle(indicator).height)
     PageSwitcher.setPosition(left, bottom)
@@ -20,12 +20,13 @@ Take ["cdHUD", "PageScrollWatcher", "PageTitle", "PageSwitcher"], (cdHUD, PageSc
 # EVENT LISTENERS
   
   indicator.addEventListener("click", PageSwitcher.toggle)
-  window.addEventListener("resize", updatePosition)
+  window.addEventListener("resize", updateSwitcherPosition)
   
   
 # INITIALIZATION
   
   cdHUD.addElement(indicator)
-  PageScrollWatcher.onPageChange(update)
-  updatePosition()
-  update()
+  
+  updateIndicator()
+  updateSwitcherPosition()
+  PageScrollWatcher.onPageChange(updateIndicator)

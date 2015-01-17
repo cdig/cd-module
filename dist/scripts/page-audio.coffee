@@ -45,8 +45,9 @@ else
           update()
     
     
-    PageScrollWatcher.onPageChange (page)->
-      currentPageName = page.id
+    PageScrollWatcher.onPageChange ()->
+      currentPage = PageScrollWatcher.getCurrentPage()
+      currentPageName = currentPage.id
       loadAudioForCurrentPage()
     
     
