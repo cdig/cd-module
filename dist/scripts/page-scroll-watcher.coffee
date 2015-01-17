@@ -22,8 +22,6 @@ do ()->
         
       onPageChange: (callback)->
         pageChangeCallbacks.push(callback)
-        setTimeout ()->
-          callback(prevPage, prevPageIndex)
     
     
   setupScrollWatching = (pages)->

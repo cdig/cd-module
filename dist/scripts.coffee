@@ -10,6 +10,7 @@
 # @codekit-prepend 'components/modal-popup.coffee'
 # @codekit-prepend 'components/page-locking.coffee'
 # @codekit-prepend 'components/page-switcher.coffee'
+# @codekit-prepend 'components/page-switcher-button.coffee'
 # @codekit-prepend 'components/scroll-hint.coffee'
 # @codekit-prepend 'components/score-animation/particle.coffee'
 # @codekit-prepend 'components/score-animation/score-animation.coffee'
