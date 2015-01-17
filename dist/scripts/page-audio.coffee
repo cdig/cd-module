@@ -10,7 +10,7 @@ unless (window.AudioContext? or window.webkitAudioContext?)
 else
   Take ["PageScrollWatcher"], (PageScrollWatcher)->
     audioEnabled = false
-    updateListeners = []
+    updateCallbacks = []
     currentPageName = null
     requestPending = false
     context = null
@@ -20,10 +20,11 @@ else
     
     Make "PageAudio", PageAudio =
       
-      onUpdate: (listener)->
-        updateListeners.push(listener)
-        setTimeout ()->
-          listener(audioEnabled)
+      onUpdate: (callback)->
+        updateCallbacks.push(callback)
+      
+      isEnabled: ()->
+        return audioEnabled
       
       toggle: ()->
         if audioEnabled then PageAudio.disable() else PageAudio.enable()
@@ -73,8 +74,7 @@ else
     
     
     update = ()->
-      for listener in updateListeners
-        listener(audioEnabled)
+      callback() for callback in updateCallbacks
 
 
 # EVENT HANDLERS

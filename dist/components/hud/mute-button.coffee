@@ -18,10 +18,16 @@ Take ["cdHUD", "PageAudio", "load"], (cdHUD, PageAudio)->
   cdHUD.addElement(button)
   
   
-# UPDATE
+# FUNCTIONS
   
-  PageAudio.onUpdate (enabled)->
-    if enabled
+  upate = ()->
+    if PageAudio.isEnabled()
       graphic.removeAttribute("muted")
     else
       graphic.setAttribute("muted", true)
+  
+  
+# INITIALIZATION
+  
+  PageAudio.onUpdate(update)
+  update()

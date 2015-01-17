@@ -12,49 +12,60 @@ Take ["Pages", "Scoring"], (Pages, Scoring)->
     getLockedPage: ()->
       return lockedPage
     
-    
     getLockedPageIndex: ()->
       return lockedPageIndex
       
-    
     update: ()->
-      lockedPage.classList.remove("locked-page") if lockedPage?
-      lockedPage = null
-      lockedPageIndex = null
-      
-      for page, index in Pages
-        
-        # It's less efficient, but easier to reason about, if we clear this class and then add it back if we need it
-        page.classList.remove("hidden-by-locked-page")
-        
-        if lockedPage?
-          page.classList.add("hidden-by-locked-page")
-        else if pageShouldLock(page)
-          lockedPage = page
-          lockedPageIndex = index
-          page.classList.add("locked-page")
-      
-      call() for call in callbacks
-    
+      updateLockedPage()
     
     onUpdate: (call)->
       callbacks.push(call)
-      setTimeout ()->
-        call()
   
   
-  pageShouldLock = (page)->
-    for activity in page.querySelectorAll("cd-activity")
-      if Scoring.getActivityScore(activity) < 1
-        return true
-    return false
+# FUNCTIONS
+  
+  updateLockedPage = ()->
+    if not (lockedPage? and pageShouldBeLocked(lockedPage))
+      unlock()
+      updateAllPages()
+      runCallbacks()
+  
+  
+  updateAllPages = ()->
+    for page, index in Pages
+      setPageHidden(page, lockedPage?)
+      if not lockedPage? and pageShouldBeLocked(page)
+        setLockedPage(page, index)
+  
+  
+  pageShouldBeLocked = (page)->
+    return Scoring.getPageScore(page) < 1
+  
+  
+  unlock = ()->
+    lockedPage.classList.remove("locked-page") if lockedPage?
+    lockedPage = null
+    lockedPageIndex = null
+  
+  
+  setLockedPage = (page, index)->
+    lockedPage = page
+    lockedPageIndex = index
+    page.classList.add("locked-page")
+  
+  
+  setPageHidden = (page, hide)->
+    if hide
+      page.classList.add("hidden-by-locked-page")
+    else
+      page.classList.remove("hidden-by-locked-page")
+  
+  
+  runCallbacks = ()->
+    call() for call in callbacks
     
   
-  Scoring.onUpdate ()->
-    if lockedPage? and Scoring.getPageScore(lockedPage) >= 1
-      PageLocking.update()
+# INITIALIZATION
   
-  
-# SETUP
-  
-  PageLocking.update()
+  Scoring.onUpdate(updateLockedPage)
+  updateLockedPage()

@@ -1,3 +1,6 @@
+# ScrollHint
+# A little popup at the bottom of the window that gives users hints about whether or not to scroll.
+#
 # Compatability:
 #	pageYOffset is an IE-compatable version of scrollY
 
@@ -78,19 +81,20 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
     else
       showBeginHint() if nearTop
       showLockedHint() if nearEnd
+
+  
+  updateLockedPage = ()->
+    if locked
+      ScrollHint.show("Scroll down to continue", "✓")
+    locked = PageLocking.getLockedPage()?
   
   
 # INIT
   
   if Pages.length > 1
-    
-    updateScroll()
-    
+    PageLocking.onUpdate(updateLockedPage)
     window.addEventListener("scroll", updateScroll)
     window.addEventListener("resize", updateScroll)
     scrollHintTab.addEventListener("click", hide)
+    updateScroll()
     
-    PageLocking.onUpdate ()->
-      if locked
-        ScrollHint.show("Scroll down to continue", "✓")
-      locked = PageLocking.getLockedPage()?

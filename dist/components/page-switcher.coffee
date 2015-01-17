@@ -2,7 +2,9 @@
 # A hovering UI element that allows quick access to a specific page
 
 
-Take ["Pages", "SwitcherButton"], (Pages, SwitcherButton)->
+Take ["Pages", "SwitcherButton", "PageLocking"], (Pages, SwitcherButton, PageLocking)->
+
+# LOCALS & ELEMENTS
   
   switcherOpen = false
   
@@ -12,26 +14,20 @@ Take ["Pages", "SwitcherButton"], (Pages, SwitcherButton)->
   switcherButtons = for page, pageIndex in Pages
     switcher.appendChild(SwitcherButton(page, pageIndex))
   
-  Take "PageLocking", (PageLocking)->
-    PageLocking.onUpdate ()->
-      for page, pageIndex in Pages
-        if page.classList.contains("hidden-by-locked-page")
-          switcherButtons[pageIndex].classList.add("locked")
-        else
-          switcherButtons[pageIndex].classList.remove("locked")
-  
   document.body.appendChild(switcher)
   
   
+# PUBLIC API
+  
   Make "PageSwitcher", PageSwitcher =
     open: ()->
-      enableOpen(true) unless switcherOpen
+      setOpen(true) unless switcherOpen
       
     close: ()->
-      enableOpen(false) if switcherOpen
+      setOpen(false) if switcherOpen
     
     toggle: ()->
-      if switcherOpen then PageSwitcher.close() else PageSwitcher.open()
+      setOpen(!switcherOpen)
     
     setPosition: (left, bottom)->
       bottom += 10
@@ -39,12 +35,30 @@ Take ["Pages", "SwitcherButton"], (Pages, SwitcherButton)->
       switcher.style["padding-bottom"] = "#{bottom}px"
   
   
-  enableOpen = (enable = true)->
-    switcherOpen = enable
-    switcher.className = if enable then "open" else "closed"
+ # FUNCTIONS
+  
+  clickOutside = ()->
+    window.removeEventListener("click", clickOutside)
+    setOpen(false)
+  
+  
+  setOpen = (open = true)->
+    switcherOpen = open
+    switcher.className = if switcherOpen then "open" else "closed"
     
-    if enable
-      setTimeout ()->
-        window.addEventListener "click", clickOutside = ()->
-          window.removeEventListener "click", clickOutside
-          enableOpen(false)
+    if switcherOpen
+      setTimeout ()-> # Wait until the click (that opened the switcher) is done
+        window.addEventListener("click", clickOutside)
+  
+  
+  updateLockedPages = ()->
+    for page, pageIndex in Pages
+      if page.classList.contains("hidden-by-locked-page")
+        switcherButtons[pageIndex].classList.add("locked")
+      else
+        switcherButtons[pageIndex].classList.remove("locked")
+  
+  
+# INITIALIZATION
+  
+  PageLocking.onUpdate(updateLockedPages)
