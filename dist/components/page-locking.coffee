@@ -53,7 +53,8 @@ Take ["Pages", "Scoring"], (Pages, Scoring)->
   Scoring.onUpdate ()->
     if lockedPage? and Scoring.getPageScore(lockedPage) >= 1
       PageLocking.update()
-
+  
+  
 # SETUP
   
   PageLocking.update()

@@ -40,8 +40,6 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
       
       onUpdate: (callback)->
         updateCallbacks.push(callback)
-        setTimeout ()->
-          callback(moduleNode.score, 0)
     
     
 
