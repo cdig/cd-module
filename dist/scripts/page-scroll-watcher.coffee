@@ -5,7 +5,7 @@ do ()->
   EVENTS =
     scroll: "scroll"
   
-  pageChangeListeners = []
+  pageChangeCallbacks = []
   prevPageIndex = null
   prevPage = null
   
@@ -20,9 +20,10 @@ do ()->
       getCurrentPageIndex: ()->
         return prevPageIndex
         
-      onPageChange: (listener)->
-        pageChangeListeners.push(listener)
-        listener(prevPage, prevPageIndex)
+      onPageChange: (callback)->
+        pageChangeCallbacks.push(callback)
+        setTimeout ()->
+          callback(prevPage, prevPageIndex)
     
     
   setupScrollWatching = (pages)->
@@ -47,5 +48,5 @@ do ()->
   
   
   pageChange = (page, pageIndex, previousPage, previousPageIndex)->
-    for callback in pageChangeListeners
+    for callback in pageChangeCallbacks
       callback(page, pageIndex, previousPage, previousPageIndex)
