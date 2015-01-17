@@ -19,8 +19,6 @@ Consult the [module template](https://github.com/cdig/cd-module-template) and se
 
 ### Libs
 
-**[jQuery](https://jquery.com)** is used by the matching game. We're gonna remove this PDQ.
-
 **[modernizr](https://modernizr.com)** works with browser-support to warn users when they're using an unsupported browser.
 
 **[swfobject](https://github.com/swfobject/swfobject)** gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
