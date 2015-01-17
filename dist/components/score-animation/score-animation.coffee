@@ -31,15 +31,7 @@ Take ["Particle", "Scoring", "ScoreDisplay", "load"], (Particle, Scoring, ScoreD
   # 	setTimeout(testParticles, 4000)
   
   
-# SETUP
-  
-  setTimeout ()->
-    createScoreArea()
-    createParticles()
-    attachScoreArea()
-    updateTargetPos()
-    # setTimeout(testParticles, 2000)
-  
+# FUNCTIONS
   
   createScoreArea = ()->
     scoreArea = document.createElement("score-area")
@@ -120,9 +112,16 @@ Take ["Particle", "Scoring", "ScoreDisplay", "load"], (Particle, Scoring, ScoreD
     startAnimating() if active.length > 0
   
   
-# INTEGRATION
+# INITIALIZATION
   
+  createScoreArea()
+  createParticles()
+  attachScoreArea()
+  updateTargetPos()
+  # setTimeout(testParticles, 2000)
+
   Scoring.onUpdate(fireParticles)
   
   window.addEventListener("mousemove", updateMousePos)
   window.addEventListener("scroll", updateTargetPos)
+  
