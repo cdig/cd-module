@@ -94,8 +94,6 @@ TODO: These are an awful lot like components... but they're different from the (
 
 **cd-flow-arrow**
 
-**cd-map**
-
 **cd-page**
 
 **cd-row**
