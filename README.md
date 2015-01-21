@@ -34,7 +34,7 @@ Note: At some point in the future, we need to figure out how to (automatically?)
 
 **call-outs** TODO: Add description.
 
-**cd-swf** makes it easier to embed standards-compliant, js-wrapped SWFs. To use it, include `<object cd-swf="flash/media.swf"></object>` in your page. You must also include `js-wrapper.swf` in your `public/flash` folder.
+**cd-swf** makes it easier to embed standards-compliant, js-wrapped SWFs. To use it, include `<object cd-swf="flash/media.swf"></object>` in your page. You must also include `js-wrapper.swf` in your `public/flash` folder. Find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
 
 **hud** TODO: Add description.
 
