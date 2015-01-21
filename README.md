@@ -34,7 +34,12 @@ Note: At some point in the future, we need to figure out how to (automatically?)
 
 **call-outs** TODO: Add description.
 
-**cd-swf** makes it easier to embed standards-compliant, js-wrapped SWFs. To use it, include `<object cd-swf="flash/media.swf"></object>` in your page. You must also include `js-wrapper.swf` in your `public/flash` folder. Find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
+**cd-swf** makes it easier to embed standards-compliant, js-wrapped SWFs. To use it, include `<object cd-swf="flash/media.swf"></object>` in your page. You must also include `js-wrapper.swf` in your `public/flash` folder. Find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`. If you are using <cd-activity> to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested. Here's an example of the recommended pattern:
+
+```html
+<cd-activity name="centrifugal-blockage-animation" points=100></cd-activity>
+<object cd-swf="flash/centrifugal-blockage-animation.swf"></object>
+```
 
 **hud** TODO: Add description.
 
