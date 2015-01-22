@@ -1,6 +1,8 @@
 # cdModule
 A standard library for CDIG modules.
 
+<br>
+
 **Table of Contents**
 
 - [Quick Start](#)
@@ -15,6 +17,8 @@ A standard library for CDIG modules.
   - [Styles: Custom](#)
   - [Styles: Elements](#)
   - [Styles: Mixins](#)
+
+<br>
 
 # Quick Start
 
