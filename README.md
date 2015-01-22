@@ -7,7 +7,7 @@ cdModule gives you a carefully chosen set of styles, scripts, and HTML component
 
 
 #### What's not included?
-* Anything specific to an individual project or client belongs in an _project, to be shared by all modules in the project.
+* Anything specific to an individual project or client belongs in an _project, to be shared by all modules in the project. More details [here](#_project).
 * cdFoundation stuff. It's listed as a bower dependency, but you need to make sure to include it in your module. The [module template](https://github.com/cdig/cd-module-template) covers this.
 
 #### How do I use it?
@@ -102,6 +102,41 @@ This id is used as the display name of the page in the [page-switcher](#page-swi
 
 
 ## Documentation of Decisions
+
+### _project
+
+For the time being, it's assumed that **modules** belong to a **chapter**, which belongs to a **project**.
+Even if your module doesn't really fit this model, you might want to pretend that it does, to make things easier.
+*This constraint will be lifted once [this issue](https://github.com/cdig/imagineering/issues/1) is addressed.*
+
+For the time being, you'll need to do one of two things.
+
+#### Option A: fake the folder structure
+Make your folder structure look like this:
+
+.
+├── _project
+└── fake-chapter-folder
+    ├── your-module
+    └── your-other-module
+
+#### Option B: change the import paths
+If you don't want to use the above folder structure, you can change the import paths used by your module. You'll need to change imports in the `index.html` and `styles.scss` files.
+
+Anywhere that you see something like...
+
+```html
+<!-- @import ../../../_project/[...].kit -->
+```
+
+Or...
+
+```scss
+# @import '../../../_project/[...].scss';
+```
+
+Replace the `../../../_project` part with the relative path from the current file to your _project folder. For instance, if your module folder is next to your _project folder, you'll use `../../_project`
+
 
 ### Z-indexes
 
