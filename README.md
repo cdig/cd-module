@@ -1,5 +1,5 @@
 # cdModule
-A standard library for CDIG modules.
+A framework and standard library for CDIG modules, to make our modules look nice and act consistently.
 
 ### Table of Contents
 
@@ -18,20 +18,24 @@ A standard library for CDIG modules.
 
 # Quick Start
 
+### How do I use it?
+Grab the [module template](https://github.com/cdig/cd-module-template) and rock out. Or, if you want a more thorough introduction, keep reading.
+
 ### What's included?
-cdModule gives you a carefully chosen set of styles, scripts, and HTML components, to make all our modules look and act consistently.
+A carefully chosen set of HTML, styles, scripts that build on top of [cdFoundation](https://github.com/cdig/cd-foundation). We take care of the look-and-feel, so you can focus on the content.
 
 ### What's not included?
-* Anything specific to an individual project or client belongs in an _project, to be shared by all modules in the project. More details [here](#_project).
-* cdFoundation stuff. It's listed as a bower dependency, but you need to make sure to include it in your module. The [module template](https://github.com/cdig/cd-module-template) covers this.
-
-### How do I use it?
-Consult the [module template](https://github.com/cdig/cd-module-template) and seek the wisdom of its way.
+* Anything specific to an individual client belongs in an `_project` folder, outside your module. More details [here](#_project).
+* cdFoundation itself. It's listed as a bower dependency, but you need to make sure to include it in your module. The [module template](https://github.com/cdig/cd-module-template) covers this.
 
 
 # Tutorial
 
-Here's a brief overview of how to use some of the features in cd-module. First, I'll present the markup for a typical page in a module. Below, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc) will tear it apart.
+Here's a brief overview of how to use some of the features in cd-module.
+First, I'll present the markup for a typical page in a module.
+Following that, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc) will tear it apart.
+
+#### Example Page
 
 ```html
 <cd-page id="my-amazing-page">
@@ -71,17 +75,30 @@ Here's a brief overview of how to use some of the features in cd-module. First, 
 
 Alright, let's dig in!
 
+#### cd-page
+
 ```html
 <cd-page id="my-amazing-page">
 ```
 
 First of all, we open up a new page.
+Pages include their own default styling, and are used by some of the [scripts](#Scripts) to add special behaviour.
 We give this page an id, which must be unique within the module.
-This id is used as the display name of the page in the [page-switcher](#page-switcher), so make it nice.
+This id is used as the display name of the page in the [page-switcher](#), so make it nice.
 
+#### main
 
 ```html
   <main>
+```
+
+Inside the page, we have a `main` element.
+This element creates a grouping of content within the page, and visually establishes the white padded background behind the content.
+You are free to place content — in particular, images — outside of the `<main>` element.
+This can be nice to create full-width image, which will stretch edge-to-edge on mobile.
+You may include as many `<main>` elements within the page as you'd like.
+
+
     <h1>My Amazing Page</h1>
     
     <p>On this page, we'll look at things that are amazing. Let's start with puppies.</p>
@@ -259,39 +276,41 @@ Notes:
 ## Styles: Custom
 TODO: These are an awful lot like components... but they're different from *real components. They're to be used in the content; they're not part of the foundational system. We may have a crisis of naming here.
 
-**cd-activity
+### cd-activity
 
-**cd-flow-arrow
+### cd-flow-arrow
 
-**cd-page
+### cd-page
 
-**cd-row
+### cd-row
 
-**cd-text-bubble
+### cd-text-bubble
 
 
 ## Styles: Elements
 
-**body
+### body
 
-**figure
+### figure
 
-**headings
+### headings
 
-**img
+### img
 
-**lists
+### lists
 
-**main
+### main
 
-**object
+A major grouping of content within a page. See the [Tutorial](#main) for more detail.
 
-**p
+### object
+
+### p
 
 
 ## Styles: Mixins
 
-**magic-underlines
+### magic-underlines
 
 
 # License
