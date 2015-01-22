@@ -2,8 +2,24 @@
 A standard library for CDIG modules.
 <br><br><br><br><br><br>
 Take a deep breath. There is a *lot* of documentation here.
-<br><br><br><br><br><br>
 
+<br>
+
+**Table of Contents**
+
+- [Tutorial](#)
+- [Documentation of Decisions](#)
+  - [_project](#)
+  - [Z-indexes](#)
+- [Included Features](#)
+  - [Libs](#)
+  - [Components](#)
+  - [Scripts](#)
+  - [Styles: Custom](#)
+  - [Styles: Elements](#)
+  - [Styles: Mixins](#)
+
+<br><br><br><br><br><br>
 
 ### What's included?
 cdModule gives you a carefully chosen set of styles, scripts, and HTML components, to make all our modules look and act consistently.
@@ -284,3 +300,5 @@ TODO: These are an awful lot like components... but they're different from *real
 
 # License
 Copyright (c) 2014-2015 CD Industrial Group Inc., released under MIT license.
+
+Table of contents generated with [DocToc](http://doctoc.herokuapp.com/), so thanks to whoever made that.
