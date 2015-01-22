@@ -1,7 +1,5 @@
 # cdModule
-A framework and standard library for modules that look nice and work consistently.
-
-### Table of Contents
+A framework and standard library, to help our modules look nice and work consistently.
 
 - [Quick Start](#quick-start)
 - [Overview](#overview)
