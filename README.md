@@ -1,5 +1,5 @@
 # cdModule
-A framework and standard library for CDIG modules, to make our modules look nice and act consistently.
+A framework and standard library for modules that are well-groomed, well-behaved, and easy to work with.
 
 ### Table of Contents
 
