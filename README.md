@@ -1,5 +1,5 @@
 # cdModule
-A framework and standard library for modules that are well-groomed, well-behaved, and easy to work with.
+A framework and standard library for modules that look nice and work consistently.
 
 ### Table of Contents
 
