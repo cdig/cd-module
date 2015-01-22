@@ -5,16 +5,14 @@ A framework and standard library for modules that look nice and work consistentl
 
 - [Quick Start](#quick-start)
 - [Overview](#overview)
-- [Documentation of Decisions](#documentation-of-decisions)
-  - [_project](#)
-  - [Z-indexes](#)
-- [Included Features](#)
-  - [Libs](#)
-  - [Components](#)
-  - [Scripts](#)
-  - [Styles: Custom](#)
-  - [Styles: Elements](#)
-  - [Styles: Mixins](#)
+- [Design Decisions](#design-decisions)
+  - [_project](#_project)
+  - [Z-indexes](#z-indexes)
+- [Features](#features)
+  - [Components](#components)
+  - [Scripts](#scripts)
+  - [Styles](#styles)
+  - [Libs](#libs)
 
 # Quick Start
 
@@ -31,7 +29,7 @@ A carefully chosen set of HTML, styles, scripts that build on top of [cdFoundati
 
 # Overview
 
-Here's a brief overview of how to use just a few of the features in cd-module.
+Here's a brief introduction to a few of the features in cd-module. To go more in depth, head down to the section on [Features](#features)
 First, I'll present the markup for a typical page in a module.
 Following that, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc) will tear it apart.
 
@@ -71,9 +69,9 @@ Alright, let's dig in!
 ```
 
 First of all, we open up a new page.
-Pages include their own default styling, and are used by some of the [scripts](#Scripts) to add special behaviour.
+Pages include their own default styling, and are used by some of the [scripts](#scripts) to add special behaviour.
 We give this page an id, which must be unique within the module.
-This id is used as the display name of the page in the [page-switcher](#), so make it nice.
+This id is used as the display name of the page in the [page-switcher](#page-switcher), so make it nice.
 
 #### main
 
@@ -117,11 +115,11 @@ You may include as many `<main>` elements within the page as you'd like.
 ```
 
 
-# Documentation of Decisions
+# Design Decisions
 
 ## _project
 
-For the time being, it's assumed that **modules** belong to a **chapter**, which belongs to a **project**.
+For the time being, it's assumed that **modules** belong to a **chapter**, and chapters belong to a **project**.
 Even if your module doesn't really fit this model, you might want to pretend that it does, to make things easier.
 *This constraint will be lifted once [this issue](https://github.com/cdig/imagineering/issues/1) is addressed.*
 
@@ -169,7 +167,7 @@ Replace the `../../../_project` part with the relative path from the current fil
 
 
 
-# Included Features
+# Features
 
 
 ## Libs
