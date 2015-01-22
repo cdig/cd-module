@@ -1,12 +1,9 @@
 # cdModule
 A standard library for CDIG modules.
-<br><br><br><br><br><br>
-Take a deep breath. There is a *lot* of documentation here.
-
-<br>
 
 **Table of Contents**
 
+- [Quick Start](#)
 - [Tutorial](#)
 - [Documentation of Decisions](#)
   - [_project](#)
@@ -19,11 +16,10 @@ Take a deep breath. There is a *lot* of documentation here.
   - [Styles: Elements](#)
   - [Styles: Mixins](#)
 
-<br><br><br><br><br><br>
+# Quick Start
 
 ### What's included?
 cdModule gives you a carefully chosen set of styles, scripts, and HTML components, to make all our modules look and act consistently.
-
 
 ### What's not included?
 * Anything specific to an individual project or client belongs in an _project, to be shared by all modules in the project. More details [here](#_project).
