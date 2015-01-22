@@ -1,8 +1,8 @@
 # cdModule
 A standard library for CDIG modules.
-<br><br><br>
+<br><br><br><br><br><br>
 Take a deep breath. There is a *lot* of documentation here.
-<br><br><br>
+<br><br><br><br><br><br>
 
 
 #### What's included?
