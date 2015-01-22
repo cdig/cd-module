@@ -3,9 +3,9 @@ A framework and standard library for modules that look nice and work consistentl
 
 ### Table of Contents
 
-- [Quick Start](#)
-- [Tutorial](#)
-- [Documentation of Decisions](#)
+- [Quick Start](#quick-start)
+- [Overview](#overview)
+- [Documentation of Decisions](#documentation-of-decisions)
   - [_project](#)
   - [Z-indexes](#)
 - [Included Features](#)
@@ -29,9 +29,9 @@ A carefully chosen set of HTML, styles, scripts that build on top of [cdFoundati
 * cdFoundation itself. It's listed as a bower dependency, but you need to make sure to include it in your module. The [module template](https://github.com/cdig/cd-module-template) covers this.
 
 
-# Tutorial
+# Overview
 
-Here's a brief overview of how to use some of the features in cd-module.
+Here's a brief overview of how to use just a few of the features in cd-module.
 First, I'll present the markup for a typical page in a module.
 Following that, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc) will tear it apart.
 
@@ -42,7 +42,7 @@ Following that, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc) will tear it
   <main>
     <h1>My Amazing Page</h1>
     
-    <p>On this page, we'll look at things that are amazing. Let's start with puppies.</p>
+    <p>On this page, we'll look at things that are cute!</p>
     
     <cd-row>
       <img src="image/puppy-1.jpg">
@@ -50,27 +50,16 @@ Following that, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc) will tear it
       <img src="image/puppy-3.jpg">
     </cd-row>
     
-    <p>That was pretty great. Now, let's play a game with kittens.</p>
-    
     <cd-activity name="kittens-are-great" type="tile-game" points="100">
       <img src="image/kitten-1.jpg">
       <img src="image/kitten-2.jpg">
-      <img src="image/kitten-3.jpg">
     </cd-activity>
     
-    <p>Phew. Now I'm all cute-ed out. Let's look at something ugly: Flash. How do you deal with old Flash content?</p>
+    <h2>Phew. Now I'm all cute-ed out. Let's look at something ugly: Flash. How do you deal with old Flash content?</h2>
     
     <object cd-swf="flash/ugly-old.swf"></object>
-    
-    <p>What if that Flash needs to award points?</p>
-    
-    <cd-activity name="i-get-the-point" points="1"></cd-activity>
-    <object cd-swf="flash/i-get-the-point.swf"></object>
-    
   </main>
-  
 </cd-page>
-
 ```
 
 Alright, let's dig in!
@@ -98,38 +87,33 @@ You are free to place content — in particular, images — outside of the `<ma
 This can be nice to create full-width image, which will stretch edge-to-edge on mobile.
 You may include as many `<main>` elements within the page as you'd like.
 
-
+```html
     <h1>My Amazing Page</h1>
-    
+```
+
+```html
     <p>On this page, we'll look at things that are amazing. Let's start with puppies.</p>
-    
+```
+
+```html
     <cd-row>
       <img src="image/puppy-1.jpg">
       <img src="image/puppy-2.jpg">
       <img src="image/puppy-3.jpg">
     </cd-row>
-    
-    <p>That was pretty great. Now, let's play a game with kittens.</p>
-    
+```
+
+```html
     <cd-activity name="kittens-are-great" type="tile-game" points="100">
       <img src="image/kitten-1.jpg">
       <img src="image/kitten-2.jpg">
       <img src="image/kitten-3.jpg">
     </cd-activity>
-    
-    <p>Phew. Now I'm all cute-ed out. Let's look at something ugly: Flash. How do you deal with old Flash content?</p>
-    
-    <object cd-swf="flash/ugly-old.swf"></object>
-    
-    <p>What if that Flash needs to award points?</p>
-    
-    <cd-activity name="i-get-the-point" points="1"></cd-activity>
-    <object cd-swf="flash/i-get-the-point.swf"></object>
-    
-  </main>
-  
-</cd-page>
+```
 
+
+```html
+    <object cd-swf="flash/ugly-old.swf"></object>
 ```
 
 
@@ -219,7 +203,7 @@ Notes:
 
 * Your SWF ***MUST*** have the CDIG class (or a subclass, like Schematic).
 * You must include `js-wrapper.swf` in your `public/flash` folder. Find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
-* If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested. See the [Tutorial](#Tutorial) for an example.
+* If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested. See the [Overview](#Overview) for an example.
 
 ### hud
 
@@ -301,7 +285,7 @@ TODO: These are an awful lot like components... but they're different from *real
 
 ### main
 
-A major grouping of content within a page. See the [Tutorial](#main) for more detail.
+A major grouping of content within a page. See the [Overview](#main) for more detail.
 
 ### object
 
