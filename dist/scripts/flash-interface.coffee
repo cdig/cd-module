@@ -7,8 +7,8 @@ window.hasAPI = ()->
 
 Take "Scoring", (Scoring)->
   window.awardPoints = (percent, exact, name)->
-    if percent?
+    if percent? > 0
       Scoring.addScore(name, percent)
-    if exact?
+    if exact? > 0
       Scoring.addPoints(name, exact)
     return true
