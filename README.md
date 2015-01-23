@@ -407,39 +407,33 @@ We're documenting these decisions here, so you don't accidentally run into their
 For the time being, it's assumed that **modules** belong to a **chapter**,
 chapters belong to a **project**, and that your folder structure will reflect this.
 
-```
-project folder
-├── chapter folder
-│   ├── module folder
-│   └── module folder
-└── chapter folder
-    ├── module folder
-    └── module folder
-```
+    project folder
+    ├── chapter folder
+    │   ├── module folder
+    │   └── module folder
+    └── chapter folder
+        ├── module folder
+        └── module folder
 
 It's also assumed that within the project folder, you'll have a folder named **_project**.
 
-```
-project folder
-├── _project
-├── chapter folder
-│   ├── module folder
-```
+    project folder
+    ├── _project
+    ├── chapter folder
+    │   ├── module folder
 
 The _project folder includes special HTML and styling, to be imported into each module in your project.
 This makes it easy to have standardized title pages, client-specific branding,
 and easily tweakable settings shared by all the modules in your project.
 
-```
-project folder
-├── _project
-│   ├── pages
-│   │   └── ...
-│   ├── styles
-│   │   └── ...
-│   ├── styles.scss
-│   └── vars.scss
-```
+    project folder
+    ├── _project
+    │   ├── pages
+    │   │   └── ...
+    │   ├── styles
+    │   │   └── ...
+    │   ├── styles.scss
+    │   └── vars.scss
 
 
 ### "But my module doesn't belong to a big project!"
@@ -455,12 +449,10 @@ Until then, if your module doesn't belong to a "project" as described above, you
 ### Option 1: Fake It!
 Just wrap a few extra "fake" folders around your actual module, and put the _project folder in the right place.
 
-```
-fake project folder
-├── _project
-└── fake chapter folder
-    └── module folder
-```
+    fake project folder
+    ├── _project
+    └── fake chapter folder
+        └── module folder
 
 You'll have to go a few steps deeper to reach your module, but everything should *just work*™.
 
@@ -468,11 +460,9 @@ You'll have to go a few steps deeper to reach your module, but everything should
 ### Option 2: Move It!
 You can keep the _project folder outside of your module, but ditch the fake chapters.
 
-```
-fake project folder
-├── _project
-└── module folder
-```
+    fake project folder
+    ├── _project
+    └── module folder
 
 Now, change the import paths used by your module, in the `index.kit` and `styles.scss` files.
 
@@ -496,13 +486,11 @@ This is a nice setup to use if you want to make a handful of modules that share 
 ### Option 3: Own It!
 Technically, you don't need to have a separate _project folder at all. You could set up your module like so:
 
-```
-module folder
-└── source
-    ├── _project
-    ├── index.html
-    └── styles.scss
-```
+    module folder
+    └── source
+        ├── _project
+        ├── index.html
+        └── styles.scss
 
 Then, change your import statements like so:
 
