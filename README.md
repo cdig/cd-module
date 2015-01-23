@@ -64,8 +64,9 @@ These are primarily HTML components, but there are also a few special styles and
 Afterward, we'll look at the network of systems that sit underneath — the [framework](#beneath-the-surface-the-framework).
 These systems extend cdFoundation, adding all sorts of special behaviour to your modules; from responsiveness, to score animations, to the HUD.
 
-In each of the sections, you can click on the title of the section to go to the source code for that item.
-Very handy, since the source code is the *definitive* documentation.
+For each item we look at, there'll be one or more links after the title of the item, leading to the source code.
+This is very handy, since the source code is the *definitive* documentation.
+At the bottom of each item, you'll find links to related items, to help you navigate this maze of a document.
 
 
 
@@ -123,7 +124,7 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 
 
-## [cd-page](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
+## cd-page ([SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss))
 
 ```html
 <cd-page id="my-amazing-page">
