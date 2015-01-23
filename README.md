@@ -16,6 +16,16 @@ If you've come for extensive documentation, you're in luck — we have a new shi
   - [magic-underlines](#magic-underlines)
   - [p](#p)
   - [cd-row](#cd-row)
+  - [img](#img)
+  - [cd-activity](#cd-activity)
+  - [cd-swf](#cd-swf)
+  - [swfobject](#swfobject)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
   - [thing](#thing)
   - [thing](#thing)
   - [thing](#thing)
@@ -55,7 +65,7 @@ Let's look at the markup for a typical page in a module.
 
 Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
-## cd-page
+### cd-page
 
 ```html
 <cd-page id="my-amazing-page">
@@ -67,7 +77,7 @@ They are also used by some of the [scripts](#scripts) to add special behaviour.
 We must give each page an id, which must be unique within the module.
 This id is used as the display name of the page in the [Page Switcher](#page-switcher), so make it nice.
 
-## main
+### main
 
 ```html
   <main>
@@ -79,7 +89,7 @@ You may include as many main elements within the page as you'd like, to break up
 You are also free to place content — in particular, images — outside of the main element.
 This can be nice to create full-width image, which will stretch edge-to-edge on mobile.
 
-## h1
+### h1
 
 ```html
     <h1>My Amazing Page</h1>
@@ -89,11 +99,11 @@ Within a module, h1 elements get special styling, with [Magic Underlines](#magic
 You should only use h1 for the title of a page.
 
 
-## magic-underlines
+### magic-underlines
 
 This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
 
-## p
+### p
 
 ```html
     <p>On this page, we'll look at things that are cute!</p>
@@ -103,7 +113,7 @@ Because cdModule includes the [cd-reset](https://github.com/cdig/cd-reset), para
 So, use them for text that the user might like to select and copy-paste,
 and don't use them for things that shouldn't be selectable — interactive elements, UI, or parts of a graphic.
 
-## cd-row
+### cd-row
 
 ```html
     <cd-row>
@@ -117,13 +127,13 @@ Under the hood, cdRow uses flexbox to create a multi-column layout.
 In this example, the three images will all appear side-by-side.
 Check out the section on [cdRow](#cdrow) for more info.
 
-## img
+### img
 
 Image tags, by default have a style of `width: 100%;` applied to them.
 Just.. watch out for this.
 In practice, it means you can drop an image into your page and not have to worry about it either being too small, or blowing out your layout.
 
-## cd-activity
+### cd-activity
 
 ```html
     <cd-activity name="kittens-are-great" type="tile-game" points="100">
@@ -133,7 +143,7 @@ In practice, it means you can drop an image into your page and not have to worry
     </cd-activity>
 ```
 
-## cd-swf
+### cd-swf
 
 ```html
     <object cd-swf="flash/ugly-old.swf"></object>
@@ -141,7 +151,7 @@ In practice, it means you can drop an image into your page and not have to worry
 
 Add this attribute to an `<object>` tag. It'll get picked up by [SwfObject](#SwfObject) and embed the SWF in a standards-compliant way. Your SWF will also be wrapped for easy 2-way communication with JS, and support for awarding points will be added automatically.
 
-## [SwfObject](https://github.com/swfobject/swfobject)
+### [SwfObject](https://github.com/swfobject/swfobject)
 SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
 
 
