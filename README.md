@@ -521,14 +521,14 @@ These values are documented here.
 
 z-index | CSS Selector                | Relevent System
 -------:| --------------------------- | ---------------
-100     | `call-out[open]`            | ([Call-Outs](#call-outs))
-101     | `call-out-point`            | ([Call-outs](#call-outs))
-1000    | `cd-modal`                  | ([Modal Popup](#modal-popup))
-1001    | `page-switcher`             | ([Switcher Container](#switcher-container))
-1002    | `cd-hud`                    | ([cdHUD](#cdhud])
-2000    | `score-area`                | ([Score Animation](#score-animation))
-9999    | `.browser-support`          | ([Browser Support](#browser-support))
-10000   | `editor-container textarea` | ([Editor Container](#editor-container))
+100     | `call-out[open]`            | [Call-Outs](#call-outs)
+101     | `call-out-point`            | [Call-outs](#call-outs)
+1000    | `cd-modal`                  | [Modal Popup](#modal-popup)
+1001    | `page-switcher`             | [Switcher Container](#switcher-container)
+1002    | `cd-hud`                    | [cdHUD](#cdhud]
+2000    | `score-area`                | [Score Animation](#score-animation)
+9999    | `.browser-support`          | [Browser Support](#browser-support)
+10000   | `editor-container textarea` | [Editor Container](#editor-container)
 
 The values 0-999 have been reserved for you to use in your content. `<call-out>` has been given an
 index of 100 specifically so that you can layer content below or above it, because it's a part of the
