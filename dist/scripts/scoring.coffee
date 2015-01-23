@@ -130,7 +130,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
   
   
   runCallbacks = (pointsAwarded)->
-    call(moduleNode.score, pointsAwarded) for call in updateCallbacks
+    call(pointsAwarded) for call in updateCallbacks
     
     
 # SETUP
