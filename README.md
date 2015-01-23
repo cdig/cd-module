@@ -5,7 +5,12 @@ We take care of the look-and-feel, so you can focus on the content.
 To get started, grab the [module template](https://github.com/cdig/cd-module-template).
 You'll also need a [_project folder](#_project). Read on for *extensive* documentation. Grab a drink!
 
-**Table of Contents**
+
+
+
+
+
+### Table of Contents
 
 - [Overview](#overview)
 - [Skin Deep: The Standard Library](#skin-deep-the-standard-library)
@@ -35,6 +40,17 @@ You'll also need a [_project folder](#_project). Read on for *extensive* documen
   - [_project](#_project)
   - [z-index values](#z-index-values)
 
+
+
+
+
+
+
+
+
+
+
+
 # Overview
 
 cdModule is *huge*.
@@ -48,11 +64,23 @@ These are primarily HTML components, but there are also a few special styles and
 Afterward, we'll look at the network of systems that sit underneath — the [framework](#beneath-the-surface-the-framework).
 These systems extend cdFoundation, adding all sorts of special behaviour to your modules; from responsiveness, to score animations, to the HUD.
 
+In each of the sections, you can click on the title of the section to go to the source code for that item.
+Very handy, since the source code is the *definitive* documentation.
+
+
+
+
+
+
+
+
+
 
 # Skin Deep: The Standard Library
 
 Here's the markup for a typical page in a module.
 Below, we'll examine the components that make up the markup.
+
 
 ```html
 <cd-page id="my-amazing-page">
@@ -90,19 +118,25 @@ Below, we'll examine the components that make up the markup.
 </cd-page>
 ```
 
+
 Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
-### cd-page
+
+
+### [cd-page](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
 
 ```html
 <cd-page id="my-amazing-page">
 ```
 
-First of all, we open up a new page.
-Pages include their own default styling that puts them in a centred column with lots of top and bottom margin.
+This custom HTML element marks the beginning of a new page.
+Pages include their own styling, which puts them in a centred column with lots of top and bottom margin.
 They are also used by some of the [scripts](#scripts) to add special behaviour.
 We must give each page an id, which must be unique within the module.
 This id is used as the display name of the page in the [Page Switcher](#page-switcher), so make it nice.
+
+Related: [Pages](#pages), [Page Locking](#page-locking), [Page Switcher](#page-switcher),
+[Page Audio](#page-audio), [Page Title](#page-title), [Page Scroll Watcher](#page-scroll-watcher).
 
 ### main
 
@@ -125,10 +159,7 @@ This can be nice to create full-width image, which will stretch edge-to-edge on 
 Within a module, h1 elements get special styling, with [Magic Underlines](#magic-underlines).
 You should only use h1 for the title of a page.
 
-
-### magic-underlines
-
-This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
+Related: [Magic Underlines][#magic-underlines]
 
 ### p
 
@@ -276,6 +307,10 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 ### Scroll To
 
 ### Welcome Popup
+
+### magic-underlines
+
+This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
 
 
 
