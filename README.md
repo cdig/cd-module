@@ -171,7 +171,7 @@ Notes:
 
 # Design Decisions
 
-## _project
+### _project
 
 For the time being, it's assumed that **modules** belong to a **chapter**, and chapters belong to a **project**.
 Even if your module doesn't really fit this model, you might want to pretend that it does, to make things easier.
@@ -208,7 +208,7 @@ Or...
 Replace the `../../../_project` part with the relative path from the current file to your _project folder. For instance, if your module folder is next to your _project folder, you'll use `../../_project`
 
 
-## z-index values
+### z-index values
 
 * 10: `call-out[open]` ([Call-Outs](#call-outs))
 * 1000: `cd-modal` ([Modal Popup](#modal-popup))
@@ -296,12 +296,8 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 ### headings
 
-### img
-
 ### lists
 
 
 # License
 Copyright (c) 2014-2015 CD Industrial Group Inc., released under MIT license.
-
-Table of contents generated with [DocToc](http://doctoc.herokuapp.com/), so thanks to whoever made that.
