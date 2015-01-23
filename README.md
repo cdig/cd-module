@@ -2,7 +2,9 @@
 HTML, styles, and scripts that build on top of [cdFoundation](https://github.com/cdig/cd-foundation).
 We take care of the look-and-feel, so you can focus on the content.
 
-- [Quick Start](#quick-start)
+To get started, grab the [module template](https://github.com/cdig/cd-module-template).
+You'll also need a [_project folder](#_project).
+
 - [Overview](#overview)
 - [Design Decisions](#design-decisions)
   - [_project](#_project)
@@ -12,10 +14,6 @@ We take care of the look-and-feel, so you can focus on the content.
   - [Scripts](#scripts)
   - [Styles](#styles)
   - [Libs](#libs)
-
-## Quick Start
-First, grab the [module template](https://github.com/cdig/cd-module-template).
-You'll also need a [_project folder](#_project).
 
 # Overview
 Let's look at the markup for a typical page in a module.
