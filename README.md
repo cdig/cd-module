@@ -453,7 +453,7 @@ Until then, if your module doesn't belong to a "project" as described above, you
 
 
 ### Option 1: Fake It!
-Just make your folder structure look like this:
+Just wrap a few extra "fake" folders around your actual module, and put the _project folder in the right place.
 
 ```
 fake project folder
