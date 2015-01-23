@@ -143,9 +143,9 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 **Usage:**
 This custom element is the highest-level grouping of content within a module.
-Typically, you'll have one cd-page per file, and import all of these files the `<body>` in
+Typically, you'll have one cd-page per file, and import all of these files inside the `<body>` in
 the `index.kit` for your module, as per the [template](https://github.com/cdig/cd-module-template).
-The file should have the same name as the `id` of the cd-page.
+The page file should have the same name as the `id` of the cd-page.
 
 ```html
 <cd-page id="my-amazing-page">
@@ -210,14 +210,24 @@ The default styling creates a white padded background behind the content.
 
 
 
-### h1
+
+
+
+
+
+
+
+
+
+## h1
 
 **Source Code:**
-[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/h1.scss)
+None — styling is supplied by the [_project folder](#_project-folder).
 
 **Usage:**
-This heading element is used for the title of the page.
-It should almost always be the first child of the first `<main>` element in the page.
+This heading element is used exclusively for the title of the page.
+It should almost always be the first child of the first `<main>` element in the page,
+though you might also want to wrap it with a [cd-row](#cd-row) to place it beside a tall image.
 
 ```html
 <cd-page id="my-amazing-page">
@@ -229,15 +239,26 @@ It should almost always be the first child of the first `<main>` element in the 
 </cd-page>
 ```
 
+* You should only use h1 for the title of a page. It should very closely match the id of the [cd-page](#cd-page) element.
 * You should not apply your own styling to the h1 within the module. The styling should come from the [_project folder](#_project-folder).
 
 **Behaviour:**
-Within a module, h1 elements get special styling, with [Magic Underlines](#magic-underlines).
-You should only use h1 for the title of a page.
+h1 elements get very special styling, with [Magic Underlines](#magic-underlines)
+and colours from the [_project folder](#_project-folder).
 
 Related: [Magic Underlines][#magic-underlines]
 
-### p
+
+
+
+
+
+
+
+
+## p
+
+
 
 ```html
     <p>On this page, we'll look at things that are cute!</p>
