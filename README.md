@@ -3,7 +3,7 @@ A framework and standard library to help you make gorgeous, consistent modules.
 We take care of the look-and-feel, so you can focus on the content.
 
 To get started, grab the [module template](https://github.com/cdig/cd-module-template).
-You'll also need a [_project folder](#_project). Read on for *extensive* documentation. Grab a drink!
+You'll also need an [_project folder](#_project-folder). Read on for *extensive* documentation. Grab a drink!
 
 
 
@@ -37,7 +37,7 @@ You'll also need a [_project folder](#_project). Read on for *extensive* documen
   - [thing](#thing)
   - [thing](#thing)
 - [Design Decisions](#design-decisions)
-  - [_project](#_project)
+  - [_project folder](#_project-folder)
   - [z-index values](#z-index-values)
 
 
@@ -105,8 +105,14 @@ Below, we'll examine each of the components that make up this markup.
     
     <object cd-swf="flash/ugly-old.swf"></object>
     
-    <h3>Wait.. I keep getting smaller. Weird. What's next?</h3>
+    <h3>Welp, that was fun. What's next?</h3>
     
+  </main>
+  
+  <img src="image/hero.png">
+  
+  <main>
+    <h2>More content</h2>
     <figure>
       <cd-flow-arrow class="cyan"></cd-flow-arrow>
       <cd-flow-arrow class="magenta"></cd-flow-arrow>
@@ -114,8 +120,8 @@ Below, we'll examine each of the components that make up this markup.
       <cd-flow-arrow class="dance"></cd-flow-arrow>
     </figure>
     <figcaption>It's a collection of flow arrows. CUTE!</figcaption>
-    
   </main>
+  
 </cd-page>
 ```
 
@@ -126,43 +132,95 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 ## cd-page
 
-**Source Code:** [SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
+**Source:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
 
-**Example**:
+**Usage:**
+This custom element is the highest-level grouping of content within a module.
+Typically, you'll have one cd-page per file, and import all of these files the `<body>` in
+the `index.kit` for your module, as per the [template](https://github.com/cdig/cd-module-template).
+The file should have the same name as the `id` of the cd-page.
+
 ```html
 <cd-page id="my-amazing-page">
+  <!-- page content -->
+</cd-page>
 ```
 
-**Usage:** This custom HTML element marks the beginning of a new page.
-You must give each page an id, which must be unique within the module.
-This id is used as the display name of the page in the [Page Switcher](#page-switcher), so make it nice.
+* You must give each page an `id`, which must be unique within the module.
 
-**Behaviour:** Pages have their own default styling, that puts them in a centred column with lots of top and bottom margin.
-They are also used by many, many framework systems to add special behaviour.
+**Behaviour:**
+The default styling creates a centred column with lots of top and bottom margin,
+with a nice shadow poking out from the corners to establish the vertical flow of the module.
+The ID is used for the title of the page in the Page Switcher, and the filename for Page Audio.
 
-**Related:** [Pages](#pages), [Page Locking](#page-locking), [Page Switcher](#page-switcher),
+**Related:**
+[Pages](#pages), [Page Locking](#page-locking), [Page Switcher](#page-switcher),
 [Page Audio](#page-audio), [Page Title](#page-title), [Page Scroll Watcher](#page-scroll-watcher).
 
 
 
 ## main
 
+**Source:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/main.scss)
+
+**Usage:**
+This standard element marks a major unit of content within a page.
+You may include as many main elements within the page as you'd like,
+to break up the flow of the page into nice units.
+Most of the content of your module — text, images and games — will go inside the main element.
+But you are also free to place content outside of the main element.
+This can be used to create full-width "hero" content, which will stretch edge-to-edge on mobile.
+This is a great way to showcase beautiful photos.
+
 ```html
+<cd-page id="my-amazing-page">
   <main>
+    <!-- content -->
+  </main>
+  
+  <img src="image/hero.png">
+  
+  <main>
+    <!-- content -->
+  </main>
+  
+</cd-page>
 ```
 
-Inside the page, we have a main element.
-This element creates a grouping of content, and visually establishes the white padded background behind the content.
-You may include as many main elements within the page as you'd like, to break up the flow of the page into nice units.
-You are also free to place content — in particular, images — outside of the main element.
-This can be nice to create full-width image, which will stretch edge-to-edge on mobile.
+* The main element must be a direct child of a cd-page.
+
+**Behaviour:**
+The default styling creates a white padded background behind the content.
+
+**Related:**
+[cd-page](#cd-page), [img](#img)
+
+
 
 ### h1
 
+**Source:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/h1.scss)
+
+**Usage:**
+This heading element is used for the title of the page.
+It should almost always be the first child of the first `<main>` element in the page.
+
 ```html
+<cd-page id="my-amazing-page">
+  <main>
+  
     <h1>My Amazing Page</h1>
+  
+  </main>
+</cd-page>
 ```
 
+* You should not apply your own styling to the h1 within the module. The styling should come from the [_project folder](#_project-folder).
+
+**Behaviour:**
 Within a module, h1 elements get special styling, with [Magic Underlines](#magic-underlines).
 You should only use h1 for the title of a page.
 
@@ -328,41 +386,95 @@ This special mixin uses a bunch of crazy SCSS to create an iOS-style underline o
 
 
 
+
+
+
+
 # Design Decisions
 
 In building cdModule, we've had to make a few judgement calls about how you should make your modules.
 We're documenting these decisions here, so you don't accidentally run into their sharp edges.
 
-## _project
+
+
+
+
+
+
+
+## _project Folder
 
 For the time being, it's assumed that **modules** belong to a **chapter**,
 chapters belong to a **project**, and that your folder structure will reflect this.
-It's also assumed that at the project-level, you'll have a folder named **_project** that includes
-special HTML and styling, to be imported into each module in your project. This makes it easy to
-have standardized title pages, client-specific branding, and easily tweakable settings across a
-number of modules.
+
+```
+project folder
+├── chapter folder
+│   ├── module folder
+│   └── module folder
+└── chapter folder
+    ├── module folder
+    └── module folder
+```
+
+It's also assumed that within the project folder, you'll have a folder named **_project**.
+
+```
+project folder
+├── _project
+├── chapter folder
+│   ├── module folder
+```
+
+The _project folder includes special HTML and styling, to be imported into each module in your project.
+This makes it easy to have standardized title pages, client-specific branding,
+and easily tweakable settings shared by all the modules in your project.
+
+```
+project folder
+├── _project
+│   ├── pages
+│   │   └── ...
+│   ├── styles
+│   │   └── ...
+│   ├── styles.scss
+│   └── vars.scss
+```
+
+
+### "But my module doesn't belong to a big project!"
 
 Even if your module doesn't really fit this model, you might want to pretend that it does, to make things easier.
 This setup might not be ideal, but it's probably easier to go with the grain, for the time being.
 
-*These assumptions will be relaxed once [this issue](https://github.com/cdig/imagineering/issues/1) is addressed and we have a more formal build system.*
+*The restrictions that lead to this structure will be relaxed once [this issue](https://github.com/cdig/imagineering/issues/1) is addressed, and we have a more formal build system.*
 
-Until then, if your module doesn't belong to a "project" as described above, you'll need to do one of two things.
+Until then, if your module doesn't belong to a "project" as described above, you'll need to use one of the following workarounds.
+
 
 ### Option 1: Fake It!
-Make your folder structure look like this:
+Just make your folder structure look like this:
 
 ```
-.
+fake project folder
 ├── _project
-└── fake-chapter-folder
-    ├── your-module
-    └── your-other-module
+└── fake chapter folder
+    └── module folder
 ```
 
-### Option 2: Break It!
-If you don't want to use the above folder structure, you can change the import paths used by your module.
-You'll need to change imports in the `index.html` and `styles.scss` files.
+You'll have to go a few steps deeper to reach your module, but everything should *just work*™.
+
+
+### Option 2: Move It!
+You can keep the _project folder outside of your module, but ditch the fake chapters.
+
+```
+fake project folder
+├── _project
+└── module folder
+```
+
+Now, change the import paths used by your module, in the `index.kit` and `styles.scss` files.
 
 Anywhere that you see something like...
 
@@ -376,9 +488,43 @@ Or...
 @import '../../../_project/[...].scss';
 ```
 
-Replace the `../../../_project` part with the relative path from the current file to your _project folder.
-For instance, if your module folder is next to your _project folder, you'll use `../../_project`
-Yes, you still need to have an _project folder, even if you're only making a single module. Sorry.
+...replace the `../../../_project` part with the relative path from the current file to your _project folder: `../../_project`
+
+This is a nice setup to use if you want to make a handful of modules that share styling.
+
+
+### Option 3: Own It!
+Technically, you don't need to have a separate _project folder at all. You could set up your module like so:
+
+```
+module folder
+└── source
+    ├── _project
+    ├── index.html
+    └── styles.scss
+```
+
+Then, change your import statements like so:
+
+```html
+<!-- @import _project/[...].kit -->
+```
+
+And...
+
+```scss
+@import '_project/[...].scss';
+```
+
+This is a nice option to use if you want to make a one-off module that doesn't share its styling with any other modules.
+
+
+
+
+
+
+
+
 
 ## Z-Index Values
 
