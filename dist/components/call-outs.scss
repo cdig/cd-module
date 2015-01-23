@@ -12,7 +12,7 @@ call-out {
   call-out-point {
     position: absolute;
     display: block;
-    z-index: 11;
+    z-index: 101;
     width: $point-size;
     height: $point-size;
     margin: -$point-size/2;
@@ -41,7 +41,7 @@ call-out {
   }
   
   &[open], &[closing] {
-    z-index: 10;
+    z-index: 100;
     call-out-label {
       display: block;
     }

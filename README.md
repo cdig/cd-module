@@ -37,7 +37,7 @@ You'll also need a [_project folder](#_project). Read on for *extensive* documen
 
 # Overview
 
-cdModule is huge.
+cdModule is *huge*.
 It starts with everything in [cdFoundation](https://github.com/cdig/cd-foundation),
 then adds hundreds of its own tools, features, and a little sprinkling of magic.
 
@@ -288,15 +288,26 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 # Design Decisions
 
-### _project
+In building cdModule, we've had to make a few judgement calls about how you should make your modules.
+We're documenting these decisions here, so you don't accidentally run into their sharp edges.
 
-For the time being, it's assumed that **modules** belong to a **chapter**, and chapters belong to a **project**.
+## _project
+
+For the time being, it's assumed that **modules** belong to a **chapter**,
+chapters belong to a **project**, and that your folder structure will reflect this.
+It's also assumed that at the project-level, you'll have a folder named **_project** that includes
+special HTML and styling, to be imported into each module in your project. This makes it easy to
+have standardized title pages, client-specific branding, and easily tweakable settings across a
+number of modules.
+
 Even if your module doesn't really fit this model, you might want to pretend that it does, to make things easier.
-*This constraint will be lifted once [this issue](https://github.com/cdig/imagineering/issues/1) is addressed.*
+This setup might not be ideal, but it's probably easier to go with the grain, for the time being.
 
-For the time being, you'll need to do one of two things.
+*These assumptions will be relaxed once [this issue](https://github.com/cdig/imagineering/issues/1) is addressed and we have a more formal build system.*
 
-### Option A: fake the folder structure
+Until then, if your module doesn't belong to a "project" as described above, you'll need to do one of two things.
+
+### Option 1: Fake It!
 Make your folder structure look like this:
 
 ```
@@ -307,8 +318,9 @@ Make your folder structure look like this:
     └── your-other-module
 ```
 
-### Option B: change the import paths
-If you don't want to use the above folder structure, you can change the import paths used by your module. You'll need to change imports in the `index.html` and `styles.scss` files.
+### Option 2: Break It!
+If you don't want to use the above folder structure, you can change the import paths used by your module.
+You'll need to change imports in the `index.html` and `styles.scss` files.
 
 Anywhere that you see something like...
 
@@ -322,12 +334,17 @@ Or...
 @import '../../../_project/[...].scss';
 ```
 
-Replace the `../../../_project` part with the relative path from the current file to your _project folder. For instance, if your module folder is next to your _project folder, you'll use `../../_project`
+Replace the `../../../_project` part with the relative path from the current file to your _project folder.
+For instance, if your module folder is next to your _project folder, you'll use `../../_project`
+Yes, you still need to have an _project folder, even if you're only making a single module. Sorry.
 
+## Z-Index Values
 
-### z-index values
+A number of systems in cdModule and cdFoundation use CSS z-index to establish a visual hierarchy.
+These values are documented here.
 
-* 10: `call-out[open]` ([Call-Outs](#call-outs))
+* 100: `call-out[open]` ([Call-Outs](#call-outs))
+* 101: `call-out-point` ([Call-outs](#call-outs))
 * 1000: `cd-modal` ([Modal Popup](#modal-popup))
 * 1001:	`page-switcher` ([Switcher Container](#switcher-container))
 * 1002: `cd-hud` ([cdHUD](#cdhud])
@@ -335,7 +352,11 @@ Replace the `../../../_project` part with the relative path from the current fil
 * 9999: `.browser-support` ([Browser Support](#browser-support))
 * 10000: `editor-container` textarea ([Editor Container](#editor-container))
 
-
+The values 0-999 have been reserved for you to use in your content. `<call-out>` has been given an
+index of 100 specifically so that you can layer content below or above it, because it's a part of the
+[standard library](#skin-deep-the-standard-library) and it's expected that it will live alongside other content that you make.
+The rest of the items here are part of [the framework](#beneath-the-surface-the-framework), and it's expected that
+they will sit on top of your content.
 
 
 
