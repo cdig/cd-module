@@ -3,13 +3,11 @@ cd-page {
   flex-direction: column;
   justify-content: center;
   max-width: $maxPageWidth;
-  min-height: 100%;
-  margin: 0 auto;
-  box-shadow: 80px 0px 96px -128px black,
-             -80px 0px 96px -128px black;
+  min-height: 50vh;
+  margin: 25vh auto;
   
-  @media (max-width: $maxPageWidth) {
-    box-shadow: none;
+  & + cd-page {
+    margin-top: 50vh; // Compensate for margin collapsing
   }
   
   @media (max-width: $iPhoneLandscape) {
@@ -20,7 +18,3 @@ cd-page {
     font-size: .8em;
   }
 }
-
-// Space the pages apart, and extend the shadow above and below each page
-cd-page > :first-child { margin-top: 8em; }
-cd-page > :last-child { margin-bottom: 8em; }

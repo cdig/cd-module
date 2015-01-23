@@ -2,13 +2,13 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 1px solid #EEE;
-  border-bottom: 1px solid #DDD;
+  border-top: 1px solid $mainBorderColor;
+  border-bottom: 1px solid $darkBorderColor;
   padding: 2em;
   background: white;
   
   @media (max-width: $maxPageWidth) {
-    border: 1px solid #EEE;
+    border: 1px solid $darkBorderColor;
     margin: .5em;
   }
   
