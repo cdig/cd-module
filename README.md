@@ -53,8 +53,8 @@ These systems extend cdFoundation, adding all sorts of special behaviour to your
 
 # Skin Deep: The Standard Library
 
-Let's look at the markup for a typical page in a module.
-Then, we'll examine the systems that make all this markup work, focussing mostly on HTML and SCSS.
+Here's the markup for a typical page in a module.
+Below, we'll examine the components that make up the markup.
 
 ```html
 <cd-page id="my-amazing-page">
