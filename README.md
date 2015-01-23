@@ -64,9 +64,8 @@ These are primarily HTML components, but there are also a few special styles and
 Afterward, we'll look at the network of systems that sit underneath — the [framework](#beneath-the-surface-the-framework).
 These systems extend cdFoundation, adding all sorts of special behaviour to your modules; from responsiveness, to score animations, to the HUD.
 
-For each item we look at, there'll be one or more links after the title of the item, leading to the source code.
-This is very handy, since the source code is the *definitive* documentation.
-At the bottom of each item, you'll find links to related items, to help you navigate this maze of a document.
+For each item we look at, there'll be a full explanation of features, gotchas, secrets, suggestions, with links to the source code and related items.
+The source code links are particularly handy, since the source code is the *definitive* documentation.
 
 
 
@@ -80,7 +79,8 @@ At the bottom of each item, you'll find links to related items, to help you navi
 # Skin Deep: The Standard Library
 
 Here's the markup for a typical page in a module.
-Below, we'll examine the components that make up the markup.
+Well, not quite typical — this one includes an example of *everything* in the standard library.
+Below, we'll examine each of the components that make up this markup.
 
 
 ```html
@@ -124,7 +124,7 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 
 
-## cd-page ([SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss))
+## cd-page
 
 ```html
 <cd-page id="my-amazing-page">
@@ -135,6 +135,8 @@ Pages include their own styling, which puts them in a centred column with lots o
 They are also used by some of the [scripts](#scripts) to add special behaviour.
 We must give each page an id, which must be unique within the module.
 This id is used as the display name of the page in the [Page Switcher](#page-switcher), so make it nice.
+
+Source Code: ([SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss))
 
 Related: [Pages](#pages), [Page Locking](#page-locking), [Page Switcher](#page-switcher),
 [Page Audio](#page-audio), [Page Title](#page-title), [Page Scroll Watcher](#page-scroll-watcher).
