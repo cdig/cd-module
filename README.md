@@ -10,14 +10,20 @@ If you've come for extensive documentation, you're in luck — we have a new shi
 **Table of Contents**
 
 - [Overview](#overview)
+  - [cd-page](#cd-page)
+  - [main](#main)
+  - [h1](#h1)
+  - [magic-underlines](#magic-underlines)
+  - [p](#p)
+  - [cd-row](#cd-row)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
 - [Design Decisions](#design-decisions)
   - [_project](#_project)
   - [z-index values](#z-index-values)
-- [Features](#features)
-  - [Components](#components)
-  - [Scripts](#scripts)
-  - [Styles](#styles)
-  - [Libs](#libs)
 
 # Overview
 Let's look at the markup for a typical page in a module.
@@ -49,7 +55,7 @@ Let's look at the markup for a typical page in a module.
 
 Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
-#### cd-page
+### cd-page
 
 ```html
 <cd-page id="my-amazing-page">
@@ -58,10 +64,10 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 First of all, we open up a new page.
 Pages include their own default styling that puts them in a centred column with lots of top and bottom margin.
 They are also used by some of the [scripts](#scripts) to add special behaviour.
-We give this page an id, which must be unique within the module.
+We must give each page an id, which must be unique within the module.
 This id is used as the display name of the page in the [Page Switcher](#page-switcher), so make it nice.
 
-#### main
+### main
 
 ```html
   <main>
@@ -73,6 +79,8 @@ You may include as many main elements within the page as you'd like, to break up
 You are also free to place content — in particular, images — outside of the main element.
 This can be nice to create full-width image, which will stretch edge-to-edge on mobile.
 
+### h1
+
 ```html
     <h1>My Amazing Page</h1>
 ```
@@ -80,13 +88,22 @@ This can be nice to create full-width image, which will stretch edge-to-edge on 
 Within a module, h1 elements get special styling, with [Magic Underlines](#magic-underlines).
 You should only use h1 for the title of a page.
 
+
+### magic-underlines
+
+This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
+
+### p
+
 ```html
     <p>On this page, we'll look at things that are cute!</p>
 ```
 
-As with all content incorporating the [cd-reset](https://github.com/cdig/cd-reset), paragraph tags are selectable.
+Because cdModule includes the [cd-reset](https://github.com/cdig/cd-reset), paragraph tags are selectable, and all other tags are not.
 So, use them for text that the user might like to select and copy-paste,
 and don't use them for things that shouldn't be selectable — interactive elements, UI, or parts of a graphic.
+
+### cd-row
 
 ```html
     <cd-row>
@@ -100,6 +117,14 @@ Under the hood, cdRow uses flexbox to create a multi-column layout.
 In this example, the three images will all appear side-by-side.
 Check out the section on [cdRow](#cdrow) for more info.
 
+### img
+
+Image tags, by default have a style of `width: 100%;` applied to them.
+Just.. watch out for this.
+In practice, it means you can drop an image into your page and not have to worry about it either being too small, or blowing out your layout.
+
+### cd-activity
+
 ```html
     <cd-activity name="kittens-are-great" type="tile-game" points="100">
       <img src="image/kitten-1.jpg">
@@ -108,10 +133,30 @@ Check out the section on [cdRow](#cdrow) for more info.
     </cd-activity>
 ```
 
+### cd-swf
 
 ```html
     <object cd-swf="flash/ugly-old.swf"></object>
 ```
+
+Add this attribute to an `<object>` tag. It'll get picked up by [SwfObject](#SwfObject) and embed the SWF in a standards-compliant way. Your SWF will also be wrapped for easy 2-way communication with JS, and support for awarding points will be added automatically.
+
+### [SwfObject](https://github.com/swfobject/swfobject)
+SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
+
+
+Notes:
+
+* Your SWF ***MUST*** have the CDIG class (or a subclass, like Schematic).
+* You must include `js-wrapper.swf` in your `public/flash` folder. Find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
+* If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested. See the [Overview](#Overview) for an example.
+
+
+
+
+
+
+
 
 
 # Design Decisions
@@ -166,21 +211,11 @@ Replace the `../../../_project` part with the relative path from the current fil
 
 
 
-# Features
-
-
-## Libs
 
 ### [Modernizr](https://modernizr.com)
 Modernizr works with browser-support to warn users when they're using an unsupported browser.
 
-### [SwfObject](https://github.com/swfobject/swfobject)
-SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
 
-Note: At some point in the future, we need to figure out how to (automatically?) use CDN-hosted libs in production, for the sake of caching.
-
-
-## Components
 
 ### backend-reset-button
 If you're using BackendLocalStorage, shows a Reset button in the HUD, which clears LocalStorage.
@@ -188,19 +223,6 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 ### browser-support
 
 ### call-outs
-
-### cd-swf
-Add this attribute to an `<object>` tag. It'll get picked up by [SwfObject](#SwfObject) and embed the SWF in a standards-compliant way. Your SWF will also be wrapped for easy 2-way communication with JS, and support for awarding points will be added automatically.
-
-```html
-<object cd-swf="flash/media.swf"></object>
-```
-
-Notes:
-
-* Your SWF ***MUST*** have the CDIG class (or a subclass, like Schematic).
-* You must include `js-wrapper.swf` in your `public/flash` folder. Find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
-* If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested. See the [Overview](#Overview) for an example.
 
 ### hud
 
@@ -215,7 +237,6 @@ Notes:
 ### scroll-hint
 
 
-## Scripts
 
 ### Backend: LocalStorage
 
@@ -254,21 +275,10 @@ Notes:
 ### Welcome Popup
 
 
-## Styles: Custom
-TODO: These are an awful lot like components... but they're different from *real components. They're to be used in the content; they're not part of the foundational system. We may have a crisis of naming here.
-
-### cd-activity
 
 ### cd-flow-arrow
 
-### cd-page
-
-### cd-row
-
 ### cd-text-bubble
-
-
-## Styles: Elements
 
 ### body
 
@@ -279,19 +289,6 @@ TODO: These are an awful lot like components... but they're different from *real
 ### img
 
 ### lists
-
-### main
-
-A major grouping of content within a page. See the [Overview](#main) for more detail.
-
-### object
-
-### p
-
-
-## Styles: Mixins
-
-### magic-underlines
 
 
 # License
