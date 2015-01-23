@@ -222,7 +222,7 @@ The default styling creates a white padded background behind the content.
 ## h1
 
 **Source Code:**
-None — styling is supplied by the [_project folder](#_project-folder).
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/headings.scss)
 
 **Usage:**
 This heading element is used exclusively for the title of the page.
@@ -240,7 +240,7 @@ though you might also want to wrap it with a [cd-row](#cd-row) to place it besid
 ```
 
 * You should only use h1 for the title of a page. It should very closely match the id of the [cd-page](#cd-page) element.
-* You should not apply your own styling to the h1 within the module. The styling should come from the [_project folder](#_project-folder).
+* You should not apply your own styling to the h1 within the module. Custom styling should come from the [_project folder](#_project-folder) and be shared across the entire project.
 
 **Behaviour:**
 h1 elements get very special styling, with [Magic Underlines](#magic-underlines)
@@ -258,15 +258,22 @@ Related: [Magic Underlines][#magic-underlines]
 
 ## p
 
+**Source Code:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/p.scss)
+
+**Usage:**
+Because cdModule includes the [cd-reset](https://github.com/cdig/cd-reset), paragraph tags are selectable, and all other tags are not.
+So, use them for text that the user might like to select and copy-paste,
+and don't use them for things that shouldn't be selectable — interactive elements, UI, or parts of a graphic.
 
 
 ```html
     <p>On this page, we'll look at things that are cute!</p>
 ```
 
-Because cdModule includes the [cd-reset](https://github.com/cdig/cd-reset), paragraph tags are selectable, and all other tags are not.
-So, use them for text that the user might like to select and copy-paste,
-and don't use them for things that shouldn't be selectable — interactive elements, UI, or parts of a graphic.
+
+
+
 
 ### cd-row
 
