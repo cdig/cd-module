@@ -525,7 +525,7 @@ z-index | CSS Selector                | Relevent System
 101     | `call-out-point`            | [Call-outs](#call-outs)
 1000    | `cd-modal`                  | [Modal Popup](#modal-popup)
 1001    | `page-switcher`             | [Switcher Container](#switcher-container)
-1002    | `cd-hud`                    | [cdHUD](#cdhud]
+1002    | `cd-hud`                    | [cdHUD](#cdhud)
 2000    | `score-area`                | [Score Animation](#score-animation)
 9999    | `.browser-support`          | [Browser Support](#browser-support)
 10000   | `editor-container textarea` | [Editor Container](#editor-container)
