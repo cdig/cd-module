@@ -4,11 +4,11 @@ cd-page {
   justify-content: center;
   max-width: $maxPageWidth;
   min-height: 50vh;
-  margin: 25vh auto;
+  margin: 0 auto;
   
-  & + cd-page {
-    margin-top: 50vh; // Compensate for margin collapsing
-  }
+  // Instead of putting margin on the page, we do this, to avoid margin collapsing
+  & > :first-child { margin-top:    25vh; }
+  & > :last-child  { margin-bottom: 25vh; }
   
   @media (max-width: $iPhoneLandscape) {
     font-size: .9em;
