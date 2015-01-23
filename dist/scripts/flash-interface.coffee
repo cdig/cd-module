@@ -5,9 +5,10 @@
 window.hasAPI = ()->
   return true
 
-window.awardPoints = (percent, exact, name)->
-  window.dispatchEvent new CustomEvent "cdAwardPoints", detail:
-    id: name
-    percent: 100
-    exact: 0
-  return true
+Take "Scoring", (Scoring)->
+  window.awardPoints = (percent, exact, name)->
+    if percent?
+      Scoring.addScore(name, percent)
+    if exact?
+      Scoring.addPoints(name, exact)
+    return true
