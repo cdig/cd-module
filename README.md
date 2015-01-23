@@ -10,29 +10,29 @@ If you've come for extensive documentation, you're in luck — we have a new shi
 **Table of Contents**
 
 - [Overview](#overview)
-  - [Skin Deep: The Standard Library](#skin-deep-the-standard-library)
-    - [cd-page](#cd-page)
-    - [main](#main)
-    - [h1](#h1)
-    - [magic-underlines](#magic-underlines)
-    - [p](#p)
-    - [cd-row](#cd-row)
-    - [img](#img)
-    - [cd-activity](#cd-activity)
-    - [cd-swf](#cd-swf)
-    - [thing](#thing)
-    - [thing](#thing)
-  - [Beneath The Surface: The Framework](#beneath-the-surface-the-framework)
-    - [swfobject](#swfobject)
-    - [thing](#thing)
-    - [thing](#thing)
-    - [thing](#thing)
-    - [thing](#thing)
-    - [thing](#thing)
-    - [thing](#thing)
-    - [thing](#thing)
-    - [thing](#thing)
-    - [thing](#thing)
+- [Skin Deep: The Standard Library](#skin-deep-the-standard-library)
+  - [cd-page](#cd-page)
+  - [main](#main)
+  - [h1](#h1)
+  - [magic-underlines](#magic-underlines)
+  - [p](#p)
+  - [cd-row](#cd-row)
+  - [img](#img)
+  - [cd-activity](#cd-activity)
+  - [cd-swf](#cd-swf)
+  - [thing](#thing)
+  - [thing](#thing)
+- [Beneath The Surface: The Framework](#beneath-the-surface-the-framework)
+  - [swfobject](#swfobject)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
+  - [thing](#thing)
 - [Design Decisions](#design-decisions)
   - [_project](#_project)
   - [z-index values](#z-index-values)
@@ -51,7 +51,7 @@ Afterward, we'll look at the network of systems that sit underneath — the [fr
 These systems extend cdFoundation, adding all sorts of special behaviour to your modules; from responsiveness, to score animations, to the HUD.
 
 
-## Skin Deep: The Standard Library
+# Skin Deep: The Standard Library
 
 Let's look at the markup for a typical page in a module.
 Then, we'll examine the systems that make all this markup work, focussing mostly on HTML and SCSS.
@@ -209,7 +209,7 @@ Notes:
 
 
 
-## Beneath The Surface: The Framework
+# Beneath The Surface: The Framework
 
 Above, we looked at the parts of cdModule that you will work with directly.
 Now, we'll dig in to the systems that make up the foundational framework of cdModule.
