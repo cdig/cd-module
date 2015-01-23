@@ -51,7 +51,7 @@ Afterward, we'll look at the network of systems that sit underneath — the [fr
 These systems extend cdFoundation, adding all sorts of special behaviour to your modules; from responsiveness, to score animations, to the HUD.
 
 
-## Components: HTML and SCSS
+## Skin Deep: The Standard Library
 
 Let's look at the markup for a typical page in a module.
 Then, we'll examine the systems that make all this markup work, focussing mostly on HTML and SCSS.
@@ -209,7 +209,7 @@ Notes:
 
 
 
-## Beneath The Surface
+## Beneath The Surface: The Framework
 
 Above, we looked at the parts of cdModule that you will work with directly.
 Now, we'll dig in to the systems that make up the foundational framework of cdModule.
