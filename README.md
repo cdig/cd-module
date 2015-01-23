@@ -5,10 +5,14 @@ We take care of the look-and-feel, so you can focus on the content.
 To get started, grab the [module template](https://github.com/cdig/cd-module-template).
 You'll also need a [_project folder](#_project).
 
+If you've come for extensive documentation, you're in luck — we have a new shipment of extensive documentation! Grab a drink...
+
+**Table of Contents**
+
 - [Overview](#overview)
 - [Design Decisions](#design-decisions)
   - [_project](#_project)
-  - [Z-indexes](#z-indexes)
+  - [z-index values](#z-index-values)
 - [Features](#features)
   - [Components](#components)
   - [Scripts](#scripts)
@@ -149,7 +153,7 @@ Or...
 Replace the `../../../_project` part with the relative path from the current file to your _project folder. For instance, if your module folder is next to your _project folder, you'll use `../../_project`
 
 
-## Z-indexes
+## z-index values
 
 * 10: `call-out[open]` ([Call-Outs](#call-outs))
 * 1000: `cd-modal` ([Modal Popup](#modal-popup))
