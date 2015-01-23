@@ -123,7 +123,7 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 
 
-### [cd-page](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
+## [cd-page](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
 
 ```html
 <cd-page id="my-amazing-page">
