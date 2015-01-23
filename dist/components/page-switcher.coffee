@@ -62,3 +62,5 @@ Take ["Pages", "SwitcherButton", "PageLocking"], (Pages, SwitcherButton, PageLoc
 # INITIALIZATION
   
   PageLocking.onUpdate(updateLockedPages)
+  updateLockedPages()
+  
