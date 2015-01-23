@@ -126,28 +126,26 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 ## cd-page
 
-#### Source Code
-[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
+**Source Code:** [SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
 
-#### Example
+**Example**:
 ```html
 <cd-page id="my-amazing-page">
 ```
 
-#### Usage
-This custom HTML element marks the beginning of a new page.
+**Usage:** This custom HTML element marks the beginning of a new page.
 You must give each page an id, which must be unique within the module.
 This id is used as the display name of the page in the [Page Switcher](#page-switcher), so make it nice.
 
-#### Behaviour
-Pages have their own default styling, that puts them in a centred column with lots of top and bottom margin.
+**Behaviour:** Pages have their own default styling, that puts them in a centred column with lots of top and bottom margin.
 They are also used by many, many framework systems to add special behaviour.
 
-#### Related
-[Pages](#pages), [Page Locking](#page-locking), [Page Switcher](#page-switcher),
+**Related:** [Pages](#pages), [Page Locking](#page-locking), [Page Switcher](#page-switcher),
 [Page Audio](#page-audio), [Page Title](#page-title), [Page Scroll Watcher](#page-scroll-watcher).
 
-### main
+
+
+## main
 
 ```html
   <main>
