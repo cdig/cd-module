@@ -83,6 +83,8 @@ Well, not quite typical — this one includes an example of *everything* in the
 Below, we'll examine each of the components that make up this markup.
 
 
+
+
 ```html
 <cd-page id="my-amazing-page">
   <main>
@@ -126,13 +128,17 @@ Below, we'll examine each of the components that make up this markup.
 ```
 
 
+
+
 Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
+
+
 
 
 
 ## cd-page
 
-**Source:**
+**Source Code:**
 [SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-page.scss)
 
 **Usage:**
@@ -160,9 +166,14 @@ The ID is used for the title of the page in the Page Switcher, and the filename 
 
 
 
+
+
+
+
+
 ## main
 
-**Source:**
+**Source Code:**
 [SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/main.scss)
 
 **Usage:**
@@ -201,7 +212,7 @@ The default styling creates a white padded background behind the content.
 
 ### h1
 
-**Source:**
+**Source Code:**
 [SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/h1.scss)
 
 **Usage:**
@@ -536,6 +547,20 @@ z-index | CSS Selector              | System
 
 `<call-out>`s are a part of [the standard library](#skin-deep-the-standard-library),
 and have been given a z-index of 100 so that you can layer content above or below them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # License
 Copyright (c) 2014-2015 CD Industrial Group Inc., released under MIT license.
