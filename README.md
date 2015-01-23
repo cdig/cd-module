@@ -3,9 +3,7 @@ A framework and standard library to help you make gorgeous, consistent modules.
 We take care of the look-and-feel, so you can focus on the content.
 
 To get started, grab the [module template](https://github.com/cdig/cd-module-template).
-You'll also need a [_project folder](#_project).
-
-If you've come for extensive documentation, you're in luck — we have a new shipment of extensive documentation! Grab a drink...
+You'll also need a [_project folder](#_project). Read on for *extensive* documentation. Grab a drink!
 
 **Table of Contents**
 
