@@ -1,5 +1,6 @@
 # cdModule
-A framework and standard library, to help our modules look nice and work consistently.
+HTML, styles, and scripts that build on top of [cdFoundation](https://github.com/cdig/cd-foundation).
+We take care of the look-and-feel, so you can focus on the content.
 
 - [Quick Start](#quick-start)
 - [Overview](#overview)
@@ -12,26 +13,12 @@ A framework and standard library, to help our modules look nice and work consist
   - [Styles](#styles)
   - [Libs](#libs)
 
-# Quick Start
-
-### How do I use it?
-Grab the [module template](https://github.com/cdig/cd-module-template) and rock out. Or, if you want a more thorough introduction, keep reading.
-
-### What's included?
-A carefully chosen set of HTML, styles, scripts that build on top of [cdFoundation](https://github.com/cdig/cd-foundation). We take care of the look-and-feel, so you can focus on the content.
-
-### What's not included?
-* Anything specific to an individual client belongs in an `_project` folder, outside your module. More details [here](#_project).
-* cdFoundation itself. It's listed as a bower dependency, but you need to make sure to include it in your module. The [module template](https://github.com/cdig/cd-module-template) covers this.
-
+## Quick Start
+First, grab the [module template](https://github.com/cdig/cd-module-template).
+You'll also need a [_project folder](#_project).
 
 # Overview
-
-Here's a brief introduction to a few of the features in cd-module. To go more in depth, head down to the section on [Features](#features)
-First, I'll present the markup for a typical page in a module.
-Following that, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc) will tear it apart.
-
-#### Example Page
+Let's look at the markup for a typical page in a module.
 
 ```html
 <cd-page id="my-amazing-page">
@@ -51,14 +38,14 @@ Following that, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc) will tear it
       <img src="image/kitten-2.jpg">
     </cd-activity>
     
-    <h2>Phew. Now I'm all cute-ed out. Let's look at something ugly: Flash. How do you deal with old Flash content?</h2>
+    <h2>Phew. Now I'm all cute-ed out. Let's look at something ugly: Flash.</h2>
     
     <object cd-swf="flash/ugly-old.swf"></object>
   </main>
 </cd-page>
 ```
 
-Alright, let's dig in!
+Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 #### cd-page
 
@@ -67,9 +54,10 @@ Alright, let's dig in!
 ```
 
 First of all, we open up a new page.
-Pages include their own default styling, and are used by some of the [scripts](#scripts) to add special behaviour.
+Pages include their own default styling that puts them in a centred column with lots of top and bottom margin.
+They are also used by some of the [scripts](#scripts) to add special behaviour.
 We give this page an id, which must be unique within the module.
-This id is used as the display name of the page in the [page-switcher](#page-switcher), so make it nice.
+This id is used as the display name of the page in the [Page Switcher](#page-switcher), so make it nice.
 
 #### main
 
@@ -77,19 +65,26 @@ This id is used as the display name of the page in the [page-switcher](#page-swi
   <main>
 ```
 
-Inside the page, we have a `main` element.
-This element creates a grouping of content within the page, and visually establishes the white padded background behind the content.
-You are free to place content — in particular, images — outside of the `<main>` element.
+Inside the page, we have a main element.
+This element creates a grouping of content, and visually establishes the white padded background behind the content.
+You may include as many main elements within the page as you'd like, to break up the flow of the page into nice units.
+You are also free to place content — in particular, images — outside of the main element.
 This can be nice to create full-width image, which will stretch edge-to-edge on mobile.
-You may include as many `<main>` elements within the page as you'd like.
 
 ```html
     <h1>My Amazing Page</h1>
 ```
 
+Within a module, h1 elements get special styling, with [Magic Underlines](#magic-underlines).
+You should only use h1 for the title of a page.
+
 ```html
-    <p>On this page, we'll look at things that are amazing. Let's start with puppies.</p>
+    <p>On this page, we'll look at things that are cute!</p>
 ```
+
+As with all content incorporating the [cd-reset](https://github.com/cdig/cd-reset), paragraph tags are selectable.
+So, use them for text that the user might like to select and copy-paste,
+and don't use them for things that shouldn't be selectable — interactive elements, UI, or parts of a graphic.
 
 ```html
     <cd-row>
@@ -98,6 +93,10 @@ You may include as many `<main>` elements within the page as you'd like.
       <img src="image/puppy-3.jpg">
     </cd-row>
 ```
+
+Under the hood, cdRow uses flexbox to create a multi-column layout.
+In this example, the three images will all appear side-by-side.
+Check out the section on [cdRow](#cdrow) for more info.
 
 ```html
     <cd-activity name="kittens-are-great" type="tile-game" points="100">
@@ -154,13 +153,13 @@ Replace the `../../../_project` part with the relative path from the current fil
 
 ## Z-indexes
 
-* 10: `call-out[open]` (Call Outs)
-* 1000: `cd-modal` (Modal Popup)
-* 1001:	`page-switcher` (Switcher Container)
-* 1002: `cd-hud` (HUD)
-* 2000: `score-area` (Score Animation)
-* 9999: `.browser-support` (Browser Support)
-* 10000: `editor-container` textarea (Editor)
+* 10: `call-out[open]` ([Call-Outs](#call-outs))
+* 1000: `cd-modal` ([Modal Popup](#modal-popup))
+* 1001:	`page-switcher` ([Switcher Container](#switcher-container))
+* 1002: `cd-hud` ([cdHUD](#cdhud])
+* 2000: `score-area` ([Score Animation](#score-animation))
+* 9999: `.browser-support` ([Browser Support](#browser-support))
+* 10000: `editor-container` textarea ([Editor Container](#editor-container))
 
 
 
