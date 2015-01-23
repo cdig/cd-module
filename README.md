@@ -530,17 +530,12 @@ z-index | CSS Selector              | System
 9999    | .browser-support          | [Browser Support](#browser-support)
 10000   | editor-container textarea | [Editor Container](#editor-container)
 
-The values 0-999 have been reserved for you to use in your content.
+* 0-999 is reserved for you to use in your content.
+* 1000-9999 is reserved for [the framework](#beneath-the-surface-the-framework).
+* 10000+ is reserved for [cdFoundation](https://github.com/cdig/cd-foundation).
 
 `<call-out>`s are a part of [the standard library](#skin-deep-the-standard-library),
 and have been given a z-index of 100 so that you can layer content above or below them.
-
-The the other items here are part of [the framework](#beneath-the-surface-the-framework),
-and it's expected that they will sit on top of your content.
-
-
-
-
 
 # License
 Copyright (c) 2014-2015 CD Industrial Group Inc., released under MIT license.
