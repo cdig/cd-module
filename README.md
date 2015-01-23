@@ -1,5 +1,5 @@
 # cdModule
-HTML, styles, and scripts that build on top of [cdFoundation](https://github.com/cdig/cd-foundation).
+A framework and library of HTML, styles, and scripts that build on top of [cdFoundation](https://github.com/cdig/cd-foundation) to help you make gorgeous, consistent modules.
 We take care of the look-and-feel, so you can focus on the content.
 
 To get started, grab the [module template](https://github.com/cdig/cd-module-template).
