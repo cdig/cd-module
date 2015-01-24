@@ -3,7 +3,7 @@
 Take ["cdHUD", "SaveWithPopup", "Disconnecter", "Params"], (cdHUD, SaveWithPopup, Disconnecter, Params)->
   
   # Don't show the menu button unless we've been sent here from the launcher
-  return unless Params.module?
+  return unless Env.parent is "launcher"
   
   goToLauncher = ()->
     Disconnecter.prevent()

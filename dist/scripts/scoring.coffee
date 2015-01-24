@@ -125,7 +125,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
   
   saveScoringTree = ()->
     KVStore.set(Params.project, projectNode)
-    console.log("Debug: saving after awarding points.")
+    console.log("Note: saving after awarding points.")
     KVStore.save()
   
   
