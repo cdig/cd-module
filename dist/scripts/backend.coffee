@@ -3,8 +3,8 @@ Take ["BackendLocalStorage", "BackendScorm2004", "Params"], (LocalStorage, Scorm
   # If we haven't been loaded by the Launcher, then we're a standalone module
   standalone = !Params.module?
   
-  # Figure out if we're running in dev mode
-  devMode = Params.dev
+  # Figure out if we're running in debug mode
+  debug = Params.debug
   
   # Figure out if we're being loaded in a dev tool
   parts = location.hostname.split(".")
@@ -13,7 +13,7 @@ Take ["BackendLocalStorage", "BackendScorm2004", "Params"], (LocalStorage, Scorm
   pow = tld is "dev"
   
   # Using the above values, decide if we should use LocalStorage
-  local = standalone or devMode or ck or pow
+  local = standalone or debug or ck or pow
   
   # Set up the correct backend
   Backend = if local then LocalStorage else Scorm2004
