@@ -107,7 +107,10 @@ Below, we'll examine each of the components that make up this markup.
     
     <object cd-swf="flash/ugly-old.swf"></object>
     
-    <h3>Welp, that was fun. What's next?</h3>
+    <cd-activity name="thirsty-and-miserable" points="1">
+    <object cd-swf="flash/thirsty-and-miserable.swf"></object>
+    
+    <h3>Yeah, Flash is no fun. Let's leave it behind.</h3>
     
   </main>
   
@@ -275,6 +278,13 @@ and don't use them for things that shouldn't be selectable — interactive elem
 
 
 
+
+
+
+
+
+
+
 ### cd-row
 
 ```html
@@ -305,19 +315,50 @@ In practice, it means you can drop an image into your page and not have to worry
     </cd-activity>
 ```
 
-### cd-swf
+
+
+
+
+
+
+
+
+
+## cd-swf
+
+**Source Code:**
+[Coffee](https://github.com/cdig/cd-module/blob/master/dist/components/cd-swf.coffee)
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/object.scss)
+
+**Usage:**
+When embedding a SWF using an `<object>` tag, normally you'd use the `data` attribute to specify the path to your file.
+Instead, you should use the `cd-swf` attribute.
+We'll grab the SWF file, wrap it with the js-wrapper.swf, and feed it to [SwfObject](#SwfObject), which will embed your wrapped SWF in a standards-compliant way.
 
 ```html
-    <object cd-swf="flash/ugly-old.swf"></object>
+<object cd-swf="flash/ugly-old.swf"></object>
 ```
 
-Add this attribute to an `<object>` tag. It'll get picked up by [SwfObject](#SwfObject) and embed the SWF in a standards-compliant way. Your SWF will also be wrapped for easy 2-way communication with JS, and support for awarding points will be added automatically.
+If you add a cd-activity with the same name as the SWF file, that activity will translate the points from the SWF into points for the module.
+
+```html
+<cd-activity name="thirsty-and-miserable" points="1">
+<object cd-swf="flash/thirsty-and-miserable.swf"></object>
+```
 
 Notes:
 
 * Your SWF ***MUST*** have the CDIG class (or a subclass, like Schematic).
-* You must include `js-wrapper.swf` in your `public/flash` folder. Find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
-* If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested. See the [Overview](#Overview) for an example.
+* You must include `js-wrapper.swf` in your `public/flash` folder. It's included as part of the [module template](https://github.com/cdig/cd-module-template), or you can find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
+* If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested.
+* Currently designed to work with SWFObject 2.3beta.
+
+
+
+
+
+
+
 
 
 ### call-outs

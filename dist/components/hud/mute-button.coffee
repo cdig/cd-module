@@ -1,4 +1,7 @@
-Take ["cdHUD", "PageAudio", "load"], (cdHUD, PageAudio)->
+Take ["cdHUD", "PageAudio", "Params", "load"], (cdHUD, PageAudio, Params)->
+  
+  # Don't show the mute button unless audio is enabled
+  return unless Params.audio?
   
 # GRAPHIC (experimental approach using <template> element)
   
@@ -11,7 +14,7 @@ Take ["cdHUD", "PageAudio", "load"], (cdHUD, PageAudio)->
   
   
 # BUTTON
-
+  
   button = document.createElement("mute-button")
   button.addEventListener("click", PageAudio.toggle)
   button.appendChild(graphic)

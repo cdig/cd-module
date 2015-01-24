@@ -1,12 +1,21 @@
-# Backend
-# I got tired of manually switching out which backend is the correct one. So just.. do it based on
-# whether we're inside codekit or pow or not.
-
-Take ["BackendLocalStorage", "BackendScorm2004"], (LocalStorage, Scorm2004)->
+Take ["BackendLocalStorage", "BackendScorm2004", "Params"], (LocalStorage, Scorm2004, Params)->
+  
+  # If we haven't been loaded by the Launcher, then we're a standalone module
+  standalone = !Params.module?
+  
+  # Figure out if we're running in dev mode
+  devMode = Params.dev
+  
+  # Figure out if we're being loaded in a dev tool
   parts = location.hostname.split(".")
   tld = parts[parts.length-1]
   ck = tld is "local" or parts.length is 1
   pow = tld is "dev"
-  Backend = if ck or pow then LocalStorage else Scorm2004
+  
+  # Using the above values, decide if we should use LocalStorage
+  local = standalone or devMode or ck or pow
+  
+  # Set up the correct backend
+  Backend = if local then LocalStorage else Scorm2004
   Backend.initialize()
   Make("Backend", Backend)
