@@ -420,8 +420,6 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 ### Backend: SCORM 2004
 
-### Easing
-
 ### KV Store
 
 ### Matches Selector
@@ -438,8 +436,6 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 ### Page Title
 
 ### Pages
-
-### Params Service
 
 ### Save Before Unload
 
