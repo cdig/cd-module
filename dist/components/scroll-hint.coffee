@@ -92,9 +92,10 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 # INIT
   
   if Pages.length > 1
-    PageLocking.onUpdate(updateLockedPage)
     window.addEventListener("scroll", updateScroll)
     window.addEventListener("resize", updateScroll)
     scrollHintTab.addEventListener("click", hide)
+    PageLocking.onUpdate(updateLockedPage)
+    updateLockedPage()
     updateScroll()
     
