@@ -1,6 +1,6 @@
 # Menu Button
 
-Take ["cdHUD", "SaveWithPopup", "Disconnecter", "Params"], (cdHUD, SaveWithPopup, Disconnecter, "Params")->
+Take ["cdHUD", "SaveWithPopup", "Disconnecter", "Params"], (cdHUD, SaveWithPopup, Disconnecter, Params)->
   
   # Don't show the menu button unless we've been sent here from the launcher
   return unless Params.module?
