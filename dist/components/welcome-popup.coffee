@@ -19,9 +19,9 @@ Take ["ModalPopup", "cdHUD"], (ModalPopup, cdHUD)->
     bottomText = document.createTextNode("Use it to control the various special features of this lesson.")
     container.appendChild(bottomText)
     
-    # if not window.localStorage[KEY]?
-      # window.localStorage[KEY] = true
-    ModalPopup.open("Welcome", container)
+    if not window.localStorage[KEY]?
+      window.localStorage[KEY] = true
+      ModalPopup.open("Welcome", container)
   
   
 # INITIALIZATION
