@@ -2,4 +2,4 @@
 // @codekit-prepend "libs/modernizr.min.js";
 
 // 2. Sibling Dependencies
-// @codekit-prepend "../../swfobject/swfobject/swfobject.js";
+// @codekit-prepend "../../swfobject/swfobject/src/swfobject.js";
