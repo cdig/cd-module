@@ -12,7 +12,6 @@
   ],
   "dependencies": {
     "cd-foundation":"cdig/cd-foundation",
-    "modernizr":"latest",
     "swfobject":"latest"
   },
   "ignore": [

@@ -1,4 +1,5 @@
-// 1. Sibling Dependencies
-// @codekit-prepend "../../modernizr/modernizr.js"; // Modernizr First!
-// @codekit-prepend "../../jquery/jquery.js";
+// 1. Modernizr
+// @codekit-prepend "libs/modernizr.min.js";
+
+// 2. Sibling Dependencies
 // @codekit-prepend "../../swfobject/swfobject/swfobject.js";
