@@ -8,5 +8,9 @@ Take "load", ()->
   document.body.appendChild(hud)
   
   Make "cdHUD",
+    
     addElement: (element)->
       hud.appendChild(element)
+    
+    getContainer: ()->
+      return hud
