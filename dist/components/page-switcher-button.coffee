@@ -16,13 +16,14 @@ Take ["ScrollTo", "PageTitle"], (ScrollTo, PageTitle)->
       return if button.classList.contains("locked")
       
       scrollPosition = document.body.scrollTop
-      pageTop = page.offsetTop
+      contentTop = page.offsetTop
       
       # According to cd-page.scss, the first child of a page has a fair bit of margin.
       # We'll take that margin into account when animating to a page.
-      childStyle = document.getComputedStyle(page.querySelector(":first-child"))
+      firstChild = page.querySelector(":first-child")
+      childStyle = window.getComputedStyle(firstChild)
       marginString = childStyle.getPropertyValue("margin-top")
       margin = parseInt(marginString.split("px")[0])
-      contentTop = pageTop + margin/2 # Adjust the factor as needed
+      contentTop += margin/2 # Adjust the factor as needed
       
       ScrollTo(contentTop)
