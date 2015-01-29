@@ -7,7 +7,7 @@ Take ["Env", "load"], (Env)->
   check = (selector, message)->
     violations = document.querySelectorAll(selector)
     if violations.length > 0
-      console.log false, "Warning: #{message}", violations
+      console.log "Warning: #{message}", violations
   
   
 # INITIALIZATION
