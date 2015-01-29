@@ -36,3 +36,4 @@
 # @codekit-prepend 'scripts/save-with-popup.coffee'
 # @codekit-prepend 'scripts/scoring.coffee'
 # @codekit-prepend 'scripts/scroll-to.coffee'
+# @codekit-prepend 'scripts/warnings.coffee'
