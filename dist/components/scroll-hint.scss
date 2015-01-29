@@ -4,12 +4,13 @@ scroll-hint {
   left: 0;
   bottom: 0;
   width: 100%;
+  z-index: 1005;
   text-align: center;
   transform: translateY(150%);
   transition: transform .3s cubic-bezier(.8,.8,.5,1.0);
   
   &[showing] {
-    transform: translateY(-2em);
+    transform: translateY(-1em);
     transition-delay: 3s;
     
     scroll-hint-tab {
@@ -26,12 +27,14 @@ scroll-hint {
   }
   
   scroll-hint-tab {
+    position: relative;
     display: inline-block;
-    padding: .5em;
+    padding: .4em;
     font-size: 1.2em;
     color: rgba(black, .66);
     background: linear-gradient(rgba(#F5F5F5, .94), rgba(#F5F5F5, 1), rgba(#F5F5F5, .94));
     box-shadow: 0 2px 24px -12px black;
+    cursor: pointer;
     
     &[icon-text]::before {
       content: attr(icon-text);
@@ -39,11 +42,26 @@ scroll-hint {
       width: 1.8em;
       height: 1.8em;
       margin-right: .3em;
+      vertical-align: -.1em;
       font-size: 1.2em;
       line-height: 2em;
       color: currentColor;
       background: white;
       box-shadow: 0 1px 12px -6px black;
+    }
+    
+    &::after {
+      content: "X";
+      position: absolute;
+      top: .4em;
+      right: .4em;
+      display: block;
+      font-size: .5em;
+      color: #BBB;
+    }
+    
+    &:hover::after {
+      color: red;
     }
   }
 }
