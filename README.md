@@ -36,6 +36,7 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
   - [thing](#thing)
   - [thing](#thing)
   - [thing](#thing)
+  - [Warnings](#warnings)
 - [Design Decisions](#design-decisions)
   - [_project folder](#_project-folder)
   - [z-index values](#z-index-values)
@@ -453,7 +454,9 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
 
+### Warnings
 
+This will log warnings to the console if you do things that are a bad idea.
 
 
 
