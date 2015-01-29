@@ -602,7 +602,7 @@ z-index | CSS Selector              | System
 1000    | cd-modal                  | [ModalPopup](#modal-popup)
 1001    | page-switcher             | [PageSwitcher](#page-switcher)
 1002    | cd-hud                    | [cdHUD](#cdhud)
-1002    | scroll-hint               | [ScrollHint](#scroll-hint)
+1003    | scroll-hint               | [ScrollHint](#scroll-hint)
 2000    | score-area                | [ScoreAnimation](#score-animation)
 9999    | .browser-support          | [BrowserSupport](#browser-support)
 10000   | editor-container textarea | [EditorContainer](#editor-container)
