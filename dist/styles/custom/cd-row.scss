@@ -6,6 +6,10 @@ cd-row {
   
   & > * { flex: 1 1 0%; } // 0% fixes IE
   
+  & > * > img {
+    max-width: 100%;
+  }
+  
   @media (max-width: $iPhoneLandscape) {
     flex-flow: column nowrap;
     
