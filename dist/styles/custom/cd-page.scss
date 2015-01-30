@@ -1,7 +1,5 @@
 cd-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: block;
   max-width: $maxPageWidth;
   min-height: 50vh;
   margin: 0 auto;
