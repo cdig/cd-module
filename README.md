@@ -14,28 +14,25 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
 
 - [Overview](#overview)
 - [Skin Deep: The Standard Library](#skin-deep-the-standard-library)
-  - [cd-page](#cd-page)
-  - [main](#main)
-  - [h1](#h1)
-  - [magic-underlines](#magic-underlines)
-  - [p](#p)
-  - [cd-row](#cd-row)
-  - [img](#img)
+  - [call-out](#call-out)
   - [cd-activity](#cd-activity)
+  - [cd-flow-arrow](#call-flow-arrow)
+  - [cd-page](#cd-page)
+  - [cd-row](#cd-row)
   - [cd-swf](#cd-swf)
-  - [thing](#thing)
-  - [thing](#thing)
+  - [cd-text-bubble](#cd-text-bubble)
+  - [h1](#h1)
+  - [headings](#headings)
+  - [img](#img)
+  - [lists](#lists)
+  - [main](#main)
+  - [object](#object)
+  - [p](#p)
+  - [template](#template)
 - [Beneath The Surface: The Framework](#beneath-the-surface-the-framework)
-  - [swfobject](#swfobject)
-  - [thing](#thing)
-  - [thing](#thing)
-  - [thing](#thing)
-  - [thing](#thing)
-  - [thing](#thing)
-  - [thing](#thing)
-  - [thing](#thing)
-  - [thing](#thing)
-  - [thing](#thing)
+  - [magic-underlines](#magic-underlines)
+  - [Modernizr](#modernizr)
+  - [SWFObject](#swfobject)
   - [Warnings](#warnings)
 - [Design Decisions](#design-decisions)
   - [_project folder](#_project-folder)
@@ -99,9 +96,11 @@ Below, we'll examine each of the components that make up this markup.
       <img src="image/puppy-3.jpg">
     </cd-row>
     
-    <cd-activity name="kittens-are-great" type="tile-game" points="100">
-      <img src="image/kitten-1.jpg">
-      <img src="image/kitten-2.jpg">
+    <cd-activity name="kittens-are-great" points="100">
+      <kitten-game>
+        <img src="image/kitten-1.jpg">
+        <img src="image/kitten-2.jpg">
+      </kitten-game>
     </cd-activity>
     
     <h2>Phew. Now I'm all cute-ed out. Let's look at something ugly: Flash.</h2>
@@ -140,6 +139,88 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 
 
+
+
+
+
+
+
+
+
+
+
+### call-out
+
+
+
+
+
+
+
+
+
+## cd-activity
+
+**Source Code:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-activity.scss)
+
+**Usage:**
+The `cd-activity` element helps you include an activity in your page.
+It provides the information needed to facilitate scoring, such as a unique name, and the number of points to award.
+
+Usually, you need to put the activity inside the `cd-activity` element, like this:
+
+```html
+<cd-activity name="kittens-are-cute" points="100">
+  <kitten-game>
+    <img src="image/kitten-1.jpg">
+    <img src="image/kitten-2.jpg">
+    <img src="image/kitten-3.jpg">
+  </kitten-game>
+</cd-activity>
+```
+
+You are free to apply whatever styling you need to make this work with your page layout.
+
+Alternatively, some activities can just sit beside the `cd-activity` element, like this:
+
+```html
+<cd-activity name="puppy-game" points="100"></cd-activity>
+<object cd-swf="puppy-game.swf"></object>
+```
+
+This is a bit nicer because it shouldn't mess with your styling as much.
+Activities that support this "side-by-side" arrangement will mention this in their documentation.
+
+* You must provide a `name` that is unique within the page
+* You specify the number of `points` available to be awarded
+
+**Behaviour**
+It's just a marker that lets the Scoring service know that something nearby will be awarding some points.
+It doesn't provide any styling or script behaviour on its own.
+It's just a placeholder for data.
+
+**Related**
+[Scoring](#scoring), [cd-swf](#cd-swf)
+
+
+
+
+
+
+
+
+
+
+### cd-flow-arrow
+
+
+
+
+
+
+
+
 ## cd-page
 
 **Source Code:**
@@ -167,6 +248,180 @@ The ID is used for the title of the page in the Page Switcher, and the filename 
 **Related:**
 [Pages](#pages), [Page Locking](#page-locking), [Page Switcher](#page-switcher),
 [Page Audio](#page-audio), [Page Title](#page-title), [Page Scroll Watcher](#page-scroll-watcher).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### cd-row
+
+```html
+<cd-row>
+  <img src="image/puppy-1.jpg">
+  <img src="image/puppy-2.jpg">
+  <img src="image/puppy-3.jpg">
+</cd-row>
+```
+
+Under the hood, cdRow uses flexbox to create a multi-column layout.
+In this example, the three images will all appear side-by-side.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## cd-swf
+
+**Source Code:**
+[Coffee](https://github.com/cdig/cd-module/blob/master/dist/components/cd-swf.coffee)
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/object.scss)
+
+**Usage:**
+When embedding a SWF using an `<object>` tag, normally you'd use the `data` attribute to specify the path to your file.
+Instead, you should use the `cd-swf` attribute.
+We'll grab the SWF file, wrap it with the js-wrapper.swf, and feed it to [SwfObject](#SwfObject), which will embed your wrapped SWF in a standards-compliant way.
+
+```html
+<object cd-swf="flash/ugly-old.swf"></object>
+```
+
+If you add a cd-activity with the same name as the SWF file, that activity will translate the points from the SWF into points for the module.
+
+```html
+<cd-activity name="thirsty-and-miserable" points="1">
+<object cd-swf="flash/thirsty-and-miserable.swf"></object>
+```
+
+Notes:
+
+* Your SWF ***MUST*** have the CDIG class (or a subclass, like Schematic).
+* You must include `js-wrapper.swf` in your `public/flash` folder. It's included as part of the [module template](https://github.com/cdig/cd-module-template), or you can find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
+* If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested.
+* Currently designed to work with SWFObject 2.3beta.
+
+
+
+
+
+
+
+### cd-text-bubble
+
+
+
+
+
+
+## h1
+
+**Source Code:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/headings.scss)
+
+**Usage:**
+This heading element is used exclusively for the title of the page.
+It should almost always be the first child of the first `<main>` element in the page,
+though you might also want to wrap it with a [cd-row](#cd-row) to place it beside a tall image.
+
+```html
+<cd-page id="my-amazing-page">
+  <main>
+  
+    <h1>My Amazing Page</h1>
+  
+  </main>
+</cd-page>
+```
+
+* You should only use h1 for the title of a page. It should very closely match the id of the [cd-page](#cd-page) element.
+* You should not apply your own styling to the h1 within the module. Custom styling should come from the [_project folder](#_project-folder) and be shared across the entire project.
+
+**Behaviour:**
+h1 elements get very special styling, with [Magic Underlines](#magic-underlines)
+and colours from the [_project folder](#_project-folder).
+
+Related: [Headings](#headings), [Magic Underlines](#magic-underlines)
+
+
+
+
+
+
+
+
+
+
+
+
+## Headings
+
+**Source Code:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/headings.scss)
+
+**Usage:**
+Heading elements (other than [h1](#h1)) may be used as normal for HTML.
+Feel free to style them however you want.
+
+```html
+<h2>Nothing Special</h2>
+<h3>But that's okay.</h3>
+```
+
+* [h1](#h1) has its own special behaviour and should only be used as intended
+
+**Behaviour:**
+Some default styling is applied for h2 and h3; h4 through h6 are unstyled.
+
+Related: [#h1](#h1)
+
+
+
+
+
+
+
+
+
+### img
+
+Image tags, by default have a style of `width: 100%;` applied to them.
+Just.. watch out for this.
+In practice, it means you can drop an image into your page and not have to worry about it either being too small, or blowing out your layout.
+
+
+
+
+
+
+
+
+
+### lists
+
+
+
 
 
 
@@ -221,36 +476,9 @@ The default styling creates a white padded background behind the content.
 
 
 
+### object
 
 
-## h1
-
-**Source Code:**
-[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/headings.scss)
-
-**Usage:**
-This heading element is used exclusively for the title of the page.
-It should almost always be the first child of the first `<main>` element in the page,
-though you might also want to wrap it with a [cd-row](#cd-row) to place it beside a tall image.
-
-```html
-<cd-page id="my-amazing-page">
-  <main>
-  
-    <h1>My Amazing Page</h1>
-  
-  </main>
-</cd-page>
-```
-
-* You should only use h1 for the title of a page. It should very closely match the id of the [cd-page](#cd-page) element.
-* You should not apply your own styling to the h1 within the module. Custom styling should come from the [_project folder](#_project-folder) and be shared across the entire project.
-
-**Behaviour:**
-h1 elements get very special styling, with [Magic Underlines](#magic-underlines)
-and colours from the [_project folder](#_project-folder).
-
-Related: [Magic Underlines][#magic-underlines]
 
 
 
@@ -281,109 +509,7 @@ and don't use them for things that shouldn't be selectable — interactive elem
 
 
 
-
-
-
-
-
-### cd-row
-
-```html
-    <cd-row>
-      <img src="image/puppy-1.jpg">
-      <img src="image/puppy-2.jpg">
-      <img src="image/puppy-3.jpg">
-    </cd-row>
-```
-
-Under the hood, cdRow uses flexbox to create a multi-column layout.
-In this example, the three images will all appear side-by-side.
-Check out the section on [cdRow](#cdrow) for more info.
-
-* Don't put images directly in cd-row. Wrap them in a div.
-
-
-**Known Issues**
-
-* IE: Images that are a direct child of cd-row will be stretched.
-* IE: Images in cd-row may have excessive whitespace above and below them.
-
-
-### img
-
-Image tags, by default have a style of `width: 100%;` applied to them.
-Just.. watch out for this.
-In practice, it means you can drop an image into your page and not have to worry about it either being too small, or blowing out your layout.
-
-### cd-activity
-
-```html
-    <cd-activity name="kittens-are-great" type="tile-game" points="100">
-      <img src="image/kitten-1.jpg">
-      <img src="image/kitten-2.jpg">
-      <img src="image/kitten-3.jpg">
-    </cd-activity>
-```
-
-
-
-
-
-
-
-
-
-
-## cd-swf
-
-**Source Code:**
-[Coffee](https://github.com/cdig/cd-module/blob/master/dist/components/cd-swf.coffee)
-[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/object.scss)
-
-**Usage:**
-When embedding a SWF using an `<object>` tag, normally you'd use the `data` attribute to specify the path to your file.
-Instead, you should use the `cd-swf` attribute.
-We'll grab the SWF file, wrap it with the js-wrapper.swf, and feed it to [SwfObject](#SwfObject), which will embed your wrapped SWF in a standards-compliant way.
-
-```html
-<object cd-swf="flash/ugly-old.swf"></object>
-```
-
-If you add a cd-activity with the same name as the SWF file, that activity will translate the points from the SWF into points for the module.
-
-```html
-<cd-activity name="thirsty-and-miserable" points="1">
-<object cd-swf="flash/thirsty-and-miserable.swf"></object>
-```
-
-Notes:
-
-* Your SWF ***MUST*** have the CDIG class (or a subclass, like Schematic).
-* You must include `js-wrapper.swf` in your `public/flash` folder. It's included as part of the [module template](https://github.com/cdig/cd-module-template), or you can find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
-* If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested.
-* Currently designed to work with SWFObject 2.3beta.
-
-
-
-
-
-
-
-
-
-### call-outs
-
-### cd-flow-arrow
-
-### cd-text-bubble
-
-### body
-
-### headings
-
-### lists
-
-
+### template
 
 
 
@@ -399,32 +525,41 @@ Above, we looked at the parts of cdModule that you will work with directly.
 Now, we'll dig in to the systems that make up the foundational framework of cdModule.
 
 
-### [SwfObject](https://github.com/swfobject/swfobject)
+
+
+
+## [SwfObject](https://github.com/swfobject/swfobject)
 SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
 
 
 
 
-### backend-reset-button
+## backend-reset-button
 If you're using BackendLocalStorage, shows a Reset button in the HUD, which clears LocalStorage.
 
-### browser-support
 
-### [Modernizr](https://modernizr.com)
+
+## BrowserSupport
+
+
+
+
+## [Modernizr](https://modernizr.com)
 Modernizr works with browser-support to warn users when they're using an unsupported browser.
 
 
-### hud
+### cdHud
 
-### modal-popup
+### ModalPopup
 
-### page-locking
+### PageLocking
 
-### page-switcher
+### PageSwitcher
 
-### score-animation
+### ScoreAnimation
 
-### scroll-hint
+### ScrollHint
+
 
 ### Backend: LocalStorage
 
@@ -459,11 +594,21 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 ### Welcome Popup
 
-### magic-underlines
+
+
+
+
+
+## magic-underlines
 
 This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
 
-### Warnings
+
+
+
+
+
+## Warnings
 
 This will log warnings to the console if you do things that are a bad idea.
 
