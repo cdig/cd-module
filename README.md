@@ -76,7 +76,14 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
 
 cdModule is *huge*.
 It starts with everything in [cdFoundation](https://github.com/cdig/cd-foundation),
-then adds hundreds of its own tools and features, with a little sprinkling of unobtrusive black magic.
+then adds around 40 of its own tools, with hundreds of features.
+
+Despite this, there's not much you need to know about it to get started and be productive.
+If you're starting with the [module template](https://github.com/cdig/cd-module-template) and
+an existing [_project folder](#_project-folder), you can pretty much write whatever HTML and CSS you want.
+Allmost all of the module-essence is applied for you automatically.
+However, there are a lot of optional tools to be used, should you opt to use them.
+So it's worth gradually learning this stuff, so you can make the most amazing modules possible.
 
 We're going to look at cdModule in two separate halves.
 First, we'll look at the tools you will use when making a module — the [standard library](#skin-deep-the-standard-library).
@@ -211,6 +218,7 @@ Alternatively, some activities can just sit beside the `cd-activity` element, li
 This is a bit nicer because it shouldn't mess with your styling as much.
 Activities that support this "side-by-side" arrangement will mention this in their documentation.
 
+**Requirements:**
 * You must provide a `name` that is unique within the page
 * You specify the number of `points` available to be awarded
 
@@ -233,6 +241,19 @@ It's just a placeholder for data.
 
 ## cd-flow-arrow
 
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
 
 
 
@@ -247,9 +268,10 @@ It's just a placeholder for data.
 
 **Usage:**
 This custom element is the highest-level grouping of content within a module.
-Typically, you'll have one cd-page per file, and import all of these files inside the `<body>` in
-the `index.kit` for your module, as per the [template](https://github.com/cdig/cd-module-template).
-The page file should have the same name as the `id` of the cd-page.
+Following the example of the [module template](https://github.com/cdig/cd-module-template),
+your module will have a `source/pages` folder.
+Each file in this folder will have exactly one `<cd-page>` element that wraps all the page contents.
+You'll import all of these page files into the `<body>` of the `index.kit` for your module.
 
 ```html
 <cd-page id="my-amazing-page">
@@ -257,7 +279,9 @@ The page file should have the same name as the `id` of the cd-page.
 </cd-page>
 ```
 
+**Requirements:**
 * You must give each page an `id`, which must be unique within the module.
+* The page file should have the same name as the `id` of the `<cd-page>`.
 
 **Behaviour:**
 The default styling creates a centred column with lots of top and bottom margin,
@@ -284,6 +308,13 @@ The ID is used for the title of the page in the Page Switcher, and the filename 
 
 ## cd-row
 
+**Source Code:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-row.scss)
+
+**Usage:**
+`<cd-row>` uses flexbox to create a dynamic multi-column layout.
+In this example, the three images will all appear side-by-side.
+
 ```html
 <cd-row>
   <img src="image/puppy-1.jpg">
@@ -292,10 +323,11 @@ The ID is used for the title of the page in the Page Switcher, and the filename 
 </cd-row>
 ```
 
-Under the hood, cdRow uses flexbox to create a multi-column layout.
-In this example, the three images will all appear side-by-side.
+**Requirements:**
 
+**Behaviour:**
 
+**Related:**
 
 
 
@@ -334,7 +366,7 @@ If you add a cd-activity with the same name as the SWF file, that activity will 
 <object cd-swf="flash/thirsty-and-miserable.swf"></object>
 ```
 
-Notes:
+**Requirements:**
 
 * Your SWF ***MUST*** have the CDIG class (or a subclass, like Schematic).
 * You must include `js-wrapper.swf` in your `public/flash` folder. It's included as part of the [module template](https://github.com/cdig/cd-module-template), or you can find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
@@ -348,6 +380,23 @@ Notes:
 
 
 ## cd-text-bubble
+
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
 
 
 
@@ -429,6 +478,19 @@ Image tags, by default have a style of `width: 100%;` applied to them.
 Just.. watch out for this.
 In practice, it means you can drop an image into your page and not have to worry about it either being too small, or blowing out your layout.
 
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
 
 
 
@@ -438,6 +500,19 @@ In practice, it means you can drop an image into your page and not have to worry
 
 
 ## lists
+
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
 
 
 
@@ -497,6 +572,19 @@ The default styling creates a white padded background behind the content.
 
 ## object
 
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
 
 
 
@@ -530,6 +618,23 @@ and don't use them for things that shouldn't be selectable — interactive elem
 
 ## template
 
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
 
 
 
@@ -549,64 +654,689 @@ or even offer styling hooks to integrate with your CSS.
 
 
 
+
+
+
+
+
+
+
 ## backend-reset-button
 If you're using BackendLocalStorage, shows a Reset button in the HUD, which clears LocalStorage.
 
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
 ## Backend: LocalStorage
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Backend: SCORM 2004
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## BrowserSupport
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## cdHud
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Flash Interface
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## KV Store
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## magic-underlines
 This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## ModalPopup
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## [Modernizr](https://modernizr.com)
 Modernizr works with browser-support to warn users when they're using an unsupported browser.
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Page Audio
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Page Manager
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Page Scroll Watcher
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## PageLocking
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## PageSwitcher
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## PageTitle
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Pages
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## SaveBeforeUnload
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## SaveWithPopup
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## ScoreAnimation
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Scoring
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## ScrollHint
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## ScrollRegions
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## ScrollTo
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## [SwfObject](https://github.com/swfobject/swfobject)
 SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## WelcomePopup
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 ## Warnings
 This will log warnings to the console if you do things that are a bad idea.
+**Source Code:**
+
+**Usage:**
+
+```html
+```
+
+**Requirements:**
+
+**Behaviour:**
+
+**Related:**
+
+
+
+
+
+
+
+
+
+
+
 
 
 
