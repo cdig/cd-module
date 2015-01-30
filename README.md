@@ -72,31 +72,6 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Overview
 
 cdModule is *huge*.
@@ -127,8 +102,6 @@ The source code links are particularly handy, since the source code is the *defi
 Here's the markup for a typical page in a module.
 Well, not quite typical — this one includes an example of *everything* in the standard library.
 Below, we'll examine each of the components that make up this markup.
-
-
 
 
 ```html
@@ -179,8 +152,6 @@ Below, we'll examine each of the components that make up this markup.
 ```
 
 
-
-
 Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 
@@ -197,7 +168,7 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 
 
-### call-out
+## call-out
 
 
 
@@ -260,7 +231,7 @@ It's just a placeholder for data.
 
 
 
-### cd-flow-arrow
+## cd-flow-arrow
 
 
 
@@ -311,7 +282,7 @@ The ID is used for the title of the page in the Page Switcher, and the filename 
 
 
 
-### cd-row
+## cd-row
 
 ```html
 <cd-row>
@@ -376,7 +347,7 @@ Notes:
 
 
 
-### cd-text-bubble
+## cd-text-bubble
 
 
 
@@ -452,7 +423,7 @@ Related: [#h1](#h1)
 
 
 
-### img
+## img
 
 Image tags, by default have a style of `width: 100%;` applied to them.
 Just.. watch out for this.
@@ -466,7 +437,7 @@ In practice, it means you can drop an image into your page and not have to worry
 
 
 
-### lists
+## lists
 
 
 
@@ -524,7 +495,7 @@ The default styling creates a white padded background behind the content.
 
 
 
-### object
+## object
 
 
 
@@ -557,7 +528,7 @@ and don't use them for things that shouldn't be selectable — interactive elem
 
 
 
-### template
+## template
 
 
 
@@ -581,58 +552,58 @@ or even offer styling hooks to integrate with your CSS.
 ## backend-reset-button
 If you're using BackendLocalStorage, shows a Reset button in the HUD, which clears LocalStorage.
 
-### Backend: LocalStorage
+## Backend: LocalStorage
 
-### Backend: SCORM 2004
+## Backend: SCORM 2004
 
 ## BrowserSupport
 
-### cdHud
+## cdHud
 
-### Flash Interface
+## Flash Interface
 
-### KV Store
+## KV Store
 
 ## magic-underlines
 This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
 
-### ModalPopup
+## ModalPopup
 
 ## [Modernizr](https://modernizr.com)
 Modernizr works with browser-support to warn users when they're using an unsupported browser.
 
-### Page Audio
+## Page Audio
 
-### Page Manager
+## Page Manager
 
-### Page Scroll Watcher
+## Page Scroll Watcher
 
-### PageLocking
+## PageLocking
 
-### PageSwitcher
+## PageSwitcher
 
-### PageTitle
+## PageTitle
 
-### Pages
+## Pages
 
-### SaveBeforeUnload
+## SaveBeforeUnload
 
-### SaveWithPopup
+## SaveWithPopup
 
-### ScoreAnimation
+## ScoreAnimation
 
-### Scoring
+## Scoring
 
-### ScrollHint
+## ScrollHint
 
-### ScrollRegions
+## ScrollRegions
 
-### ScrollTo
+## ScrollTo
 
 ## [SwfObject](https://github.com/swfobject/swfobject)
 SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
 
-### WelcomePopup
+## WelcomePopup
 
 ## Warnings
 This will log warnings to the console if you do things that are a bad idea.
