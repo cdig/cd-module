@@ -30,13 +30,61 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
   - [p](#p)
   - [template](#template)
 - [Beneath The Surface: The Framework](#beneath-the-surface-the-framework)
+  - [backendresetbutton](#backendresetbutton)
+  - [backendlocalstorage](#backendlocalstorage)
+  - [backendscorm2004](#backendscorm2004)
+  - [browsersupport](#browsersupport)
+  - [cdhud](#cdhud)
+  - [flashinterface](#flashinterface)
+  - [kvstore](#kvstore)
   - [magic-underlines](#magic-underlines)
-  - [Modernizr](#modernizr)
-  - [SWFObject](#swfobject)
-  - [Warnings](#warnings)
+  - [modalpopup](#modalpopup)
+  - [modernizr](#modernizr)
+  - [pageaudio](#pageaudio)
+  - [pagemanager](#pagemanager)
+  - [pagescrollwatcher](#pagescrollwatcher)
+  - [pagelocking](#pagelocking)
+  - [pageswitcher](#pageswitcher)
+  - [pagetitle](#pagetitle)
+  - [pages](#pages)
+  - [savebeforeunload](#savebeforeunload)
+  - [savewithpopup](#savewithpopup)
+  - [scoreanimation](#scoreanimation)
+  - [scoring](#scoring)
+  - [scrollhint](#scrollhint)
+  - [scrollregions](#scrollregions)
+  - [scrollto](#scrollto)
+  - [swfobject](#swfobject)
+  - [welcomepopup](#welcomepopup)
+  - [warnings](#warnings)
 - [Design Decisions](#design-decisions)
   - [_project folder](#_project-folder)
   - [z-index values](#z-index-values)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -520,54 +568,38 @@ and don't use them for things that shouldn't be selectable — interactive elem
 
 
 # Beneath The Surface: The Framework
-
 Above, we looked at the parts of cdModule that you will work with directly.
 Now, we'll dig in to the systems that make up the foundational framework of cdModule.
-
-
-
-
-
-## [SwfObject](https://github.com/swfobject/swfobject)
-SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
-
+Most of these systems will be invisible to you,
+applying their logic seamlessly behind the scenes.
+A few of them will offer a Public API that you are able to use from your own JS code,
+or provide a visible component that you can see in the browser,
+or even offer styling hooks to integrate with your CSS.
 
 
 
 ## backend-reset-button
 If you're using BackendLocalStorage, shows a Reset button in the HUD, which clears LocalStorage.
 
-
-
-## BrowserSupport
-
-
-
-
-## [Modernizr](https://modernizr.com)
-Modernizr works with browser-support to warn users when they're using an unsupported browser.
-
-
-### cdHud
-
-### ModalPopup
-
-### PageLocking
-
-### PageSwitcher
-
-### ScoreAnimation
-
-### ScrollHint
-
-
 ### Backend: LocalStorage
 
 ### Backend: SCORM 2004
 
+## BrowserSupport
+
+### cdHud
+
+### Flash Interface
+
 ### KV Store
 
-### Matches Selector
+## magic-underlines
+This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
+
+### ModalPopup
+
+## [Modernizr](https://modernizr.com)
+Modernizr works with browser-support to warn users when they're using an unsupported browser.
 
 ### Page Audio
 
@@ -575,41 +607,34 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 ### Page Scroll Watcher
 
+### PageLocking
 
-### Flash Interface
+### PageSwitcher
 
-### Page Title
+### PageTitle
 
 ### Pages
 
-### Save Before Unload
+### SaveBeforeUnload
 
-### Save With Popup
+### SaveWithPopup
+
+### ScoreAnimation
 
 ### Scoring
 
-### Scroll Regions
+### ScrollHint
 
-### Scroll To
+### ScrollRegions
 
-### Welcome Popup
+### ScrollTo
 
+## [SwfObject](https://github.com/swfobject/swfobject)
+SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
 
-
-
-
-
-## magic-underlines
-
-This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
-
-
-
-
-
+### WelcomePopup
 
 ## Warnings
-
 This will log warnings to the console if you do things that are a bad idea.
 
 
