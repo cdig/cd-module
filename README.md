@@ -300,6 +300,15 @@ Under the hood, cdRow uses flexbox to create a multi-column layout.
 In this example, the three images will all appear side-by-side.
 Check out the section on [cdRow](#cdrow) for more info.
 
+* Don't put images directly in cd-row. Wrap them in a div.
+
+
+**Known Issues**
+
+* IE: Images that are a direct child of cd-row will be stretched.
+* IE: Images in cd-row may have excessive whitespace above and below them.
+
+
 ### img
 
 Image tags, by default have a style of `width: 100%;` applied to them.
