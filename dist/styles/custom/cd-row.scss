@@ -4,7 +4,10 @@ cd-row {
   justify-content: space-around;
   align-items: center;
   
-  & > * { flex: 1 1 0%; } // 0% fixes IE
+  & > * {
+    flex: 1 1 0%; // 0% fixes IE not respecting unitless flex-basis
+    min-width: 0%; // Makes FF (correct) behave like (incorrect) Chrome, Safari, IE
+  }
   
   & > * > img {
     max-width: 100%;
