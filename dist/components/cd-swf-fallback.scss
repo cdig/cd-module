@@ -1,0 +1,25 @@
+cd-swf-fallback {
+  display: none;
+}
+
+object > cd-swf-fallback {
+  display: block;
+  padding: 3em 2em;
+  text-align: center;
+  background: radial-gradient(at center, white, white, #FEE);
+  
+  h3 {
+    color: #F02;
+    font-size: 1.4em;
+  }
+  
+  p {
+    // color: white;
+    max-width: inherit;
+  }
+  
+  a {
+    color: #7AF;
+    text-decoration: underline;
+  }
+}
