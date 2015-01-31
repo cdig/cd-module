@@ -29,9 +29,9 @@ do ()->
       for page, pageIndex in pages
         if pageIsCurrent(page)
           if pageIndex isnt prevPageIndex
-            pageChange(page, pageIndex, prevPage, prevPageIndex)
             prevPageIndex = pageIndex
             prevPage = page
+            pageChange()
           return
     
     window.addEventListener(EVENTS.scroll, scrollHandlerFn)
@@ -41,7 +41,7 @@ do ()->
   pageIsCurrent = (page)->
     pageTop = page.offsetTop
     pageBottom = page.offsetTop + page.offsetHeight
-    scrollPosition = window.pageYOffset + document.body.clientHeight / 2
+    scrollPosition = window.pageYOffset + window.innerHeight / 2
     return pageTop < scrollPosition and scrollPosition < pageBottom
   
   
