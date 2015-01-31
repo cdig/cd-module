@@ -19,6 +19,11 @@ cd-row {
     width: 0%; // Fixes stretching in all browsers
   }
   
+  // The max-width on p tags causes a bug in IE11, and it's not really needed here anyway
+  & > p {
+    max-width: inherit;
+  }
+  
   @media (max-width: $iPhoneLandscape) {
     flex-flow: column nowrap;
     
