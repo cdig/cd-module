@@ -1,7 +1,7 @@
 cd-row {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   
   & > * {
@@ -9,8 +9,14 @@ cd-row {
     min-width: 0%; // Makes FF (correct) behave like (incorrect) Chrome, Safari, IE
   }
   
+  // For now, you need to wrap images in something like a div
   & > * > img {
     max-width: 100%;
+  }
+  
+  // IE11- fails when using an img directly inside cd-row. In the future, this will work.
+  & > img {
+    width: 0%; // Fixes stretching in all browsers
   }
   
   @media (max-width: $iPhoneLandscape) {
@@ -18,6 +24,8 @@ cd-row {
     
     & > * { flex: 0 0 auto; }
     & > * + * { margin-top: 1em; }
+    
+    & > img { width: auto; }
     
     // For changing the display order of elements once we switch to our smaller layout
     .stack-1 { order: 1; }
