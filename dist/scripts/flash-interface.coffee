@@ -6,7 +6,9 @@ window.hasAPI = ()->
   return true
 
 Take "Scoring", (Scoring)->
-  window.awardPoints = (percent, exact, name)->
+  window.awardPoints = (eid, name, percent, exact)->
+    element = document.getElementById(eid)
+    
     if percent? > 0
       Scoring.addScore(name, percent)
     if exact? > 0

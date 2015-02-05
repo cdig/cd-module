@@ -20,7 +20,7 @@ Take "load", ()->
     
     eid = elm.id
     
-    swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}", eid, "100%", 540, 11.4, false, false, false, false, ()->
+    swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}&eid=#{eid}", eid, "100%", 540, 11.4, false, false, false, false, ()->
       newElm = document.getElementById(eid)
       newElm.innerHTML = transcludeContent
       newElm.appendChild(fallback)
