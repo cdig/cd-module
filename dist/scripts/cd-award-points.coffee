@@ -2,7 +2,7 @@
 
 Take "Scoring", (Scoring)->
   window.addEventListener "cdAwardPoints", (e)->
-    console.log "cdAwardPoints is deprecated"
+    alert("cdAwardPoints is deprecated. If you see this, please tell Ivan or Sean.")
     
     id = e.detail.id
     percent = e.detail.percent
