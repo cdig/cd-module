@@ -3,10 +3,7 @@ cd-page {
   max-width: $maxPageWidth;
   min-height: 50vh;
   margin: 0 auto;
-  
-  // Instead of putting margin on the page, we do this, to avoid margin collapsing
-  & > :first-child { margin-top:    25vh; }
-  & > :last-child  { margin-bottom: 25vh; }
+  padding: 25vh 0;
   
   @media (max-width: $iPhoneLandscape) {
     font-size: .9em;
