@@ -3,18 +3,29 @@
 # Currently designed to work with SWFObject 2.3beta.
 
 Take "load", ()->
-
+  
+  idCounter = 0
+  
 # FUNCTIONS
   
   setupSwf = (elm, fallback)->
     path = elm.getAttribute("cd-swf")
     transcludeContent = elm.innerHTML
-    swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}", elm, "100%", 540, 11.4, false, false, false, false, ()->
-      elm.innerHTML = transcludeContent
-      elm.appendChild(fallback)
-      
+    
+    # This nonsense with IDs is needed because SWFObject removes our element from the dom,
+    # makes a new <object> element, and only copies over SOME attributes (like id).
+    # So we generate IDs dynamically so that we can get a hold of the new <object> it generates.
+    if not elm.id? or elm.id is ""
+      elm.id = "cd-swf-" + idCounter++
+    
+    eid = elm.id
+    
+    swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}", eid, "100%", 540, 11.4, false, false, false, false, ()->
+      newElm = document.getElementById(eid)
+      newElm.innerHTML = transcludeContent
+      newElm.appendChild(fallback)
       # Make sure the cd-swf attribute is still present, so we can track that this SWF was added properly (for Warnings, etc)
-      elm.setAttribute("cd-swf", true)
+      newElm.setAttribute("cd-swf")
   
   
 # INITIALIZATION
