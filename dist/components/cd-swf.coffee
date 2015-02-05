@@ -12,6 +12,9 @@ Take "load", ()->
     swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}", elm, "100%", 540, 11.4, false, false, false, false, ()->
       elm.innerHTML = transcludeContent
       elm.appendChild(fallback)
+      
+      # Make sure the cd-swf attribute is still present, so we can track that this SWF was added properly (for Warnings, etc)
+      elm.setAttribute("cd-swf", true)
   
   
 # INITIALIZATION

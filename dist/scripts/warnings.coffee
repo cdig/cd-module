@@ -14,4 +14,4 @@ Take ["Env", "load"], (Env)->
   
   check("cd-page:not([id])", "All cd-pages must have a unique id")
   check("cd-row > img", "Don't put images directly in cd-row — wrap them in a div")
-  check("object[data]", "Please use cd-swf to embed flash")
+  check("object:not([cd-swf])", "Please use cd-swf to embed flash")
