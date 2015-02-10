@@ -1,15 +1,6 @@
 cd-page {
   display: block;
   max-width: $maxPageWidth;
-  min-height: 50vh;
   margin: 0 auto;
   padding: 25vh 0;
-  
-  @media (max-width: $iPhoneLandscape) {
-    font-size: .9em;
-  }
-  
-  @media (max-width: $iPhonePortrait) {
-    font-size: .8em;
-  }
 }

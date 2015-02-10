@@ -7,7 +7,8 @@ h1 {
 
 h2 {
   margin: 0.2em 0 0.4em;
-  font-size: 2.4em;
+  text-align: center;
+  font-size: 2.2em;
 }
 
 h3 {
@@ -16,14 +17,36 @@ h3 {
   font-size: 1.8em;
 }
 
+h4 {
+  margin: 0.2em 0.4em 0.4em;
+  text-align: left;
+  font-size: 1.4em;
+}
+
+h5 {
+  margin: 0.5em 1em 1em;
+  text-align: left;
+  font-size: 1em;
+}
+
+h6 {
+  margin: 0.5em 1em 1em;
+  text-align: left;
+  font-size: 1em;
+  font-weight: normal;
+}
+
 @media (max-width: $iPadLandscape) {
   h1 { font-size: 2.6em; }
   h2 { font-size: 2.0em; }
-  h3 { font-size: 1.4em; }
+  h3 { font-size: 1.6em; }
+  h4 { font-size: 1.2em; }
 }
 
 @media (max-width: $iPhoneLandscape) {
-  h1 { font-size: 2.0em; }
+  h1, h2, h3 { margin: .3em; }
+  h1 { font-size: 2.2em; }
   h2 { font-size: 1.6em; }
   h3 { font-size: 1.4em; }
+  h4 { font-size: 1.2em; }
 }

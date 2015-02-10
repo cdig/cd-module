@@ -1,15 +1,16 @@
 main {
+  margin: .5em 0;
+  padding: 1.5em;
   border-top: 1px solid $mainBorderColor;
   border-bottom: 1px solid $darkBorderColor;
-  padding: 2em;
   background: white;
   
   @media (max-width: $maxPageWidth) {
-    border: 1px solid $darkBorderColor;
     margin: .5em;
+    border: 1px solid $darkBorderColor;
   }
   
   @media (max-width: $iPhoneLandscape) {
-    padding: 1em .2em;
+    padding: 0em;
   }
 }

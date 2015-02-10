@@ -4,6 +4,7 @@ li {
 
 ul {
   margin: 0 0 0.5em;
+  padding: 0 .9em 0 1.8em; // These values line up nicely (desktop) and perfectly (mobile) with the h1 magic underline
   max-width: $maxLineLength;
 }
 
