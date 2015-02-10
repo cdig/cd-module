@@ -34,14 +34,19 @@ $iPhonePortrait: 375px;
 @import 'components/score-animation/score-animation.scss';
 @import 'components/welcome-popup.scss';
 
-// 6. Custom Elements
+// 6. Classes
+@import 'styles/classes/circle.scss';
+@import 'styles/classes/oval.scss';
+
+// 7. Custom Elements
+@import 'styles/custom/center-block.scss';
 @import 'styles/custom/cd-activity.scss';
 @import 'styles/custom/cd-flow-arrow.scss';
 @import 'styles/custom/cd-page.scss';
 @import 'styles/custom/cd-row.scss';
 @import 'styles/custom/cd-text-bubble.scss';
 
-// 7. Standard Elements
+// 8. Standard Elements
 @import 'styles/elements/figure.scss';
 @import 'styles/elements/headings.scss';
 @import 'styles/elements/img.scss';
