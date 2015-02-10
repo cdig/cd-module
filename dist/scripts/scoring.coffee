@@ -1,6 +1,5 @@
 Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
   hasActivities = document.querySelector("cd-activity")?
-  moduleTotalPoints = 0
   projectNode = null
   chapterNode = null
   moduleNode = null
@@ -11,29 +10,28 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
   
   makeAPI = ()->
     Make "Scoring",
-      addPoints: (target, points)->
+      addPoints: (cdActivity, points)->
         if hasActivities
-          activityNode = findActivitiyNodeFor(target)
+          activityNode = findActivitiyNodeFor(cdActivity)
           applyAward(activityNode, points)
         
-      addScore: (target, score)->
+      addScore: (cdActivity, score)->
         if hasActivities
-          activityNode = findActivitiyNodeFor(target)
-          points = score * activityNode.points
+          activityNode = findActivitiyNodeFor(cdActivity)
+          points = score * activityNode.totalPoints
           applyAward(activityNode, points)
       
-      getActivityScore: (target)->
-        activityNode = findActivitiyNodeFor(target)
+      getActivityScore: (cdActivity)->
+        activityNode = findActivitiyNodeFor(cdActivity)
         return activityNode.score
       
       getPageScore: (page)->
-        activityElementsOnPage = PureDom.querySelectorAll(page, "cd-activity")
-        summedScores = activityElementsOnPage.reduce(sumActivityScore, 0)
-        totalScore = summedScores / activityElementsOnPage.length
-        return totalScore
+        pageId = page.id
+        pageNode = moduleNode.pages[pageId]
+        return pageNode?.score
       
       getModuleTotalPoints: ()->
-        return moduleTotalPoints
+        return moduleNode.totalPoints
       
       getModuleScore: ()->
         return moduleNode.score
@@ -44,58 +42,58 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
     
 
 # IMMUTABLE
-
-  sumActivityScore = (sum, activityElement)->
-    name = activityElement.getAttribute("name")
-    activityNode = moduleNode.activities[name]
-    return sum + activityNode.score
   
-  
-  createNodeWith = (groupName)->
+  createScoringNode = (groupName)->
     node = {}
     node.score = 0
-    node[groupName] = {}
+    node[groupName] = {} if groupName?
     return node
   
   
-  findActivityNameFor = (target)->
-    activityElm = PureDom.querySelectorParent(target, "cd-activity")
-    name = activityElm.getAttribute("name")
-    return name
-    
-  
-  findActivitiyNodeFor = (target)->
-    if (typeof target) is "string"
-      return moduleNode.activities[target]
-    else if PureDom.isElement(target)
-      return moduleNode.activities[findActivityNameFor(target)]
-    else
-      throw new Error("Couldn't figure out what sort of scoring target you've provided.")
+  findActivitiyNodeFor = (cdActivity)->
+    activityName = cdActivity.getAttribute("name")
+    pageElement = PureDom.querySelectorParent(cdActivity, "cd-page")
+    pageId = pageElement.id
+    return moduleNode.pages[pageId].activities[activityName]
     
     
+  runCallbacks = (pointsAwarded)->
+    call(pointsAwarded) for call in updateCallbacks
       
 
 # MUTATION
   
   loadScoringTree = ()->
-    projectNode = KVStore.get(Params.project) or createNodeWith("chapters")
-    chapterNode = projectNode.chapters[Params.chapter] ?= createNodeWith("modules")
-    moduleNode = chapterNode.modules[Params.module] ?= createNodeWith("activities")
+    projectNode = KVStore.get(Params.project) or createScoringNode("chapters")
+    chapterNode = projectNode.chapters[Params.chapter] ?= createScoringNode("modules")
+    moduleNode = chapterNode.modules[Params.module] ?= createScoringNode("pages")
     
   
-  crawlActivityPoints = ()->
-    moduleTotalPoints = 0
-    for activityElement in document.querySelectorAll("cd-activity")
-      name = activityElement.getAttribute("name")
-      points = parseInt(activityElement.getAttribute("points"))
-      activityNode = moduleNode.activities[name] ?= {}
-      activityNode.score ?= 0
+  crawlModuleAndSetUpScoring = ()->
+    # Recompute the total points, as they may have changed
+    moduleNode.totalPoints = 0
+    
+    for page in document.querySelectorAll("cd-page")
+      pageActivities = page.querySelectorAll("cd-activity")
       
-      # Always overwrite and recompute these, because the points attribute may have changed
-      activityNode.points = points
-      activityNode.earnedPoints = points * activityNode.score
-      
-      moduleTotalPoints += points
+      # Don't add a node for a page unless it has activities
+      if pageActivities.length > 0
+        
+        pageId = page.id
+        pageNode = moduleNode.pages[pageId] ?= createScoringNode("activities")
+        # Recompute the total points, as they may have changed
+        pageNode.totalPoints = 0
+        
+        for activityElement in pageActivities
+          activityName = activityElement.getAttribute("name")
+          activityPoints = parseInt(activityElement.getAttribute("points"))
+          activityNode = pageNode.activities[activityName] ?= createScoringNode()
+          
+          # Always overwrite and recompute these, because the points attribute may have changed
+          activityNode.totalPoints = activityPoints
+          activityNode.earnedPoints = activityPoints * activityNode.score
+          pageNode.totalPoints += activityPoints
+          moduleNode.totalPoints += activityPoints
   
   
   applyAward = (activityNode, pointsToAward)->
@@ -104,10 +102,10 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
     pointsBefore = activityNode.earnedPoints
     
     activityNode.earnedPoints += pointsToAward
-    activityNode.earnedPoints = Math.min(activityNode.earnedPoints, activityNode.points)
+    activityNode.earnedPoints = Math.min(activityNode.earnedPoints, activityNode.totalPoints)
     
-    activityNode.score = activityNode.earnedPoints / activityNode.points
-    activityNode.score = Math.round(10000 * activityNode.score)/10000
+    activityNode.score = activityNode.earnedPoints / activityNode.totalPoints
+    activityNode.score = Math.round(10000 * activityNode.score)/10000 # Corrects floating point errors
     
     pointsAwarded = activityNode.earnedPoints - pointsBefore
     
@@ -117,27 +115,31 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
   
   
   updateModuleScore = ()->
-    earnedPoints = 0
-    for name, activityNode of moduleNode.activities
-      earnedPoints += activityNode.score * activityNode.points
-    moduleNode.score = earnedPoints / moduleTotalPoints
+    moduleNode.earnedPoints = 0
+
+    for pageName, pageNode of moduleNode.pages
+      pageNode.earnedPoints = 0
+      
+      for activityName, activityNode of pageNode.activities
+        pageNode.earnedPoints += activityNode.earnedPoints
+      
+      moduleNode.earnedPoints += pageNode.earnedPoints
+      pageNode.score = pageNode.earnedPoints / pageNode.totalPoints
+    
+    moduleNode.score = moduleNode.earnedPoints / moduleNode.totalPoints
   
   
   saveScoringTree = ()->
     KVStore.set(Params.project, projectNode)
     console.log("Note: saving after awarding points.")
     KVStore.save()
-  
-  
-  runCallbacks = (pointsAwarded)->
-    call(pointsAwarded) for call in updateCallbacks
     
     
 # SETUP
   
   loadScoringTree()
   if hasActivities
-    crawlActivityPoints()
+    crawlModuleAndSetUpScoring()
     updateModuleScore()
     saveScoringTree()
     runCallbacks(0)

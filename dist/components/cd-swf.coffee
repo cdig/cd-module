@@ -1,35 +1,49 @@
 # cd-swf
-# A simple wrapper around SWFObject.
+# A necessary-evil wrapper around SWFObject.
 # Currently designed to work with SWFObject 2.3beta.
 
 Take "load", ()->
-  
   idCounter = 0
   
-# FUNCTIONS
-  
-  setupSwf = (elm, fallback)->
-    path = elm.getAttribute("cd-swf")
-    transcludeContent = elm.innerHTML
+  setupSwf = (elm, fallbackContent)->
     
-    # This nonsense with IDs is needed because SWFObject removes our element from the dom,
-    # makes a new <object> element, and only copies over SOME attributes (like id).
-    # So we generate IDs dynamically so that we can get a hold of the new <object> it generates.
+    # SWFObject removes our <object> element from the dom, makes a new <object> element,
+    # and copies over SOME attributes (like id). To keep track of the new <object>,
+    # we'll make sure that current <object> has an ID, by generating a new unique ID if necessary.
     if not elm.id? or elm.id is ""
       elm.id = "cd-swf-" + idCounter++
     
+    # Store the element's ID, so that we can find the <object> after SWFObject finishes with it
     eid = elm.id
     
+    # Capture the content inside the current <object> before SWFObject destroys it.
+    # This should preserve custom params, eg: <object cd-swf="foo"><param name="bgcolor" value="red"></object>
+    # Note: this behaviour (transcluding custom params) is untested and may not work!
+    transcludeContent = elm.innerHTML
+    
+    # We don't actually load the SWF. We load the js-wrapper, and pass it the path to the SWF.
+    path = elm.getAttribute("cd-swf")
+    
+    # Engage!
     swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}&eid=#{eid}", eid, "100%", 540, 11.4, false, false, false, false, ()->
+
+      # Now, find and set up the new <object> element created by SWFObject
       newElm = document.getElementById(eid)
       newElm.innerHTML = transcludeContent
-      newElm.appendChild(fallback)
+      newElm.appendChild(fallbackContent)
+      
       # Make sure the cd-swf attribute is still present, so we can track that this SWF was added properly (for Warnings, etc)
       newElm.setAttribute("cd-swf", "")
   
   
 # INITIALIZATION
-  
-  fallback = document.querySelector("cd-swf-fallback")
+
   cdSwfs = document.querySelectorAll("[cd-swf]")
-  setupSwf(elm, fallback.cloneNode(true)) for elm in cdSwfs
+  
+  # The fallback content shows up when the user's browser doesn't have the Flash Player (eg: mobile)
+  fallback = document.querySelector("cd-swf-fallback")
+  
+  for elm in cdSwfs
+    # We need to generate a new copy of the fallback content for each SWF
+    clonedFallback = fallback.cloneNode(true)
+    setupSwf(elm, clonedFallback)
