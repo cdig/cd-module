@@ -2,7 +2,8 @@
 # Find the first page with unearned points, and hide all the pages after it.
 
 
-Take ["Pages", "Scoring"], (Pages, Scoring)->
+Take ["Pages", "Scoring", "Params"], (Pages, Scoring, Params)->
+  lockingDisabled = Params.locking is "false"
   lockedPage = null
   lockedPageIndex = null
   callbacks = []
@@ -39,7 +40,7 @@ Take ["Pages", "Scoring"], (Pages, Scoring)->
   
   
   pageShouldBeLocked = (page)->
-    return Scoring.getPageScore(page) < 1
+    return Scoring.getPageScore(page) < 1 and not lockingDisabled
   
   
   unlock = ()->

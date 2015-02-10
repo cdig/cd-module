@@ -289,8 +289,8 @@ with a nice shadow poking out from the corners to establish the vertical flow of
 The ID is used for the title of the page in the Page Switcher, and the filename for Page Audio.
 
 **Related:**
-[Pages](#pages), [Page Locking](#page-locking), [Page Switcher](#page-switcher),
-[Page Audio](#page-audio), [Page Title](#page-title), [Page Scroll Watcher](#page-scroll-watcher).
+[Pages](#pages), [PageLocking](#pagelocking), [PageSwitcher](#pageswitcher),
+[PageAudio](#pageaudio), [PageTitle](#pagetitle), [PageScrollWatcher](#pagescrollwatcher).
 
 
 
@@ -997,6 +997,7 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 **Requirements:**
 
 **Behaviour:**
+* Add a URL param `locking=false` to disable locking
 
 **Related:**
 
