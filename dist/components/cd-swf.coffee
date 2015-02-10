@@ -25,7 +25,7 @@ Take "load", ()->
       newElm.innerHTML = transcludeContent
       newElm.appendChild(fallback)
       # Make sure the cd-swf attribute is still present, so we can track that this SWF was added properly (for Warnings, etc)
-      newElm.setAttribute("cd-swf")
+      newElm.setAttribute("cd-swf", "")
   
   
 # INITIALIZATION
