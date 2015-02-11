@@ -1,6 +1,5 @@
 # This might be broken. Ivan just hastily converted it to Take/Make. Someone needs to review and test it.
 
-
 Take "load", ()->
   scrollAreas = []
 
@@ -9,6 +8,8 @@ Take "load", ()->
   
   scrollStarts = document.querySelectorAll('[scrollStart]')
   scrollEnds = document.querySelectorAll('[scrollEnd]')
+  
+  return unless scrollStarts.length > 0
   
   for scrollStart in scrollStarts
     scrollGroup = scrollStart.getAttribute('scrollStart')
@@ -29,8 +30,9 @@ Take "load", ()->
       scrollAreaBottom = scrollArea.stop.offsetTop
       if scrollTop > scrollAreaTop and scrollTop <= scrollAreaBottom
         value = (scrollTop - scrollAreaTop) / (scrollAreaBottom - scrollAreaTop)
-        scrollArea.start.dispatchEvent new CustomEvent "scrollPercentage", detail:
-          value: value
+        console.log "ScrollRegions: CustomEvent has been disabled because it fails in IE10"
+        # scrollArea.start.dispatchEvent new CustomEvent "scrollPercentage", detail:
+          # value: value
   
   
   handleScrollBody = ()->
@@ -38,9 +40,10 @@ Take "load", ()->
     scrollAreaBottom = document.body.offsetTop + document.body.scrollHeight - document.body.offsetHeight
     scrollTop = document.body.scrollTop
     value = (scrollTop - scrollAreaTop) / (scrollAreaBottom - scrollAreaTop)
-    event = new CustomEvent "scrollPercentage", detail:
-      value: value
-    document.body.dispatchEvent(event)
+    console.log "ScrollRegions: CustomEvent has been disabled because it fails in IE10"
+    # event = new CustomEvent "scrollPercentage", detail:
+    #   value: value
+    # document.body.dispatchEvent(event)
     
     
 # EVENT LISTENERS
