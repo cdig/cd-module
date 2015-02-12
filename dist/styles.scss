@@ -7,7 +7,6 @@
 // $mainBorderColor: #EEE;
 // $darkBorderColor: #DDD;
 
-
 // 2. Breakpoints
 $iPadLandscape: 1024px;
 $iPadPortrait: 768px;
@@ -42,18 +41,18 @@ $iPhonePortrait: 375px;
 @import 'styles/classes/oval.scss';
 
 // 7. Custom Elements
-@import 'styles/custom/center-block.scss';
 @import 'styles/custom/cd-activity.scss';
 @import 'styles/custom/cd-flow-arrow.scss';
 @import 'styles/custom/cd-page.scss';
 @import 'styles/custom/cd-row.scss';
 @import 'styles/custom/cd-text-bubble.scss';
+@import 'styles/custom/center-block.scss';
 
 // 8. Standard Elements
-@import 'styles/elements/figure.scss';
 @import 'styles/elements/headings.scss';
 @import 'styles/elements/img.scss';
 @import 'styles/elements/lists.scss';
 @import 'styles/elements/main.scss';
 @import 'styles/elements/object.scss';
 @import 'styles/elements/p.scss';
+@import 'styles/elements/template.scss';
