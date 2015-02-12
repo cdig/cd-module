@@ -12,5 +12,7 @@ main {
   
   @media (max-width: $iPhoneLandscape) {
     padding: 0em;
+    
+    &:last-child { padding-bottom: .5em; }
   }
 }
