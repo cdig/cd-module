@@ -6,6 +6,11 @@ window.hasAPI = ()->
 
 Take ["PureDom", "Scoring"], (PureDom, Scoring)->
   window.awardPoints = (eid, name, percent, exact)->
+    
+    # Sometimes, the name might include an extension, due to a bug in js-wrapper
+    # This is a quick workaround
+    name = name.replace(".swf", "")
+    
     element = document.getElementById(eid)
     page = PureDom.querySelectorParent(element, "cd-page")
     cdActivity = page.querySelector("cd-activity[name='#{name}']")
