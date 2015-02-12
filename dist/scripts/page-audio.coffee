@@ -40,19 +40,19 @@ Take ["PageScrollWatcher"], (PageScrollWatcher)->
   loadAudioForCurrentPage = ()->
     if currentPageName? and audioEnabled
       stopAudio()
-      audioElement = new Audio("audio/#{currentPageName}.mp3")
-      audioElement.setAttribute("autoplay", "")
-      document.body.appendChild(audioElement)
-      initialiseErrorHandling()
-  
+      createAudio()
+      
+  createAudio = ()->
+    audioElement = new Audio("audio/#{currentPageName}.mp3")
+    audioElement.setAttribute("autoplay", "")
+    document.body.appendChild(audioElement)
+    initialiseErrorHandling()
+
   stopAudio = ()->
     if audioElement?
       audioElement.pause()
       document.body.removeChild(audioElement)
       audioElement = null
-
-  startAudio = ()->
-    audioElement.play() if audioElement?
 
   update = ()->
     callback() for callback in updateCallbacks
@@ -63,16 +63,15 @@ Take ["PageScrollWatcher"], (PageScrollWatcher)->
 
   initialiseErrorHandling = ()->
     audioElement.addEventListener 'error', (e)->
-      status = ""
-      switch e.target.error.code
+      status = switch e.target.error.code
         when e.target.error.MEDIA_ERR_ABORTED 
-          status = "Audio playback exited"
+          "Audio playback exited"
         when e.target.error.MEDIA_ERR_NETWORK
-          status = "A network error caused the file played to not be returned."
+          "A network error caused the file played to not be returned."
         when e.target.error.MEDIA_ERR_DECODE
-          status = "The audio playback was aborted due to the file being corrupt or unsupported."
+          "The audio playback was aborted due to the file being corrupt or unsupported."
         else
-          status = "The audio file cannot be played. Please make sure the path to the file is correct."
+          "The audio file cannot be played. Please make sure the path to the file is correct."
       loadStatusIsSuspect(status, e)
   
   Take "ModalPopup", (ModalPopup)->
@@ -80,10 +79,8 @@ Take ["PageScrollWatcher"], (PageScrollWatcher)->
     originalLoadStatus = loadStatusIsSuspect
     loadStatusIsSuspect = (status, e)->
       originalLoadStatus(status, e)
-      ModalPopup.open("Sorry", "This module does not include voice-over narration.")      
+      ModalPopup.open("Sorry", "An error has occured while loading voice-over narration.")      
     
-       
-
 # SETUP
   PageScrollWatcher.onPageChange(updateCurrentPage)
   updateCurrentPage()
