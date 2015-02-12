@@ -93,15 +93,14 @@ Take "load", ()->
       
       oldOpen(callout)
       
-      try
-        # Will throw an error if the call-out isn't inside an activity — in that case, we don't need to do scoring
-        activity = PureDom.querySelectorParent(callout, "cd-activity")
+      activity = PureDom.querySelectorParent(callout, "cd-activity")
+      if activity?
         callouts = PureDom.querySelectorAll(activity, "call-out")
-        
-        if callouts.every(hasBeenSeen)
-          Scoring.addScore(callout, 1)
-        else if shouldAwardPoint
-          Scoring.addPoints(callout, 1)
+        if callouts?
+          if callouts.every(hasBeenSeen)
+            Scoring.addScore(activity, 1)
+          else if shouldAwardPoint
+            Scoring.addPoints(activity, 1)
 
 # SETUP
   
