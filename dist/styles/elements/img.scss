@@ -1,8 +1,5 @@
 img {
-  max-width: 100%;
+  width: 100%; // This is experimental, but it should be the desired behaviour
+  // max-width: 100%; // We probably don't need this if the above works
   vertical-align: middle; // Removes the baseline space under images and gives more sensible default behaviour
-}
-
-cd-page > img {
-  width: 100%;
 }

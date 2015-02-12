@@ -3,6 +3,11 @@ p {
   margin: 1em;
 }
 
+main > p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 cd-text-bubble p {
   padding: 0;
   

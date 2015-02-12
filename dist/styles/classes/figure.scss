@@ -1,0 +1,14 @@
+// This is here to give a standard name to a concept
+// The particular styling should be customized per-project
+.figure {
+  margin-bottom: 1em;
+}
+
+// This should work nicely inside a cd-row
+.figure + .figure {
+  margin-left: 1em;
+  
+  @media (max-width: $iPhoneLandscape) {
+    margin-left: 0;
+  }
+}

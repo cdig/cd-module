@@ -1,6 +1,7 @@
 cd-text-bubble {
   display: block;
   width: 100%;
+  max-width: $maxLineLength;
   padding: 1em;
   border-radius: $borderRadius * 2;
   background-color: #AAA;
