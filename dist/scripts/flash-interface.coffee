@@ -6,6 +6,8 @@ window.hasAPI = ()->
 
 Take ["PureDom", "Scoring"], (PureDom, Scoring)->
   window.awardPoints = (eid, name, percent, exact)->
+    percent = parseFloat(percent)
+    exact = parseInt(exact)
     
     # Sometimes, the name might include an extension, due to a bug in js-wrapper
     # This is a quick workaround
@@ -17,8 +19,8 @@ Take ["PureDom", "Scoring"], (PureDom, Scoring)->
     
     if percent? and percent > 0
       Scoring.addScore(cdActivity, percent)
-      
-    if exact? and percent > 0
+    
+    if exact? and exact > 0
       Scoring.addPoints(cdActivity, exact)
     
     return true
