@@ -1,14 +1,15 @@
 p {
   max-width: $maxLineLength;
   margin: 1em;
+  
+  @media (max-width: $iPhoneLandscape) {
+    padding: 0 1em;
+  }
 }
 
 main > p {
   margin-left: auto;
   margin-right: auto;
-  @media (max-width: $iPhoneLandscape) {
-    padding: 0 1em;
-  }
 }
 
 cd-text-bubble p {
