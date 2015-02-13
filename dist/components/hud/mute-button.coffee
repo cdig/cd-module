@@ -1,7 +1,7 @@
 Take ["cdHUD", "PageAudio", "Params", "load"], (cdHUD, PageAudio, Params)->
   
   # Don't show the mute button unless audio is enabled
-  return unless Params.audio?
+  return unless Params.audio
   
 # GRAPHIC (experimental approach using <template> element)
   
