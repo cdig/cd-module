@@ -1,5 +1,5 @@
 // 1. Modernizr
-// @codekit-prepend "libs/modernizr.min.js";
+// @codekit-prepend "libs/modernizr.js";
 
 // 2. Sibling Dependencies
 // @codekit-prepend "../../cd-foundation/dist/cd-foundation.js";
