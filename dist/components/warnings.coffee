@@ -1,4 +1,4 @@
-Take ["Env", "cdHUD", "load"], (Env, cdHUD)->
+Take ["Env", "cdHUD", "ModalPopup", "load"], (Env, cdHUD, ModalPopup)->
   
   return unless Env.dev or Env.debug
   
@@ -25,6 +25,8 @@ Take ["Env", "cdHUD", "load"], (Env, cdHUD)->
   showWarningIndicator = ()->
     warningIndicator = document.createElement("warning-indicator")
     warningIndicator.textContent = "Warnings"
+    warningIndicator.addEventListener "click", ()->
+      ModalPopup.open("This Module Has Warnings", "1. Open the console to see the warnings. 2. Fix the warnings. 3. Profit.");
     cdHUD.addElement(warningIndicator)
   
   

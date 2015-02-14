@@ -1342,7 +1342,7 @@ SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-
 **Behaviour:**
 This service scans the page for common errors in the content.
 If it finds an error, it notifies the developer via a "Warning" indicator in the HUD,
-and lists details in the console.
+and lists details in the browser console.
 
 
 
