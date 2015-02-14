@@ -6,7 +6,7 @@ Take ["ModalPopup", "cdHUD"], (ModalPopup, cdHUD)->
 # SETUP
   
   createAndOpenWelcomePopup = ()->
-  
+    
     container = document.createElement("center-block")
     container.className = "WelcomePopupContainer"
     
@@ -21,13 +21,14 @@ Take ["ModalPopup", "cdHUD"], (ModalPopup, cdHUD)->
     bottomText.textContent = "You can use it to control this module"
     container.appendChild(bottomText)
     
-    if not window.localStorage[KEY]?
-      window.localStorage[KEY] = true
-      ModalPopup.open("Welcome", container)
+    ModalPopup.open("Welcome", container)
   
   
 # INITIALIZATION
   
-  # Delay the setup by one turn of the event loop, so we have a
-  # better chance of catching all the items being added to the HUD. This is a hack.
-  setTimeout(createAndOpenWelcomePopup)
+  if not window.localStorage[KEY]?
+    window.localStorage[KEY] = true
+    
+    # Delay the setup by one turn of the event loop, so we have a
+    # better chance of catching all the items being added to the HUD. This is a hack.
+    setTimeout(createAndOpenWelcomePopup)

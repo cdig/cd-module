@@ -11,6 +11,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
   lastSetPosition = 0
   locked = false
   showing = false
+  suppressed = false
   deadband = 20
   icon = null
 
@@ -37,12 +38,17 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
       
     hide: ()->
       hide()
-  
+    
+    
+    suppress: (enable = true)->
+      suppressed = enable
+      if suppressed then hide() else updateScroll()
+    
 
 # PRIVATE
   
   show = (fast)->
-    if not showing
+    if not showing and not suppressed
       showing = true
       scrollHint.setAttribute("showing", true)
       
@@ -98,4 +104,3 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
     PageLocking.onUpdate(updateLockedPage)
     updateLockedPage()
     updateScroll()
-    

@@ -1,4 +1,4 @@
-Take "load", ()->
+Take ["ScrollHint", "load"], (ScrollHint)->
   
 # ELEMENTS
   
@@ -8,7 +8,7 @@ Take "load", ()->
   content = document.createElement("div")
   buttons = document.createElement("modal-buttons")
   okayButton = document.createElement("okay-button")
-
+  
   okayButton.textContent = "Okay"
   
   buttons.appendChild(okayButton)
@@ -39,7 +39,9 @@ Take "load", ()->
         buttons.style.visibility = null
       else
         buttons.style.visibility = "hidden"
-    
+      
+      ScrollHint.suppress()
+
     
     close: ()->
       fadeOut()
@@ -56,7 +58,11 @@ Take "load", ()->
     main.className = "hide"
   
   
+  handleOkayClick = ()->
+    fadeOut()
+    ScrollHint.suppress(false)
+  
 # INIT
   
-  okayButton.addEventListener("click", fadeOut)
+  okayButton.addEventListener("click", handleOkayClick)
   hide()
