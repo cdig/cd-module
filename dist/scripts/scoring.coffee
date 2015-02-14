@@ -1,4 +1,5 @@
 Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
+  SCORING_API_VERSION = 1
   hasActivities = document.querySelector("cd-activity")?
   projectNode = null
   chapterNode = null
@@ -67,6 +68,12 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
     projectNode = KVStore.get(Params.project) or createScoringNode("chapters")
     chapterNode = projectNode.chapters[Params.chapter] ?= createScoringNode("modules")
     moduleNode = chapterNode.modules[Params.module] ?= createScoringNode("pages")
+    
+    # If we've found an out-of-date version of the module scores, wipe them and start over
+    if not moduleNode.v or moduleNode.v < SCORING_API_VERSION
+      console.log "Out of date scores found — erasing"
+      moduleNode = chapterNode.modules[Params.module] = createScoringNode("pages")
+      moduleNode.v = SCORING_API_VERSION
     
   
   crawlModuleAndSetUpScoring = ()->
