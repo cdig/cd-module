@@ -1,6 +1,3 @@
-# Compat:
-# IE10 — Transitions
-
 Take "load", ()->
   
 # ELEMENTS
@@ -8,7 +5,7 @@ Take "load", ()->
   main = document.createElement("cd-modal")
   popup = document.createElement("modal-popup")
   title = document.createElement("h1")
-  content = document.createElement("p")
+  content = document.createElement("div")
   buttons = document.createElement("modal-buttons")
   okayButton = document.createElement("okay-button")
 

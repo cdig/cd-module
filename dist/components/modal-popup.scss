@@ -42,14 +42,15 @@ cd-modal {
   }
   
   
-  p {
-    flex: 1 0 auto; // Consume extra space, so our text is right under the header.
+  div {
+    flex: 1 0 auto;
   }
   
   
   modal-buttons {
     align-self: flex-end;
     font-weight: bold;
+    padding-top: 1em;
     
     & > * {
       display: inline-block;
