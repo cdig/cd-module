@@ -11,14 +11,14 @@ Take ["ModalPopup", "cdHUD"], (ModalPopup, cdHUD)->
     container.className = "WelcomePopupContainer"
     
     topText = document.createElement("p")
-    topText.textContent = "In the bottom left corner, you'll find the HUD:"
+    topText.textContent = "In the bottom left corner is the HUD"
     container.appendChild(topText)
     
     hud = cdHUD.getContainer().cloneNode(true)
     container.appendChild(hud)
     
     bottomText = document.createElement("p")
-    bottomText.textContent = "Use it to control various features of this lesson."
+    bottomText.textContent = "You can use it to control this module"
     container.appendChild(bottomText)
     
     if not window.localStorage[KEY]?
