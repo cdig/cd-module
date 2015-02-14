@@ -25,7 +25,7 @@ Take ["PureDom", "load"], (PureDom)->
     path = elm.getAttribute("cd-swf")
     
     # Engage!
-    swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}&eid=#{eid}", eid, "100%", 540, 11.4, false, false, { wmode: "direct" }, false, ()->
+    swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}&eid=#{eid}", eid, "100%", 540, 11.4, false, false, { wmode: "opaque" }, false, ()->
 
       # Now, find and set up the new <object> element created by SWFObject
       newElm = document.getElementById(eid)
