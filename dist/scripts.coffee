@@ -15,6 +15,7 @@
 # @codekit-prepend 'components/scroll-hint.coffee'
 # @codekit-prepend 'components/score-animation/particle.coffee'
 # @codekit-prepend 'components/score-animation/score-animation.coffee'
+# @codekit-prepend 'components/warnings.coffee'
 # @codekit-prepend 'components/welcome-popup.coffee'
 
 # 3. Scripts
@@ -37,4 +38,3 @@
 # @codekit-prepend 'scripts/save-with-popup.coffee'
 # @codekit-prepend 'scripts/scoring.coffee'
 # @codekit-prepend 'scripts/scroll-to.coffee'
-# @codekit-prepend 'scripts/warnings.coffee'
