@@ -1,12 +1,21 @@
 .WelcomePopupContainer {
-  width: 292px;
+  
+  p {
+    margin: 0;
+  }
   
   // These styles override the styles in the cd-hud component stylesheet
   cd-hud {
     position: static;
-    margin: .75em 0;
+    display: inline-flex;
+    margin: 1em 0;
     border: 1px solid black;
     color: black;
+    animation: none;
     pointer-events: none; // Safe
+    
+    * {
+      cursor: default;
+    }
   }
 }
