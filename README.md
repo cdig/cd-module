@@ -37,7 +37,7 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
   - [cdHUD](#cdhud)
   - [FlashInterface](#flashinterface)
   - [KVStore](#kvstore)
-  - [LoadingScreen](#loading-screen)
+  - [LoadingScreen](#loadingscreen)
   - [magic-underlines](#magic-underlines)
   - [ModalPopup](#modalpopup)
   - [Modernizr](#modernizr)
