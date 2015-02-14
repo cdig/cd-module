@@ -2,7 +2,7 @@
 # A necessary-evil wrapper around SWFObject.
 # Currently designed to work with SWFObject 2.3beta.
 
-Take "load", ()->
+Take ["PureDom", "load"], (PureDom)->
   idCounter = 0
   
   setupSwf = (elm, fallbackContent)->
@@ -19,17 +19,17 @@ Take "load", ()->
     # Capture the content inside the current <object> before SWFObject destroys it.
     # This should preserve custom params, eg: <object cd-swf="foo"><param name="bgcolor" value="red"></object>
     # Note: this behaviour (transcluding custom params) is untested and may not work!
-    transcludeContent = elm.innerHTML
+    transcludeContent = PureDom.nodeListToArray(elm.childNodes)
     
     # We don't actually load the SWF. We load the js-wrapper, and pass it the path to the SWF.
     path = elm.getAttribute("cd-swf")
     
     # Engage!
-    swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}&eid=#{eid}", eid, "100%", 540, 11.4, false, false, false, false, ()->
+    swfobject.embedSWF "flash/js-wrapper.swf?path=#{path}&eid=#{eid}", eid, "100%", 540, 11.4, false, false, { wmode: "direct" }, false, ()->
 
       # Now, find and set up the new <object> element created by SWFObject
       newElm = document.getElementById(eid)
-      newElm.innerHTML = transcludeContent
+      newElm.appendChild(node) for node in transcludeContent
       newElm.appendChild(fallbackContent)
       
       # Make sure the cd-swf attribute is still present, so we can track that this SWF was added properly (for Warnings, etc)
