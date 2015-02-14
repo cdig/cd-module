@@ -1,8 +1,5 @@
 Take ["cdHUD", "BackendLocalStorage", "Backend", "Env"], (cdHUD, BLS, Backend, Env)->
   
-  # Only show the reset button if we're in dev or debug mode
-  return unless Env.dev or Env.debug
-  
   # Only show the reset button if we're using the LocalStorage backend
   return unless BLS is Backend
   
@@ -11,7 +8,9 @@ Take ["cdHUD", "BackendLocalStorage", "Backend", "Env"], (cdHUD, BLS, Backend, E
   reset.textContent = "Reset"
   
   reset.addEventListener "click", (e)->
-    window.localStorage.clear()
-    document.location.reload(true)
+    if Env.dev or Env.debug or window.confirm("Do you really want to start over?")
+      document.body.scrollTop = 0
+      window.localStorage.clear()
+      document.location.reload(true)
   
   cdHUD.addElement(reset)
