@@ -17,6 +17,6 @@ Take "Ease", (Ease)->
       startTime ?= currentTime
       endTime ?= startTime + duration
       document.body.scrollTop = Ease.cubic(currentTime, startTime, endTime, startScroll, endScroll, true)
-      requestAnimationFrame(animate) if currentTime < duration
+      requestAnimationFrame(animate) if currentTime < endTime
       
     requestAnimationFrame(animate)
