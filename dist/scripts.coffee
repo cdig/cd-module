@@ -7,6 +7,7 @@
 # @codekit-prepend 'components/call-outs.coffee'
 # @codekit-prepend 'components/cd-swf.coffee'
 # @codekit-prepend 'components/hud.coffee'
+# @codekit-prepend 'components/loading-screen.coffee'
 # @codekit-prepend 'components/modal-popup.coffee'
 # @codekit-prepend 'components/page-locking.coffee'
 # @codekit-prepend 'components/page-switcher.coffee'

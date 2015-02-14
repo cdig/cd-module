@@ -37,6 +37,7 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
   - [cdHUD](#cdhud)
   - [FlashInterface](#flashinterface)
   - [KVStore](#kvstore)
+  - [LoadingScreen](#loading-screen)
   - [magic-underlines](#magic-underlines)
   - [ModalPopup](#modalpopup)
   - [Modernizr](#modernizr)
@@ -809,7 +810,7 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 
 
-## KV Store
+## KVStore
 **Source Code:**
 
 **Usage:**
@@ -825,6 +826,25 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 
 
+
+
+
+
+
+
+## LoadingScreen
+**Source Code:**
+[Coffee](https://github.com/cdig/cd-module/blob/master/dist/components/loading-screen.coffee)
+[HTML](https://github.com/cdig/cd-module/blob/master/dist/components/loading-screen.html)
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/components/loading-screen.scss)
+
+**Behaviour:**
+
+Automatically shows a loading indicator if the download is taking a while.
+This solves the problem of people seeing brokenness while images download.
+However, it doesn't have any way of showing a progress indicator.
+If the download takes a really long time, it successively offers more of an appology to the user,
+and finally asks them to check their internet connection.
 
 
 
