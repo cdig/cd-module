@@ -18,12 +18,14 @@ Take ["ScrollTo", "PageTitle"], (ScrollTo, PageTitle)->
       scrollPosition = document.body.scrollTop
       contentTop = page.offsetTop
       
-      # According to cd-page.scss, the first child of a page has a fair bit of margin.
-      # We'll take that margin into account when animating to a page.
-      firstChild = page.querySelector(":first-child")
-      childStyle = window.getComputedStyle(firstChild)
-      marginString = childStyle.getPropertyValue("margin-top")
-      margin = parseInt(marginString.split("px")[0])
-      contentTop += margin/2 # Adjust the factor as needed
+      # Take the padding into account when animating to a page.
+      style = window.getComputedStyle(page)
+      paddingString = style.getPropertyValue("padding-top")
+      padding = parseInt(paddingString)
+      contentTop += padding # Adjust the factor as needed
+      
+      # Try to center the page
+      pageHeight = page.clientHeight - padding*2
+      contentTop -= Math.max((window.innerHeight - pageHeight)/2, 20)
       
       ScrollTo(contentTop)
