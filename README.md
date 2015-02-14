@@ -1334,19 +1334,15 @@ SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-
 
 
 ## Warnings
-This will log warnings to the console if you do things that are a bad idea.
+
 **Source Code:**
-
-**Usage:**
-
-```html
-```
-
-**Requirements:**
+[Coffee](https://github.com/cdig/cd-module/blob/master/dist/components/warnings.coffee)
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/components/warnings.scss)
 
 **Behaviour:**
-
-**Related:**
+This service scans the page for common errors in the content.
+If it finds an error, it notifies the developer via a "Warning" indicator in the HUD,
+and lists details in the console.
 
 
 
