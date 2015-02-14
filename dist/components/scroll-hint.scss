@@ -8,6 +8,7 @@ scroll-hint {
   text-align: center;
   transform: translateY(150%);
   transition: transform .3s cubic-bezier(.8,.8,.5,1.0);
+  pointer-events: none; // Safe — just prevents weird interactions with the HUD
   
   &[showing] {
     transform: translateY(-1em);
@@ -39,6 +40,7 @@ scroll-hint {
     background: linear-gradient(rgba(#F8F8F8, .94), rgba(#F8F8F8, 1), rgba(#F8F8F8, .94));
     box-shadow: 0 3px 8px -4px rgba(black, .7);
     cursor: pointer;
+    pointer-events: auto; // Safe
     
     &[icon-text]::before {
       content: attr(icon-text);
