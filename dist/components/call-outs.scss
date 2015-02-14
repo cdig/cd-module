@@ -1,4 +1,4 @@
-$point-size: 1em;
+$point-size: 2em;
 $arrow-size: .8em;
 
 call-out {
@@ -16,9 +16,9 @@ call-out {
     width: $point-size;
     height: $point-size;
     margin: -$point-size/2;
-    border: 5px solid #0F7;
+    border: 8px solid #0F7;
     border-radius: $point-size;
-    background: rgba(white, .3);
+    background: rgba(black, .4);
     animation: call-out-pulse 4s linear infinite;
   }
   
@@ -40,7 +40,7 @@ call-out {
     }
   }
   
-  &[open], &[closing] {
+  &[seen][open], &[seen][closing] {
     z-index: 100;
     call-out-label {
       display: block;
@@ -48,7 +48,7 @@ call-out {
     call-out-point {
       animation: none;
       opacity: 0;
-      transform: scale(3); // This makes it easier to avoid moving the mouse out of the circle by accident
+      transform: scale(2); // This makes it easier to avoid moving the mouse out of the circle by accident
     }
   }
   
@@ -61,7 +61,8 @@ call-out {
   }
   
   &[seen] call-out-point {
-    border: 4px solid #777;
+    border-color: #777;
+    animation: call-out-pulse-seen 4s linear infinite;
   }
   
   &[top] {
@@ -131,8 +132,16 @@ call-out {
 
 @keyframes call-out-pulse {
   from { transform: scale(1); opacity: 0; }
-  75%  { transform: scale(1); opacity: 1; }
-  to   { transform: scale(2); opacity: 0; }
+  40%  { transform: scale(.6); opacity: 1; }
+  50%  { transform: scale(.6); opacity: 1; }
+  90%  { transform: scale(1); opacity: 0; }
+  to   { transform: scale(1); opacity: 0; }
+}
+
+@keyframes call-out-pulse-seen {
+  from { transform: scale(.8); opacity: 0; }
+  50%  { transform: scale(.8); opacity: 1; }
+  to   { transform: scale(.8); opacity: 0; }
 }
 
 @keyframes call-out-appear {
