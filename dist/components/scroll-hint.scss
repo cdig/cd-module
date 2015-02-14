@@ -69,6 +69,10 @@ scroll-hint {
       color: #F98;
     }
   }
+  
+  @media (max-width: $iPhonePortrait) {
+    font-size: 0.9em;
+  }
 }
 
 @keyframes scroll-hint-wiggle {
