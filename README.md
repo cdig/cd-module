@@ -1501,15 +1501,16 @@ These values are documented here.
 
 z-index | CSS Selector              | System
 -------:| ------------------------- | ------
-100     | call-out[open]            | [call-out](#call-out)
-101     | call-out-point            | [call-out](#call-out)
-1000    | cd-modal                  | [ModalPopup](#modal-popup)
-1001    | page-switcher             | [PageSwitcher](#page-switcher)
+100     | call-out[open]            | [call-out](#callout)
+101     | call-out-point            | [call-out](#callout)
+1000    | cd-modal                  | [ModalPopup](#modalpopup)
+1001    | page-switcher             | [PageSwitcher](#pageswitcher)
 1002    | cd-hud                    | [cdHUD](#cdhud)
-1003    | scroll-hint               | [ScrollHint](#scroll-hint)
-2000    | score-area                | [ScoreAnimation](#score-animation)
-9999    | .browser-support          | [BrowserSupport](#browser-support)
-10000   | editor-container textarea | [EditorContainer](#editor-container)
+1003    | scroll-hint               | [ScrollHint](#scrollhint)
+2000    | score-area                | [ScoreAnimation](#scoreanimation)
+5000    | loading-screen            | [LoadingScreen](#loadingscreen)
+9999    | .browser-support          | [BrowserSupport](#browsersupport)
+10000   | editor-container textarea | [EditorContainer](https://github.com/cdig/editor)
 
 * 0-999 is reserved for you to use in your content.
 * 1000-9999 is reserved for [the framework](#beneath-the-surface-the-framework).
