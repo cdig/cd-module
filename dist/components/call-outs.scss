@@ -1,5 +1,9 @@
 $call-out-point-size: 3em !default;
 $call-out-arrow-size: .8em !default;
+$call-out-ring-color: #0F7 !default;
+$call-out-seen-ring-color: #777 !default;
+$call-out-center-color: rgba(black, .4) !default;
+$call-out-seen-center-color: rgba(black, .4) !default;
 
 call-out {
   position: absolute;
@@ -16,9 +20,9 @@ call-out {
     width: $call-out-point-size;
     height: $call-out-point-size;
     margin: -$call-out-point-size/2;
-    border: 8px solid #0F7;
+    border: 8px solid $call-out-ring-color;
     border-radius: $call-out-point-size;
-    background: rgba(black, .4);
+    background-color: $call-out-center-color;
     animation: call-out-pulse 4s linear infinite;
   }
   
@@ -28,7 +32,7 @@ call-out {
     padding: .5em;
     max-width: 12em;
     text-align: center;
-    background: #F9F9F9;
+    background-color: #F9F9F9;
     box-shadow: 0 .2em 2em -.5em black;
     
     &::after {
@@ -61,7 +65,8 @@ call-out {
   }
   
   &[seen] call-out-point {
-    border-color: #777;
+    border-color: $call-out-seen-ring-color;
+    background-color: $call-out-seen-center-color;
     animation: call-out-pulse-seen 4s linear infinite;
   }
   
