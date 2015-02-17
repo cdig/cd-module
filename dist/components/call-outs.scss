@@ -1,5 +1,5 @@
-$point-size: 3em;
-$arrow-size: .8em;
+$call-out-point-size: 3em !default;
+$call-out-arrow-size: .8em !default;
 
 call-out {
   position: absolute;
@@ -13,11 +13,11 @@ call-out {
     position: absolute;
     display: block;
     z-index: 101;
-    width: $point-size;
-    height: $point-size;
-    margin: -$point-size/2;
+    width: $call-out-point-size;
+    height: $call-out-point-size;
+    margin: -$call-out-point-size/2;
     border: 8px solid #0F7;
-    border-radius: $point-size;
+    border-radius: $call-out-point-size;
     background: rgba(black, .4);
     animation: call-out-pulse 4s linear infinite;
   }
@@ -36,7 +36,7 @@ call-out {
       position: absolute;
       width: 0;
       height: 0;
-      border: $arrow-size solid transparent;
+      border: $call-out-arrow-size solid transparent;
     }
   }
   
@@ -72,11 +72,11 @@ call-out {
       left: 50%;
     }
     call-out-label {
-      top: -$arrow-size -$point-size/2;
+      top: -$call-out-arrow-size -$call-out-point-size/2;
       transform-origin: bottom;
       &::after {
         transform: translate(-50%, 0%);
-        border-top: $arrow-size solid #F9F9F9;
+        border-top: $call-out-arrow-size solid #F9F9F9;
       }
     }
   }
@@ -88,11 +88,11 @@ call-out {
       left: 100%;
     }
     call-out-label {
-      left: -$arrow-size -$point-size/2;
+      left: -$call-out-arrow-size -$call-out-point-size/2;
       transform-origin: right;
       &::after {
         transform: translate(0%, -50%);
-        border-left: $arrow-size solid #F9F9F9;
+        border-left: $call-out-arrow-size solid #F9F9F9;
       }
     }
   }
@@ -104,11 +104,11 @@ call-out {
       left: 0%;
     }
     call-out-label {
-      right: -$arrow-size -$point-size/2;
+      right: -$call-out-arrow-size -$call-out-point-size/2;
       transform-origin: left;
       &::after {
         transform: translate(-95%, -50%); // 95% because of crappy pixel rounding errors
-        border-right: $arrow-size solid #F9F9F9;
+        border-right: $call-out-arrow-size solid #F9F9F9;
       }
     }
   }
@@ -120,11 +120,11 @@ call-out {
       left: 50%;
     }
     call-out-label {
-      bottom: -$arrow-size -$point-size/2;
+      bottom: -$call-out-arrow-size -$call-out-point-size/2;
       transform-origin: top;
       &::after {
         transform: translate(-50%, -95%); // 95% because of crappy pixel rounding errors
-        border-bottom: $arrow-size solid #F9F9F9;
+        border-bottom: $call-out-arrow-size solid #F9F9F9;
       }
     }
   }
