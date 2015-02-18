@@ -15,7 +15,7 @@ object > cd-swf-fallback {
   
   p {
     // color: white;
-    max-width: inherit;
+    max-width: 100%; //this is a bug fix for internet explorer. When items are aligned center in IE they can overflow if not set to max-width: 100%
   }
   
   a {
