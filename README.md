@@ -327,7 +327,7 @@ In this example, the three images will all appear side-by-side.
 **Requirements:**
 
 **Behaviour:**
-
+Quick thing to note (which will be explained later): currently having a video inside of cd-row requires that video to be embedded within a div in order to work inside of IE.
 **Related:**
 
 
