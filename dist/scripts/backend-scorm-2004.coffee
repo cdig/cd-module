@@ -1,5 +1,5 @@
-# Backend: SCORM 2004
-# This service wraps the SCORM 2004 API and exposes a standard interface to the rest of the system.
+# Backend: SCORM2004
+# This service wraps the SCORM2004 API and exposes a standard interface to the rest of the system.
 
 
 Take "load", ()->
@@ -16,7 +16,8 @@ Take "load", ()->
           setupNavigation()
         return true
       catch error
-        Take "ModalPopup", (ModalPopup)-> ModalPopup.open("Error", error.errorMessage, false)
+        console.log "An error occurred while setting up SCORM2004:", error
+        Take "ModalPopup", (ModalPopup)-> ModalPopup.open("Error", "An error occurred while setting up scoring (SCORM) for this module. Please refresh your browser and try again.", false)
         return false
     
     getPersistedData: ()->
@@ -51,21 +52,22 @@ Take "load", ()->
     return if (scormAPI = findScormAPIObject(window))?
     return if (scormAPI = findScormAPIObject(window.top?.opener))?
     return if (scormAPI = findScormAPIObject(window.top?.opener?.document))? # Special handling for Plateau
-    throw new Error("SCORM 2004 API not found")
+    throw new Error("SCORM2004 API not found")
   
   
   initialize = ()->
-    switch scormGet("Initialize", "", true)
+    getValue = scormGet("Initialize", "", true)
+    switch getValue
       when true
-        console.log("SCORM Initialize: success")
+        console.log("SCORM2004 Initialize: success")
         connected = true
         return true
       when false
-        console.log("SCORM Initialize: already initialized")
+        console.log("SCORM2004 Initialize: already initialized")
         connected = true
         return false
       else
-        throw new Error("SCORM 2004 Initialize caused an error")
+        throw new Error("SCORM2004 Initialize: received an unknown response: #{getValue}")
       
     
     
@@ -120,7 +122,7 @@ Take "load", ()->
     if connected or force
       result = String(scormAPI[name](parameter))
       if getSucceeded(result)
-        return result
+        return parseResult(result)
       else
         failure(failureMsg)
         return null
@@ -161,6 +163,13 @@ Take "load", ()->
     hasValue = value? and value isnt ""
     return hasValue or hasNoError()
   
+  
+  parseResult = (value)->
+    switch value
+      when "true" then true
+      when "false" then false
+      else value
+      
   
   setSucceeded = (value)->
     switch typeof value
