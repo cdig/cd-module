@@ -13,16 +13,19 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
     Make "Scoring",
       addPoints: (cdActivity, points)->
         if hasActivities
+          console.assert(cdActivity.matches("cd-activity"), "Scoring.addPoints(cdActivity, points) must be called with a cd-activity element, not:", cdActivity)
           activityNode = findActivitiyNodeFor(cdActivity)
           applyAward(activityNode, points)
         
       addScore: (cdActivity, score)->
         if hasActivities
+          console.assert(cdActivity.matches("cd-activity"), "Scoring.addScore(cdActivity, score) must be called with a cd-activity element, not:", cdActivity)
           activityNode = findActivitiyNodeFor(cdActivity)
           points = score * activityNode.totalPoints
           applyAward(activityNode, points)
       
       getActivityScore: (cdActivity)->
+        console.assert(cdActivity.matches("cd-activity"), "Scoring.getActivityScore(cdActivity) must be called with a cd-activity element, not:", cdActivity)
         activityNode = findActivitiyNodeFor(cdActivity)
         return activityNode.score
       
