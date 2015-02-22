@@ -47,8 +47,8 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
 
 # IMMUTABLE
   
-  createScoringNode = (groupName)->
-    node = {}
+  createScoringNode = (groupName, nodeDefaults)->
+    node = nodeDefaults or {}
     node.score = 0
     node[groupName] = {} if groupName?
     return node
@@ -70,7 +70,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
   loadScoringTree = ()->
     projectNode = KVStore.get(Params.project) or createScoringNode("chapters")
     chapterNode = projectNode.chapters[Params.chapter] ?= createScoringNode("modules")
-    moduleNode = chapterNode.modules[Params.module] ?= createScoringNode("pages")
+    moduleNode = chapterNode.modules[Params.module] ?= createScoringNode("pages", {v: SCORING_API_VERSION})
     
     # If we've found an out-of-date version of the module scores, wipe them and start over
     if not moduleNode.v or moduleNode.v < SCORING_API_VERSION
