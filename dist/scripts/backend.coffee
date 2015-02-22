@@ -1,8 +1,11 @@
-Take ["BackendLocalStorage", "BackendScorm2004", "Env"], (LocalStorage, Scorm2004, Env)->
+Take ["BackendLocalStorage", "BackendScorm2004", "Params"], (LocalStorage, Scorm2004, Params)->
   
-  # If we're standalone, debug, or in development, we should use LocalStorage
-  local = !Env.parent? or Env.debug or Env.dev
+  Backend = switch Params.backend
+    # when "auto" then determineBackend() # Doesn't exist yet
+    # when "LBS" then LBS # Doesn't exist yet
+    when "SCORM2004" then Scorm2004
+    # when "SCORM1_2" then Scorm1_2 # Doesn't exist yet
+    else LocalStorage
   
-  Backend = if local then LocalStorage else Scorm2004
   Backend.initialize()
   Make("Backend", Backend)

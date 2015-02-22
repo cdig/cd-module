@@ -32,7 +32,8 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
 - [Beneath The Surface: The Framework](#beneath-the-surface-the-framework)
   - [BackendResetButton](#backendresetbutton)
   - [BackendLocalStorage](#backendlocalstorage)
-  - [BackendSCORM2004](#backendscorm2004)
+  - [BackendScorm2004](#backendscorm2004)
+  - [Backend](#backend)
   - [BrowserSupport](#browsersupport)
   - [cdHUD](#cdhud)
   - [FlashInterface](#flashinterface)
@@ -223,7 +224,7 @@ Activities that support this "side-by-side" arrangement will mention this in the
 * You must provide a `name` that is unique within the page
 * You specify the number of `points` available to be awarded
 
-**Behaviour**
+**Behaviour:**
 It's just a marker that lets the Scoring service know that something nearby will be awarding some points.
 It doesn't provide any styling or script behaviour on its own.
 It's just a placeholder for data.
@@ -368,7 +369,6 @@ If you add a cd-activity with the same name as the SWF file, that activity will 
 ```
 
 **Requirements:**
-
 * Your SWF ***MUST*** have the CDIG class (or a subclass, like Schematic).
 * You must include `js-wrapper.swf` in your `public/flash` folder. It's included as part of the [module template](https://github.com/cdig/cd-module-template), or you can find it here: `Dropbox/Assets and Resources/Tools/js-wrapper/js-wrapper.swf`.
 * If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested.
@@ -677,6 +677,7 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 **Behaviour:**
 
 **Related:**
+[BackendLocalStorage](#backendlocalstorage)
 
 
 
@@ -684,8 +685,7 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 
 
-
-## Backend: LocalStorage
+## BackendLocalStorage
 **Source Code:**
 
 **Usage:**
@@ -698,6 +698,7 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 **Behaviour:**
 
 **Related:**
+[BackendResetButton](#backendresetbutton), [Backend](#Backend)
 
 
 
@@ -708,9 +709,7 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 
 
-
-
-## Backend: SCORM 2004
+## BackendScorm2004
 **Source Code:**
 
 **Usage:**
@@ -723,8 +722,29 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 **Behaviour:**
 
 **Related:**
+[Backend](#Backend)
 
 
+
+
+
+
+
+
+## Backend
+**Source Code:**
+[Coffee](https://github.com/cdig/cd-module/blob/master/dist/scripts/backend.coffee)
+
+**Requirements:**
+* A `backend=foo` query param with one of these values: `auto`, `LBS`, `SCORM2004`, `SCORM1_2`
+* Any other value will fallback to [BackendLocalStorage](#backendlocalstorage)
+
+**Behaviour:**
+This service reads the `backend` query param and initializes the corresponding backend service.
+Currently, only 2 such services are implemented: [BackendLocalStorage](#backendlocalstorage) (the default), and [BackendScorm2004](#backendscorm2004). In the future, it'd be nice to have backends for SCORM 1.2, and LBS. Additionally, it'd be nice to add support for an `auto` mode that automatically detects the backend to use, making it easier to deploy modules without requiring extensive URL configuration.
+
+**Related:**
+[BackendLocalStorage](#backendlocalstorage), [BackendScorm2004](#backendscorm2004)
 
 
 
@@ -839,7 +859,6 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 [SCSS](https://github.com/cdig/cd-module/blob/master/dist/components/loading-screen.scss)
 
 **Behaviour:**
-
 Automatically shows a loading indicator if the download is taking a while.
 This solves the problem of people seeing brokenness while images download.
 However, it doesn't have any way of showing a progress indicator.
