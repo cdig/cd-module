@@ -11,6 +11,7 @@
     "dist/styles.scss"
   ],
   "dependencies": {
+    "backend":"cdig/backend",
     "cd-foundation":"cdig/cd-foundation",
     "swfobject":"latest"
   },

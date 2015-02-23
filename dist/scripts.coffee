@@ -1,4 +1,5 @@
 # 1. Sibling Dependencies
+# @codekit-prepend '../../backend/dist/backend.coffee'
 # @codekit-prepend '../../cd-foundation/dist/cd-foundation.coffee'
 
 # 2. Components
