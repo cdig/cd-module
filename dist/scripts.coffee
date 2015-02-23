@@ -1,8 +1,10 @@
-# 1. Sibling Dependencies
-# @codekit-prepend '../../backend/dist/backend.coffee'
+# 1. cdFoundation
 # @codekit-prepend '../../cd-foundation/dist/cd-foundation.coffee'
 
-# 2. Components
+# 2. Sibling Dependencies
+# @codekit-prepend '../../backend/dist/backend.coffee'
+
+# 3. Components
 # @codekit-prepend 'components/backend-reset-button.coffee'
 # @codekit-prepend 'components/browser-support.coffee'
 # @codekit-prepend 'components/call-outs.coffee'
@@ -19,7 +21,7 @@
 # @codekit-prepend 'components/warnings.coffee'
 # @codekit-prepend 'components/welcome-popup.coffee'
 
-# 3. Scripts
+# 4. Scripts
 # @codekit-prepend 'scripts/backend-local-storage.coffee'
 # @codekit-prepend 'scripts/backend-scorm-2004.coffee'
 # @codekit-prepend 'scripts/backend.coffee'
