@@ -5,19 +5,13 @@ $borderRadius: .5em !default;
 $mainBorderColor: #EEE !default;
 $darkBorderColor: #DDD !default;
 
-// 2. Breakpoints
-$iPadLandscape: 1024px;
-$iPadPortrait: 768px;
-$iPhoneLandscape: 667px;
-$iPhonePortrait: 375px;
-
-// 3. Sibling Dependencies
+// 2. Sibling Dependencies
 @import '../../cd-foundation/dist/cd-foundation.scss';
 
-// 4. Mixins
+// 3. Mixins
 @import 'styles/mixins/magic-underlines.scss';
 
-// 5. Components
+// 4. Components
 @import 'components/backend-reset-button.scss';
 @import 'components/browser-support.scss';
 @import 'components/call-outs.scss';
@@ -33,14 +27,14 @@ $iPhonePortrait: 375px;
 @import 'components/warnings.scss';
 @import 'components/welcome-popup.scss';
 
-// 6. Classes
+// 5. Classes
 @import 'styles/classes/caption.scss';
 @import 'styles/classes/circle.scss';
 @import 'styles/classes/figure.scss';
 @import 'styles/classes/framed.scss';
 @import 'styles/classes/oval.scss';
 
-// 7. Custom Elements
+// 6. Custom Elements
 @import 'styles/custom/cd-activity.scss';
 @import 'styles/custom/cd-flow-arrow.scss';
 @import 'styles/custom/cd-page.scss';
@@ -48,7 +42,7 @@ $iPhonePortrait: 375px;
 @import 'styles/custom/cd-text-bubble.scss';
 @import 'styles/custom/center-block.scss';
 
-// 8. Standard Elements
+// 7. Standard Elements
 @import 'styles/elements/headings.scss';
 @import 'styles/elements/img.scss';
 @import 'styles/elements/video.scss';
