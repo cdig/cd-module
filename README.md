@@ -31,9 +31,6 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
   - [template](#template)
 - [Beneath The Surface: The Framework](#beneath-the-surface-the-framework)
   - [BackendResetButton](#backendresetbutton)
-  - [BackendLocalStorage](#backendlocalstorage)
-  - [BackendScorm2004](#backendscorm2004)
-  - [Backend](#backend)
   - [BrowserSupport](#browsersupport)
   - [cdHUD](#cdhud)
   - [FlashInterface](#flashinterface)
@@ -78,7 +75,7 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
 
 cdModule is *huge*.
 It starts with everything in [cdFoundation](https://github.com/cdig/cd-foundation),
-then adds around 40 of its own tools, with hundreds of features.
+then adds around 40 of its own tools, with hundreds of features. It also automatically includes a few other dependencies: Modernizr, SWFObject, and [Backend](https://github.com/cdig/backend).
 
 Despite this, there's not much you need to know about it to get started and be productive.
 If you're starting with the [module template](https://github.com/cdig/cd-module-template) and
@@ -678,78 +675,6 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 **Related:**
 [BackendLocalStorage](#backendlocalstorage)
-
-
-
-
-
-
-
-## BackendLocalStorage
-**Source Code:**
-
-**Usage:**
-
-```html
-```
-
-**Requirements:**
-
-**Behaviour:**
-
-**Related:**
-[BackendResetButton](#backendresetbutton), [Backend](#Backend)
-
-
-
-
-
-
-
-
-
-
-## BackendScorm2004
-**Source Code:**
-
-**Usage:**
-
-```html
-```
-
-**Requirements:**
-
-**Behaviour:**
-
-**Related:**
-[Backend](#Backend)
-
-
-
-
-
-
-
-
-## Backend
-**Source Code:**
-[Coffee](https://github.com/cdig/cd-module/blob/master/dist/scripts/backend.coffee)
-
-**Requirements:**
-* A `backend=foo` query param with one of these values: `auto`, `LBS`, `SCORM2004`, `SCORM1_2`
-* Any other value will fallback to [BackendLocalStorage](#backendlocalstorage)
-
-**Behaviour:**
-This service reads the `backend` query param and initializes the corresponding backend service.
-Currently, only 2 such services are implemented: [BackendLocalStorage](#backendlocalstorage) (the default), and [BackendScorm2004](#backendscorm2004). In the future, it'd be nice to have backends for SCORM 1.2, and LBS. Additionally, it'd be nice to add support for an `auto` mode that automatically detects the backend to use, making it easier to deploy modules without requiring extensive URL configuration.
-
-**Related:**
-[BackendLocalStorage](#backendlocalstorage), [BackendScorm2004](#backendscorm2004)
-
-
-
-
-
 
 
 
