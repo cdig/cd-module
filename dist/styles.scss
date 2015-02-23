@@ -1,11 +1,9 @@
 // 1. API
-// You must provide values for these variables wherever you import this file
-// Here are recommended defaults:
-// $maxPageWidth: 64rem;
-// $maxLineLength: 42em;
-// $borderRadius: .5em;
-// $mainBorderColor: #EEE;
-// $darkBorderColor: #DDD;
+$maxPageWidth: 64rem !default;
+$maxLineLength: 42em !default;
+$borderRadius: .5em !default;
+$mainBorderColor: #EEE !default;
+$darkBorderColor: #DDD !default;
 
 // 2. Breakpoints
 $iPadLandscape: 1024px;
