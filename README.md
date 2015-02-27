@@ -1,3 +1,25 @@
+**Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
+
+**Usage:**
+
+**Requirements:**
+TODO
+
+**Behaviour:**
+TODO
+
+**Related:**
+TODO
+
+
+
+
+
+
+
+
+
 # cdModule
 A framework and standard library to help you make gorgeous, consistent modules. We take care of the look-and-feel, so you can focus on the content.
 
@@ -38,7 +60,6 @@ To get started, grab the [module template](https://github.com/cdig/cd-module-tem
   - [magic-underlines](#magic-underlines)
   - [ModalPopup](#modalpopup)
   - [PageAudio](#pageaudio)
-  - [PageManager](#pagemanager)
   - [PageScrollWatcher](#pagescrollwatcher)
   - [PageLocking](#pagelocking)
   - [PageSwitcher](#pageswitcher)
@@ -112,15 +133,25 @@ Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 
 
-
-
-
-
-
 ## call-out
 
+**Source Code:**
+[Coffee](https://github.com/cdig/cd-module/blob/master/dist/components/call-outs.coffee)
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/components/call-outs.scss)
 
+**Usage:**
 
+```html
+```
+
+**Requirements:**
+TODO
+
+**Behaviour:**
+TODO
+
+**Related:**
+TODO
 
 
 
@@ -184,6 +215,7 @@ It's just a placeholder for data.
 ## cd-flow-arrow
 
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
@@ -191,10 +223,13 @@ It's just a placeholder for data.
 ```
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -226,13 +261,10 @@ You'll import all of these page files into the `<body>` of the `index.kit` for y
 * The page file should have the same name as the `id` of the `<cd-page>`.
 
 **Behaviour:**
-The default styling creates a centred column with lots of top and bottom margin,
-with a nice shadow poking out from the corners to establish the vertical flow of the module.
-The ID is used for the title of the page in the Page Switcher, and the filename for Page Audio.
+The default styling creates a centred column with lots of top and bottom margin, with a nice shadow poking out from the corners to establish the vertical flow of the module. The ID is used for the title of the page in the Page Switcher, and the filename for Page Audio.
 
 **Related:**
-[Pages](#pages), [PageLocking](#pagelocking), [PageSwitcher](#pageswitcher),
-[PageAudio](#pageaudio), [PageTitle](#pagetitle), [PageScrollWatcher](#pagescrollwatcher).
+[Pages](#pages), [PageLocking](#pagelocking), [PageSwitcher](#pageswitcher), [PageAudio](#pageaudio), [PageTitle](#pagetitle), [PageScrollWatcher](#pagescrollwatcher).
 
 
 
@@ -254,8 +286,7 @@ The ID is used for the title of the page in the Page Switcher, and the filename 
 [SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-row.scss)
 
 **Usage:**
-`<cd-row>` uses flexbox to create a dynamic multi-column layout.
-In this example, the three images will all appear side-by-side.
+`<cd-row>` uses flexbox to create a dynamic multi-column layout. In this example, the three images will all appear side-by-side.
 
 ```html
 <cd-row>
@@ -266,11 +297,13 @@ In this example, the three images will all appear side-by-side.
 ```
 
 **Requirements:**
+TODO
 
 **Behaviour:**
 Quick thing to note (which will be explained later): currently having a video inside of cd-row requires that video to be embedded within a div in order to work inside of IE.
-**Related:**
 
+**Related:**
+TODO
 
 
 
@@ -293,9 +326,7 @@ Quick thing to note (which will be explained later): currently having a video in
 [SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/object.scss)
 
 **Usage:**
-When embedding a SWF using an `<object>` tag, normally you'd use the `data` attribute to specify the path to your file.
-Instead, you should use the `cd-swf` attribute.
-We'll grab the SWF file, wrap it with the js-wrapper.swf, and feed it to [SwfObject](#SwfObject), which will embed your wrapped SWF in a standards-compliant way.
+When embedding a SWF using an `<object>` tag, normally you'd use the `data` attribute to specify the path to your file. Instead, you should use the `cd-swf` attribute. We'll grab the SWF file, wrap it with the js-wrapper.swf, and feed it to [SwfObject](#SwfObject), which will embed your wrapped SWF in a standards-compliant way.
 
 ```html
 <object cd-swf="flash/ugly-old.swf"></object>
@@ -314,6 +345,12 @@ If you add a cd-activity with the same name as the SWF file, that activity will 
 * If you are using `<cd-activity>` to award points from a SWF, you need to make the activity name match the name of the SWF. The object and the cd-activity just have to appear on the same page; they don't need to be nested.
 * Currently designed to work with SWFObject 2.3beta.
 
+**Behaviour:**
+TODO
+
+**Related:**
+TODO
+
 
 
 
@@ -323,6 +360,7 @@ If you add a cd-activity with the same name as the SWF file, that activity will 
 ## cd-text-bubble
 
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
@@ -330,10 +368,13 @@ If you add a cd-activity with the same name as the SWF file, that activity will 
 ```
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -364,6 +405,7 @@ though you might also want to wrap it with a [cd-row](#cd-row) to place it besid
 </cd-page>
 ```
 
+**Requirements:**
 * You should only use h1 for the title of a page. It should very closely match the id of the [cd-page](#cd-page) element.
 * You should not apply your own styling to the h1 within the module. Custom styling should come from the [_project folder](#_project-folder) and be shared across the entire project.
 
@@ -371,7 +413,9 @@ though you might also want to wrap it with a [cd-row](#cd-row) to place it besid
 h1 elements get very special styling, with [Magic Underlines](#magic-underlines)
 and colours from the [_project folder](#_project-folder).
 
-Related: [Headings](#headings), [Magic Underlines](#magic-underlines)
+**Related:** [Headings](#headings), [Magic Underlines](#magic-underlines)
+
+
 
 
 
@@ -398,12 +442,13 @@ Feel free to style them however you want.
 <h3>But that's okay.</h3>
 ```
 
+**Requirements:**
 * [h1](#h1) has its own special behaviour and should only be used as intended
 
 **Behaviour:**
 Some default styling is applied for h2 and h3; h4 through h6 are unstyled.
 
-Related: [#h1](#h1)
+**Related:** [#h1](#h1)
 
 
 
@@ -415,22 +460,20 @@ Related: [#h1](#h1)
 
 ## img
 
-Image tags, by default have a style of `width: 100%;` applied to them.
-Just.. watch out for this.
-In practice, it means you can drop an image into your page and not have to worry about it either being too small, or blowing out your layout.
-
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
-
-```html
-```
+Image tags, by default have a style of `width: 100%;` applied to them. Just.. watch out for this. In practice, it means you can drop an image into your page and not have to worry about it either being too small, or blowing out your layout.
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -443,6 +486,7 @@ In practice, it means you can drop an image into your page and not have to worry
 ## lists
 
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
@@ -450,10 +494,13 @@ In practice, it means you can drop an image into your page and not have to worry
 ```
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -494,6 +541,7 @@ This is a great way to showcase beautiful photos.
 </cd-page>
 ```
 
+**Requirements:**
 * The main element must be a direct child of a cd-page.
 
 **Behaviour:**
@@ -514,6 +562,7 @@ The default styling creates a white padded background behind the content.
 ## object
 
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
@@ -521,10 +570,13 @@ The default styling creates a white padded background behind the content.
 ```
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -551,6 +603,14 @@ and don't use them for things that shouldn't be selectable — interactive elem
     <p>On this page, we'll look at things that are cute!</p>
 ```
 
+**Requirements:**
+TODO
+
+**Behaviour:**
+TODO
+
+**Related:**
+TODO
 
 
 
@@ -560,6 +620,7 @@ and don't use them for things that shouldn't be selectable — interactive elem
 ## template
 
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
@@ -567,10 +628,13 @@ and don't use them for things that shouldn't be selectable — interactive elem
 ```
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -585,13 +649,7 @@ and don't use them for things that shouldn't be selectable — interactive elem
 
 
 # Beneath The Surface: The Framework
-Above, we looked at the parts of cdModule that you will work with directly.
-Now, we'll dig in to the systems that make up the foundational framework of cdModule.
-Most of these systems will be invisible to you,
-applying their logic seamlessly behind the scenes.
-A few of them will offer a Public API that you are able to use from your own JS code,
-or provide a visible component that you can see in the browser,
-or even offer styling hooks to integrate with your CSS.
+Above, we looked at the parts of cdModule that you will work with directly. Now, we'll dig in to the systems that make up the foundational framework of cdModule. Most of these systems will be invisible to you, applying their logic seamlessly behind the scenes. A few of them will offer a Public API that you are able to use from your own JS code, or provide a visible component that you can see in the browser, or even offer styling hooks to integrate with your CSS.
 
 
 
@@ -603,40 +661,41 @@ or even offer styling hooks to integrate with your CSS.
 
 
 ## backend-reset-button
-If you're using BackendLocalStorage, shows a Reset button in the HUD, which clears LocalStorage.
 
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
-
-```html
-```
+If you're using BackendLocalStorage, shows a Reset button in the HUD, which clears LocalStorage.
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
-[BackendLocalStorage](#backendlocalstorage)
+TODO
 
 
 
 
 
 ## BrowserSupport
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
-
+TODO
 
 
 
@@ -649,18 +708,20 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 
 ## cdHud
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -674,18 +735,20 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 
 ## Flash Interface
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -699,18 +762,20 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 
 
 ## KVStore
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -726,12 +791,19 @@ If you're using BackendLocalStorage, shows a Reset button in the HUD, which clea
 [HTML](https://github.com/cdig/cd-module/blob/master/dist/components/loading-screen.html)
 [SCSS](https://github.com/cdig/cd-module/blob/master/dist/components/loading-screen.scss)
 
+**Usage:**
+
+**Requirements:**
+
 **Behaviour:**
 Automatically shows a loading indicator if the download is taking a while.
 This solves the problem of people seeing brokenness while images download.
 However, it doesn't have any way of showing a progress indicator.
 If the download takes a really long time, it successively offers more of an appology to the user,
 and finally asks them to check their internet connection.
+
+**Related:**
+TODO
 
 
 
@@ -742,19 +814,21 @@ and finally asks them to check their internet connection.
 
 
 ## magic-underlines
-This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
-
-```html
-```
+This special mixin uses a bunch of crazy SCSS to create an iOS-style underline on all browsers/devices.
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -768,18 +842,20 @@ This special mixin uses a bunch of crazy SCSS to create an iOS-style underline o
 
 
 ## ModalPopup
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -793,19 +869,22 @@ This special mixin uses a bunch of crazy SCSS to create an iOS-style underline o
 
 
 ## [Modernizr](https://modernizr.com)
-Modernizr works with browser-support to warn users when they're using an unsupported browser.
+
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
-
-```html
-```
+Modernizr works with browser-support to warn users when they're using an unsupported browser.
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -819,18 +898,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## Page Audio
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -840,22 +921,6 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 
-
-
-
-## Page Manager
-**Source Code:**
-
-**Usage:**
-
-```html
-```
-
-**Requirements:**
-
-**Behaviour:**
-
-**Related:**
 
 
 
@@ -869,19 +934,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## Page Scroll Watcher
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
-
+TODO
 
 
 
@@ -894,20 +960,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## PageLocking
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
 * Add a URL param `locking=false` to disable locking
 
 **Related:**
-
+TODO
 
 
 
@@ -920,18 +986,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## PageSwitcher
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -945,18 +1013,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## PageTitle
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -970,18 +1040,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## Pages
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -995,19 +1067,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## SaveBeforeUnload
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
-
+TODO
 
 
 
@@ -1020,18 +1093,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## SaveWithPopup
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -1045,19 +1120,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## ScoreAnimation
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
-
+TODO
 
 
 
@@ -1070,18 +1146,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## Scoring
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -1095,19 +1173,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## ScrollHint
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
-
+TODO
 
 
 
@@ -1120,18 +1199,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## ScrollRegions
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -1145,18 +1226,20 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## ScrollTo
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -1170,19 +1253,21 @@ Modernizr works with browser-support to warn users when they're using an unsuppo
 
 
 ## [SwfObject](https://github.com/swfobject/swfobject)
-SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
-
-```html
-```
+SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
 
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
+TODO
 
 
 
@@ -1196,19 +1281,20 @@ SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-
 
 
 ## WelcomePopup
+
 **Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
 
 **Usage:**
 
-```html
-```
-
 **Requirements:**
+TODO
 
 **Behaviour:**
+TODO
 
 **Related:**
-
+TODO
 
 
 
@@ -1226,11 +1312,18 @@ SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-
 [Coffee](https://github.com/cdig/cd-module/blob/master/dist/components/warnings.coffee)
 [SCSS](https://github.com/cdig/cd-module/blob/master/dist/components/warnings.scss)
 
+**Usage:**
+
+**Requirements:**
+TODO
+
 **Behaviour:**
 This service scans the page for common errors in the content.
 If it finds an error, it notifies the developer via a "Warning" indicator in the HUD,
 and lists details in the browser console.
 
+**Related:**
+TODO
 
 
 
@@ -1242,6 +1335,9 @@ and lists details in the browser console.
 
 
 
+
+# Beneath The Surface: The Framework
+TODO
 
 
 
