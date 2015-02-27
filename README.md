@@ -1,9 +1,7 @@
 # cdModule
-A framework and standard library to help you make gorgeous, consistent modules.
-We take care of the look-and-feel, so you can focus on the content.
+A framework and standard library to help you make gorgeous, consistent modules. We take care of the look-and-feel, so you can focus on the content.
 
-To get started, grab the [module template](https://github.com/cdig/cd-module-template).
-You'll also need an [_project folder](#_project-folder). Read on for *extensive* documentation. Grab a drink!
+To get started, grab the [module template](https://github.com/cdig/cd-module-template). You'll also need an [_project folder](#_project-folder). Read on for *extensive* documentation. Grab a drink!
 
 
 
@@ -13,6 +11,7 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
 ### Table of Contents
 
 - [Overview](#overview)
+  - [Battle Plan](#battle-plan)
 - [Skin Deep: The Standard Library](#skin-deep-the-standard-library)
   - [call-out](#call-out)
   - [cd-activity](#cd-activity)
@@ -38,7 +37,6 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
   - [LoadingScreen](#loadingscreen)
   - [magic-underlines](#magic-underlines)
   - [ModalPopup](#modalpopup)
-  - [Modernizr](#modernizr)
   - [PageAudio](#pageaudio)
   - [PageManager](#pagemanager)
   - [PageScrollWatcher](#pagescrollwatcher)
@@ -53,9 +51,13 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
   - [ScrollHint](#scrollhint)
   - [ScrollRegions](#scrollregions)
   - [ScrollTo](#scrollto)
-  - [SWFObject](#swfobject)
   - [WelcomePopup](#welcomepopup)
   - [Warnings](#warnings)
+- [Scraping The Bottom: The Foundations](#scraping-the-bottom-the-foundations)
+  - [cdFoundation](#cdfoundation)
+  - [Backend](#backend)
+  - [Modernizr](#modernizr)
+  - [SWFObject](#swfobject)
 - [Design Decisions](#design-decisions)
   - [_project folder](#_project-folder)
   - [z-index values](#z-index-values)
@@ -74,27 +76,26 @@ You'll also need an [_project folder](#_project-folder). Read on for *extensive*
 # Overview
 
 cdModule is *huge*.
-It starts with everything in [cdFoundation](https://github.com/cdig/cd-foundation),
-then adds around 40 of its own tools, with hundreds of features. It also automatically includes a few other dependencies: Modernizr, SWFObject, and [Backend](https://github.com/cdig/backend).
 
-Despite this, there's not much you need to know about it to get started and be productive.
-If you're starting with the [module template](https://github.com/cdig/cd-module-template) and
-an existing [_project folder](#_project-folder), you can pretty much write whatever HTML and CSS you want.
-Allmost all of the module-essence is applied for you automatically.
-However, there are a lot of optional tools to be used, should you opt to use them.
-So it's worth gradually learning this stuff, so you can make the most amazing modules possible.
+It starts with [cdFoundation](#cdfoundation), in-house libs like [Backend](#backend), and 3rd party libs like [Modernizr](#modernizr) and (SWFObject)[#swfobject]. On top of this, it adds half-a-hundred of its own tools, with hundreds of features
 
-We're going to look at cdModule in two separate halves.
+Despite this, there's not much you need to know to make a basic module. If you're starting with the [module template](https://github.com/cdig/cd-module-template) and
+an existing [_project folder](#_project-folder), you can pretty much write whatever HTML and CSS you want. Almost all of the fancy module-goodness is applied for you automatically. However, there are a lot of optional tools to be used, should you opt to use them. Read on to learn about them, so you can make the most amazing modules possible. Or leave now, and come back in anger when something breaks. That's what I do.
+
+#### Battle Plan
+
+We're going to look at cdModule in three pieces.
+
 First, we'll look at the tools you will use when making a module — the [standard library](#skin-deep-the-standard-library).
 These are primarily HTML components, but there are also a few special styles and scripts to help you make gorgeous content.
 
-Afterward, we'll look at the network of systems that sit underneath — the [framework](#beneath-the-surface-the-framework).
-These systems extend cdFoundation, adding all sorts of special behaviour to your modules; from responsiveness, to score animations, to the HUD.
+Afterward, we'll look at the network of systems that sit underneath — the [framework](#beneath-the-surface-the-framework). These systems extend cdFoundation, adding all sorts of special behaviour to your modules; from responsiveness, to score animations, to the HUD.
 
-For each item we look at, there'll be a full explanation of features, gotchas, secrets, suggestions, with links to the source code and related items.
-The source code links are particularly handy, since the source code is the *definitive* documentation.
+Finally, we'll comment briefly on the underlying [foundations](#scraping-the-bottom-the-foundations) — cdFoundation, first party libs, and third party libs.
 
+For each item we look at, there'll be a full explanation of features, gotchas, secrets, suggestions, with links to the source code and related items. The source code links are particularly handy, since the source code is the *definitive* documentation.
 
+Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
 
 
 
@@ -104,64 +105,6 @@ The source code links are particularly handy, since the source code is the *defi
 
 
 # Skin Deep: The Standard Library
-
-Here's the markup for a typical page in a module.
-Well, not quite typical — this one includes an example of *everything* in the standard library.
-Below, we'll examine each of the components that make up this markup.
-
-
-```html
-<cd-page id="my-amazing-page">
-  <main>
-    <h1>My Amazing Page</h1>
-    
-    <p>On this page, we'll look at things that are cute!</p>
-    
-    <cd-row>
-      <img src="image/puppy-1.jpg">
-      <img src="image/puppy-2.jpg">
-      <img src="image/puppy-3.jpg">
-    </cd-row>
-    
-    <cd-activity name="kittens-are-great" points="100">
-      <kitten-game>
-        <img src="image/kitten-1.jpg">
-        <img src="image/kitten-2.jpg">
-      </kitten-game>
-    </cd-activity>
-    
-    <h2>Phew. Now I'm all cute-ed out. Let's look at something ugly: Flash.</h2>
-    
-    <object cd-swf="flash/ugly-old.swf"></object>
-    
-    <cd-activity name="thirsty-and-miserable" points="1">
-    <object cd-swf="flash/thirsty-and-miserable.swf"></object>
-    
-    <h3>Yeah, Flash is no fun. Let's leave it behind.</h3>
-    
-  </main>
-  
-  <img src="image/hero.png">
-  
-  <main>
-    <h2>More content</h2>
-    <figure>
-      <cd-flow-arrow class="cyan"></cd-flow-arrow>
-      <cd-flow-arrow class="magenta"></cd-flow-arrow>
-      <cd-flow-arrow class="yellow"></cd-flow-arrow>
-      <cd-flow-arrow class="dance"></cd-flow-arrow>
-    </figure>
-    <figcaption>It's a collection of flow arrows. CUTE!</figcaption>
-  </main>
-  
-</cd-page>
-```
-
-
-Now, let's tear it apart, [Lisa](https://www.youtube.com/watch?v=Plz-bhcHryc).
-
-
-
 
 
 
