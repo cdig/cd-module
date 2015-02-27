@@ -4,7 +4,9 @@ page-switcher {
   z-index: 1001; // Above ModalPopup, below HUD
   overflow: auto;
   
+  // TODO: See if this breaks inside iframes, because github.com/cdig/why-cant-i-use#viewport-units-vw-vh-vmin-vmax
   max-height: 100vh;
+  
   bottom: 0;
   left: 0; // Overridden by PageSwitcher.setPosition()
   padding-bottom: 0; // Overridden by PageSwitcher.setPosition()
