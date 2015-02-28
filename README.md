@@ -1,33 +1,7 @@
-**Source Code:**
-[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
-
-**Usage:**
-
-**Requirements:**
-TODO
-
-**Behaviour:**
-TODO
-
-**Related:**
-TODO
-
-
-
-
-
-
-
-
-
 # cdModule
 A framework and standard library to help you make gorgeous, consistent modules. We take care of the look-and-feel, so you can focus on the content.
 
 To get started, grab the [module template](https://github.com/cdig/cd-module-template). You'll also need an [_project folder](#_project-folder). Read on for *extensive* documentation. Grab a drink!
-
-
-
-
 
 
 ### Table of Contents
@@ -52,7 +26,7 @@ To get started, grab the [module template](https://github.com/cdig/cd-module-tem
   - [template](#template)
 - [Beneath The Surface: The Framework](#beneath-the-surface-the-framework)
   - [BackendResetButton](#backendresetbutton)
-  - [BrowserSupport](#browsersupport)
+  - [browser-support](#browser-support)
   - [cdHUD](#cdhud)
   - [FlashInterface](#flashinterface)
   - [KVStore](#kvstore)
@@ -84,8 +58,20 @@ To get started, grab the [module template](https://github.com/cdig/cd-module-tem
   - [z-index values](#z-index-values)
 
 
+### Naming and Writing Style
+| Name       | Type            | Written As | Example      |
+|------------|-----------------|------------|--------------|
+| Component  | HTML, CSS, & JS | kebab-case | call-out     |
+| Element    | HTML Only       | singleword | figcaption   |
+| Mixin      | CSS Only        | kebab-case | magic-unders |
+| Service    | JS Only         | CamelCase  | PageLocking  |
+| Style Rule | CSS Only        | Selector   | .text-center |
 
+#### Namespaces
+Some services or components might include a namespace, eg: `cdFoundation` or `cd-row`. The namespace is always lowercase.
 
+#### Acronyms
+When writing CamelCase, acronyms should be written with a leading capital, eg: `JsonParser`, `XmlNightmare`, `productId`. This guideline may be liberally broken to aid clarity, eg: `tooManyTLAs` is preferable to `tooManyTlas`.
 
 
 
@@ -681,25 +667,6 @@ TODO
 
 
 
-## BrowserSupport
-
-**Source Code:**
-[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
-
-**Usage:**
-
-**Requirements:**
-TODO
-
-**Behaviour:**
-TODO
-
-**Related:**
-TODO
-
-
-
-
 
 
 
@@ -865,26 +832,6 @@ TODO
 
 
 
-
-
-
-## [Modernizr](https://modernizr.com)
-
-
-**Source Code:**
-[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
-
-**Usage:**
-Modernizr works with browser-support to warn users when they're using an unsupported browser.
-
-**Requirements:**
-TODO
-
-**Behaviour:**
-TODO
-
-**Related:**
-TODO
 
 
 
@@ -1251,35 +1198,6 @@ TODO
 
 
 
-
-## [SwfObject](https://github.com/swfobject/swfobject)
-
-**Source Code:**
-[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
-
-**Usage:**
-SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
-
-**Requirements:**
-TODO
-
-**Behaviour:**
-TODO
-
-**Related:**
-TODO
-
-
-
-
-
-
-
-
-
-
-
-
 ## WelcomePopup
 
 **Source Code:**
@@ -1336,10 +1254,58 @@ TODO
 
 
 
-# Beneath The Surface: The Framework
+# Scraping The Bottom: The Foundations
+cdModule builds on top of the hard work of Ivan, Sean, and a bunch of other people who know more about Internet Explorer bugs than they do, that's for sure.
+
+
+## cdFoundation
+
+[Github Repo](https://github.com/cdig/cd-foundation)
+
+
+## First Party Libs
+
+### Backend
+[Github Repo](https://github.com/cdig/backend)
+
+### browser-support
+[Github Repo](https://github.com/cdig/browser-support)
+
+**Related:**
+[Modernizr](#modernizr)
+
+
+## Third Party Libs
+
+### Modernizr
+
+[Website](https://modernizr.com)
+
+Modernizr works with browser-support to warn users when they're using an unsupported browser.
+
+**Related:**
+[browser-support](#browser-support)
+
+
+
+
+
+### [SwfObject](https://github.com/swfobject/swfobject)
+
+**Source Code:**
+[Type](https://github.com/cdig/cd-module/blob/master/dist/PATH)
+
+**Usage:**
+SwfObject gives us a standards-compliant way to embed SWFs, with the help of cd-swf (see below).
+
+**Requirements:**
 TODO
 
+**Behaviour:**
+TODO
 
+**Related:**
+TODO
 
 
 
@@ -1488,7 +1454,7 @@ z-index | CSS Selector              | System
 1003    | scroll-hint               | [ScrollHint](#scrollhint)
 2000    | score-area                | [ScoreAnimation](#scoreanimation)
 5000    | loading-screen            | [LoadingScreen](#loadingscreen)
-9999    | .browser-support          | [BrowserSupport](#browsersupport)
+9999    | .browser-support          | [browser-support](#browser-support)
 10000   | editor-container textarea | [EditorContainer](https://github.com/cdig/editor)
 
 * 0-999 is reserved for you to use in your content.
