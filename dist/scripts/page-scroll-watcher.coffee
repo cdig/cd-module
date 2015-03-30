@@ -1,5 +1,5 @@
 # Compatability:
-#	pageYOffset is an IE-compatable version of scrollY
+# pageYOffset is an IE-compatable version of scrollY
 
 do ()->
   EVENTS =
@@ -25,6 +25,7 @@ do ()->
     
     
   setupScrollWatching = (pages)->
+
     scrollHandlerFn = ()->
       for page, pageIndex in pages
         if pageIsCurrent(page)
@@ -33,15 +34,15 @@ do ()->
             prevPage = page
             pageChange()
           return
-    
-    window.addEventListener(EVENTS.scroll, scrollHandlerFn)
+    frame = document.querySelector('module-wrapper')
+    frame.addEventListener(EVENTS.scroll, scrollHandlerFn)
     scrollHandlerFn()
-  
   
   pageIsCurrent = (page)->
     pageTop = page.offsetTop
     pageBottom = page.offsetTop + page.offsetHeight
-    scrollPosition = window.pageYOffset + window.innerHeight / 2
+    frame = document.querySelector('module-wrapper')
+    scrollPosition = frame.scrollTop + window.innerHeight / 2
     return pageTop < scrollPosition and scrollPosition < pageBottom
   
   

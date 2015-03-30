@@ -31,8 +31,6 @@ Take "load", ()->
       if scrollTop > scrollAreaTop and scrollTop <= scrollAreaBottom
         value = (scrollTop - scrollAreaTop) / (scrollAreaBottom - scrollAreaTop)
         console.log "ScrollRegions: CustomEvent has been disabled because it fails in IE10"
-        # scrollArea.start.dispatchEvent new CustomEvent "scrollPercentage", detail:
-          # value: value
   
   
   handleScrollBody = ()->
@@ -41,12 +39,9 @@ Take "load", ()->
     scrollTop = document.body.scrollTop
     value = (scrollTop - scrollAreaTop) / (scrollAreaBottom - scrollAreaTop)
     console.log "ScrollRegions: CustomEvent has been disabled because it fails in IE10"
-    # event = new CustomEvent "scrollPercentage", detail:
-    #   value: value
-    # document.body.dispatchEvent(event)
     
     
 # EVENT LISTENERS
-  
-  window.addEventListener "scroll", handleScrollAreas
-  window.addEventListener "scroll", handleScrollBody
+  frame = document.querySelector('module-wrapper')
+  frame.addEventListener "scroll", handleScrollAreas
+  frame.addEventListener "scroll", handleScrollBody

@@ -5,9 +5,9 @@
 Take "Ease", (Ease)->
   SCROLL_ANIMATION_SPEED = 500
   
-  
   Make "ScrollTo", (endScroll)->
-    startScroll = document.body.scrollTop
+    frame = document.querySelector('module-wrapper')
+    startScroll = frame.scrollTop
     return if startScroll is endScroll
     
     startTime = endTime = null

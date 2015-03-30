@@ -12,6 +12,7 @@
 # @codekit-prepend 'components/hud.coffee'
 # @codekit-prepend 'components/loading-screen.coffee'
 # @codekit-prepend 'components/modal-popup.coffee'
+# @codekit-prepend 'components/module-wrapper/module-wrapper.coffee'
 # @codekit-prepend 'components/page-locking.coffee'
 # @codekit-prepend 'components/page-switcher.coffee'
 # @codekit-prepend 'components/page-switcher-button.coffee'
@@ -20,6 +21,7 @@
 # @codekit-prepend 'components/score-animation/score-animation.coffee'
 # @codekit-prepend 'components/warnings.coffee'
 # @codekit-prepend 'components/welcome-popup.coffee'
+
 
 # 4. Scripts
 # @codekit-prepend 'scripts/backend-local-storage.coffee'

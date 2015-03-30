@@ -26,6 +26,7 @@ $darkBorderColor: #DDD !default;
 @import 'components/score-animation/score-animation.scss';
 @import 'components/warnings.scss';
 @import 'components/welcome-popup.scss';
+@import 'components/module-wrapper/module-wrapper.scss';
 
 // 5. Classes
 @import 'styles/classes/caption.scss';
@@ -41,6 +42,7 @@ $darkBorderColor: #DDD !default;
 @import 'styles/custom/cd-row.scss';
 @import 'styles/custom/cd-text-bubble.scss';
 @import 'styles/custom/center-block.scss';
+
 
 // 7. Standard Elements
 @import 'styles/elements/headings.scss';

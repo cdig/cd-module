@@ -2,7 +2,7 @@
 # A little popup at the bottom of the window that gives users hints about whether or not to scroll.
 #
 # Compatability:
-#	pageYOffset is an IE-compatable version of scrollY
+# pageYOffset is an IE-compatable version of scrollY
 
 
 Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
@@ -77,10 +77,11 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 # EVENT HANDLING
   
   updateScroll = ()->
-    scrollRange = document.body.scrollHeight - window.innerHeight
-    nearTop = window.pageYOffset < deadband
-    nearEnd = window.pageYOffset + deadband >= scrollRange
-    moved = Math.abs(window.pageYOffset - lastSetPosition) > deadband
+    frame = document.querySelector('module-wrapper')
+    scrollRange = frame.scrollHeight - window.innerHeight
+    nearTop = frame.scrollTop < deadband
+    nearEnd = frame.scrollTop + deadband >= scrollRange
+    moved = Math.abs(frame.scrollTop - lastSetPosition) > deadband
     
     if showing
       hide() if moved and not (nearTop or nearEnd)
@@ -98,7 +99,8 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 # INIT
   
   if Pages.length > 1
-    window.addEventListener("scroll", updateScroll)
+    frame = document.querySelector('module-wrapper')
+    frame.addEventListener("scroll", updateScroll)
     window.addEventListener("resize", updateScroll)
     scrollHintTab.addEventListener("click", hide)
     PageLocking.onUpdate(updateLockedPage)
