@@ -7,3 +7,9 @@ module-wrapper
 	overflow: scroll;
 	-webkit-overflow-scrolling: touch;
 }
+
+body {
+	max-height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
