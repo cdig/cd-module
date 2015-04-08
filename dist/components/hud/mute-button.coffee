@@ -1,4 +1,4 @@
-Take ["cdHUD", "PageAudio", "Params", "load"], (cdHUD, PageAudio, Params)->
+Take ["cdHUD", "MuteAnimation", "PageAudio", "Params",  "load"], (cdHUD, MuteAnimation, PageAudio, Params)->
   
   # Don't show the mute button unless audio is enabled
   return unless Params.audio
@@ -25,9 +25,10 @@ Take ["cdHUD", "PageAudio", "Params", "load"], (cdHUD, PageAudio, Params)->
   
   update = ()->
     if PageAudio.isEnabled()
-      graphic.removeAttribute("muted")
+      MuteAnimation(graphic, false)
+      
     else
-      graphic.setAttribute("muted", true)
+      MuteAnimation(graphic, true)
   
   
 # INITIALIZATION

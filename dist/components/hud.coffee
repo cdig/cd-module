@@ -5,4 +5,5 @@
 # @codekit-prepend 'hud/current-page-indicator.coffee'
 # @codekit-prepend 'hud/menu-button.coffee'
 # @codekit-prepend 'hud/mute-button.coffee'
+# @codekit-prepend 'hud/mute-button-animation.coffee'
 # @codekit-prepend 'hud/score-display.coffee'
