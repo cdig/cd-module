@@ -12,6 +12,7 @@ Take ["cdHUD", "PageScrollWatcher", "PageTitle", "PageSwitcher"], (cdHUD, PageSc
     indicator.textContent = PageTitle(currentPage)
   
   updateSwitcherPosition = ()->
+    console.log "update!"
     left = indicator.offsetLeft
     bottom = parseInt(window.getComputedStyle(indicator).height)
     PageSwitcher.setPosition(left, bottom)

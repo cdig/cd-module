@@ -41,6 +41,7 @@ cd-modal {
   h1 {
     color: black;
     font-size: 2em;
+    @include magic-underline(currentColor, white, #AAA); //fixes i.e. underline issue
   }
   
   
