@@ -123,5 +123,6 @@ Take ["Particle", "Scoring", "ScoreDisplay", "load"], (Particle, Scoring, ScoreD
   Scoring.onUpdate(fireParticles)
   
   window.addEventListener("mousemove", updateMousePos)
-  window.addEventListener("scroll", updateTargetPos)
+  frame = document.querySelector('module-wrapper')
+  frame.addEventListener("scroll", updateTargetPos)
   
