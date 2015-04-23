@@ -45,6 +45,9 @@ Take ["PureDom", "load"], (PureDom)->
   
   for elm in cdSwfs
     # We need to generate a new copy of the fallback content for each SWF
+    # if we don't wrap this call in a closure in IE10 we run into issues
+    # when embedding multiple SWF files. Race conditions sometimes stop flash from
+    # loading. The timeout and closure resolve this.
     closure = (elm)->
       setTimeout ()=>
         clonedFallback = fallback.cloneNode(true)
