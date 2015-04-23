@@ -45,5 +45,9 @@ Take ["PureDom", "load"], (PureDom)->
   
   for elm in cdSwfs
     # We need to generate a new copy of the fallback content for each SWF
-    clonedFallback = fallback.cloneNode(true)
-    setupSwf(elm, clonedFallback)
+    closure = (elm)->
+      setTimeout ()=>
+        clonedFallback = fallback.cloneNode(true)
+        setupSwf(elm, clonedFallback)
+      , 1
+    closure elm  
