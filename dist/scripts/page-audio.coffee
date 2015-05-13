@@ -9,6 +9,7 @@ Take ["PageScrollWatcher"], (PageScrollWatcher)->
   updateCallbacks = []
   currentPageName = null
   audioElement = null
+  errorAttempts = 0
   
   Make "PageAudio", PageAudio =      
     onUpdate: (callback)->
@@ -38,6 +39,7 @@ Take ["PageScrollWatcher"], (PageScrollWatcher)->
     loadAudioForCurrentPage()
 
   loadAudioForCurrentPage = ()->
+    errorAttempts = 0
     if currentPageName? and audioEnabled
       stopAudio()
       createAudio()
@@ -59,7 +61,12 @@ Take ["PageScrollWatcher"], (PageScrollWatcher)->
 
   loadStatusIsSuspect = (status, e)->
     console.log "PageAudio load may have failed, status: #{status}", e
-    PageAudio.disable()
+    errorAttempts++
+    if errorAttempts > 5
+      PageAudio.disable()
+    else
+      document.body.removeChild(audioElement)
+      createAudio()
 
   initialiseErrorHandling = ()->
     audioElement.addEventListener 'error', (e)->
@@ -79,7 +86,8 @@ Take ["PageScrollWatcher"], (PageScrollWatcher)->
     originalLoadStatus = loadStatusIsSuspect
     loadStatusIsSuspect = (status, e)->
       originalLoadStatus(status, e)
-      ModalPopup.open("Sorry", "An error has occured while loading voice-over narration.")      
+      if errorAttempts > 5 #check for error attempts before doing a pop up, just in case failure was a simple network issue and would be resolved on another load attempt.
+        ModalPopup.open("Sorry", "An error has occured while loading voice-over narration. Please click the mute button to re-enable audio or reload the module.")      
     
 # SETUP
   PageScrollWatcher.onPageChange(updateCurrentPage)
