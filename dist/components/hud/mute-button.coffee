@@ -2,7 +2,7 @@ Take ["cdHUD", "MuteAnimation", "PageAudio", "Params",  "load"], (cdHUD, MuteAni
   
   # Don't show the mute button unless audio is enabled
   return unless Params.audio
-  
+  PageAudio.enable() #we want page audio by default to be on, so enable it as soon as the mute button loads
 # GRAPHIC (experimental approach using <template> element)
   
   graphicTemplate = document.getElementById("mute-button-graphic")
