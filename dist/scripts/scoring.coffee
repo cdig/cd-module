@@ -1,4 +1,4 @@
-Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
+Take ["Backend", "KVStore", "Params", "PureDom"], (Backend, KVStore, Params, PureDom)->
   SCORING_API_VERSION = 1
   hasActivities = document.querySelector("cd-activity")?
   projectNode = null
@@ -137,10 +137,12 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
       pageNode.score = pageNode.earnedPoints / pageNode.totalPoints
     
     moduleNode.score = moduleNode.earnedPoints / moduleNode.totalPoints
-  
+    
   
   saveScoringTree = ()->
     KVStore.set(Params.project, projectNode)
+    if projectNode.score >= 1
+      Backend.complete()
     
     
 # SETUP
