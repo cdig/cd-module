@@ -87,7 +87,7 @@ Take ["PageScrollWatcher"], (PageScrollWatcher)->
     loadStatusIsSuspect = (status, e)->
       originalLoadStatus(status, e)
       if errorAttempts > 5 #check for error attempts before doing a pop up, just in case failure was a simple network issue and would be resolved on another load attempt.
-        ModalPopup.open("Sorry", "An error has occured while loading voice-over narration. Please click the mute button to re-enable audio or reload the module.")      
+        ModalPopup.open("Sorry", "An error has occurred while loading voice-over narration. Please click the mute button to re-enable audio or reload the module.")      
     
 # SETUP
   PageScrollWatcher.onPageChange(updateCurrentPage)
