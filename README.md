@@ -5,7 +5,7 @@ This is a major revision to cd-module. It's a work in progress.
 Work is happening in this v2 branch. Master will be left alone as the v1 branch. In the far future, when all existing modules are updated or abandoned, we can resume using master as the branch for ongoing development.
 
 
-## Major Changes
+# Major Changes
 
 
 ### LBS Only
@@ -35,7 +35,8 @@ It's a usability nightmare. It did offer some nice functionality, though.
 If we have other projects that need to use Env or Ease or other features, they can grab those libs a la carte. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
 
 
-### Asset Packs
+### Asset Packs [Draft]
+
 The built-in styling is almost completely neutral. It is designed as an abstract styling interface. It includes a thin reference implementation, using our new company colors and Lato (and any other fonts or styles that are used in EVERY module). You can make and install Asset Packs to unlock other colors and fonts. Asset Packs build on the initial abstraction and override the reference implementation, or introduce new elements in addition to the built in ones.
 
 ```scss
@@ -52,7 +53,7 @@ The built-in styling is almost completely neutral. It is designed as an abstract
 .accent // LBS yellow
 .accent-text // LBS pink
 
-// Then, in a different _project, we can override the colour SASS variables, helper classes, semantic names:
+// Then, in a different Asset Pack, we can override the color SASS variables, helper classes, semantic names:
 
 // By name
 .blue-text // SLB blue text
@@ -70,8 +71,10 @@ The built-in styling is almost completely neutral. It is designed as an abstract
 ### Codekit -> Gulp
 We're killing CodeKit, and switching to Gulp.
 
+
 ### Upgrade Path
 I should also probably write an Automator Application that can be used for upgrading from v1. For a module where you are tolerant of breaking changes, ideally:
+
 1. Delete your bower_components folder
 2. Open bower.json and replace `"cd-module": "cdig/cd-module"` with `"cd-module": "cdig/cd-module#v2"`
 3. Run `bower update`
@@ -92,14 +95,18 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 ### Improved Primitives
 We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
 
-### Crushing Issues
-* Better page locking. Activities should lock on themselves (rather than the cd-page they're inside of). You should be able to move the lock point to a different place in the markup. You should be able to create a lock point and trigger, which can be controlled from module code (eg: you have to click a button 5 times to unlock the next bit of content — not something that warrants a full cd-activity).
-* Etc (see issues added to the v2 milestone)
-
 
 ### Runtime Performance
 * Remove not-visible pages from the DOM and halt execution of their scripts (might need to establish special APIs around this; thus, breaking change), to see if it helps perf on low-power devices like A5 iPads.
 
+
+### Narrower Public API
+A lot of the scripts available to cd-module v1 are implementation details (Pages, PageScrollWatcher, PageAudio, etc). We should go private by default, and only open things up for module developer's to use if need be.
+
+
+### Crushing Issues
+* Better page locking. Activities should lock on themselves (rather than the cd-page they're inside of). You should be able to move the lock point to a different place in the markup. You should be able to create a lock point and trigger, which can be controlled from module code (eg: you have to click a button 5 times to unlock the next bit of content — not something that warrants a full cd-activity).
+* Etc (see issues added to the v2 milestone)
 
 
 # License
