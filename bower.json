@@ -1,6 +1,6 @@
 {
-  "name": "cd-module",
-  "description": "A standard library for learning modules, by CD Industrial Group Inc.",
+  "name": "cd-module v2",
+  "description": "A framework for LBS modules, by CD Industrial Group Inc.",
   "authors": [
     "Ivan Reese <ivan@cdiginc.com>"
   ],
