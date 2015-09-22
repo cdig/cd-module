@@ -5,10 +5,11 @@
 A major revision is happening in this v2 branch. Master will be left alone to serve as the v1 branch. In the far future, when all existing modules are updated or abandoned, we can resume using master as the branch for ongoing development.
 
 # Upgrade Path [Draft]
-I should also probably write an Automator Application that can be used for upgrading from v1. For a module where you are tolerant of breaking changes, ideally:
+
+Here's how you'd upgrade a v1 module to v2. Note, be prepared for breaking changes to your module — they should be few, but they will happen. This will run a bower-update.
 
 #### Step 1
-In the Terminal, `cd` into your module folder, and run: `bower uninstall cd-module --save --force && rm -rf ./bower_components && bower install cdig/cd-module#v2 --save && bower update`
+In the Terminal, `cd` into your module folder, and run: `bower update && bower uninstall cd-module --save --force && rm -rf ./bower_components && bower install cdig/cd-module#v2 --save && bower update`
 
 If it says `Unable to find a suitable version for cd-module, please choose one`, you need to choose the one that starts with `cd-module#v2` and type that prefixed with an exclamation point. For instance:
 
@@ -99,7 +100,7 @@ The built-in styling is almost completely neutral. It is designed as an abstract
 
 
 ### Codekit -> Gulp
-We're killing CodeKit, and switching to Gulp.
+We're killing CodeKit, and switching to Gulp. Sean will have a foundation for this on Monday.
 
 
 ### Progressive Enhancement
