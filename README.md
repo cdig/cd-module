@@ -1,25 +1,29 @@
 # cd-module v2
 
-This is a major revision to cd-module. It's a work in progress.
+### WORK IN PROGRESS — DO NOT USE
 
-Work is happening in this v2 branch. Master will be left alone as the v1 branch. In the far future, when all existing modules are updated or abandoned, we can resume using master as the branch for ongoing development.
+A major revision is happening in this v2 branch. Master will be left alone to serve as the v1 branch. In the far future, when all existing modules are updated or abandoned, we can resume using master as the branch for ongoing development.
 
 # Upgrade Path [Draft]
 I should also probably write an Automator Application that can be used for upgrading from v1. For a module where you are tolerant of breaking changes, ideally:
 
-1. Delete your bower_components folder
-2. Open bower.json and replace `"cd-module": "cdig/cd-module"` with `"cd-module": "cdig/cd-module#v2"`
-3. Run `bower update`
-4. Open `bower_components/cd-module` and double click `Update v1 Module.app`
+#### Step 1
+In the Terminal, `cd` into your module folder, and run: `bower uninstall cd-module --save --force && rm -rf ./bower_components && bower install cdig/cd-module#v2 --save && bower update`
 
-The Upgrade app would:
-* Edit the bower.json file to change `"_project": "cdig/lbs-project"` to whatever the appropriate asset pack would be
-* Edit the index.kit, scripts.coffee, styles.scss, and libs.js to their modern equivalents (and it'd report any issues it encountered)
-* Make any other changes, do any cleanup, issue any warnings or recommendations (eg: if the public folder was too big), etc
+If it says `Unable to find a suitable version for cd-module, please choose one`, you need to choose the one that starts with `cd-module#v2` and type that prefixed with an exclamation point. For instance:
 
+```bash
+Unable to find a suitable version for cd-module, please choose one:
+    1) cd-module#* which resolved to 7c41825bb1 and is required by q-n-eh#ef30a5e43e
+    2) cd-module#v2 which resolved to 43df4e2827Prefix the choice with ! to persist it to bower.json
+```
+
+You'd type `!2` and hit enter.
+
+#### Step 2
+If you have `"_project": "cdig/lbs-project"` in your bower.json, run: `bower uninstall _project --save && bower install cdig/lbs-pack`
 
 # Major Changes
-
 
 ### LBS Only
 We won't worry about environments other than LBS. If we need to do another big content project, we'll extend cd-module to support that at that time.
