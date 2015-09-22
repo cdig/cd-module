@@ -4,6 +4,19 @@ This is a major revision to cd-module. It's a work in progress.
 
 Work is happening in this v2 branch. Master will be left alone as the v1 branch. In the far future, when all existing modules are updated or abandoned, we can resume using master as the branch for ongoing development.
 
+# Upgrade Path [Draft]
+I should also probably write an Automator Application that can be used for upgrading from v1. For a module where you are tolerant of breaking changes, ideally:
+
+1. Delete your bower_components folder
+2. Open bower.json and replace `"cd-module": "cdig/cd-module"` with `"cd-module": "cdig/cd-module#v2"`
+3. Run `bower update`
+4. Open `bower_components/cd-module` and double click `Update v1 Module.app`
+
+The Upgrade app would:
+* Edit the bower.json file to change `"_project": "cdig/lbs-project"` to whatever the appropriate asset pack would be
+* Edit the index.kit, scripts.coffee, styles.scss, and libs.js to their modern equivalents (and it'd report any issues it encountered)
+* Make any other changes, do any cleanup, issue any warnings or recommendations (eg: if the public folder was too big), etc
+
 
 # Major Changes
 
@@ -83,20 +96,6 @@ The built-in styling is almost completely neutral. It is designed as an abstract
 
 ### Codekit -> Gulp
 We're killing CodeKit, and switching to Gulp.
-
-
-### Upgrade Path
-I should also probably write an Automator Application that can be used for upgrading from v1. For a module where you are tolerant of breaking changes, ideally:
-
-1. Delete your bower_components folder
-2. Open bower.json and replace `"cd-module": "cdig/cd-module"` with `"cd-module": "cdig/cd-module#v2"`
-3. Run `bower update`
-4. Open `bower_components/cd-module` and double click `Update v1 Module.app`
-
-The Upgrade app would:
-* Edit the bower.json file to change `"_project": "cdig/lbs-project"` to whatever the appropriate asset pack would be
-* Edit the index.kit, scripts.coffee, styles.scss, and libs.js to their modern equivalents (and it'd report any issues it encountered)
-* Make any other changes, do any cleanup, issue any warnings or recommendations (eg: if the public folder was too big), etc
 
 
 ### Progressive Enhancement
