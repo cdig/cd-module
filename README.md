@@ -4,6 +4,8 @@
 
 A major revision is happening in this v2 branch. Master will be left alone to serve as the v1 branch. In the far future, when all existing modules are updated or abandoned, we can resume using master as the branch for ongoing development.
 
+
+
 # Upgrade Path [Draft]
 
 Here's how you'd upgrade a v1 module to v2. Note, be prepared for breaking changes to your module — they should be few, but they will happen. This will run a bower-update.
@@ -24,47 +26,13 @@ You'd type `!2` and hit enter.
 #### Step 2
 If you have `"_project": "cdig/lbs-project"` in your bower.json, run: `bower uninstall _project --save && bower install cdig/lbs-pack`
 
+
+
 # Major Changes
 
-### LBS Only
-We won't worry about environments other than LBS. If we need to do another big content project, we'll extend cd-module to support that at that time.
 
-
-### IE10+ only
-We don't need Modernizr or UAParser. The LBS site will serve as gatekeeper.
-
-
-### Deprecate SWFs
-Remove SWFObject, and discourage use of SWFs. If a SWF needs to be used, cd-swf should be available as an add-on that includes SWFObject (if needed).
-
-
-### Drop Smartphone Support
-As discussed.
-
-
-### Kill the HUD
-It's a usability nightmare. It did offer some nice functionality, though.
-* Audio will be in-context. People will need to click on the little speaker buttons. If people are too lazy to do that, then they're too lazy to learn!
-* Page navigation is going away. Sorry! It was nice, but not THAT nice.
-* For getting "back" to the "menu", we'll figure out some sort of integration with LBS, perhaps at the top and bottom of modules.
-
-
-### Merge cd-foundtaion into cd-module
-If we have other projects that need to use Env or Ease or other features, they can grab those libs a la carte. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
-
-
-### Better APIs
-
-#### CSS
-Classes should be for styling, and that's it. The naming scheme will be decided as I figure out the right interface for Asset Packs (see below).
-
-#### JS
-Attributes should be for JS, and that's it. This JS should enhance the element, but not do anything too crazy or introduce possibly conflicting styling. Attributes should adopt an `x-blah` naming scheme, so we don't need to use silly "cd-blah" prefixes. The exception to all this is attributes on a component (custom element) — they can use whatever names they want, and the meaning of those attributes is defined by the component.
-
-#### Components
-Custom elements should be for components (html + css + js), and that's it. All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
-
-A lot of the scripts available to cd-module v1 are implementation details (Pages, PageScrollWatcher, PageAudio, etc). We should go private by default, and only open things up for module developer's to use if need be.
+### Codekit -> Gulp
+We're killing CodeKit, and switching to Gulp. Sean will have a foundation for this on Monday.
 
 
 ### Asset Packs [Draft]
@@ -99,18 +67,67 @@ The built-in styling is almost completely neutral. It is designed as an abstract
 ```
 
 
-### Codekit -> Gulp
-We're killing CodeKit, and switching to Gulp. Sean will have a foundation for this on Monday.
+### HUD's Dead
+It's a usability nightmare. It did offer some nice functionality, though.
+* Audio will be in-context. People will need to click on the little speaker buttons. If people are too lazy to do that, then they're too lazy to learn!
+* Page navigation is going away. Sorry! It was nice, but not THAT nice.
+* For getting "back" to the "menu", we'll figure out some sort of integration with LBS, perhaps at the top and bottom of modules.
+
+
+### Improved Primitives
+We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
+
+Ideas for new primitives:
+* Some sort of grid layout primitive, that supports stacking
+* Some sort of drag-and-drop grid layout primitive
+
+
+
+# Minor Changes
+
+
+### Simplified Scoring
+In preparation for our upcoming LBS scoring service, a lot of the existing scoring/points behavior has been reduced to a minimum.
+
+
+### LBS Only
+We don't support environments other than LBS. If we need to do another big content project, we'll extend cd-module to support that at that time.
+
+
+### IE10+ only
+We don't need Modernizr or UAParser. The LBS site will serve as gatekeeper.
+
+
+### SWFs Considered Harmful
+SWF support has been removed from cd-module. If you need to use a SWF in a module, please install [cd-swf-pack](/cdig/cd-swf-pack). If you try to use a SWF without the pack installed, we should issue a warning.
+
+
+### Smartphone Support Dropped
+As discussed.
+
+
+### Merge cd-foundtaion into cd-module
+If we have other projects that need to use Env or Ease or other features, they can grab those libs a la carte. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
+
+
+### Better APIs
+
+#### CSS
+Classes should be for styling, and that's it. The naming scheme will be decided as I figure out the right interface for Asset Packs (see below).
+
+#### JS
+Attributes should be for JS, and that's it. This JS should enhance the element, but not do anything too crazy or introduce possibly conflicting styling. Attributes should adopt an `x-blah` naming scheme, so we don't need to use silly "cd-blah" prefixes. The exception to all this is attributes on a component (custom element) — they can use whatever names they want, and the meaning of those attributes is defined by the component.
+
+#### Components
+Custom elements should be for components (html + css + js), and that's it. All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
+
+A lot of the scripts available to cd-module v1 are implementation details (Pages, PageScrollWatcher, PageAudio, etc). We should go private by default, and only open things up for module developer's to use if need be.
 
 
 ### Progressive Enhancement
 As I'm rewriting all the cd-module scripts, I should make sure things exhibit the load time and runtime characteristics I want.
 * The initial time-to-first-page is crushed as far below 1 second as possible. Scripts that build-up fancy behaviour run after there's already content on the page. These scripts should be idempotent, so that pages/content can be freely added or removed at any time. These scripts should be well-targeted, so that non-module content can be dynamically added in and around module content, without conflict.
 * Aggressively pursue better HTTP performance — better use of cache-friendly modules, balanced against the benefits of concat+min. Likewise, pursue CDN support.
-
-
-### Improved Primitives
-We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
 
 
 ### Runtime Performance
