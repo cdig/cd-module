@@ -8,31 +8,24 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 
 # Upgrade Path [Draft]
 
-Here's how you'd upgrade a v1 module to v2. Note, be prepared for breaking changes to your module — they should be few, but they will happen. This will run a bower-update.
-
-#### Step 1
-In the Terminal, `cd` into your module folder, and run: `bower update && bower uninstall cd-module --save --force && rm -rf ./bower_components && bower install cdig/cd-module#v2 --save && bower update`
-
-If it says `Unable to find a suitable version for cd-module, please choose one`, you need to choose the one that starts with `cd-module#v2` and type that prefixed with an exclamation point. For instance:
+Here's how you'd upgrade a v1 module to v2. Note, be prepared for breaking changes to your module — they should be few, but they will happen.
 
 ```bash
-Unable to find a suitable version for cd-module, please choose one:
-    1) cd-module#* which resolved to 7c41825bb1 and is required by q-n-eh#ef30a5e43e
-    2) cd-module#v2 which resolved to 43df4e2827Prefix the choice with ! to persist it to bower.json
+npm install cdig/cd-module#v2
+gulp do-something-to-make-the-upgrade-happen
 ```
 
-You'd type `!2` and hit enter.
-
-#### Step 2
-If you have `"_project": "cdig/lbs-project"` in your bower.json, run: `bower uninstall _project --save && bower install cdig/lbs-pack`
-
-
+At the end of the process, the bower_components will be nuked, bower.json will now be package.json, and all is right with the world.
 
 # Major Changes
 
 
 ### Codekit -> Gulp
 We're killing CodeKit, and switching to Gulp. Sean will have a foundation for this on Monday.
+
+
+### Bower -> npm
+We're switching to npm, so that we can use shrinkwrap, and so that we don't have BOTH bower_components and node_modules.
 
 
 ### Asset Packs [Draft]
