@@ -11,8 +11,11 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 Here's how you'd upgrade a v1 module to v2. Note, be prepared for breaking changes to your module — they should be few, but they will happen.
 
 ```bash
-npm install cdig/cd-module#v2
-gulp do-something-to-make-the-upgrade-happen
+$ curl -s https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
+$ curl -s https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
+$ npm update
+# Lots of nonsense...
+$ gulp evolve
 ```
 
 At the end of the process, the bower_components will be nuked, bower.json will now be package.json, and all is right with the world.
@@ -23,10 +26,8 @@ At the end of the process, the bower_components will be nuked, bower.json will n
 ### Codekit -> Gulp
 We're killing CodeKit, and switching to Gulp. Sean will have a foundation for this on Monday.
 
-
-### Bower -> npm
-We're switching to npm, so that we can use shrinkwrap, and so that we don't have BOTH bower_components and node_modules.
-
+### Bower -> NPM
+cd-module no longer contains any html/css/js — that all lives in Asset Packs now. cd-module is just some tooling you'll use to assemble modules.
 
 ### Asset Packs [Draft]
 The built-in styling is almost completely neutral. It is designed as an abstract styling interface. It includes a thin reference implementation, using our new company colors and Lato (and any other fonts or styles that are used in EVERY module). You can make and install Asset Packs to unlock other colors and fonts. Asset Packs build on the initial abstraction and override the reference implementation, or introduce new elements in addition to the built in ones.
@@ -58,6 +59,17 @@ The built-in styling is almost completely neutral. It is designed as an abstract
 .accent // LBS yellow
 .accent-text // LBS pink
 ```
+
+Here's an outline of features we might want:
+
+* Can contain CSS, JS, Fonts, SVGs. Maybe Images (depending on perf hit — might as well try it!). Eventually, HTML components (if we ever start using them). Should also be able to include SVGActivities.
+* Assets live in specifically named folders
+* Gulp adds the contents of these folders to the right compilation pipeline.
+* Replaces _project and a lot of the "Russian doll"-style import setup from V1.
+* Should be easy for the team to create on their own packs.
+* Installed with something that lets us shrinkwrap (bundler?).
+* In CSS and JS, must use a consistent theme for selectors. Maybe using attributes? Naming like: ap-lbs-caution-box or lbs-caution-box or trican-brown-text. Maybe, as a rule, disallow global styles?
+* We want the ability to see diffs between versions when upgrading, so we know if any breaking changes occurred, and what changes to make to fix them. Manual changelogs would be a pain, but on "real" dev teams this is the norm.
 
 
 ### HUD's Dead
