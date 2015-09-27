@@ -21,8 +21,10 @@ run() {
   fancy_echo "Honey, you're home!"
 }
 
-read -p "Upgrade the module in this folder from v1 to v2? (y/n) " yn
-case $yn in
-  [Yy]* ) run;;
-  * ) fancy_echo "Pffffff Fine";;
-esac
+{
+  read -p "Upgrade the module in this folder from v1 to v2? (y/n) " yn
+  case $yn in
+    [Yy]* ) run;;
+    * ) ;;
+  esac
+}
