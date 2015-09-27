@@ -13,7 +13,7 @@ Here's how you'd upgrade a v1 module to v2. Note, be prepared for breaking chang
 Open the Terminal, `cd` into your module folder, then run:
 
 ```bash
-curl -s https://raw.githubusercontent.com/cdig/cd-module/v2/upgrade.sh | bash
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module/v2/upgrade.sh | bash
 ```
 
 At the end of the process, the bower_components will be nuked, bower.json will now be package.json, and all is right with the world.
