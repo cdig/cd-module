@@ -8,7 +8,7 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 
 # Upgrade Path [Draft]
 
-Here's how you'd upgrade a v1 module to v2. Note, be prepared for breaking changes to your module — they should be few, but they will happen.
+Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number of files in your module, so be prepared for breaking changes. Have a backup, and test your upgraded module.
 
 Open the Terminal, `cd` into your module folder, then run:
 
@@ -20,12 +20,6 @@ npm install
 gulp evolve
 ```
 
-At the end of the process, the bower_components will be nuked, bower.json will now be package.json, and all is right with the world.
-
-## Stuff we will want to do as part of the upgrade process
-* rm config.codekit
-* rm -rf .codekit-cache
-* Rewrite all <main> elements to something else that doesn't violate the spec
 
 
 # Major Changes
