@@ -13,7 +13,11 @@ Here's how you'd upgrade a v1 module to v2. Note, be prepared for breaking chang
 Open the Terminal, `cd` into your module folder, then run:
 
 ```bash
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module/v2/upgrade.sh | bash
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
+npm install
+gulp evolve
 ```
 
 At the end of the process, the bower_components will be nuked, bower.json will now be package.json, and all is right with the world.
