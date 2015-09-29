@@ -13,6 +13,7 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
 1. Open the Terminal
 2. `cd` into your module folder
 3. Run the following. To save time, just copy-paste the whole block, including the comment at the end.
+
     ```bash
     curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
     curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
@@ -22,6 +23,7 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
     bower update && bower prune && bower update
     # WHEN YOU SEE THIS, WE ARE DONE
     ```
+
 4. After you paste it in to your Terminal, stuff will start running. Just for good measure, hit the return key once (otherwise, the last task might not run). When it's done, it'll tell you at the bottom of the Terminal.
 5. Run the `gulp` command
 6. Test your upgraded module
