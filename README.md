@@ -10,16 +10,17 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 
 Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number of files in your module, so be prepared for breaking changes. Have a backup, and test your upgraded module.
 
-Open the Terminal, `cd` into your module folder, then run:
+Open the Terminal, `cd` into your module folder, then run the following. To save time, just copy-paste the whole block, *including the empty line at the end*.
 
 ```bash
+# Make SURE you're cd'd into the right folder first!!!
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
 npm install
 gulp evolve
-```
 
+```
 
 
 # Major Changes
