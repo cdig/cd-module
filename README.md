@@ -20,10 +20,11 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
     npm install
     gulp evolve
     bower update && bower prune && bower update
-    # WHEN YOU SEE THIS, WE ARE DONE
+    # DONE
+         
     ```
 
-3. After you paste it in to your Terminal, stuff will start running. Just for good measure, hit the return key once (otherwise, the last task might not run). When it's done, it'll tell you at the bottom of the Terminal.
+3. After you paste it in to your Terminal, stuff will start running. When it's done, it'll tell you at the bottom of the Terminal.
 4. Run the `gulp` command, and test your upgraded module.
 
 # Major Changes
