@@ -5,28 +5,16 @@ $borderRadius: .5em !default;
 $mainBorderColor: #EEE !default;
 $darkBorderColor: #DDD !default;
 
-// 2. Sibling Dependencies
-@import '../../cd-foundation/dist/cd-foundation.scss';
-
 // 3. Mixins
 @import 'styles/mixins/magic-underlines.scss';
 
 // 4. Components
-@import 'components/backend-reset-button.scss';
-@import 'components/browser-support.scss';
 @import 'components/call-outs.scss';
-@import 'components/cd-swf-fallback.scss';
-@import 'components/hud.scss';
-@import 'components/loading-screen.scss';
 @import 'components/modal-popup.scss';
 @import 'components/page-locking.scss';
-@import 'components/page-switcher.scss';
-@import 'components/page-switcher-button.scss';
 @import 'components/scroll-hint.scss';
-@import 'components/score-animation/score-animation.scss';
 @import 'components/warnings.scss';
 @import 'components/welcome-popup.scss';
-@import 'components/module-wrapper/module-wrapper.scss';
 
 // 5. Classes
 @import 'styles/classes/caption.scss';
@@ -43,7 +31,6 @@ $darkBorderColor: #DDD !default;
 @import 'styles/custom/cd-row.scss';
 @import 'styles/custom/cd-text-bubble.scss';
 @import 'styles/custom/center-block.scss';
-
 
 // 7. Standard Elements
 @import 'styles/elements/headings.scss';

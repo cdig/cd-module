@@ -20,6 +20,7 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
     npm install
     gulp evolve
     bower update && bower prune && bower update
+    clear
     # DONE
          
     ```
