@@ -38,6 +38,7 @@ $darkBorderColor: #DDD !default;
 // 6. Custom Elements
 @import 'styles/custom/cd-activity.scss';
 @import 'styles/custom/cd-flow-arrow.scss';
+@import 'styles/custom/cd-main.scss';
 @import 'styles/custom/cd-page.scss';
 @import 'styles/custom/cd-row.scss';
 @import 'styles/custom/cd-text-bubble.scss';
@@ -49,7 +50,6 @@ $darkBorderColor: #DDD !default;
 @import 'styles/elements/img.scss';
 @import 'styles/elements/video.scss';
 @import 'styles/elements/lists.scss';
-@import 'styles/elements/main.scss';
 @import 'styles/elements/object.scss';
 @import 'styles/elements/p.scss';
 @import 'styles/elements/template.scss';
