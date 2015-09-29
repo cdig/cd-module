@@ -1,0 +1,7 @@
+{
+  "name": "cd-module",
+  "description": "A Framework For LBS Modules",
+  "dependencies": {},
+  "license": "UNLICENSED",
+  "private": true
+}
