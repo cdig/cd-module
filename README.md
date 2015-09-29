@@ -24,7 +24,7 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
          
     ```
 
-3. Paste it in to your Terminal. Stuff will start running. When it's done, you'll see `# DONE` at the bottom. That upgrade process is idempotent, so don't panic if you accidentally upgrade a module more than once.
+3. Paste it in to your Terminal. Stuff will start running. When it's done, you'll see `# DONE` at the bottom. The upgrade process is idempotent, so don't panic if you accidentally upgrade a module more than once.
 4. Run the `gulp` command, and test your upgraded module.
 
 # Major Changes
