@@ -10,9 +10,8 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 
 Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number of files in your module, so be prepared for breaking changes. Have a backup, and test your upgraded module.
 
-1. Open the Terminal
-2. `cd` into your module folder
-3. Run the following. To save time, just copy-paste the whole block, including the comment at the end.
+1. Open the Terminal, and `cd` into your module folder
+2. Run the following. To save time, just copy-paste the whole block, including the comment at the end.
 
     ```bash
     curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
@@ -24,9 +23,8 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
     # WHEN YOU SEE THIS, WE ARE DONE
     ```
 
-4. After you paste it in to your Terminal, stuff will start running. Just for good measure, hit the return key once (otherwise, the last task might not run). When it's done, it'll tell you at the bottom of the Terminal.
-5. Run the `gulp` command
-6. Test your upgraded module
+3. After you paste it in to your Terminal, stuff will start running. Just for good measure, hit the return key once (otherwise, the last task might not run). When it's done, it'll tell you at the bottom of the Terminal.
+4. Run the `gulp` command, and test your upgraded module.
 
 # Major Changes
 
