@@ -11,7 +11,7 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number of files in your module, so be prepared for breaking changes. Have a backup, and test your upgraded module.
 
 1. Open the Terminal, and `cd` into your module folder
-2. Copy this entire block, including the empty space after the `# DONE`
+2. Copy this entire block, including the empty space after at the end.
 
     ```bash
     curl -f https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
@@ -21,11 +21,11 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
     gulp evolve
     bower update && bower prune && bower update
     clear
-    # DONE
+    # Your jacket is now dry.
          
     ```
 
-3. Paste it in to your Terminal. Stuff will start running. When it's done, you'll see `# DONE` at the bottom. The upgrade process is idempotent, so don't panic if you accidentally upgrade a module more than once.
+3. Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done. The upgrade process is idempotent, so don't panic if you accidentally upgrade a module more than once.
 4. Run the `gulp` command, and test your upgraded module.
 
 # Major Changes
