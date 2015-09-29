@@ -14,9 +14,9 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
 2. Copy this entire block, including the empty space after the `# DONE`
 
     ```bash
-    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
-    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
-    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
+    curl -f https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
+    curl -f https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
+    curl -f https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
     npm install
     gulp evolve
     bower update && bower prune && bower update
