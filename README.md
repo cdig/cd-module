@@ -10,20 +10,21 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 
 Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number of files in your module, so be prepared for breaking changes. Have a backup, and test your upgraded module.
 
-Open the Terminal, `cd` into your module folder, then run the following. To save time, just copy-paste the whole block.
-
-```bash
-# Make SURE you're cd'd into the right folder first!!!
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
-npm install
-gulp evolve
-bower update && bower prune && bower update
-# WHEN YOU SEE THIS, WE ARE DONE
-```
-
- After you paste it in to your Terminal, stuff will start running. Just for good measure, hit the return key once (otherwise, the last task might not run). When it's done, it'll tell you at the bottom of the Terminal.
+1. Open the Terminal
+2. `cd` into your module folder
+3. Run the following. To save time, just copy-paste the whole block, including the comment at the end.
+    ```bash
+    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
+    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
+    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
+    npm install
+    gulp evolve
+    bower update && bower prune && bower update
+    # WHEN YOU SEE THIS, WE ARE DONE
+    ```
+4. After you paste it in to your Terminal, stuff will start running. Just for good measure, hit the return key once (otherwise, the last task might not run). When it's done, it'll tell you at the bottom of the Terminal.
+5. Run the `gulp` command
+6. Test your upgraded module
 
 # Major Changes
 
