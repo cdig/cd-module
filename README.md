@@ -26,13 +26,16 @@ gulp evolve
 # Major Changes
 
 
-### Codekit -> Gulp
-We're killing CodeKit, and switching to Gulp. Sean will have a foundation for this on Monday.
+### ~~Codekit~~ Gulp!
+We're killing CodeKit, and switching to Gulp. When it's time to work on a module, just run the following command on your Terminal:
 
-### Bower -> NPM
-cd-module no longer contains any html/css/js — that all lives in Asset Packs now. cd-module is just some tooling you'll use to assemble modules.
+```bash
+gulp
+```
 
-### Asset Packs [Draft]
+That'll start watching and rebuilding your .coffee, .kit, and .scss files. It'll open a browser window to the right address. (TODO: Use the same URL/port as CodeKit).
+
+### Asset Packs
 The built-in styling is almost completely neutral. It is designed as an abstract styling interface. It includes a thin reference implementation, using our new company colors and Lato (and any other fonts or styles that are used in EVERY module). You can make and install Asset Packs to unlock other colors and fonts. Asset Packs build on the initial abstraction and override the reference implementation, or introduce new elements in addition to the built in ones.
 
 ```scss
