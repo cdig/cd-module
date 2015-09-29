@@ -19,7 +19,7 @@ curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulp
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
 npm install
 gulp evolve
-    
+     
     
 ```
 
