@@ -19,9 +19,11 @@ curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulp
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
 npm install
 gulp evolve
+bower update && bower prune && bower update
+# WHEN YOU SEE THIS, WE ARE DONE
 ```
 
- After you paste it in to your Terminal, stuff will start running. Just for good measure, hit the return key once (otherwise, gulp evolve might not run). When it's done, it'll tell you at the bottom of the Terminal.
+ After you paste it in to your Terminal, stuff will start running. Just for good measure, hit the return key once (otherwise, the last task might not run). When it's done, it'll tell you at the bottom of the Terminal.
 
 # Major Changes
 
