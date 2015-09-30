@@ -41,13 +41,18 @@ Open the Terminal, and `cd` into your module folder. Copy this entire block, *in
 
 Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done.
 
-
-### Lemma Three
-
-Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your module will pop up in your default web browser. Your jacket is now dry!
+Your jacket is now dry!
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
+
+### Lemma Three
+
+Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your module will pop up in your default web browser.
+
+Party down!
+
+![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/party.jpg)
 
 # Major Changes
 
