@@ -159,4 +159,4 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
 
 ## License
-Copyright (c) 2015 CD Industrial Group Inc., released under MIT license.
+Copyright (c) 2014-2015 CD Industrial Group Inc. http://www.cdiginc.com

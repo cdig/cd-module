@@ -1,8 +1,0 @@
-cd-page {
-  display: block;
-  max-width: $maxPageWidth;
-  margin: 0 auto;
-  
-  // We'd prefer to use 25vh, rather than 12%, but github.com/cdig/why-cant-i-use#viewport-units-vw-vh-vmin-vmax
-  padding: 12% 0;
-}
