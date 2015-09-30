@@ -2,9 +2,11 @@
 
 This branch contains the cd-module v2 codebase. It's a big upgrade over the original cd-module codebase (which lives on in the [master](https://github.com/cdig/cd-module) branch). Read on to learn all about it!
 
-## Upgrading
+## Starting A New v2 Module
 
-Here's how you'd upgrade a v1 module to v2.
+Grab the [template](https://github.com/cdig/cd-module-template), and follow the instructions there.
+
+## Upgrading An Existing v1 Module
 
 ### Prolog
 
