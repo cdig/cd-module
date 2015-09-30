@@ -1,12 +1,8 @@
 # cd-module v2
 
-### WORK IN PROGRESS — DO NOT USE
+This branch contains the cd-module v2 codebase. It's a big upgrade over the original cd-module codebase (which lives on in the [master](https://github.com/cdig/cd-module) branch). Read on to learn all about it!
 
-A major revision is happening in this v2 branch. Master will be left alone to serve as the v1 branch. In the far future, when all existing modules are updated or abandoned, we can resume using master as the branch for ongoing development.
-
-
-
-# Upgrade Path [Draft]
+## Upgrading
 
 Here's how you'd upgrade a v1 module to v2.
 
@@ -193,10 +189,10 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 * Better page locking. Activities should lock on themselves (rather than the cd-page they're inside of). You should be able to move the lock point to a different place in the markup. You should be able to create a lock point and trigger, which can be controlled from module code (eg: you have to click a button 5 times to unlock the next bit of content — not something that warrants a full cd-activity).
 * Etc (see issues added to the v2 milestone)
 
-# Documentation
+## Documentation
 
 ### Browser Support
-We support: `last 2 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes.
+We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
 
-# License
+## License
 Copyright (c) 2015 CD Industrial Group Inc., released under MIT license.
