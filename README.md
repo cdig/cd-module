@@ -2,10 +2,12 @@
 
 This branch contains the cd-module v2 codebase. It's a big upgrade over the original cd-module codebase (which lives on in the [master](https://github.com/cdig/cd-module) branch). Read on to learn all about it!
 
+<br>
 ## Starting A New v2 Module
 
 Grab the [template](https://github.com/cdig/cd-module-template), and follow the instructions there.
 
+<br>
 ## Upgrading An Existing v1 Module
 
 ### Prolog
@@ -40,22 +42,21 @@ bower update && bower prune && bower update
      
 ```
 
-Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done.
-
-Your jacket is now dry!
+Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done. Your jacket is now dry!
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
 
 ### Lemma Three
 
-Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your module will pop up in your default web browser.
-
-Party down!
+Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser. Party down!
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/party.jpg)
 
-# Major Changes
+
+<br>
+<br>
+## Major Changes In v2
 
 
 ### ~~Codekit~~ Gulp!
