@@ -8,10 +8,22 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 
 # Upgrade Path [Draft]
 
-Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number of files in your module, so be prepared for breaking changes. Have a backup, and test your upgraded module.
+Here's how you'd upgrade a v1 module to v2.
 
-1. Open the Terminal, and `cd` into your module folder
-2. Copy this entire block, including the empty space after at the end.
+### Phase One
+
+First, you should make sure you're working on a fresh COPY of your module. If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
+
+There's a few files that need special handling, before we go ahead with the automated process below.
+
+Open `source/styles.scss`. Normally this file is just full of import statements, and comments separating them. If you have any actual CSS rules in here, you need to pull those rules out into a separate file — I suggest calling that file `module.scss`, and placing it directly in the `source` folder.
+
+Now take a look at `source/scripts.coffee`. Same deal — normally it's just a bunch of @codekit-append statements. If you have any actual CoffeeScript code in here, you need to pull it out into a separate file — I suggest calling this file `module.coffee`, and placing it directly in the `source` folder. Also, this code needs to work regardless of load order. You should probably email the code to Ivan to double-check. No need to wait for a reply, though — onward with the upgrade!
+
+
+### Chapter Two
+
+Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space* after the comment at the end.
 
     ```bash
     curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
@@ -22,13 +34,19 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
     npm install
     gulp evolve
     bower update && bower prune && bower update
-    clear
+    # clear
     # Your jacket is now dry.
          
     ```
 
-3. Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done. The upgrade process is idempotent, so don't panic if you accidentally upgrade a module more than once.
-4. Run the `gulp` command, and test your upgraded module.
+Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done.
+
+
+### Lemma Three
+
+Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your module will pop up in your default web browser. Your jacket is now dry!
+
+![http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg]
 
 
 # Major Changes
@@ -42,6 +60,15 @@ gulp
 ```
 
 That'll start watching and rebuilding your .coffee, .kit, and .scss files. It'll open a browser window to the right address. (TODO: Use the same URL/port as CodeKit).
+
+
+### Simplified Files
+* ~~libs.js~~
+* ~~scripts.coffee~~
+* ~~styles.coffee~~
+
+Thanks to Gulp, we no longer need these files.
+
 
 
 ### Asset Packs
@@ -104,12 +131,6 @@ Ideas for new primitives:
 
 
 # Minor Changes
-
-
-### Simplified Files
-* ~~libs.js~~
-* ~~scripts.coffee~~
-* No need to add lines to your index.kit or styles.scss when using addons like q-n-eh.
 
 
 ### Simplified Scoring
