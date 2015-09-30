@@ -61,67 +61,30 @@ Run the `gulp` command. You'll either have a spectacular display of error firewo
 ## Major Changes In v2
 
 
-### ~~Codekit~~ Gulp!
-We're killing CodeKit, and switching to Gulp. When it's time to work on a module, `cd` into your module folder, and then run the `gulp` command. It'll auto-compile all your files, watch them for changes, and live-reload the browser. You can test your module on other machines, just like CodeKit: `http://your-computer.local:3000` — note that we're using port 3000.
+### 1. ~~Codekit~~ Gulp!
+We're killing CodeKit, and switching to Gulp. When it's time to work on a module, `cd` into your module folder, and then run the `gulp` command. It'll auto-compile all your files, watch them for changes, and live-reload the browser. You can test your module on other machines, as before. Just visit `http://your-computer.local:3000` on any machine on the network.
 
+Thanks to Gulp, we no longer need these files:
 
-### Simplified Files
 * ~~libs.js~~
 * ~~scripts.coffee~~
 * ~~styles.coffee~~
 
-Thanks to Gulp, we no longer need these files.
+That means you won't need to worry about updating those files whenever you add something new to your module. Gulp is smart enough to find all your files, and compile them properly.
 
+Gulp (and the browser reloading system we're using, browser-sync) should be much more reliable than CodeKit, but it's not perfect. If you find you're having a lot of trouble with it, we have a staggering number of options that tweak its behaviour, and the freedom to swap out browser-sync entirely for other, equivalent systems that might work better.
 
 
 ### Asset Packs
-The built-in styling is almost completely neutral. It is designed as an abstract styling interface. It includes a thin reference implementation, using our new company colors and Lato (and any other fonts or styles that are used in EVERY module). You can make and install Asset Packs to unlock other colors and fonts. Asset Packs build on the initial abstraction and override the reference implementation, or introduce new elements in addition to the built in ones.
+As of v2, cd-module no longer provides any styling. At all.
 
-```scss
-// Eg: The base styling can provide a suite of colours by name and by role, with helper classes:
+Instead, you can plug-in "Asset Packs", which contain styles, scripts, images, components, SVGs, and whatever else you might want. So instead of cd-module offering some built-in styles, we now include a built-in Asset Pack: [lbs-pack](/cdig/lbs-pack). You can use other packs in addition to it (to add your own reusable styles and scripts and content). You can replace the lbs-pack with an entirely different pack (eg: for client-specific styling).
 
-// By name
-.blue-text // cdig blue text
-.navy // LBS navy background
-
-// By role
-.primary // cdig blue background
-.primary-text // cdig blue text
-.secondary // LBS orange
-.accent // LBS yellow
-.accent-text // LBS pink
-
-// Then, in a different Asset Pack, we can override the color SASS variables, helper classes, semantic names:
-
-// By name
-.blue-text // SLB blue text
-.navy // LBS navy background (fallback if not specified)
-
-// By role
-.primary // white background
-.primary-text // cdig blue text
-.secondary // LBS orange
-.accent // LBS yellow
-.accent-text // LBS pink
-```
-
-Here's an outline of features we might want:
-
-* Can contain CSS, JS, Fonts, SVGs. Maybe Images (depending on perf hit — might as well try it!). Eventually, HTML components (if we ever start using them). Should also be able to include SVGActivities.
-* Assets live in specifically named folders
-* Gulp adds the contents of these folders to the right compilation pipeline.
-* Replaces _project and a lot of the "Russian doll"-style import setup from V1.
-* Should be easy for the team to create on their own packs.
-* Installed with something that lets us shrinkwrap (bundler?).
-* In CSS and JS, must use a consistent theme for selectors. Maybe using attributes? Naming like: ap-lbs-caution-box or lbs-caution-box or trican-brown-text. Maybe, as a rule, disallow global styles?
-* We want the ability to see diffs between versions when upgrading, so we know if any breaking changes occurred, and what changes to make to fix them. Manual changelogs would be a pain, but on "real" dev teams this is the norm.
+The Asset Pack system is VERY loose and flexible, so be aware that you're being given quite a lot of rope with which to hang yourself. However, it should give you a lot more freedom to style modules however you wish, and make those styles reusable across all your modules, without having to go through Sean or Ivan.
 
 
-### HUD's Dead
-It's a usability nightmare. It did offer some nice functionality, though.
-* Audio will be in-context. People will need to click on the little speaker buttons. If people are too lazy to do that, then they're too lazy to learn!
-* Page navigation is going away. Sorry! It was nice, but not THAT nice.
-* For getting "back" to the "menu", we'll figure out some sort of integration with LBS, perhaps at the top and bottom of modules.
+### HUD's Dead, Baby
+The HUD offered some nice functionality, but it was a pretty poor design. Instead of cramming more and more stuff into the HUD, we're removing it entirely. Some of its features are outright gone. Some of its features have moved. Some of its features are temporarily missing, and will be restored in the future.
 
 
 ### Improved Primitives
