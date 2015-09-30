@@ -20,6 +20,7 @@ Open `source/styles.scss`. Normally this file is just full of import statements,
 
 Now take a look at `source/scripts.coffee`. Same deal — normally it's just a bunch of @codekit-append statements. If you have any actual CoffeeScript code in here, you need to pull it out into a separate file — I suggest calling this file `module.coffee`, and placing it directly in the `source` folder. Also, this code needs to work regardless of load order. You should probably email the code to Ivan to double-check. No need to wait for a reply, though — onward with the upgrade!
 
+![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
 
 ### Chapter Two
 
