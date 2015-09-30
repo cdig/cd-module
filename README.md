@@ -46,7 +46,7 @@ Paste it in to your Terminal. Stuff will start running. It'll clear your screen 
 
 Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your module will pop up in your default web browser. Your jacket is now dry!
 
-![http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg]
+![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
 
 # Major Changes
