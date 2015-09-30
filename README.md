@@ -87,6 +87,12 @@ The Asset Pack system is VERY loose and flexible, so be aware that you're being 
 The HUD offered some nice functionality, but it was a pretty poor design. Instead of cramming more and more stuff into the HUD, we're removing it entirely. Some of its features are outright gone. Some of its features have moved. Some of its features are temporarily missing, and will be restored in the future.
 
 
+### Smartphone Support Dropped
+As discussed. But there are consequences!
+
+You should no longer use @media rules in your CSS. At all. If you have any, you should remove them. You should make everything work well with `%` units. If this is too difficult.. ask for help!
+
+
 ### Improved Primitives
 We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
 
@@ -108,15 +114,11 @@ We don't support environments other than LBS. If we need to do another big conte
 
 
 ### IE10+ only
-We don't need Modernizr or UAParser. The LBS site will serve as gatekeeper.
+In addition to dropping support for IE9, we're also no longer checking whether the user's browser is good enough to run our stuff (since the code needed to do that was NOT light). LBS will serve as the gatekeeper, withholding our content from unworthy browsers.
 
 
 ### SWFs Considered Harmful
-SWF support has been removed from cd-module. If you need to use a SWF in a module, please install [cd-swf-pack](/cdig/cd-swf-pack). If you try to use a SWF without the pack installed, we should issue a warning.
-
-
-### Smartphone Support Dropped
-As discussed.
+SWF support has been removed from cd-module. If you need to use a SWF in a module, please install the [cd-swf-pack](/cdig/cd-swf-pack). TODO: If you try to use a SWF without the pack installed, we should issue a warning.
 
 
 ### Merge cd-foundtaion into cd-module
