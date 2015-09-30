@@ -26,19 +26,19 @@ Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-app
 
 Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space* after the comment at the end.
 
-    ```bash
-    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
-    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
-    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
-    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/title.kit > source/pages/title.kit
-    curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/ending.kit > source/pages/ending.kit
-    npm install
-    gulp evolve
-    bower update && bower prune && bower update
-    # clear
-    # Your jacket is now dry.
-         
-    ```
+```bash
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/title.kit > source/pages/title.kit
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/ending.kit > source/pages/ending.kit
+npm install
+gulp evolve
+bower update && bower prune && bower update
+# clear
+# Your jacket is now dry.
+     
+```
 
 Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done.
 
