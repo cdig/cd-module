@@ -10,11 +10,13 @@ A major revision is happening in this v2 branch. Master will be left alone to se
 
 Here's how you'd upgrade a v1 module to v2.
 
-### Phase One
+### Prolog
 
 First, you should make sure you're working on a fresh COPY of your module. If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
 
-There's a few files that need special handling, before we go ahead with the automated process below.
+### Phase One
+
+There are a few files that need special handling, before we go ahead with the automated process below.
 
 Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to pull those out into a separate file — I suggest `source/module.scss`.
 
