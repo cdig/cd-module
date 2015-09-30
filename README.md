@@ -44,14 +44,14 @@ bower update && bower prune && bower update
      
 ```
 
-Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done. Your jacket is now dry!
+Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
 
 ### Lemma Three
 
-Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser. Party down!
+Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser. Welcome to the future!
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/party.jpg)
 
@@ -62,13 +62,7 @@ Run the `gulp` command. You'll either have a spectacular display of error firewo
 
 
 ### ~~Codekit~~ Gulp!
-We're killing CodeKit, and switching to Gulp. When it's time to work on a module, just run the following command on your Terminal:
-
-```bash
-gulp
-```
-
-That'll start watching and rebuilding your .coffee, .kit, and .scss files. It'll open a browser window to the right address. (TODO: Use the same URL/port as CodeKit).
+We're killing CodeKit, and switching to Gulp. When it's time to work on a module, `cd` into your module folder, and then run the `gulp` command. It'll auto-compile all your files, watch them for changes, and live-reload the browser. You can test your module on other machines, just like CodeKit: `http://your-computer.local:3000` — note that we're using port 3000.
 
 
 ### Simplified Files
