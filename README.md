@@ -30,6 +30,7 @@ Here's how you'd upgrade a v1 module to v2. These commands will rewrite a number
 3. Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done. The upgrade process is idempotent, so don't panic if you accidentally upgrade a module more than once.
 4. Run the `gulp` command, and test your upgraded module.
 
+
 # Major Changes
 
 
@@ -41,6 +42,7 @@ gulp
 ```
 
 That'll start watching and rebuilding your .coffee, .kit, and .scss files. It'll open a browser window to the right address. (TODO: Use the same URL/port as CodeKit).
+
 
 ### Asset Packs
 The built-in styling is almost completely neutral. It is designed as an abstract styling interface. It includes a thin reference implementation, using our new company colors and Lato (and any other fonts or styles that are used in EVERY module). You can make and install Asset Packs to unlock other colors and fonts. Asset Packs build on the initial abstraction and override the reference implementation, or introduce new elements in addition to the built in ones.
@@ -102,6 +104,12 @@ Ideas for new primitives:
 
 
 # Minor Changes
+
+
+### Simplified Files
+* ~~libs.js~~
+* ~~scripts.coffee~~
+* No need to add lines to your index.kit or styles.scss when using addons like q-n-eh.
 
 
 ### Simplified Scoring

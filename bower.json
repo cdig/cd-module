@@ -1,7 +1,9 @@
 {
   "name": "cd-module",
   "description": "A Framework For LBS Modules",
-  "dependencies": {},
+  "dependencies": {
+    "cd-reset": "cdig/cd-reset"
+  },
   "license": "UNLICENSED",
   "private": true
 }

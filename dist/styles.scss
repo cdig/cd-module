@@ -5,6 +5,20 @@ $borderRadius: .5em !default;
 $mainBorderColor: #EEE !default;
 $darkBorderColor: #DDD !default;
 
+// 1. Reset
+@import '../../cd-reset/dist/reset.scss';
+
+// 2. Breakpoints
+$iPadLandscape: 1024px !default;
+$iPadPortrait: 768px !default;
+$iPhoneLandscape: 667px !default;
+$iPhonePortrait: 375px !default;
+
+// 3. Other Styles
+@import '../../cd-map/dist/cd-map.scss';
+@import '../../editor/dist/editor.scss';
+
+
 // 3. Mixins
 @import 'styles/mixins/magic-underlines.scss';
 
