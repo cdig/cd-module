@@ -16,9 +16,9 @@ First, you should make sure you're working on a fresh COPY of your module. If an
 
 There's a few files that need special handling, before we go ahead with the automated process below.
 
-Open `source/styles.scss`. Normally this file is just full of import statements, and comments separating them. If you have any actual CSS rules in here, you need to pull those rules out into a separate file — I suggest calling that file `module.scss`, and placing it directly in the `source` folder.
+Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to pull those out into a separate file — I suggest `source/module.scss`.
 
-Now take a look at `source/scripts.coffee`. Same deal — normally it's just a bunch of @codekit-append statements. If you have any actual CoffeeScript code in here, you need to pull it out into a separate file — I suggest calling this file `module.coffee`, and placing it directly in the `source` folder. Also, this code needs to work regardless of load order. You should probably email the code to Ivan to double-check. No need to wait for a reply, though — onward with the upgrade!
+Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-append` statements and comments. If you have any actual CoffeeScript code in here, you need to pull it out into a separate file — I suggest `source/module.coffee`.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
 
