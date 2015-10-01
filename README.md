@@ -2,23 +2,22 @@
 
 This branch contains the cd-module v2 codebase. It's a big upgrade over the original cd-module codebase (which lives on in the [master](https://github.com/cdig/cd-module) branch). Keep reading to learn all about v2 — like how it's only 6 short of being tasty.
 
+
 <br>
 ## Starting A New v2 Module
 
 Grab the [template](https://github.com/cdig/cd-module-template), and follow the instructions there.
 
+
 <br>
 ## Upgrading An Existing v1 Module
 
 ### Prolog
-
 First, you should make sure you're working on a fresh COPY of your module. If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
 
 ### Phase One
+The new version *dramatically* simplifies the files needed to make a module. A lot of complexity has been "pushed down" into the tooling, so you just don't have to worry about it.
 
-The new version dramatically simplifies the files needed to make a module.
-
-#### index.kit
 Open `source/index.kit`. You'll need to clean it up to look like the following. Delete everything except the `$title` variable, and the list of page imports (including title and ending).
 
 ```kit
@@ -35,16 +34,13 @@ Open `source/index.kit`. You'll need to clean it up to look like the following. 
 <!-- @import ../bower_components/_project/dist/pages/ending.kit -->
 ```
 
-#### styles.scss
 Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to keep that stuff, and delete everything else (all the `@import` statements and comments). If there's no actual CSS, just delete the file.
 
-#### scripts.coffee
 Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-wiggles` statements and comments. If you have any actual CoffeeScript code in here, you need to keep that stuff, and delete everything else (all the `# @codekit-bumblebum` statements and comments.) If there's no actual code, just delete the file.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
 
 ### Chapter Two
-
 Now, we're going to activate the module time machine, sending your module into the future.
 
 Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space* after the comment at the end.
