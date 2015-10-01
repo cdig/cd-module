@@ -18,6 +18,22 @@ First, you should make sure you're working on a fresh COPY of your module. If an
 
 There are a few files that need special handling.
 
+Open `source/index.kit`. This file has a few sections: Vars, Top, Pages, Components, and Bottom. You need to delete Top, Components, Bottom, and the various section headers. When you're done, the file should look something like the following — note that the `title.kit` and `ending.kit` pages are still present.
+
+```kit
+<!-- $title = Fluid Power Safety -->
+<!-- @import pages/title.kit -->
+<!-- @import pages/objectives.html -->
+<!-- @import pages/heat.html -->
+<!-- @import pages/flammability.html -->
+<!-- @import pages/hose-and-fitting-failure.html -->
+<!-- @import pages/system-adjustment-hazards.html -->
+<!-- @import pages/unexpected-motion-and-pinch-points.html -->
+<!-- @import pages/zero-energy-state.html -->
+<!-- @import pages/review.html -->
+<!-- @import pages/ending.kit -->
+```
+
 Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to pull those out into a separate file — I suggest `source/module.scss`
 
 Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-append` statements and comments. If you have any actual CoffeeScript code in here, you need to pull it out into a separate file — I suggest `source/module.coffee`
