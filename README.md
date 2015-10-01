@@ -80,7 +80,7 @@ Run the `gulp` command. You'll either have a spectacular display of error firewo
 
 
 ### 1. ~~Codekit~~ Gulp!
-We're killing CodeKit, and switching to Gulp. When it's time to work on a module, `cd` into your module folder, and then run the `gulp` command. It'll auto-compile all your files, watch them for changes, and live-reload the browser. You can test your module on other machines, as before. Just visit `http://your-computer.local:3000` on any machine on the network.
+We're killing CodeKit, and switching to [Gulp](http://gulpjs.com). When it's time to work on a module, `cd` into your module folder, and then run the `gulp` command. It'll auto-compile all your files, watch them for changes, and live-reload the browser. You can test your module on other machines, too — when you run `gulp`, it'll show you the URLs to use when "Local" (from your computer) and "External" (from other computers).
 
 Thanks to Gulp, we no longer need these files:
 
@@ -120,6 +120,8 @@ Ideas for new primitives:
 
 
 
+<br>
+<br>
 ## Minor Changes
 
 
@@ -139,6 +141,8 @@ In addition to dropping support for IE9, we're also no longer checking whether t
 SWF support has been removed from cd-module. If you need to use a SWF in a module, please install the [cd-swf-pack](/cdig/cd-swf-pack). TODO: If you try to use a SWF without the pack installed, we should issue a warning.
 
 
+<br>
+<br>
 ## Internal / Design Changes
 
 
@@ -175,7 +179,8 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 * Better page locking. Activities should lock on themselves (rather than the cd-page they're inside of). You should be able to move the lock point to a different place in the markup. You should be able to create a lock point and trigger, which can be controlled from module code (eg: you have to click a button 5 times to unlock the next bit of content — not something that warrants a full cd-activity).
 * Etc (see issues added to the v2 milestone)
 
-
+<br>
+<br>
 ## Documentation
 
 
@@ -183,5 +188,7 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
 
 
+<br>
+<br>
 ## License
 Copyright (c) 2014-2015 CD Industrial Group Inc. http://www.cdiginc.com
