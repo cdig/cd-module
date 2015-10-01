@@ -38,6 +38,8 @@ Open `source/styles.scss`. Normally this file is just full of `@import` statemen
 
 Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-wiggles` statements and comments. If you have any actual CoffeeScript code in here, you need to keep that stuff, and delete everything else (all the `# @codekit-bumblebum` statements and comments.) If there's no actual code, just delete the file.
 
+Finally, delete `libs.js`. Who needs libs when you have eight limbs?
+
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
 
 ### Chapter Two
