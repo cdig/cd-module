@@ -96,9 +96,9 @@ Gulp (and the browser reloading system we're using, browser-sync) should be much
 ### Asset Packs
 As of v2, cd-module no longer provides any styling. At all.
 
-Instead, you can plug-in "Asset Packs", which contain styles, scripts, images, components, SVGs, and whatever else you might want. So instead of cd-module offering some built-in styles, we now include a built-in Asset Pack: [lbs-pack](/cdig/lbs-pack). You can use other packs in addition to it (to add your own reusable styles and scripts and content). You can replace the lbs-pack with an entirely different pack (eg: for client-specific styling).
+Instead, you can plug-in "Asset Packs", which contain styles, scripts, images, components, SVGs, and whatever else you might want. So instead of cd-module offering some built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
 
-The Asset Pack system is VERY loose and flexible, so be aware that you're being given quite a lot of rope with which to hang yourself. However, it should give you a lot more freedom to style modules however you wish, and make those styles reusable across all your modules, without having to go through Sean or Ivan.
+The Asset Pack system is VERY flexible, so be aware that you're being given quite a lot of rope with which to hang yourself. However, it should give you a lot more freedom to style modules however you wish, and make those styles reusable across all your modules, without having to go through Sean or Ivan.
 
 
 ### HUD's Dead, Baby
@@ -111,7 +111,7 @@ As discussed. But there are consequences!
 You should no longer use @media rules in your CSS. At all. If you have any, you should remove them. You should make everything work well with `%` units. If this is too difficult.. ask for help!
 
 
-### Improved Primitives
+### Improved Primitives [DRAFT]
 We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
 
 Ideas for new primitives:
@@ -120,7 +120,7 @@ Ideas for new primitives:
 
 
 
-# Minor Changes
+## Minor Changes
 
 
 ### Simplified Scoring
@@ -139,11 +139,15 @@ In addition to dropping support for IE9, we're also no longer checking whether t
 SWF support has been removed from cd-module. If you need to use a SWF in a module, please install the [cd-swf-pack](/cdig/cd-swf-pack). TODO: If you try to use a SWF without the pack installed, we should issue a warning.
 
 
-### Merge cd-foundtaion into cd-module
-If we have other projects that need to use Env or Ease or other features, they can grab those libs a la carte. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
+## Internal / Design Changes
 
 
-### Better APIs
+### Kill cd-foundation [DRAFT]
+Rather than have a repo that just bundles together a bunch of libs, you should grab those libs libs a la carte when needed. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
+
+
+### Yo Dog, I Heard You Like CSS
+So I Put A Style Guide In Your Stylesheet So You Can Style Your Rules While You Rule Your Styles.
 
 #### CSS
 Classes should be for styling, and that's it. The naming scheme will be decided as I figure out the right interface for Asset Packs (see below).
@@ -154,7 +158,7 @@ Attributes should be for JS, and that's it. This JS should enhance the element, 
 #### Components
 Custom elements should be for components (html + css + js), and that's it. All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
 
-A lot of the scripts available to cd-module v1 are implementation details (Pages, PageScrollWatcher, PageAudio, etc). We should go private by default, and only open things up for module developer's to use if need be.
+A lot of the scripts available to cd-module v1 are implementation details (Pages, PageScrollWatcher, PageAudio, etc). We should go private by default, and only open things up for module developer's to use if need be. It'd be nice if Take&Make had some notion of privacy boundaries, like package-level privacy in AS3.
 
 
 ### Progressive Enhancement
@@ -171,10 +175,13 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 * Better page locking. Activities should lock on themselves (rather than the cd-page they're inside of). You should be able to move the lock point to a different place in the markup. You should be able to create a lock point and trigger, which can be controlled from module code (eg: you have to click a button 5 times to unlock the next bit of content — not something that warrants a full cd-activity).
 * Etc (see issues added to the v2 milestone)
 
+
 ## Documentation
+
 
 ### Browser Support
 We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
+
 
 ## License
 Copyright (c) 2014-2015 CD Industrial Group Inc. http://www.cdiginc.com
