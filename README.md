@@ -53,6 +53,7 @@ curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulp
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/title.kit > source/pages/title.kit
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/ending.kit > source/pages/ending.kit
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/styles/fonts.scss > source/styles/fonts.scss
 rm -rf bower_components
 npm install
 gulp evolve
