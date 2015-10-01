@@ -16,13 +16,14 @@ First, you should make sure you're working on a fresh COPY of your module. If an
 
 ### Phase One
 
-There are a few files that need special handling.
+The new version dramatically simplifies the files needed to make a module.
 
-Open `source/index.kit`. This file has a few sections: Vars, Top, Pages, Components, and Bottom. You need to delete Top, Components, Bottom, and the various section headers. When you're done, the file should look something like the following — note that the `title.kit` and `ending.kit` pages are still present.
+#### index.kit
+Open `source/index.kit`. You'll need to clean it up to look like the following. Delete everything except the `$title` variable, and the list of page imports (including title and ending).
 
 ```kit
 <!-- $title = Fluid Power Safety -->
-<!-- @import pages/title.kit -->
+<!-- @import ../bower_components/_project/dist/pages/title.kit -->
 <!-- @import pages/objectives.html -->
 <!-- @import pages/heat.html -->
 <!-- @import pages/flammability.html -->
@@ -31,12 +32,14 @@ Open `source/index.kit`. This file has a few sections: Vars, Top, Pages, Compone
 <!-- @import pages/unexpected-motion-and-pinch-points.html -->
 <!-- @import pages/zero-energy-state.html -->
 <!-- @import pages/review.html -->
-<!-- @import pages/ending.kit -->
+<!-- @import ../bower_components/_project/dist/pages/ending.kit -->
 ```
 
-Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to pull those out into a separate file — I suggest `source/module.scss`
+#### styles.scss
+Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to keep that stuff, and delete everything else (all the `@import` statements and comments). If there's no actual CSS, just delete the file.
 
-Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-append` statements and comments. If you have any actual CoffeeScript code in here, you need to pull it out into a separate file — I suggest `source/module.coffee`
+#### scripts.coffee
+Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-wiggles` statements and comments. If you have any actual CoffeeScript code in here, you need to keep that stuff, and delete everything else (all the `# @codekit-bumblebum` statements and comments.) If there's no actual code, just delete the file.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
 
