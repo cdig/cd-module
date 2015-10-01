@@ -2,7 +2,6 @@
 
 This branch contains the cd-module v2 codebase. It's a big upgrade over the original cd-module codebase (which lives on in the [master](https://github.com/cdig/cd-module) branch). Keep reading to learn all about v2 — like how it's only 6 short of being tasty.
 
-
 <br>
 ## Starting A New v2 Module
 
@@ -15,8 +14,9 @@ Grab the [template](https://github.com/cdig/cd-module-template), and follow the 
 ### Prolog
 First, you should make sure you're working on a fresh COPY of your module. If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
 
+There are a few assumptions we're making. The only one to double-check right now is.. all of your svg-activities must have the word "activity" in the folder name. If they don't, then you need to change that before you upgrade to v2.
+
 ### Phase One
-The new version *dramatically* simplifies the files needed to make a module. A lot of complexity has been "pushed down" into the tooling, so you just don't have to worry about it.
 
 Open `source/index.kit`. You'll need to clean it up to look like the following. Delete everything except the `$title` variable, and the list of page imports (including title and ending).
 
@@ -53,9 +53,10 @@ curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulp
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/title.kit > source/pages/title.kit
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/ending.kit > source/pages/ending.kit
+rm -rf bower_components
 npm install
 gulp evolve
-bower update && bower prune && bower update
+bower update
 # clear
 # Your jacket is now dry.
      
