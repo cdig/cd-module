@@ -35,7 +35,7 @@ Open the Terminal, and `cd` into your module folder. Copy this entire block, *in
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
 npm install
-gulp upgrade
+gulp to-the-future
 # clear
 # Your jacket is now dry.
      
