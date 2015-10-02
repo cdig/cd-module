@@ -18,22 +18,6 @@ There are a few assumptions we're making. The only one to double-check right now
 
 ### Phase One
 
-Open `source/index.kit`. You'll need to clean it up to look like the following. Delete everything except the `$title` variable, and the list of page imports (including title and ending).
-
-```kit
-<!-- $title = Fluid Power Safety -->
-<!-- @import ../bower_components/_project/dist/pages/title.kit -->
-<!-- @import pages/objectives.html -->
-<!-- @import pages/heat.html -->
-<!-- @import pages/flammability.html -->
-<!-- @import pages/hose-and-fitting-failure.html -->
-<!-- @import pages/system-adjustment-hazards.html -->
-<!-- @import pages/unexpected-motion-and-pinch-points.html -->
-<!-- @import pages/zero-energy-state.html -->
-<!-- @import pages/review.html -->
-<!-- @import ../bower_components/_project/dist/pages/ending.kit -->
-```
-
 Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to keep that stuff, and delete everything else (all the `@import` statements and comments). If there's no actual CSS, just delete the file.
 
 Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-wiggles` statements and comments. If you have any actual CoffeeScript code in here, you need to keep that stuff, and delete everything else (all the `# @codekit-bumblebum` statements and comments.) If there's no actual code, just delete the file.
