@@ -112,7 +112,7 @@ As discussed. But there are consequences!
 You should no longer use @media rules in your CSS. At all. If you have any, you should remove them. You should make everything work well with `%` units. If this is too difficult.. ask for help!
 
 
-### Improved Primitives [DRAFT]
+### Improved Primitives [TODO]
 We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
 
 Ideas for new primitives:
@@ -120,6 +120,8 @@ Ideas for new primitives:
 * Some sort of drag-and-drop grid layout primitive
 
 
+### Compile-time Warnings [TODO]
+We've had runtime warnings for a while. But now, we scan your codebase at compile time, and issue warnings if anything looks fishy.
 
 <br>
 <br>
@@ -151,7 +153,7 @@ SWF support has been removed from cd-module. If you need to use a SWF in a modul
 ## Internal / Design Changes
 
 
-### Kill cd-foundation [DRAFT]
+### Kill cd-foundation
 Rather than have a repo that just bundles together a bunch of libs, you should grab those libs libs a la carte when needed. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
 
 
