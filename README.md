@@ -126,6 +126,10 @@ Ideas for new primitives:
 ## Minor Changes
 
 
+### Simplified SCSS Variables
+You shouldn't see any of those annoying colour variables like `$cdDarkGrey` anymore. That means, if the `gulp` command blows up complaining about a nonexistent SCSS variable, you need to change it to a variable that does exist. All of the colours have new substitutions: $smoke for $cdDarkGrey, $red for $cdDarkRed, etc. Check [this file](https://github.com/cdig/lbs-pack/blob/master/pack/styles/vars.scss) to see the standard options.
+
+
 ### Simplified Scoring
 In preparation for our upcoming LBS scoring service, a lot of the existing scoring/points behavior has been reduced to a minimum.
 
