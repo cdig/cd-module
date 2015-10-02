@@ -101,9 +101,15 @@ Ideas for new primitives:
 ### Compile-time Warnings [TODO]
 We've had runtime warnings for a while. But now, we scan your codebase at compile time, and issue warnings if anything looks fishy.
 
+
+
 <br>
 <br>
 ## Minor Changes
+
+
+### Focus Mode [TODO]
+Option-click on a page to toggle focus mode.
 
 
 ### Simplified SCSS Variables
