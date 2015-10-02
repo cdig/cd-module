@@ -50,14 +50,8 @@ Open the Terminal, and `cd` into your module folder. Copy this entire block, *in
 ```bash
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/.gitignore > .gitignore
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/title.kit > source/pages/title.kit
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/pages/ending.kit > source/pages/ending.kit
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/source/styles/fonts.scss > source/styles/fonts.scss
-rm -rf bower_components
 npm install
-gulp evolve
-bower update
+gulp upgrade
 # clear
 # Your jacket is now dry.
      
