@@ -5,6 +5,8 @@
     "cd-reset": "cdig/cd-reset",
     "take-and-make": "cdig/take-and-make"
   },
+  "main": [],
+  "ignore": [],
   "license": "UNLICENSED",
   "private": true
 }
