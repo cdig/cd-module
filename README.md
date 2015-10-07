@@ -41,14 +41,14 @@ gulp to-the-future
      
 ```
 
-Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk to Mark for a bit. Eventually, the upgrade process will finish, and you're ready to move on.
+Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk to Mark for a bit. Eventually, the upgrade process will finish, and it'll clear the screen. Then you're ready to ~~ride your hoverboard~~ get to work on your v2 module.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
 
 ### Upgrade Lemma Three
 
-Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser. Welcome to the future!
+Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser with a ton of new features and super-fast, hopefully-more-reliable compiling and reloading via gulp. Welcome to the future!
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/party.jpg)
 
