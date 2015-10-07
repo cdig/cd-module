@@ -11,12 +11,12 @@ Grab the [template](https://github.com/cdig/cd-module-template), and follow the 
 <br>
 ## Upgrading An Existing v1 Module
 
-### Prolog
+### Upgrade Prolog
 First, you should make sure you're working on a fresh COPY of your module. If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
 
-There are a few assumptions we're making. The only one to double-check right now is.. all of your svg-activities must have the word "activity" in the folder name. If they don't, then you need to change that before you upgrade to v2.
+Before we begin, we need to extract your SVG Activities. Move the activity folder completely out of your module. Put it somewhere else. Activities are now stand-alone things. You'll develop them in isolation, and then add the compiled result to your module. (Here's why we're making this change: in the not too distant future, you'll just be able to directly "include" an activity from Hyperzine in your module).
 
-### Phase One
+### Upgrade Phase One
 
 Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to keep that stuff, and delete everything else (all the `@import` statements and comments). If there's no actual CSS, just delete the file.
 
@@ -26,7 +26,7 @@ Finally, delete `source/libs.js`. Who needs libs when you have eight limbs?
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
 
-### Chapter Two
+### Upgrade Chapter Two
 Now, we're going to activate the module time machine, sending your module into the future.
 
 Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space* after the comment at the end.
@@ -41,12 +41,12 @@ gulp to-the-future
      
 ```
 
-Paste it in to your Terminal. Stuff will start running. It'll clear your screen when done.
+Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk to Mark for a bit. Eventually, the upgrade process will finish, and you're ready to move on.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
 
-### Lemma Three
+### Upgrade Lemma Three
 
 Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser. Welcome to the future!
 
