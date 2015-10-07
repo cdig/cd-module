@@ -12,7 +12,13 @@ Grab the [template](https://github.com/cdig/cd-module-template), and follow the 
 ## Upgrading An Existing v1 Module
 
 ### Upgrade Prolog
-First, you should make sure you're working on a fresh COPY of your module. If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
+First, you should make sure you've talked to Ivan and he's made sure you have all the command line utilities and setup that you need. He should write a complete list, but here's a start:
+
+* nvm, node, npm, gulp
+* Audible bell, visual bell, and/or badge app icon on Terminal errors
+
+
+Next, make sure you're working on a fresh COPY of your module. If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
 
 Before we begin, we need to extract your SVG Activities. Move the activity folder completely out of your module. Put it somewhere else. Activities are now stand-alone things. You'll develop them in isolation, and then add the compiled result to your module. (Here's why we're making this change: in the not too distant future, you'll just be able to directly "include" an activity from Hyperzine in your module).
 
@@ -178,6 +184,10 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 ### Browser Support
 We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
 
+
+## Known Issues
+
+When you make a compile-time error in your SCSS or Coffee, the error message that appears in the Terminal is *not* very helpful in exactly locating the offending line of code. It's surely possible to provide some better info, but I have absolutely no idea how to do so at this point. That said, you should be able to make good use of the error message, and review your recent changes in order to locate the err.
 
 <br>
 <br>
