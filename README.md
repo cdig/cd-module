@@ -40,7 +40,7 @@ Finally, open `source/scripts.coffee`. Again, this file is normally just full of
 ### Chapter Two
 Now, we're going to activate the module time machine, sending your module into the future.
 
-Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space* after the comment at the end.
+Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space at the end!*
 
 ```bash
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
