@@ -11,14 +11,14 @@ Grab the [starter](https://github.com/cdig/cd-module-starter), and follow the in
 <br>
 ## Upgrading An Existing v1 Module
 
-### Upgrade Prolog
+### Prolog
 First, you should make sure you've talked to Ivan and he's made sure you have all the command line utilities and setup that you need. He should write a complete list, but here's a start:
 
 * nvm, node, npm, gulp
 * Audible bell, visual bell, and/or badge app icon on Terminal errors
 
 
-### Upgrade Phase One
+### Phase One
 
 #### 1. Make a fresh COPY of your module.
 If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
@@ -37,7 +37,7 @@ Finally, open `source/scripts.coffee`. Again, this file is normally just full of
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
 
-### Upgrade Chapter Two
+### Chapter Two
 Now, we're going to activate the module time machine, sending your module into the future.
 
 Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space* after the comment at the end.
@@ -57,7 +57,7 @@ Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk t
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
 
-### Upgrade Lemma Three
+### Lemma Three
 
 You wrote down some fonts earlier, yes? There's a new file, `source/styles/fonts.scss` — open that file and uncomment the fonts you need.
 
