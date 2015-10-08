@@ -27,10 +27,10 @@ If anything goes wrong, you should feel comfortable just trashing the upgraded v
 Move the activity folder completely out of your module. Put it somewhere else. Activities are now stand-alone things. You'll develop them in isolation, and then add the compiled result to your module. (Here's why we're making this change: in the not too distant future, you'll just be able to directly "include" an activity from Hyperzine in your module).
 
 #### 3. Write down your fonts
-For some modules, the fonts are loaded in your `source/styles.scss` file. In other modules, you may have uncommented a line the `bower_components/_project/dist/styles.scss` file. Before upgrading, you need to check both of these places and write down the fonts that your module is using. You probably aren't using Varela Round, but for some reason it was uncommented by default in _project, so I'd ignore that unless you know you need it.
+For some modules, the fonts are `@import'ed in your `source/styles.scss` file. In other modules, you may have uncommented a line the `bower_components/_project/dist/styles.scss` file. Before upgrading, you need to check both of these places and write down the fonts that your module is using. You probably aren't using Varela Round, but for some reason it was uncommented by default in _project, so I'd ignore that unless you know you need it.
 
 #### 4. Pull CSS rules out of styles.scss
-Also, while you're in `source/styles.scss`, make sure there are no actual CSS rules in here. Normally, the file is just full of import statements and comments. If you have any actual CSS, you need to move it to a different file (I recommend making `source/styles/module.scss` file, and dumping it in there).
+Also, while you're in `source/styles.scss`, make sure there are no actual CSS rules in here. Normally, the file is just full of import statements and comments. If you have any actual CSS, you need to move it to a different file (I recommend making a `source/styles/module.scss` file, and dumping it in there).
 
 #### 5. Pull coffee code out of scripts.coffee
 Finally, open `source/scripts.coffee`. Again, this file is normally just full of `# @codekit-blubber 'blah.coffee'` statements and comments. If you have any actual CoffeeScript code in here, you need to copy that to a different file (I recommend `source/scripts/module.coffee`).
@@ -47,12 +47,12 @@ curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/packa
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
 npm install
 gulp to-the-future
-# clear
+clear
 # Your jacket is now dry.
      
 ```
 
-Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk to Mark for a bit. Eventually, the upgrade process will finish, and it'll clear the screen. Then you're ready to ~~ride your hoverboard~~ get to work on your v2 module.
+Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk to Mark for a bit. Minutes later, the upgrade process will finish, and it'll clear the screen. Then you're ready to ~~ride your hoverboard~~ get to work on your v2 module.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
@@ -61,7 +61,7 @@ Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk t
 
 You wrote down some fonts earlier, yes? There's a new file, `source/styles/fonts.scss` — open that file and uncomment the fonts you need.
 
-Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser with a ton of new features and super-fast, hopefully-more-reliable compiling and reloading via gulp. Welcome to the future!
+Back in the Terminal, run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser with a ton of new features and super-fast, hopefully-more-reliable compiling and reloading via gulp. Welcome to the future!
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/party.jpg)
 
@@ -71,7 +71,17 @@ Run the `gulp` command. You'll either have a spectacular display of error firewo
 ## Major Changes In v2
 
 
-### 1. ~~Codekit~~ Gulp!
+### 1. Asset Packs
+As of v2, cd-module no longer provides any styling. At all.
+
+Instead, you can plug-in "Asset Packs", which contain styles, scripts, images, components, SVGs, and whatever else you might want. So instead of cd-module offering some built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
+
+The Asset Pack system is VERY flexible, so be aware that you're being given quite a lot of rope with which to hang yourself. However, it should give you a lot more freedom to style modules however you wish, and make those styles reusable across all your modules, without having to go through Sean or Ivan.
+
+You are free to make changes to the [lbs-pack](//github.com/cdig/lbs-pack), so that those changes apply across all LBS modules. You may want to run your changes past Ivan, so that he can make sure they'll perform well, but this is by no means a requirement (if you know what you're doing). The goal is that you guys will feel comfortable making such changes on your own.
+
+
+### 2. ~~Codekit~~
 We're killing CodeKit, and switching to [Gulp](http://gulpjs.com). When it's time to work on a module, `cd` into your module folder, and then run the `gulp` command. It'll auto-compile all your files, watch them for changes, and live-reload the browser. You can test your module on other machines, too — when you run `gulp`, it'll show you the URLs to use when "Local" (from your computer) and "External" (from other computers).
 
 Thanks to Gulp, we no longer need these files:
@@ -85,34 +95,14 @@ That means you won't need to worry about updating those files whenever you add s
 Gulp (and the browser reloading system we're using, browser-sync) should be much more reliable than CodeKit, but it's not perfect. If you find you're having a lot of trouble with it, we have a staggering number of options that tweak its behaviour, and the freedom to swap out browser-sync entirely for other, equivalent systems that might work better.
 
 
-### Asset Packs
-As of v2, cd-module no longer provides any styling. At all.
-
-Instead, you can plug-in "Asset Packs", which contain styles, scripts, images, components, SVGs, and whatever else you might want. So instead of cd-module offering some built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
-
-The Asset Pack system is VERY flexible, so be aware that you're being given quite a lot of rope with which to hang yourself. However, it should give you a lot more freedom to style modules however you wish, and make those styles reusable across all your modules, without having to go through Sean or Ivan.
+### 3. ~~The HUD~~
+HUD's dead, baby. The HUD offered some nice functionality, but it was a pretty poor design. Instead of cramming more and more stuff into the HUD, we're removing it entirely. Some of its features are outright gone. Some of its features have moved. Some of its features are temporarily missing, and will be restored in the future.
 
 
-### HUD's Dead, Baby
-The HUD offered some nice functionality, but it was a pretty poor design. Instead of cramming more and more stuff into the HUD, we're removing it entirely. Some of its features are outright gone. Some of its features have moved. Some of its features are temporarily missing, and will be restored in the future.
+### 4. ~~Smartphones~~
+As discussed, we're dropping support for Smartphones. But there are consequences!
 
-
-### Smartphone Support Dropped
-As discussed. But there are consequences!
-
-You should no longer use @media rules in your CSS. At all. If you have any, you should remove them. You should make everything work well with `%` units. If this is too difficult.. ask for help!
-
-
-### Improved Primitives [TODO]
-We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
-
-Ideas for new primitives:
-* Some sort of grid layout primitive, that supports stacking
-* Some sort of drag-and-drop grid layout primitive
-
-
-### Compile-time Warnings [TODO]
-We've had runtime warnings for a while. But now, we scan your codebase at compile time, and issue warnings if anything looks fishy.
+You should no longer use @media rules in your CSS. You should be able to make everything work well with `%` units and other "fluid" techniques. If this is too difficult, please ask for help.
 
 
 
@@ -121,27 +111,23 @@ We've had runtime warnings for a while. But now, we scan your codebase at compil
 ## Minor Changes
 
 
-### Focus Mode [TODO]
-Option-click on a page to toggle focus mode.
+### 1. Simplified SCSS Variables
+You shouldn't see any of those annoying colour variables like `$cdDarkGrey` anymore.
 
 
-### Simplified SCSS Variables
-You shouldn't see any of those annoying colour variables like `$cdDarkGrey` anymore. That means, if the `gulp` command blows up complaining about a nonexistent SCSS variable, you need to change it to a variable that does exist. All of the colours have new substitutions: $smoke for $cdDarkGrey, $red for $cdDarkRed, etc. Check [this file](https://github.com/cdig/lbs-pack/blob/master/pack/styles/vars.scss) to see the standard options.
-
-
-### Simplified Scoring
+### 2. Simplified Scoring
 In preparation for our upcoming LBS scoring service, a lot of the existing scoring/points behavior has been reduced to a minimum.
 
 
-### LBS Only
+### 3. LBS Only
 We don't support environments other than LBS. If we need to do another big content project, we'll extend cd-module to support that at that time.
 
 
-### IE10+ only
+### 4. IE10+ only
 In addition to dropping support for IE9, we're also no longer checking whether the user's browser is good enough to run our stuff (since the code needed to do that was NOT light). LBS will serve as the gatekeeper, withholding our content from unworthy browsers.
 
 
-### SWFs Considered Harmful
+### 5. SWFs Considered Harmful
 SWF support has been removed from cd-module. If you need to use a SWF in a module, please install the [cd-swf-pack](/cdig/cd-swf-pack). TODO: If you try to use a SWF without the pack installed, we should issue a warning.
 
 
@@ -182,6 +168,30 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 ### Crushing Issues
 * Better page locking. Activities should lock on themselves (rather than the cd-page they're inside of). You should be able to move the lock point to a different place in the markup. You should be able to create a lock point and trigger, which can be controlled from module code (eg: you have to click a button 5 times to unlock the next bit of content — not something that warrants a full cd-activity).
 * Etc (see issues added to the v2 milestone)
+
+
+
+<br>
+<br>
+## Upcoming Changes
+
+
+### Improved Primitives [TODO]
+We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
+
+Ideas for new primitives:
+* Some sort of grid layout primitive, that supports stacking
+* Some sort of drag-and-drop grid layout primitive
+
+
+### Compile-time Warnings [TODO]
+We've had runtime warnings for a while. But now, we scan your codebase at compile time, and issue warnings if anything looks fishy.
+
+
+### Focus Mode [TODO]
+Option-click on a page to toggle focus mode.
+
+
 
 <br>
 <br>
