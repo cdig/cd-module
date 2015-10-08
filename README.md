@@ -47,8 +47,6 @@ curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/packa
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
 npm install
 gulp to-the-future
-clear
-# Your jacket is now dry.
      
 ```
 
