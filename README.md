@@ -24,11 +24,13 @@ Before we begin, we need to extract your SVG Activities. Move the activity folde
 
 ### Upgrade Phase One
 
-Open `source/styles.scss`. Normally this file is just full of `@import` statements and comments. If you have any actual CSS rules in here, you need to keep that stuff, and delete everything else (all the `@import` statements and comments). If there's no actual CSS, just delete the file.
+The upgrade is going to rewrite your module, so we need to capture some important details before they're destroyed in the process.
 
-Open `source/scripts.coffee`. Normally this file is just full of `# @codekit-wiggles` statements and comments. If you have any actual CoffeeScript code in here, you need to keep that stuff, and delete everything else (all the `# @codekit-bumblebum` statements and comments.) If there's no actual code, just delete the file.
+For some modules, the fonts are loaded in your `source/styles.scss` file. In other modules, you may have uncommented a line the `bower_components/_project/dist/styles.scss` file. Before upgrading, you need to check both of these places and write down the fonts that your module is using.
 
-Finally, delete `source/libs.js`. Who needs libs when you have eight limbs?
+Also, while you're in `source/styles.scss`, make sure there are no actual CSS rules in here. Normally, the file is just full of import statements and comments. If you have any actual CSS, you need to move it to a different file (I recommend making `source/styles/module.scss` file, and dumping it in there).
+
+Finally, open `source/scripts.coffee`. Again, this file is normally just full of `# @codekit-blubber 'blah.coffee'` statements and comments. If you have any actual CoffeeScript code in here, you need to copy that to a different file (I recommend `source/scripts/module.coffee`).
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
 
@@ -53,6 +55,8 @@ Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk t
 
 
 ### Upgrade Lemma Three
+
+You wrote down some fonts earlier, yes? There's a new file, `source/styles/fonts.scss` — open that file and uncomment the fonts you need.
 
 Run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser with a ton of new features and super-fast, hopefully-more-reliable compiling and reloading via gulp. Welcome to the future!
 
