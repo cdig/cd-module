@@ -5,7 +5,7 @@ This branch contains the cd-module v2 codebase. It's a big upgrade over the orig
 <br>
 ## Starting A New v2 Module
 
-Grab the [template](https://github.com/cdig/cd-module-template), and follow the instructions there.
+Grab the [starter](https://github.com/cdig/cd-module-starter), and follow the instructions there.
 
 
 <br>
@@ -43,8 +43,8 @@ Now, we're going to activate the module time machine, sending your module into t
 Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space* after the comment at the end.
 
 ```bash
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/package.json > package.json
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-template/v2/dist/gulpfile.coffee > gulpfile.coffee
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
+curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
 npm install
 gulp to-the-future
 # clear
