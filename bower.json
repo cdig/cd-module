@@ -1,6 +1,6 @@
 {
   "name": "cd-module",
-  "description": "A Framework For LBS Modules",
+  "description": "A Framework For CDIG Modules",
   "dependencies": {
     "cd-reset": "cdig/cd-reset",
     "take-and-make": "cdig/take-and-make#v2"
