@@ -64,6 +64,14 @@ Back in the Terminal, run the `gulp` command. You'll either have a spectacular d
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/party.jpg)
 
 
+
+<br>
+<br>
+## A Quick Note About Hyperzine
+Before adding a v2 module to Hyperzine, you need to delete the `node_modules` folder. After taking a module out of Hyperzine, you need to `cd` into the module folder and run `npm install`. Then you can run `gulp` as normal, and get down to work.
+
+
+
 <br>
 <br>
 ## Major Changes In v2
