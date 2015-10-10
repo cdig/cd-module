@@ -2,7 +2,7 @@
   "name": "cd-module",
   "description": "A Framework For CDIG Modules",
   "dependencies": {
-    "backend", "cdig/backend",
+    "backend": "cdig/backend",
     "cd-map": "cdig/cd-map",
     "cd-reset": "cdig/cd-reset",
     "curry": "cdig/curry",
