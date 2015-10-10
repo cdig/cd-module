@@ -77,11 +77,11 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 # EVENT HANDLING
   
   updateScroll = ()->
-    frame = document.querySelector('module-wrapper')
-    scrollRange = frame.scrollHeight - window.innerHeight
-    nearTop = frame.scrollTop < deadband
-    nearEnd = frame.scrollTop + deadband >= scrollRange
-    moved = Math.abs(frame.scrollTop - lastSetPosition) > deadband
+    body = document.body
+    scrollRange = body.scrollHeight - window.innerHeight
+    nearTop = body.scrollTop < deadband
+    nearEnd = body.scrollTop + deadband >= scrollRange
+    moved = Math.abs(body.scrollTop - lastSetPosition) > deadband
     
     if showing
       hide() if moved and not (nearTop or nearEnd)
@@ -99,8 +99,7 @@ Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
 # INIT
   
   if Pages.length > 1
-    frame = document.querySelector('module-wrapper')
-    frame.addEventListener("scroll", updateScroll)
+    document.body.addEventListener("scroll", updateScroll)
     window.addEventListener("resize", updateScroll)
     scrollHintTab.addEventListener("click", hide)
     PageLocking.onUpdate(updateLockedPage)

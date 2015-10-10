@@ -42,6 +42,5 @@ Take "load", ()->
     
     
 # EVENT LISTENERS
-  frame = document.querySelector('module-wrapper')
-  frame.addEventListener "scroll", handleScrollAreas
-  frame.addEventListener "scroll", handleScrollBody
+  document.body.addEventListener "scroll", handleScrollAreas
+  document.body.addEventListener "scroll", handleScrollBody

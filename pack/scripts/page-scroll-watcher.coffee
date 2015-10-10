@@ -34,15 +34,13 @@ do ()->
             prevPage = page
             pageChange()
           return
-    frame = document.querySelector('module-wrapper')
-    frame.addEventListener(EVENTS.scroll, scrollHandlerFn)
+    document.body.addEventListener(EVENTS.scroll, scrollHandlerFn)
     scrollHandlerFn()
   
   pageIsCurrent = (page)->
     pageTop = page.offsetTop
     pageBottom = page.offsetTop + page.offsetHeight
-    frame = document.querySelector('module-wrapper')
-    scrollPosition = frame.scrollTop + window.innerHeight / 2
+    scrollPosition = document.body.scrollTop + window.innerHeight / 2
     return pageTop < scrollPosition and scrollPosition < pageBottom
   
   
