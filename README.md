@@ -73,26 +73,10 @@ Before adding a v2 module to Hyperzine, you need to delete the `node_modules` fo
 
 <br>
 <br>
-## Breaking Changes
-The `main` element has been renamed `cd-main`. If you have any styles that targeted `main`, you need to change them to target `cd-main`.
+## New Features
 
 
-<br>
-<br>
-## Major Changes In v2
-
-
-### 1. Asset Packs
-As of v2, cd-module no longer provides any styling. At all.
-
-Instead, you can plug-in "Asset Packs", which contain styles, scripts, images, components, SVGs, and whatever else you might want. So instead of cd-module offering some built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
-
-The Asset Pack system is VERY flexible, so be aware that you're being given quite a lot of rope with which to hang yourself. However, it should give you a lot more freedom to style modules however you wish, and make those styles reusable across all your modules, without having to go through Sean or Ivan.
-
-You are free to make changes to the [lbs-pack](//github.com/cdig/lbs-pack), so that those changes apply across all LBS modules. You may want to run your changes past Ivan, so that he can make sure they'll perform well, but this is by no means a requirement (if you know what you're doing). The goal is that you guys will feel comfortable making such changes on your own.
-
-
-### 2. ~~Codekit~~
+### 1. Gulp
 We're killing CodeKit, and switching to [Gulp](http://gulpjs.com). When it's time to work on a module, `cd` into your module folder, and then run the `gulp` command. It'll auto-compile all your files, watch them for changes, and live-reload the browser. You can test your module on other machines, too — when you run `gulp`, it'll show you the URLs to use when "Local" (from your computer) and "External" (from other computers).
 
 Thanks to Gulp, we no longer need these files:
@@ -106,64 +90,70 @@ That means you won't need to worry about updating those files whenever you add s
 Gulp (and the browser reloading system we're using, browser-sync) should be much more reliable than CodeKit, but it's not perfect. If you find you're having a lot of trouble with it, we have a staggering number of options that tweak its behaviour, and the freedom to swap out browser-sync entirely for other, equivalent systems that might work better.
 
 
-### 3. ~~The HUD~~
+### 2. Asset Packs
+As of v2, cd-module no longer provides any styling. At all.
+
+Instead, you can plug-in "Asset Packs", which contain styles, scripts, images, components, SVGs, and whatever else you might want. So instead of cd-module offering some built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
+
+The Asset Pack system is VERY flexible, so be aware that you're being given quite a lot of rope with which to hang yourself. However, it should give you a lot more freedom to style modules however you wish, and make those styles reusable across all your modules, without having to go through Sean or Ivan.
+
+You are free to make changes to the [lbs-pack](//github.com/cdig/lbs-pack), so that those changes apply across all LBS modules. You may want to run your changes past Ivan, so that he can make sure they'll perform well, but this is by no means a requirement (if you know what you're doing). The goal is that you guys will feel comfortable making such changes on your own.
+
+
+### 3. Focus Mode [TODO]
+Option-click on a cd-main to toggle focus mode. All other cd-mains will be hidden.
+
+
+### 4. Better Page Locking
+Now, an incomplete activity will prevent you from scrolling past its containing cd-main (than its containing cd-page).
+
+
+<br>
+<br>
+## Removed Features
+
+
+### 1. ~~The HUD~~
 HUD's dead, baby. The HUD offered some nice functionality, but it was a pretty poor design. Instead of cramming more and more stuff into the HUD, we're removing it entirely. Some of its features are outright gone. Some of its features have moved. Some of its features are temporarily missing, and will be restored in the future.
 
 
-### 4. ~~Smartphones~~
+### 2. ~~Smartphone Support~~
 As discussed, we're dropping support for Smartphones. But there are consequences!
 
 You should no longer use @media rules in your CSS. You should be able to make everything work well with `%` units and other "fluid" techniques. If this is too difficult, please ask for help.
 
 
-
-<br>
-<br>
-## Minor Changes
-
-
-### 1. Simplified SCSS Variables
+### 3. ~~Non-Standard SCSS Variables~~
 You shouldn't see any of those annoying colour variables like `$cdDarkGrey` anymore.
 
 
-### 2. Simplified Scoring
+### 4. ~~Scoring~~
 In preparation for our upcoming LBS scoring service, a lot of the existing scoring/points behavior has been reduced to a minimum.
 
 
-### 3. LBS Only
-We don't support environments other than LBS. If we need to do another big content project, we'll extend cd-module to support that at that time.
+### 5. ~~SCORM~~
+We no longer support environments other than LBS. If we need to do another big content project, we'll extend cd-module to support that at that time.
 
 
-### 4. IE10+ only
+### 6. ~~IE9~~
 In addition to dropping support for IE9, we're also no longer checking whether the user's browser is good enough to run our stuff (since the code needed to do that was NOT light). LBS will serve as the gatekeeper, withholding our content from unworthy browsers.
 
 
-### 5. SWFs Considered Harmful
+### 7. ~~SWFs~~
 SWF support has been removed from cd-module. If you need to use a SWF in a module, please install the [cd-swf-pack](/cdig/cd-swf-pack). TODO: If you try to use a SWF without the pack installed, we should issue a warning.
+
+
+### 8. ~~<main>~~
+Using `<main>` the way we were was a minor violation of the HTML spec. For future modules, please use `<cd-main>` instead. For the time being, `<main>` will continue to work, but it'll be removed in a future update.
+
+
+### 9. ~~cd-foundation~~
+Rather than have a repo that just bundles together a bunch of libs, you should grab those libs libs a la carte when needed. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
 
 
 <br>
 <br>
 ## Internal / Design Changes
-
-
-### Kill cd-foundation
-Rather than have a repo that just bundles together a bunch of libs, you should grab those libs libs a la carte when needed. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
-
-
-### Yo Dog, I Heard You Like CSS
-So I Put A Style Guide In Your Stylesheet So You Can Style Your Rules While You Rule Your Styles.
-
-#### CSS
-Classes should be for styling, and that's it. The naming scheme will be decided as I figure out the right interface for Asset Packs (see below).
-
-#### JS
-Attributes should be for JS, and that's it. This JS should enhance the element, but not do anything too crazy or introduce possibly conflicting styling. Attributes should adopt an `x-blah` naming scheme, so we don't need to use silly "cd-blah" prefixes. The exception to all this is attributes on a component (custom element) — they can use whatever names they want, and the meaning of those attributes is defined by the component.
-
-#### Components
-Custom elements should be for components (html + css + js), and that's it. All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
-
-A lot of the scripts available to cd-module v1 are implementation details (Pages, PageScrollWatcher, PageAudio, etc). We should go private by default, and only open things up for module developer's to use if need be. It'd be nice if Take&Make had some notion of privacy boundaries, like package-level privacy in AS3.
 
 
 ### Progressive Enhancement
@@ -172,36 +162,8 @@ As I'm rewriting all the cd-module scripts, I should make sure things exhibit th
 * Aggressively pursue better HTTP performance — better use of cache-friendly modules, balanced against the benefits of concat+min. Likewise, pursue CDN support.
 
 
-### Runtime Performance
-* Remove not-visible pages from the DOM and halt execution of their scripts (might need to establish special APIs around this; thus, breaking change), to see if it helps perf on low-power devices like A5 iPads.
-
-
-### Crushing Issues
-* Better page locking. Activities should lock on themselves (rather than the cd-page they're inside of). You should be able to move the lock point to a different place in the markup. You should be able to create a lock point and trigger, which can be controlled from module code (eg: you have to click a button 5 times to unlock the next bit of content — not something that warrants a full cd-activity).
-* Etc (see issues added to the v2 milestone)
-
-
-
-<br>
-<br>
-## Upcoming Changes
-
-
-### Improved Primitives [TODO]
-We need to revisit what primitives we're using, why, and how: cd-row / cd-map / center-block / etc.
-
-Ideas for new primitives:
-* Some sort of grid layout primitive, that supports stacking
-* Some sort of drag-and-drop grid layout primitive
-
-
-### Compile-time Warnings [TODO]
-We've had runtime warnings for a while. But now, we scan your codebase at compile time, and issue warnings if anything looks fishy.
-
-
-### Focus Mode [TODO]
-Option-click on a page to toggle focus mode.
-
+### Crushing Issues [TODO]
+See issues added to the v2 milestone.
 
 
 <br>
@@ -213,9 +175,24 @@ Option-click on a page to toggle focus mode.
 We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
 
 
-## Known Issues
-
+### Known Issues
 When you make a compile-time error in your SCSS or Coffee, the error message that appears in the Terminal is *not* very helpful in exactly locating the offending line of code. It's surely possible to provide some better info, but I have absolutely no idea how to do so at this point. That said, you should be able to make good use of the error message, and review your recent changes in order to locate the err.
+
+
+### Naming Conventions
+*Yo Dog, I Heard You Like CSS, So I Put A Style Guide In Your Stylesheet So You Can Style Your Rules While You Rule Your Styles.*
+
+#### 1. .class -> CSS
+Classes should be for styling, and that's it. The naming scheme will be decided as I figure out the right interface for Asset Packs (see below).
+
+#### 2. [attribute] -> JS
+Attributes should be for JS, and that's it. This JS should enhance the element, but not do anything too crazy or introduce possibly conflicting styling. Attributes should adopt an `x-blah` naming scheme, so we don't need to use silly "cd-blah" prefixes. The exception to all this is attributes on a component (custom element) — they can use whatever names they want, and the meaning of those attributes is defined by the component.
+
+#### 3. <custom-element> -> Components
+Custom elements should be for components (html + css + js), and that's it. All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
+
+A lot of the scripts available to cd-module v1 are implementation details (Pages, PageScrollWatcher, PageAudio, etc). We should go private by default, and only open things up for module developer's to use if need be. It'd be nice if Take&Make had some notion of privacy boundaries, like package-level privacy in AS3.
+
 
 <br>
 <br>
