@@ -71,6 +71,11 @@ Back in the Terminal, run the `gulp` command. You'll either have a spectacular d
 Before adding a v2 module to Hyperzine, you need to delete the `node_modules` folder. After taking a module out of Hyperzine, you need to `cd` into the module folder and run `npm install`. Then you can run `gulp` as normal, and get down to work.
 
 
+<br>
+<br>
+## Breaking Changes
+The `main` element has been renamed `cd-main`. If you have any styles that targeted `main`, you need to change them to target `cd-main`.
+
 
 <br>
 <br>
