@@ -42,5 +42,5 @@ Take "load", ()->
     
     
 # EVENT LISTENERS
-  document.body.addEventListener "scroll", handleScrollAreas
-  document.body.addEventListener "scroll", handleScrollBody
+  document.addEventListener "scroll", handleScrollAreas
+  document.addEventListener "scroll", handleScrollBody

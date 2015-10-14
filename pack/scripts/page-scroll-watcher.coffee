@@ -34,7 +34,7 @@ do ()->
             prevPage = page
             pageChange()
           return
-    document.body.addEventListener(EVENTS.scroll, scrollHandlerFn)
+    document.addEventListener(EVENTS.scroll, scrollHandlerFn)
     scrollHandlerFn()
   
   pageIsCurrent = (page)->
