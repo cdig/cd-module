@@ -5,7 +5,7 @@
 # pageYOffset is an IE-compatable version of scrollY
 
 
-Take ["Pages", "PageLocking", "load"], (Pages, PageLocking)->
+Take ["Pages", "PageLocking"], (Pages, PageLocking)->
   
 # STATE
   lastSetPosition = 0
