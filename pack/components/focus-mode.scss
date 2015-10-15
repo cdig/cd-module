@@ -1,0 +1,16 @@
+body[focus] {
+  // Hide huds
+  cd-hud {
+    display: none;
+  }
+  
+  // Hide non-focussed pages
+  cd-page:not([focus]) {
+    display: none;
+  }
+  
+  // Hide non-focussed children of focussed pages
+  cd-page[focus] > :not([focus]) {
+    display: none;
+  }
+}
