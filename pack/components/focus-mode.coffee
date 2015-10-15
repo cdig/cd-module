@@ -1,4 +1,4 @@
-Take "DOMContentLoaded", ()->
+Take ["ScrollHint", "DOMContentLoaded"], (ScrollHint)->
   
   # Closure over the reference to elm
   setup = (elm)->
@@ -15,12 +15,14 @@ Take "DOMContentLoaded", ()->
         elm.setAttribute "focus-mode", true
         elm.parentElement.setAttribute "focus-mode", true
         document.body.setAttribute "focus-mode", true
+        ScrollHint.suppress true
 
       # Turn off focus mode
       else
         elm.removeAttribute "focus-mode"
         elm.parentElement.removeAttribute "focus-mode"
         document.body.removeAttribute "focus-mode"
+        ScrollHint.suppress false
             
       # Restore the position of the elm in the window
       document.body.scrollTop = elm.offsetTop - top
