@@ -3,8 +3,7 @@
 
 Take ["PureDom", "load"], (PureDom)->
   
-  pagesNodeList = document.querySelectorAll("cd-page")
-  pages = PureDom.nodeListToArray(pagesNodeList)
-  Object.freeze(pages)
+  pages = PureDom.querySelectorAll document, "cd-page"
+  Object.freeze pages
   
-  Make("Pages", pages)
+  Make "Pages", pages
