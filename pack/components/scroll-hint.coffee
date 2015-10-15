@@ -5,7 +5,7 @@
 # pageYOffset is an IE-compatable version of scrollY
 
 
-Take ["Pages", "PageLocking"], (Pages, PageLocking)->
+Take ["Pages", "MainLocking"], (Pages, MainLocking)->
   
 # STATE
   lastSetPosition = 0
@@ -65,8 +65,7 @@ Take ["Pages", "PageLocking"], (Pages, PageLocking)->
   
   
   showBeginHint = ()->
-    unless PageLocking.getLockedPageIndex() is 0
-      ScrollHint.show("Scroll down to begin", "⇣")
+    ScrollHint.show("Scroll down to begin", "⇣")
   
   
   showLockedHint = ()->
@@ -90,10 +89,10 @@ Take ["Pages", "PageLocking"], (Pages, PageLocking)->
       showLockedHint() if nearEnd
 
   
-  updateLockedPage = ()->
+  updateLockedMain = ()->
     if locked
       ScrollHint.show("Scroll down to continue", "✓")
-    locked = PageLocking.getLockedPage()?
+    locked = MainLocking.getLockedMain()?
   
   
 # INIT
@@ -102,6 +101,6 @@ Take ["Pages", "PageLocking"], (Pages, PageLocking)->
     document.addEventListener("scroll", updateScroll)
     window.addEventListener("resize", updateScroll)
     scrollHintTab.addEventListener("click", hide)
-    PageLocking.onUpdate(updateLockedPage)
-    updateLockedPage()
+    MainLocking.onUpdate(updateLockedMain)
+    updateLockedMain()
     updateScroll()
