@@ -1,6 +1,6 @@
 # This might be broken. Ivan just hastily converted it to Take/Make. Someone needs to review and test it.
 
-Take "load", ()->
+Take "DOMContentLoaded", ()->
   scrollAreas = []
 
 
