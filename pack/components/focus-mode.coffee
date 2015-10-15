@@ -1,6 +1,7 @@
 Take "DOMContentLoaded", ()->
   
-  addClick = (elm)->
+  # Closure over the reference to elm
+  setup = (elm)->
     elm.addEventListener "click", (e)->
       
       # Only activate on option-click
@@ -10,19 +11,19 @@ Take "DOMContentLoaded", ()->
       top = elm.offsetTop - document.body.scrollTop
       
       # Turn on focus
-      if not elm.hasAttribute "focus"
-        elm.setAttribute "focus", true
-        elm.parentElement.setAttribute "focus", true
-        document.body.setAttribute "focus", true
+      if not elm.hasAttribute "focus-mode"
+        elm.setAttribute "focus-mode", true
+        elm.parentElement.setAttribute "focus-mode", true
+        document.body.setAttribute "focus-mode", true
 
       # Turn off focus mode
       else
-        elm.removeAttribute "focus"
-        elm.parentElement.removeAttribute "focus"
-        document.body.removeAttribute "focus"
+        elm.removeAttribute "focus-mode"
+        elm.parentElement.removeAttribute "focus-mode"
+        document.body.removeAttribute "focus-mode"
             
       # Restore the position of the elm in the window
       document.body.scrollTop = elm.offsetTop - top
       
   # Setup on all children of cd-page elements
-  addClick elm for elm in document.querySelectorAll "cd-page > *"
+  setup elm for elm in document.querySelectorAll "cd-page > *"
