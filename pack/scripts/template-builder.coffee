@@ -3,4 +3,8 @@ Make "TemplateBuilder", (template)->
     clone = document.importNode template.content, true
     return clone
   else
-    throw new Error "TemplateBuilder: Browser doesn't support templates"
+    fragment = document.createDocumentFragment()
+    for child in template.childNodes
+      clone = child.cloneNode true
+      fragment.appendChild clone
+    return fragment
