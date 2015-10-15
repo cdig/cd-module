@@ -1,4 +1,4 @@
-Take ["ScrollHint", "load"], (ScrollHint)->
+Take ["ScrollHint", "DOMContentLoaded"], (ScrollHint)->
   
 # ELEMENTS
   
