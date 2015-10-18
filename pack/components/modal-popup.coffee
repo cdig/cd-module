@@ -27,7 +27,7 @@ Take ["ScrollHint", "DOMContentLoaded"], (ScrollHint)->
       title.textContent = givenTitle
       
       if typeof givenContent is "string"
-        content.textContent = givenContent
+        content.innerHTML = givenContent
       else
         while content.hasChildNodes()
           content.removeChild(content.lastChild)

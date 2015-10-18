@@ -4,8 +4,11 @@ cd-hud {
   color: white;
   
   [cd-hud-button] {
-    background: $navy;
-    border: 1px solid $orange;
+    display: inline-block;
     padding: 1em;
+    border: 1px solid $orange;
+    background: $navy;
+    color: $orange;
+    cursor: pointer;
   }
 }

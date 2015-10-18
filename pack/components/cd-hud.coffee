@@ -13,8 +13,8 @@ Take ["TemplateBuilder", "PureDom", "DOMContentLoaded"], (TemplateBuilder, PureD
     
     addButton: (text, clickHandler)->
       button = document.createElement "div"
-      button.textContent = text
-      button.addAttribute "cd-hud-button", true
+      button.setAttribute "cd-hud-button", true
+      button.innerHTML = text
       buttons = cdHud.addElement button, clickHandler
       
   

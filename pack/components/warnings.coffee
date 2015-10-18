@@ -25,7 +25,7 @@ Take ["Env", "cdHUD", "ModalPopup", "load"], (Env, cdHUD, ModalPopup)->
   showWarningIndicator = ()->
     return if warningIndicator?
     cdHUD.addButton "Warnings", ()->
-      ModalPopup.open "This Module Has Warnings", "1. Open the console to see the warnings. 2. Fix the warnings. 3. Profit."
+      ModalPopup.open "Oh No", "1. Open the console to see the warnings.<br>2. Fix the warnings.<br>3. Profit."
   
   
 # INITIALIZATION
