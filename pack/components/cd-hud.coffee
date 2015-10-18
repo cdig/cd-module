@@ -4,11 +4,19 @@ Take ["TemplateBuilder", "PureDom", "DOMContentLoaded"], (TemplateBuilder, PureD
   Make "cdHUD", cdHud =
     # TODO: Calls to this function tend to depend on loading & execution order, which means the order that elements are added to the HUD is nondeterministic. We should make this more explicit somehow.
     addElement: (element, clickHandler)->
-      for hud in huds
+      return for hud in huds
         clone = element.cloneNode true
         if clickHandler?
           clone.addEventListener "click", clickHandler
         hud.appendChild clone
+        clone
+    
+    addButton: (text, clickHandler)->
+      button = document.createElement "div"
+      button.textContent = text
+      button.addAttribute "cd-hud-button", true
+      buttons = cdHud.addElement button, clickHandler
+      
   
   template = document.querySelector "template#cd-hud"
   content = TemplateBuilder template

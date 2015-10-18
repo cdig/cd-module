@@ -20,14 +20,13 @@ Take ["Env", "cdHUD", "ModalPopup", "load"], (Env, cdHUD, ModalPopup)->
     violations = document.querySelectorAll(selector)
     if violations.length > 0
       console.log "Warning: #{message}", violations
-      showWarningIndicator() unless warningIndicator?
-
+      showWarningIndicator()
+  
   showWarningIndicator = ()->
-    warningIndicator = document.createElement("warning-indicator")
-    warningIndicator.textContent = "Warnings"
-    warningIndicator.addEventListener "click", ()->
-      ModalPopup.open("This Module Has Warnings", "1. Open the console to see the warnings. 2. Fix the warnings. 3. Profit.");
-    cdHUD.addElement(warningIndicator)
+    return if warningIndicator?
+    cdHUD.addButton "Warnings", ()-> ModalPopup.open
+      "This Module Has Warnings",
+      "1. Open the console to see the warnings. 2. Fix the warnings. 3. Profit."
   
   
 # INITIALIZATION

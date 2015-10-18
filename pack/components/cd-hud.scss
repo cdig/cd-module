@@ -2,4 +2,10 @@ cd-hud {
   display: block;
   padding: 2em;
   color: white;
+  
+  [cd-hud-button] {
+    background: $navy;
+    border: 1px solid $orange;
+    padding: 1em;
+  }
 }
