@@ -26,10 +26,7 @@ cd-modal {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    
-    // TODO: See if this breaks inside iframes, because github.com/cdig/why-cant-i-use#viewport-units-vw-vh-vmin-vmax
     max-width: 90vw;
-    
     min-height: 10em;
     padding: 1.2em 1.6em;
     
