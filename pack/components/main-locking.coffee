@@ -1,11 +1,14 @@
 # Main Locking
 # Find the first main with unearned points, and hide all the mains and pages after it.
 
+# TODO: This code is very gross and imperative and stateful. It should be handled with gloves.
+
 
 Take ["Pages", "Scoring", "Params", "DOMContentLoaded"], (Pages, Scoring, Params)->
-  mains = document.querySelectorAll "cd-main"
+  mains = document.querySelectorAll "cd-page > *"
   lockingDisabled = Params.locking is "false"
   lockedMain = null
+  hiddenMains = []
   callbacks = []
   
   
@@ -23,7 +26,7 @@ Take ["Pages", "Scoring", "Params", "DOMContentLoaded"], (Pages, Scoring, Params
 # FUNCTIONS
   
   updateLockedMain = ()->
-    if not (lockedMain? and mainShouldBeLocked(lockedMain))
+    if not (lockedMain? and shouldBeLocked(lockedMain))
       unlock()
       updateAllMains()
       runCallbacks()
@@ -31,30 +34,34 @@ Take ["Pages", "Scoring", "Params", "DOMContentLoaded"], (Pages, Scoring, Params
   
   updateAllMains = ()->
     for main, index in mains
-      setMainHidden(main, lockedMain?)
-      if not lockedMain? and mainShouldBeLocked(main)
-        setLockedMain(main, index)
-
+      setHidden(main, lockedMain?)
+      if not lockedMain? and shouldBeLocked(main)
+        setLocked(main, index)
   
-  mainShouldBeLocked = (main)->
+
+  shouldBeLocked = (main)->
     return Scoring.getPageScore(main.parentElement) < 1 and not lockingDisabled
   
   
   unlock = ()->
-    lockedMain.classList.remove("locked-main") if lockedMain?
+    lockedMain?.removeAttribute("main-locking-locked")
     lockedMain = null
+    hiddenMains = []
   
   
-  setLockedMain = (main, index)->
+  setLocked = (main, index)->
     lockedMain = main
-    main.classList.add("locked-main")
+    main.setAttribute("main-locking-locked", true)
   
   
-  setMainHidden = (main, hide)->
+  setHidden = (main, hide)->
     if hide
-      main.classList.add("hidden-by-locked-main")
+      main.setAttribute("main-locking-hidden", true)
+      if main.parentElement isnt lockedMain.parentElement
+        main.parentElement.setAttribute("main-locking-hidden", true)
     else
-      main.classList.remove("hidden-by-locked-main")
+      main.removeAttribute("main-locking-hidden")
+      main.parentElement.removeAttribute("main-locking-hidden")
   
   
   runCallbacks = ()->
