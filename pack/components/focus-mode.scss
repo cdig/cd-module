@@ -1,4 +1,5 @@
 body[focus-mode] {
+
   // Hide huds
   cd-hud {
     display: none;
@@ -9,13 +10,20 @@ body[focus-mode] {
     display: none;
   }
   
-  // Hide non-focussed children of focussed pages
-  cd-page[focus-mode] > :not([focus-mode]) {
+  // Hide non-focussed mains and other top-level page items
+  cd-page > :not([focus-mode]) {
     display: none;
   }
   
   // Remove the excess padding above and below pages, so you can focus on the content
-  cd-page[focus-mode] {
+  cd-page {
     padding: 1px 0;
+  }
+  
+  // Indicate when we're small enough to not care anymore
+  @media (max-width: $iPadPortrait) {
+    cd-module {
+      background: $teal;
+    }
   }
 }
