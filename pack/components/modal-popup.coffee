@@ -1,4 +1,4 @@
-Take ["ScrollHint", "DOMContentLoaded"], (ScrollHint)->
+Take "DOMContentLoaded", ()->
   
 # ELEMENTS
   
@@ -39,8 +39,6 @@ Take ["ScrollHint", "DOMContentLoaded"], (ScrollHint)->
         buttons.style.visibility = null
       else
         buttons.style.visibility = "hidden"
-      
-      ScrollHint.suppress()
 
     
     close: ()->
@@ -60,7 +58,6 @@ Take ["ScrollHint", "DOMContentLoaded"], (ScrollHint)->
   
   handleOkayClick = ()->
     fadeOut()
-    ScrollHint.suppress(false)
   
 # INIT
   

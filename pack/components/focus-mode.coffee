@@ -1,9 +1,9 @@
-Take ["ScrollHint", "DOMContentLoaded"], (ScrollHint)->
+Take "DOMContentLoaded", ()->
   
   # Closure over the reference to elm
   setup = (elm)->
+    
     elm.addEventListener "click", (e)->
-      
       # Only activate on option-click
       return unless e.altKey
       
@@ -15,14 +15,12 @@ Take ["ScrollHint", "DOMContentLoaded"], (ScrollHint)->
         elm.setAttribute "focus-mode", true
         elm.parentElement.setAttribute "focus-mode", true
         document.body.setAttribute "focus-mode", true
-        ScrollHint.suppress true
 
       # Turn off focus mode
       else
         elm.removeAttribute "focus-mode"
         elm.parentElement.removeAttribute "focus-mode"
         document.body.removeAttribute "focus-mode"
-        ScrollHint.suppress false
             
       # Restore the position of the elm in the window
       document.body.scrollTop = elm.offsetTop - top
