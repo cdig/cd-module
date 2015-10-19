@@ -38,6 +38,7 @@ Take ["cdHUD", "Scoring", "ScoreDisplayGraphic", "ModalPopup", "DOMContentLoaded
 Make "ScoreDisplayGraphic",
   '<svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g score-display-progress>
+      <circle score-display-back class="glass" r="8" cx="10" cy="10"></circle>
       <circle score-display-disk r="4" cx="10" cy="10"></circle>
       <circle score-display-ring r="8" cx="10" cy="10"></circle>
     </g>
