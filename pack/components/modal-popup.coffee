@@ -27,18 +27,13 @@ Take "DOMContentLoaded", ()->
       title.textContent = givenTitle
       
       if typeof givenContent is "string"
-        content.innerHTML = givenContent
+        content.innerHTML = "<div>#{givenContent}</div>"
       else
-        while content.hasChildNodes()
-          content.removeChild(content.lastChild)
-        content.appendChild(givenContent)
+        content.innerHTML = ""
+        content.appendChild givenContent
       
       main.className = "show"
-      
-      if showButtons
-        buttons.style.visibility = null
-      else
-        buttons.style.visibility = "hidden"
+      buttons.style.visibility = if showButtons then null else "hidden"
 
     
     close: ()->
