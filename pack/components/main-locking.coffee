@@ -6,7 +6,7 @@
 
 Take ["Pages", "Scoring", "Params", "DOMContentLoaded"], (Pages, Scoring, Params)->
   mains = document.querySelectorAll "cd-page > *"
-  lockingDisabled = Params.locking is "false"
+  lockingEnabled = Params.locking isnt "false"
   lockedMain = null
   hiddenMains = []
   callbacks = []
@@ -26,6 +26,7 @@ Take ["Pages", "Scoring", "Params", "DOMContentLoaded"], (Pages, Scoring, Params
 # FUNCTIONS
   
   updateLockedMain = ()->
+    return unless lockingEnabled
     if not (lockedMain? and shouldBeLocked(lockedMain))
       unlock()
       updateAllMains()
@@ -40,7 +41,8 @@ Take ["Pages", "Scoring", "Params", "DOMContentLoaded"], (Pages, Scoring, Params
   
 
   shouldBeLocked = (main)->
-    return Scoring.getPageScore(main.parentElement) < 1 and not lockingDisabled
+    activity = main.querySelector "cd-activity"
+    return activity? and Scoring.getActivityScore(activity) < 1
   
   
   unlock = ()->
