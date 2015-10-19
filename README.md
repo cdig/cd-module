@@ -101,21 +101,29 @@ Gulp (and the browser reloading system we're using, browser-sync) should be much
 
 
 ### 2. Asset Packs
-As of v2, cd-module no longer provides any styling. At all.
+In v2, you can enhance your module with Asset Packs — reusable bundles that contain styles, scripts, and components. Instead of cd-module having built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
 
-Instead, you can plug-in "Asset Packs", which contain styles, scripts, images, components, SVGs, and whatever else you might want. So instead of cd-module offering some built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
+Asset Packs are intended to help you take your favorite design patterns and make them reusable across all your modules, without having to go through Sean or Ivan.
 
-The Asset Pack system is VERY flexible, so be aware that you're being given quite a lot of rope with which to hang yourself. However, it should give you a lot more freedom to style modules however you wish, and make those styles reusable across all your modules, without having to go through Sean or Ivan.
-
-You are free to make changes to the [lbs-pack](//github.com/cdig/lbs-pack), so that those changes apply across all LBS modules. You may want to run your changes past Ivan, so that he can make sure they'll perform well, but this is by no means a requirement (if you know what you're doing). The goal is that you guys will feel comfortable making such changes on your own.
+You are free to make changes to the [lbs-pack](//github.com/cdig/lbs-pack), so that those changes apply across all LBS modules. You may want to run your changes past Ivan, so that he can make sure they'll perform well, but this is by no means a requirement.
 
 
-### 3. Focus Mode [TODO]
-Option-click on a cd-main to toggle focus mode. All other cd-mains will be hidden.
+### 3. Focus Mode
+Option-click on a cd-main to toggle focus mode. All other stuff will be hidden. This makes it super easy to check how your layout looks as you resize the window. Even better — when you make the window narrower than the minimum size we care about (768px — iPad Portrait), we change the background color around the edges, so you know when you can stop giving a crap about stuff breaking — woo!
 
 
-### 4. Better Page Locking
-Now, an incomplete activity will prevent you from scrolling past its containing cd-main (than its containing cd-page).
+### 4. Activity Emphasis
+Over the next few months, we'll get some real scoring infrastructure in LBS. Along the way, there'll probably be a few revisions to how activities are handled. Here are the changes in v2:
+
+* We "lock" scrolling at the `cd-main` containing your current activity — whereas in v1, we locked on `cd-page`, which sucked. While it'd be nice to "lock" right at the activity, this would actually be worse for UX.
+* The current activity's `cd-main` gets a blue border, giving it a nice bit of emphasis.
+* The green bubble points animation has been removed. We'll be replacing it with something more effective in the future.
+
+
+### 5. Top & Bottom Bars
+Instead of the HUD, we now have a bar at the top and bottom of the module. Hopefully, this'll offer the same functionality as the HUD, while feeling more integrated with LBS, doing a better job of deferring to the content, and not being as glitchy on mobile.
+
+The design might seem a bit weird at the moment, but I'm planning to add navigation recommendations, and other advanced features, to this space in the future.
 
 
 <br>
@@ -123,42 +131,30 @@ Now, an incomplete activity will prevent you from scrolling past its containing 
 ## Removed Features
 
 
-### 1. ~~The HUD~~
-HUD's dead, baby. The HUD offered some nice functionality, but it was a pretty poor design. Instead of cramming more and more stuff into the HUD, we're removing it entirely. Some of its features are outright gone. Some of its features have moved. Some of its features are temporarily missing, and will be restored in the future.
-
-
-### 2. ~~Smartphone Support~~
+### 1. ~~Smartphone Support~~
 As discussed, we're dropping support for Smartphones. But there are consequences!
 
-You should no longer use @media rules in your CSS. You should be able to make everything work well with `%` units and other "fluid" techniques. If this is too difficult, please ask for help.
+You should no longer use @media rules in your CSS, ideally. You should be able to make everything work well with `%` units and other "fluid" techniques. If this is too difficult, please ask for help.
 
 
-### 3. ~~Non-Standard SCSS Variables~~
+### 2. ~~Non-Standard SCSS Variables~~
 You shouldn't see any of those annoying colour variables like `$cdDarkGrey` anymore.
 
 
-### 4. ~~Scoring~~
-In preparation for our upcoming LBS scoring service, a lot of the existing scoring/points behavior has been reduced to a minimum.
-
-
-### 5. ~~SCORM~~
+### 3. ~~SCORM~~
 We no longer support environments other than LBS. If we need to do another big content project, we'll extend cd-module to support that at that time.
 
 
-### 6. ~~IE9~~
+### 4. ~~IE9~~
 In addition to dropping support for IE9, we're also no longer checking whether the user's browser is good enough to run our stuff (since the code needed to do that was NOT light). LBS will serve as the gatekeeper, withholding our content from unworthy browsers.
 
 
-### 7. ~~SWFs~~
+### 5. ~~SWFs~~
 SWF support has been removed from cd-module. If you need to use a SWF in a module, please install the [cd-swf-pack](/cdig/cd-swf-pack). TODO: If you try to use a SWF without the pack installed, we should issue a warning.
 
 
-### 8. ~~<main>~~
-Using `<main>` the way we were was a minor violation of the HTML spec. For future modules, please use `<cd-main>` instead. For the time being, `<main>` will continue to work, but it'll be removed in a future update.
-
-
-### 9. ~~cd-foundation~~
-Rather than have a repo that just bundles together a bunch of libs, you should grab those libs libs a la carte when needed. A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
+### 6. ~~<main>~~
+Using `<main>` the way we were was a minor violation of the HTML spec. In v2, you must use `<cd-main>`, as many of the new features depend on it.
 
 
 <br>
@@ -166,14 +162,21 @@ Rather than have a repo that just bundles together a bunch of libs, you should g
 ## Internal / Design Changes
 
 
-### Progressive Enhancement
-As I'm rewriting all the cd-module scripts, I should make sure things exhibit the load time and runtime characteristics I want.
-* The initial time-to-first-page is crushed as far below 1 second as possible. Scripts that build-up fancy behaviour run after there's already content on the page. These scripts should be idempotent, so that pages/content can be freely added or removed at any time. These scripts should be well-targeted, so that non-module content can be dynamically added in and around module content, without conflict.
-* Aggressively pursue better HTTP performance — better use of cache-friendly modules, balanced against the benefits of concat+min. Likewise, pursue CDN support.
+### Performance
+The load-time performance of cd-module has been considerably improved, but there's still lots of waste. Here are some guidelines for ongoing development:
+
+* Don't Take "load" unless you absolutely must. Instead, Take "DOMContentLoaded", or just run immediately as your script loads. Do your work and get out of the way.
+* On the contrary, defer work until (long) after load time. There's a lot of front-of-line congestion, so if you can do your work rather lazily, that's excellent. Especially if you're touching the DOM or loading assets.
+* Aggressively pursue better HTTP performance. Use cache-friendly precompiled scripts. We'll take the hit on additional request/response for now, given that we'll have CDN support and HTTP2 in the next six months.
+
+The runtime performance of cd-module has also been improved. It's pretty much as good as it can be right now — it's important that we try really hard to keep it this way. Test frequently on terrible hardware.
 
 
-### Crushing Issues [TODO]
-See issues added to the v2 milestone.
+### ~~cd-foundation~~
+Rather than have a repo that just bundles together a bunch of libs, you should grab those libs libs a la carte when needed.
+
+TODO: A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
+
 
 
 <br>
@@ -190,18 +193,15 @@ When you make a compile-time error in your SCSS or Coffee, the error message tha
 
 
 ### Naming Conventions
-*Yo Dog, I Heard You Like CSS, So I Put A Style Guide In Your Stylesheet So You Can Style Your Rules While You Rule Your Styles.*
 
-#### 1. .class -> CSS
-Classes should be for styling, and that's it. The naming scheme will be decided as I figure out the right interface for Asset Packs (see below).
+#### 1. CSS Classes -> Content Styling
+Classes are reserved for styling content. Don't use them as hooks for JS, and don't use them in low-level systems. If you must use a class for a non-content purpose, namespace it with the exact name of your system.
 
-#### 2. [attribute] -> JS
-Attributes should be for JS, and that's it. This JS should enhance the element, but not do anything too crazy or introduce possibly conflicting styling. Attributes should adopt an `x-blah` naming scheme, so we don't need to use silly "cd-blah" prefixes. The exception to all this is attributes on a component (custom element) — they can use whatever names they want, and the meaning of those attributes is defined by the component.
+#### 2. HTML Attributes -> JS Systems
+Attributes on elements are reserved for JS and low-level systems. The JS targeting an attribute should enhance the element, but not do anything too crazy. Attributes should be namespaced with the name of the system.
 
-#### 3. <custom-element> -> Components
-Custom elements should be for components (html + css + js), and that's it. All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
-
-A lot of the scripts available to cd-module v1 are implementation details (Pages, PageScrollWatcher, PageAudio, etc). We should go private by default, and only open things up for module developer's to use if need be. It'd be nice if Take&Make had some notion of privacy boundaries, like package-level privacy in AS3.
+#### 3. Custom Elements -> Components
+Custom elements are reserved for components (html + css + js). All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
 
 
 <br>
