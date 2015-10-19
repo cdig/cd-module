@@ -4,8 +4,11 @@ Take ["cdHUD", "SaveWithPopup"], (cdHUD, SaveWithPopup)->
     Disconnecter.prevent()
     window.history.back()
   
-  cdHUD.addButton "< Menu", ()->
-    SaveWithPopup (success)->
-      if success
-        setTimeout goToLauncher, 500
+  cdHUD.addButton
+    text: "⬅︎ Menu"
+    order: 1
+    click: ()->
+      SaveWithPopup (success)->
+        if success
+          setTimeout goToLauncher, 500
   

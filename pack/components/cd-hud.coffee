@@ -13,8 +13,10 @@ Take "DOMContentLoaded", ()->
         hud.appendChild clone
         clone
     
-    addButton: (text, clickHandler)->
+    # Accepts: text, order, click
+    addButton: (options)->
       button = document.createElement "div"
       button.setAttribute "cd-hud-button", true
-      button.innerHTML = text
-      buttons = cdHud.addElement button, clickHandler
+      button.innerHTML = options.text
+      button.style.order = options.order
+      buttons = cdHud.addElement button, options.click

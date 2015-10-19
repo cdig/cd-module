@@ -5,19 +5,22 @@ cd-hud {
   align-items: center;
   color: white;
   
-  & > * {
-    margin: 1em;
-    transition: transform .1s cubic-bezier(0.2, 0.8, 0.2, 0.8);
-    -webkit-font-smoothing: subpixel-antialiased;
-    
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
+  & > * { margin: 1em; }
   
   [cd-hud-button] {
-    padding: 1em;
-    background: rgba($smoke, 0.85);
+    display: inline-block;
+    padding: .5em;
+    border: currentColor 1px solid;
+    text-decoration: none;
+    color: $orange;
+    background-color: $navy;
+    box-shadow: 0 0 8px -4px inset;
+    transition: background-color .2s, box-shadow .2s, color .2s, border .2s;
     cursor: pointer;
+    
+    $navy-dim: hsl(235,  60%, 19%);
+    $navy-dark: hsl(240, 100%, 10%);
+    &:hover { background-color: $navy-dim; box-shadow: 0 0 12px -4px inset; }
+    &:focus, &:active { background-color: $navy-dark; box-shadow: 0 0 14px -4px inset; }
   }
 }
