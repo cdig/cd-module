@@ -13,4 +13,9 @@ body[focus-mode] {
   cd-page[focus-mode] > :not([focus-mode]) {
     display: none;
   }
+  
+  // Remove the excess padding above and below pages, so you can focus on the content
+  cd-page[focus-mode] {
+    padding: 1px 0;
+  }
 }
