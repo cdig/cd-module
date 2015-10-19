@@ -30,5 +30,5 @@ Take ["KVStore", "ModalPopup"], (KVStore, ModalPopup)->
     
     if not saving
       saving = true
-      ModalPopup.open("Saving", "Please do not close this page.", false)
+      ModalPopup.open("Saving", "", false)
       setTimeout(runSave, 500)
