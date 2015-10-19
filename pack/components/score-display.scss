@@ -15,12 +15,7 @@ score-display {
     transition: opacity 1s;
   }
   
-  [score-display-back] {
-    fill: currentColor;
-    opacity: 0.3;
-    transition: opacity 1s;
-  }
-  
+  [score-display-back],
   [score-display-ring] {
     stroke: currentColor;
     stroke-width: 4;
@@ -28,6 +23,10 @@ score-display {
     stroke-dasharray: 50.24;
     fill: transparent;
     transition: opacity 1s;
+  }
+  
+  [score-display-back] {
+    opacity: 0.2;
   }
   
   [score-display-check] {

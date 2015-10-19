@@ -1,15 +1,23 @@
 cd-hud {
-  display: block;
-  padding: 2em;
-  text-align: center;
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
   color: white;
   
+  & > * {
+    margin: 1em;
+    transition: transform .1s cubic-bezier(0.2, 0.8, 0.2, 0.8);
+    -webkit-font-smoothing: subpixel-antialiased;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
   [cd-hud-button] {
-    display: inline-block;
     padding: 1em;
-    border: 1px solid $orange;
-    background: $navy;
-    color: $orange;
+    background: rgba($smoke, 0.85);
     cursor: pointer;
   }
 }
