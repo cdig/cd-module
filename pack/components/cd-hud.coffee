@@ -1,8 +1,10 @@
-Take ["TemplateBuilder", "PureDom", "DOMContentLoaded"], (TemplateBuilder, PureDom)->
-  huds = PureDom.querySelectorAll document, "cd-hud"
+Take "DOMContentLoaded", ()->
+  huds = document.querySelectorAll "cd-hud"
   
   Make "cdHUD", cdHud =
-    # TODO: Calls to this function tend to depend on loading & execution order, which means the order that elements are added to the HUD is nondeterministic. We should make this more explicit somehow.
+    
+    # To control sort order of elements in the hud, use the flexbox 'order' property
+    
     addElement: (element, clickHandler)->
       for hud in huds
         clone = element.cloneNode true
@@ -16,8 +18,3 @@ Take ["TemplateBuilder", "PureDom", "DOMContentLoaded"], (TemplateBuilder, PureD
       button.setAttribute "cd-hud-button", true
       button.innerHTML = text
       buttons = cdHud.addElement button, clickHandler
-      
-  
-  template = document.querySelector "template#cd-hud"
-  content = TemplateBuilder template
-  cdHud.addElement content
