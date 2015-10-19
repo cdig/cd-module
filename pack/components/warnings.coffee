@@ -11,6 +11,8 @@ Take ["Env", "cdHUD", "ModalPopup", "load"], (Env, cdHUD, ModalPopup)->
     check("cd-page:not([id])", "All cd-pages must have a unique id")
     check("cd-row > img", "Don't put images directly in cd-row — wrap them in a div")
     check("main", "Use cd-main instead of main")
+    check("cd-callouts", "cd-callouts is deprecated — tell Ivan you saw this")
+    check(".callouts", ".callouts is deprecated — tell Ivan you saw this")
     # This rule is complicated because of weirdness from SWFObject:
     # It seems to generate stray <object> elements without a [data] attribute, and then remove them later.
     # If we have an object that has a [data] attribute and no [cd-swf] attribute, then that's worthy of a Warning.
