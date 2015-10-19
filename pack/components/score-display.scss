@@ -1,23 +1,21 @@
 score-display {
-  order: 3;
+  display: block;
   
-  * {
-    cursor: pointer;
-  }
+  * { cursor: pointer; }
   
   svg {
-    width: 1.2em;
-    height: 1.2em;
+    width: 3em;
+    height: 3em;
     transform: rotate(-90deg);
     transition: transform 1s;
   }
   
-  .disk {
+  [score-display-disk] {
     fill: currentColor;
     transition: opacity 1s;
   }
   
-  .ring {
+  [score-display-ring] {
     stroke: currentColor;
     stroke-width: 4;
     stroke-dashoffset: 0;
@@ -26,21 +24,21 @@ score-display {
     transition: opacity 1s;
   }
   
-  .check {
+  [score-display-check] {
     fill: currentColor;
     opacity: 0;
     transition: opacity 1s;
   }
   
-  &.complete {
+  &.score-display-complete {
     svg {
       transform: rotate(0deg);
     }
     
-    .disk, .ring {
+    [score-display-disk], [score-display-ring] {
       opacity: 0;
     }
-    .check {
+    [score-display-check] {
       opacity: 1;
     }
   }
