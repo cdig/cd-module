@@ -157,6 +157,10 @@ SWF support has been removed from cd-module. If you need to use a SWF in a modul
 Using `<main>` the way we were was a minor violation of the HTML spec. In v2, you must use `<cd-main>`, as many of the new features depend on it.
 
 
+### 6. ~~Audio~~
+Audio is temporarily removed, as part of killing the HUD. In the future, it will be added back.
+
+
 <br>
 <br>
 ## Internal / Design Changes
@@ -176,6 +180,21 @@ The runtime performance of cd-module has also been improved. It's pretty much as
 Rather than have a repo that just bundles together a bunch of libs, you should grab those libs libs a la carte when needed.
 
 TODO: A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
+
+
+
+<br>
+<br>
+## Planned For v3+
+
+### Audio
+This is an open issue.. not sure the right way to solve it. Doing speaker icons per-main might be.. too much visual noise, if they're in context. Perhaps, they can sit just outside the main, off to the right. That might be a nice spot for other UI elements, too, like the score indicator.
+
+### New Score Animation
+Perhaps, little effervescent bubbles that float up and disappear. I seem to like bubbles.
+
+### Scroll-Driven Animations
+This includes giving something sticky positioning, but changing its state as you scroll.
 
 
 
@@ -202,6 +221,11 @@ Attributes on elements are reserved for JS and low-level systems. The JS targeti
 
 #### 3. Custom Elements -> Components
 Custom elements are reserved for components (html + css + js). All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
+
+
+### z-index
+TODO: port over the table of z-indices from v1, and update with all the new values.
+
 
 
 <br>
