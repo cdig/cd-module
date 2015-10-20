@@ -12,9 +12,17 @@ Grab the [starter](https://github.com/cdig/cd-module-starter), and follow the in
 ## Upgrading An Existing v1 Module
 
 ### Prolog
-First, you should make sure you've talked to Ivan and he's made sure you have all the command line utilities and setup that you need. He should write a complete list, but here's a start:
+First, you should make sure you've talked to Ivan and he's made sure you have all the command line utilities and setup that you need. Here's a rough list of stuff he will check:
 
-* nvm, node, npm, gulp
+* make sure nvm is installed
+* nvm install stable
+* nvm use stable
+* nvm alias default stable
+* make sure `sudo chown $(whoami):staff ~/.nvm` if necessary
+* bash_profile should have no nvm stuff
+* bashrc should be current, with NVM path correct for the given username
+* npm install -g npm
+* npm install -g gulp
 * Audible bell, visual bell, and/or badge app icon on Terminal errors
 
 
