@@ -196,6 +196,8 @@ Perhaps, little effervescent bubbles that float up and disappear. I seem to like
 ### Scroll-Driven Animations
 This includes giving something sticky positioning, but changing its state as you scroll.
 
+### Production builds
+No sourcemaps, perhaps some URL rewriting with asset fingerprinting.
 
 
 <br>
