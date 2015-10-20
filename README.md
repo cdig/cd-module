@@ -53,6 +53,7 @@ Open the Terminal, and `cd` into your module folder. Copy this entire block, *in
 ```bash
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
+rm gulpfile.js
 npm install
 gulp to-the-future
      
