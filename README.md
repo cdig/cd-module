@@ -51,12 +51,12 @@ Grab the [starter](https://github.com/cdig/cd-module-starter/tree/v2), and follo
 First, you should make sure you've talked to Ivan and he's made sure you have all the command line utilities and setup that you need. Here's a rough list of stuff he will check:
 
 * make sure nvm is installed
-* nvm install stable
-* nvm use stable
-* nvm alias default stable
 * make sure `sudo chown $(whoami):staff ~/.nvm` if necessary
 * bash_profile should have no nvm stuff
 * bashrc should be current, with NVM path correct for the given username
+* nvm install stable
+* nvm use stable
+* nvm alias default stable
 * npm install -g npm
 * npm install -g gulp
 * npm install -g bower
@@ -88,9 +88,13 @@ Now, we're going to activate the module time machine, sending your module into t
 Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space at the end!*
 
 ```bash
+rm -rf node_modules
+rm package.json
+rm gulpfile.js
+rm gulpfile.coffee
+rm gulp-svg.coffee
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
-rm gulpfile.js
 npm install
 gulp to-the-future
      
