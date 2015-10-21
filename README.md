@@ -41,7 +41,7 @@ npm install    | Downloads files for gulp into node_modules
 <br>
 ## Starting A New v2 Module
 
-Grab the [starter](https://github.com/cdig/cd-module-starter), and follow the instructions there.
+Grab the [starter](https://github.com/cdig/cd-module-starter/tree/v2), and follow the instructions there.
 
 
 <br>
