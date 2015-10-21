@@ -1,6 +1,41 @@
 # cd-module v2
 
-This branch contains the cd-module v2 codebase. It's a big upgrade over the original cd-module codebase (which lives on in the [master](https://github.com/cdig/cd-module) branch). Keep reading to learn all about v2 — like how it's only 6 short of being tasty.
+A framework and standard library to help you make gorgeous modules.
+
+This branch contains the cd-module v2 codebase. It's a big upgrade over the original cd-module codebase (which lives on in the [master](https://github.com/cdig/cd-module/tree/master) branch). Keep reading to learn all about v2 — like how it's only 6 short of being tasty!
+
+
+
+### Table of Contents
+
+- [Quick Reference]
+- [Starting A New v2 Module](#starting-a-new-v2-module)
+- [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
+- [New Features](#new-features)
+- [Removed Features](#removed-features)
+- [Upcoming Features](#upcoming-features)
+- [Documentation](#documentation)
+
+
+<br>
+## Quick Reference
+
+### Command Line
+
+Command        | Description
+--------------:|--------------------------
+bower update   | Downloads files for cd-module into bower_components
+gulp           | Compiles the module & starts browser sync
+gulp update    | Updates the gulpfile
+npm install    | Downloads files for gulp into node_modules
+
+
+### Hyperzine
+
+* Before adding a module to Hyperzine, delete the `node_modules` folder.
+* After taking a module out of Hyperzine, `cd` into the module folder and run `npm install`.
+
+
 
 <br>
 ## Starting A New v2 Module
@@ -82,14 +117,6 @@ We've automatically changed all references to the old, non-standard colors like 
 
 
 
-
-
-<br>
-<br>
-## A Quick Note About Hyperzine
-Before adding a v2 module to Hyperzine, you need to delete the `node_modules` folder. After taking a module out of Hyperzine, you need to `cd` into the module folder and run `npm install`. Then you can run `gulp` as normal, and get down to work.
-
-
 <br>
 <br>
 ## New Features
@@ -162,12 +189,13 @@ In addition to dropping support for IE9, we're also no longer checking whether t
 SWF support has been removed from cd-module. If you need to use a SWF in a module, please install the [cd-swf-pack](/cdig/cd-swf-pack). TODO: If you try to use a SWF without the pack installed, we should issue a warning.
 
 
-### 6. ~~<main>~~
+### 6. ~~`<main>`~~
 Using `<main>` the way we were was a minor violation of the HTML spec. In v2, you must use `<cd-main>`, as many of the new features depend on it.
 
 
-### 6. ~~Audio~~
+### 7. ~~Audio~~
 Audio is temporarily removed, as part of killing the HUD. In the future, it will be added back.
+
 
 
 <br>
@@ -186,9 +214,7 @@ The runtime performance of cd-module has also been improved. It's pretty much as
 
 
 ### ~~cd-foundation~~
-Rather than have a repo that just bundles together a bunch of libs, you should grab those libs libs a la carte when needed.
-
-TODO: A lot of those libs, though, are only of interest to cd-module, and should just be merged in. If we find we want to use them in a lot of other projects, we can duplicate the code for the time being (duplication hell > dependency hell), and extract what's needed when it would demonstrably save us pain.
+We now have [cd-library](https://github.com/cdig/cd-library), which is a better version of the same idea.
 
 
 
@@ -208,10 +234,31 @@ This includes giving something sticky positioning, but changing its state as you
 ### Production builds
 No sourcemaps, perhaps some URL rewriting with asset fingerprinting.
 
+### Even Better Performance
+We could do some of these things, maybe:
+
+* Lazy load images based on scroll position
+* Adapt frameworks and scripts to work assuming an async/lazy page environment
+* Load scripts for activities on-demand
+* Don't make assumptions about the size/layout of the module as a whole — restrict scripts to working within a page, with appropriate guarantees about when page assets become available
+
+### Modular Scale
+Text size should be based on a well-chosen rhythm, rather than the current "wing it" approach I've taken.
+
+### Integration
+Modules work well as standalone, isolated pieces of content, but that's not the ambition. We want modules to be aware of their surroundings, and both pull in elements of their environment, and offer aspects of themselves for outside use.
+
+* Support for standardized metadata (title, description, icon, etc) that can be automatically discovered and used in menus, link previews, etc
+* A standard for GUI elements provided by the environment (eg: an LBS header and footer that bookends the module, or a floating HUD provided by a launcher — NOT baked into the module itself)
+* Tight integration with Hyperzine as a source of media assets
+    * If we're using JS to lazy-load media, that's a good hook for adding extra control over how the media gets loaded (eg: you supply a normal relative URL that refers to a piece of media included in the module bundle, but it has query params that the JS can use to change the URL dynamically, to load a particular version from Hyperzine, perhaps using versioning rules like Bower)
+* Tight integration with the data lake / scoring services for storing and displaying facts from the user's history
+
+
 
 <br>
 <br>
-## Documentation
+## Reference
 
 
 ### Browser Support
@@ -224,18 +271,148 @@ When you make a compile-time error in your SCSS or Coffee, the error message tha
 
 ### Naming Conventions
 
-#### 1. CSS Classes -> Content Styling
+#### 1. CSS Classes are for Content Styling
 Classes are reserved for styling content. Don't use them as hooks for JS, and don't use them in low-level systems. If you must use a class for a non-content purpose, namespace it with the exact name of your system.
 
-#### 2. HTML Attributes -> JS Systems
+#### 2. HTML Attributes are for JS Services
 Attributes on elements are reserved for JS and low-level systems. The JS targeting an attribute should enhance the element, but not do anything too crazy. Attributes should be namespaced with the name of the system.
 
-#### 3. Custom Elements -> Components
+#### 3. Custom Elements are for Components
 Custom elements are reserved for components (html + css + js). All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
 
+| Name       | Type            | Written As | Example      |
+|------------|-----------------|------------|--------------|
+| Component  | HTML, CSS, & JS | kebab-case | call-out     |
+| Element    | HTML Only       | singleword | figcaption   |
+| Mixin      | CSS Only        | kebab-case | magic-unders |
+| Service    | JS Only         | CamelCase  | PageLocking  |
+| Style Rule | CSS Only        | Selector   | .text-center |
 
-### z-index
-TODO: port over the table of z-indices from v1, and update with all the new values.
+
+### Z-Index Values
+z-index | CSS Selector              | System
+-------:| ------------------------- | ------
+0-999   |                           | your module content
+100     | call-out[open]            | call-outs
+101     | call-out-point            | call-outs
+1000    | cd-modal                  | ModalPopup
+10000   | editor-container textarea | [Editor](https://github.com/cdig/editor)
+
+* call-outs have been given a z-index of ~100 so that you can layer content above or below them.
+
+
+
+<br>
+<br>
+## Documentation
+
+### cd-page
+This custom element is the highest-level grouping of content within a module.
+Following the example of the [module starter](https://github.com/cdig/cd-module-starter),
+your module will have a `source/pages` folder.
+Each file in this folder will have exactly one `<cd-page>` element that wraps all the page contents.
+You'll import all of these page files into the `<body>` of the `index.kit` for your module.
+
+```html
+<cd-page id="my-amazing-page">
+  <!-- page content -->
+</cd-page>
+```
+
+**Requirements:**
+* You must give each page an `id`, which must be unique within the module.
+* The page file should have the same name as the `id` of the `<cd-page>`.
+
+**Behaviour:**
+The default styling creates a centred column with lots of top and bottom margin, with a nice shadow poking out from the corners to establish the vertical flow of the module. The ID is used for the title of the page in the Page Switcher, and the filename for Page Audio.
+
+
+### cd-row
+
+**Source Code:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-row.scss)
+
+**Usage:**
+`<cd-row>` uses flexbox to create a dynamic multi-column layout. In this example, the three images will all appear side-by-side.
+
+```html
+<cd-row>
+  <img src="image/puppy-1.jpg">
+  <img src="image/puppy-2.jpg">
+  <img src="image/puppy-3.jpg">
+</cd-row>
+```
+
+**Requirements:**
+TODO
+
+**Behaviour:**
+Quick thing to note (which will be explained later): currently having a video inside of cd-row requires that video to be embedded within a div in order to work inside of IE.
+
+
+### h1
+
+**Source Code:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/headings.scss)
+
+**Usage:**
+This heading element is used exclusively for the title of the page.
+It should almost always be the first child of the first `<main>` element in the page,
+though you might also want to wrap it with a [cd-row](#cd-row) to place it beside a tall image.
+
+```html
+<cd-page id="my-amazing-page">
+  <main>
+  
+    <h1>My Amazing Page</h1>
+  
+  </main>
+</cd-page>
+```
+
+**Requirements:**
+* You should only use h1 for the title of a page. It should very closely match the id of the [cd-page](#cd-page) element.
+* You should not apply your own styling to the h1 within the module. Custom styling should come from the [_project folder](#_project-folder) and be shared across the entire project.
+
+**Behaviour:**
+h1 elements get very special styling, with [Magic Underlines](#magic-underlines)
+and colours from the [_project folder](#_project-folder).
+
+
+### cd-main
+
+**Source Code:**
+[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/main.scss)
+
+**Usage:**
+This standard element marks a major unit of content within a page.
+You may include as many main elements within the page as you'd like,
+to break up the flow of the page into nice units.
+Most of the content of your module — text, images and games — will go inside the main element.
+But you are also free to place content outside of the main element.
+This can be used to create full-width "hero" content, which will stretch edge-to-edge on mobile.
+This is a great way to showcase beautiful photos.
+
+```html
+<cd-page id="my-amazing-page">
+  <main>
+    <!-- content -->
+  </main>
+  
+  <img src="image/hero.png">
+  
+  <main>
+    <!-- content -->
+  </main>
+  
+</cd-page>
+```
+
+**Requirements:**
+* The main element must be a direct child of a cd-page.
+
+**Behaviour:**
+The default styling creates a white padded background behind the content.
 
 
 
