@@ -59,6 +59,7 @@ First, you should make sure you've talked to Ivan and he's made sure you have al
 * bashrc should be current, with NVM path correct for the given username
 * npm install -g npm
 * npm install -g gulp
+* npm install -g bower
 * Audible bell, visual bell, and/or badge app icon on Terminal errors
 
 
