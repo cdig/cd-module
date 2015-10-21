@@ -303,6 +303,8 @@ z-index | CSS Selector              | System
 <br>
 ## Documentation
 
+TODO: The below docs are currently from v1, and need to be updated for v2.
+
 ### cd-page
 This custom element is the highest-level grouping of content within a module.
 Following the example of the [module starter](https://github.com/cdig/cd-module-starter),
@@ -326,9 +328,6 @@ The default styling creates a centred column with lots of top and bottom margin,
 
 ### cd-row
 
-**Source Code:**
-[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/custom/cd-row.scss)
-
 **Usage:**
 `<cd-row>` uses flexbox to create a dynamic multi-column layout. In this example, the three images will all appear side-by-side.
 
@@ -348,9 +347,6 @@ Quick thing to note (which will be explained later): currently having a video in
 
 
 ### h1
-
-**Source Code:**
-[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/headings.scss)
 
 **Usage:**
 This heading element is used exclusively for the title of the page.
@@ -377,9 +373,6 @@ and colours from the [_project folder](#_project-folder).
 
 
 ### cd-main
-
-**Source Code:**
-[SCSS](https://github.com/cdig/cd-module/blob/master/dist/styles/elements/main.scss)
 
 **Usage:**
 This standard element marks a major unit of content within a page.
