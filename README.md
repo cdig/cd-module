@@ -8,12 +8,13 @@ This branch contains the cd-module v2 codebase. It's a big upgrade over the orig
 
 ### Table of Contents
 
-- [Quick Reference]
+- [Quick Reference](#quick-reference)
 - [Starting A New v2 Module](#starting-a-new-v2-module)
 - [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
 - [New Features](#new-features)
 - [Removed Features](#removed-features)
-- [Upcoming Features](#upcoming-features)
+- [Planned For v3+](#planned-for-v3)
+- [Reference](#reference)
 - [Documentation](#documentation)
 
 
