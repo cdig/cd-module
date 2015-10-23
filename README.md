@@ -1,10 +1,5 @@
 # cd-module v2
-
-A framework and standard library to help you make gorgeous modules.
-
-This branch contains the cd-module v2 codebase. It's a big upgrade over the original cd-module codebase (which lives on in the [master](https://github.com/cdig/cd-module/tree/master) branch). Keep reading to learn all about v2 — like how it's only 6 short of being tasty!
-
-
+A Framework for LBS Lessons
 
 ### Table of Contents
 
@@ -14,7 +9,7 @@ This branch contains the cd-module v2 codebase. It's a big upgrade over the orig
 - [New Features](#new-features)
 - [Removed Features](#removed-features)
 - [Planned For v3+](#planned-for-v3)
-- [Reference](#reference)
+- [Design Decisions](#design-decisions)
 - [Documentation](#documentation)
 
 
@@ -264,7 +259,7 @@ Modules work well as standalone, isolated pieces of content, but that's not the 
 
 <br>
 <br>
-## Reference
+## Design Decisions
 
 
 ### Browser Support

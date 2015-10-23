@@ -1,6 +1,6 @@
 {
   "name": "cd-module",
-  "description": "A Framework For CDIG Modules",
+  "description": "A Framework For LBS Lessons",
   "dependencies": {
     "backend": "cdig/backend",
     "cd-map": "cdig/cd-map",
