@@ -4,7 +4,7 @@
   "dependencies": {
     "backend": "cdig/backend",
     "cd-map": "cdig/cd-map",
-    "cd-reset": "cdig/cd-reset",
+    "cd-reset": "cdig/cd-reset#v2",
     "curry": "cdig/curry",
     "ease": "cdig/ease",
     "editor": "cdig/editor",
