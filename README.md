@@ -285,7 +285,7 @@ z-index | CSS Selector              | System
 ## Documentation
 
 ### SCSS Variables
-Here's a complete list of SCSS variables in cd-module v2. These variables are provided by the [lbs-pack](https://github.com/cdig/lbs-pack). The definitive source file is [here](https://github.com/cdig/lbs-pack/edit/master/pack/styles/vars.scss).
+Here's a complete list of SCSS variables in cd-module v2. These variables are provided by the [lbs-pack](https://github.com/cdig/lbs-pack). The definitive source file is [here](https://github.com/cdig/lbs-pack/blob/master/pack/styles/vars.scss).
 
 ```scss
 // SIZES
