@@ -371,6 +371,7 @@ space-around  | -a-b-c- | Extra space evenly split between items and around the 
 space-between | a-b-c   | Extra space evenly split between items, but not around the outside.
 
 
+<br><br>
 **Container — Height & Y Alignment:**
 These attributes are applied to the cd-row element directly, and determine what happens when the items in the row have differing heights. In pretty much all cases, the cd-row takes the height of the tallest element.
 
@@ -386,6 +387,7 @@ baseline  | Items aligned at their text baseline. Good for single words of text.
 stretch   | The height of row contents is stretched, matching the largest item. Good for boxes with a background color.
 
 
+<br><br>
 **Item — Width:**
 These attributes are applied to the row items individually, and control their widths.
 
@@ -399,6 +401,7 @@ Attribute                               | Description
 Sx                                      | Content-based width. This one is very powerful. Rather than sizing based on the available space, this row item will take its width from its own content. This sizing rule works great with dynamic widths, and *sometimes* works okay with fractional widths (though you might risk the row becoming too wide).
 
 
+<br><br>
 **Item — Height & Y Alignment:**
 These attributes are applied to the row items individually, and control their vertical size and positioning.
 
@@ -414,6 +417,7 @@ baseline  | The item is aligned at the row's text baseline.
 stretch   | The height of the item is stretched, matching the height of the row. If the item is the tallest in the row, then this (usually) has no effect.
 
 
+<br><br>
 **Item — Ordering:**
 These attributes let you arrange the row items in a different order than they appear in your HTML. If two items have the same order, they'll take their order from the HTML.
 
