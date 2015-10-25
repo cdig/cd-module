@@ -208,7 +208,7 @@ We now have [cd-library](https://github.com/cdig/cd-library), which is a better 
 ## Planned For v3+
 
 ### Audio
-This is an open issue.. not sure the right way to solve it. Doing speaker icons per-main might be.. too much visual noise, if they're in context. Perhaps, they can sit just outside the main, off to the right. That might be a nice spot for other UI elements, too, like the score indicator.
+This is an open issue.. not sure the right way to solve it. Doing speaker icons per-main might be.. too much visual noise, if they're in context. Perhaps, they can sit just outside the cd-main, off to the right. That might be a nice spot for other UI elements, too, like the score indicator.
 
 ### New Score Animation
 Perhaps, little effervescent bubbles that float up and disappear. I seem to like bubbles.
@@ -311,8 +311,6 @@ The default styling creates a centred column with lots of top and bottom margin,
 
 
 ### cd-row
-
-**Usage:**
 `<cd-row>` uses flexbox to create a dynamic multi-column layout. In this example, the three images will all appear side-by-side.
 
 ```html
@@ -323,71 +321,129 @@ The default styling creates a centred column with lots of top and bottom margin,
 </cd-row>
 ```
 
-**Requirements:**
-TODO
-
 **Behaviour:**
 Quick thing to note (which will be explained later): currently having a video inside of cd-row requires that video to be embedded within a div in order to work inside of IE.
+
+#### CONTAINER: X alignment
+These attributes are applied to the cd-row element directly, and determine what happens when the items in the row aren't wide enough to occupy all available space in the row.
+
+Example: `<cd-row row="space-between">`<br>
+Default: `center`
+
+Attribute     | Visual  | Description
+-------------:|:-------:|------------------
+center        | -abc-   | Items in the center, extra space on both sides.
+left          | abc-    | Items to the left, extra space at the right.
+right         | -abc    | Items to the right, extra space at the left.
+space-around  | -a-b-c- | Extra space evenly split between items and around the outside.
+space-between | a-b-c   | Extra space evenly split between items, but not around the outside.
+
+
+#### CONTAINER: Y size & alignment
+These attributes are applied to the cd-row element directly, and determine what happens when the items in the row have differing heights. In pretty much all cases, the cd-row takes the height of the tallest element.
+
+Example: `<cd-row row="top">`<br>
+Default: `center`, or `top` if the cd-row has `class="text"`
+
+Attribute | Description
+---------:|------------------
+center    | Items aligned at their vertical centers, ragged at the top and bottom. Good for rows of graphics.
+top       | Items aligned at the top, ragged at the bottom. Good for rows of paragraphs.
+bottom    | Items aligned at the bottom, ragged at the top.
+baseline  | Items aligned at their text baseline. Good for single words of text.
+stretch   | The height of row contents is stretched, matching the largest item. Good for boxes with a background color.
+
+
+#### ITEM: X size
+These attributes are applied to the row items individually, and control their widths.
+
+Example: `<div row="Sx">`<br>
+Default: `1x`
+
+Attribute                               | Description
+---------------------------------------:|------------------
+1x 2x 3x 4x 5x                          | Dynamic widths. These sizes specify how wide the item should be, relative to an item that's "1x". Items will then be scaled to fit in the available space. For instance, if you have one item that's 2x and one item that's 3x, it'll be like you've used a 5-column grid.
+1/2 1/3 2/3 1/4 2/4 3/4 1/5 2/5 3/5 4/5 | Fractional widths. These sizes FORCE the item to be a certain fraction of the width of the cd-row. By using these sizes, you can have a row that doesn't use all the available width. This is desirable if you're using any of the fancy container sizing options described above. You can also make a row that's too wide — don't do this. To avoid rounding errors, it's better to use the dynamic widths if you're going to have content that actually fills the row.
+Sx                                      | Content-based width. This one is very powerful. Rather than sizing based on the available space, this row item will take its width from its own content. This sizing rule works great with dynamic widths, and *sometimes* works okay with fractional widths (though you might risk the row becoming too wide).
+
+
+#### ITEM: Y size & alignment
+These attributes are applied to the row items individually, and control their vertical size and positioning.
+
+Example: `<div row="top">`<br>
+Default: `center`
+
+Attribute | Description
+---------:|------------------
+center    | The item's center is aligned with the center of the row's height.
+top       | The item's top is aligned with the top of the row's height.
+bottom    | The item's bottom is aligned with the bottom of the row's height.
+baseline  | The item is aligned at the row's text baseline.
+stretch   | The height of the item is stretched, matching the height of the row. If the item is the tallest in the row, then this (usually) has no effect.
+
+
+#### ITEM: ordering
+These attributes let you arrange the row items in a different order than they appear in your HTML. If two items have the same order, they'll take their order from the HTML.
+
+Example: `<div row="2nd">`<br>
+Default: `1st`
+
+Attribute | Description
+---------:|------------------
+1st       | First (Default)
+2nd       | Second
+3rd       | Third
+4th       | Fourth
+5th       | Last
 
 
 ### h1
 
 **Usage:**
 This heading element is used exclusively for the title of the page.
-It should almost always be the first child of the first `<main>` element in the page,
+It should almost always be the first child of the first `<cd-main>` element in the page,
 though you might also want to wrap it with a [cd-row](#cd-row) to place it beside a tall image.
 
 ```html
 <cd-page id="my-amazing-page">
-  <main>
-  
+  <cd-main>
     <h1>My Amazing Page</h1>
-  
-  </main>
+  </cd-main>
 </cd-page>
 ```
 
 **Requirements:**
 * You should only use h1 for the title of a page. It should very closely match the id of the [cd-page](#cd-page) element.
-* You should not apply your own styling to the h1 within the module. Custom styling should come from the [_project folder](#_project-folder) and be shared across the entire project.
-
-**Behaviour:**
-h1 elements get very special styling, with [Magic Underlines](#magic-underlines)
-and colours from the [_project folder](#_project-folder).
 
 
 ### cd-main
 
 **Usage:**
 This standard element marks a major unit of content within a page.
-You may include as many main elements within the page as you'd like,
+You may include as many `<cd-main>` elements within the page as you'd like,
 to break up the flow of the page into nice units.
-Most of the content of your module — text, images and games — will go inside the main element.
-But you are also free to place content outside of the main element.
+Most of the content of your module — text, images and games — will go inside the `<cd-main>` element.
+But you are also free to place content outside of the `<cd-main>` element.
 This can be used to create full-width "hero" content, which will stretch edge-to-edge on mobile.
 This is a great way to showcase beautiful photos.
 
 ```html
 <cd-page id="my-amazing-page">
-  <main>
+  <cd-main>
     <!-- content -->
-  </main>
+  </cd-main>
   
   <img src="image/hero.png">
   
-  <main>
+  <cd-main>
     <!-- content -->
-  </main>
+  </cd-main>
   
 </cd-page>
 ```
 
 **Requirements:**
-* The main element must be a direct child of a cd-page.
-
-**Behaviour:**
-The default styling creates a white padded background behind the content.
-
+* The cd-main element must be a direct child of a cd-page.
 
 
 <br>
