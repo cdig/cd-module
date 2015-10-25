@@ -170,9 +170,11 @@ As discussed, we're dropping support for Smartphones. But there are consequences
 
 You should no longer use @media rules in your CSS, ideally. You should be able to make everything work well with `%` units and other "fluid" techniques. If this is too difficult, please ask for help.
 
+We've also removed column orientation from cd-row. Any `col="blah"` attributes are ignored. For a complete list of current cd-row attributes, check the documentation below on [cd-row](#cd-row).
+
 
 ### 2. ~~Non-Standard SCSS Variables~~
-You shouldn't see any of those annoying colour variables like `$cdDarkGrey` anymore.
+We've standardized all the variables you'll use in your SCSS. For a complete list, check the documentation below on [SCSS Variables](#scss-variables).
 
 
 ### 3. ~~SCORM~~
@@ -282,7 +284,41 @@ z-index | CSS Selector              | System
 <br>
 ## Documentation
 
-TODO: The below docs are currently from v1, and need to be updated for v2.
+### SCSS Variables
+Here's a complete list of SCSS variables in cd-module v2. These variables are provided by the [lbs-pack](https://github.com/cdig/lbs-pack). The definitive source file is [here](https://github.com/cdig/lbs-pack/edit/master/pack/styles/vars.scss).
+
+```scss
+// SIZES
+$maxPageWidth: 64rem;
+$maxLineLength: 42em;
+$iPadLandscape: 1024px;
+$iPadPortrait: 768px;
+
+// SHADE
+$white:  white;
+$silver: hsl(210,  12%, 80%);
+$grey:   hsl(210,   9%, 52%);
+$smoke:  hsl(210,  12%, 26%);
+$black:  black;
+
+// KEY
+$red:    hsl(  2,  75%, 53%);
+$orange: hsl( 25, 100%, 59%);
+$yellow: hsl( 43, 100%, 50%);
+$green:  hsl(130,  85%, 35%);
+$blue: 	 #0063be; // approximately hsl(209, 100%, 37%);
+$indigo: hsl(270,  50%, 58%);
+$violet: hsl(330,  55%, 50%);
+
+// ALT
+$teal:   hsl(180, 100%, 29%);
+$mint:   hsl(153,  80%, 41%);
+$pink:   hsl(357, 100%, 75%);
+$brown:  hsl( 23,  40%, 46%);
+$navy:   hsl(235,  52%, 22%);
+$maroon: hsl(359,  65%, 40%);
+```
+
 
 ### cd-page
 This custom element is the highest-level grouping of content within a module.
