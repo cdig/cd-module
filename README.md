@@ -11,7 +11,10 @@ A Framework for LBS Lessons
 - [Planned For v3+](#planned-for-v3)
 - [Design Decisions](#design-decisions)
 - [Documentation](#documentation)
-
+  - [SCSS Variables](#scss-variables)
+  - [cd-page](#cd-page)
+  - [cd-main](#cd-main)
+  - [cd-row](#cd-row)
 
 <br>
 ## Quick Reference
@@ -341,6 +344,34 @@ You'll import all of these page files into the `<body>` of the `index.kit` for y
 The default styling creates a centred column with lots of top and bottom margin, with a nice shadow poking out from the corners to establish the vertical flow of the module. The ID is used for the title of the page in the Page Switcher, and the filename for Page Audio.
 
 
+### cd-main
+This standard element marks a major unit of content within a page.
+You may include as many `<cd-main>` elements within the page as you'd like,
+to break up the flow of the page into nice units.
+Most of the content of your module — text, images and games — will go inside the `<cd-main>` element.
+But you are also free to place content outside of the `<cd-main>` element.
+This can be used to create full-width "hero" content, which will stretch edge-to-edge on mobile.
+This is a great way to showcase beautiful photos.
+
+```html
+<cd-page id="my-amazing-page">
+  <cd-main>
+    <!-- content -->
+  </cd-main>
+  
+  <img src="image/hero.png">
+  
+  <cd-main>
+    <!-- content -->
+  </cd-main>
+  
+</cd-page>
+```
+
+**Requirements:**
+* The cd-main element must be a direct child of a cd-page.
+
+
 ### cd-row
 `<cd-row>` uses flexbox to create a dynamic multi-column layout. In this example, the three images will all appear side-by-side.
 
@@ -432,54 +463,6 @@ Attribute | Description
 4th       | Fourth
 5th       | Last
 
-
-### h1
-
-**Usage:**
-This heading element is used exclusively for the title of the page.
-It should almost always be the first child of the first `<cd-main>` element in the page,
-though you might also want to wrap it with a [cd-row](#cd-row) to place it beside a tall image.
-
-```html
-<cd-page id="my-amazing-page">
-  <cd-main>
-    <h1>My Amazing Page</h1>
-  </cd-main>
-</cd-page>
-```
-
-**Requirements:**
-* You should only use h1 for the title of a page. It should very closely match the id of the [cd-page](#cd-page) element.
-
-
-### cd-main
-
-**Usage:**
-This standard element marks a major unit of content within a page.
-You may include as many `<cd-main>` elements within the page as you'd like,
-to break up the flow of the page into nice units.
-Most of the content of your module — text, images and games — will go inside the `<cd-main>` element.
-But you are also free to place content outside of the `<cd-main>` element.
-This can be used to create full-width "hero" content, which will stretch edge-to-edge on mobile.
-This is a great way to showcase beautiful photos.
-
-```html
-<cd-page id="my-amazing-page">
-  <cd-main>
-    <!-- content -->
-  </cd-main>
-  
-  <img src="image/hero.png">
-  
-  <cd-main>
-    <!-- content -->
-  </cd-main>
-  
-</cd-page>
-```
-
-**Requirements:**
-* The cd-main element must be a direct child of a cd-page.
 
 
 <br>
