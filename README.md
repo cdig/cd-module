@@ -6,8 +6,8 @@ A Framework for LBS Lessons
 - [Quick Reference](#quick-reference)
 - [Starting A New v2 Module](#starting-a-new-v2-module)
 - [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
-- [New Features](#new-features)
-- [Removed Features](#removed-features)
+- [What's New?](#what-s-new)
+- [What's Dead?](#what-s-dead)
 - [Planned For v3+](#planned-for-v3)
 - [Design Decisions](#design-decisions)
 - [Documentation](#documentation)
@@ -100,11 +100,14 @@ We've changed the standard font to Lato, which flows a little differently than t
 #### Colors
 We've automatically changed all references to the old, non-standard colors like "cdDarkRed" to the new standard LBS colors. Make sure all your colored text, or text on colored backgrounds, is still readable. It should be, but if not, fix accordingly. Reminder: all the new colors are designed to work as a background for both white text and black text, so aim for consistency within a given layout (eg: all white or all black).
 
+#### `main` Styles
+We've automatically replaced the `<main>` element with `<cd-main>` in all your HTML and Kit files. However, if you refer to the `main` element anywhere in your CSS, you'll need to update that to target the `cd-main` element instead.
+
 
 
 <br>
 <br>
-## New Features
+## What's New?
 
 
 ### 1. Gulp
@@ -147,9 +150,19 @@ Instead of the HUD, we now have a bar at the top and bottom of the module. Hopef
 The design might seem a bit weird at the moment, but I'm planning to add navigation recommendations, and other advanced features, to this space in the future.
 
 
+### 6. Performance
+The performance of cd-module has been considerably improved. There no more spinning-gear loading screen. Modules should be visible and usable in under a second. Scrolling is smoother. Animations will run *slightly* faster. There's less superfluous crap.
+
+Here are some guidelines you can follow to help things go fast.
+* Don't `Take "load"` unless you absolutely must. Instead, `Take "DOMContentLoaded"`.
+* Try to delay doing your "work" until the relevant content is visible on screen, by using PageScrollWatcher or other means.
+* For now, keep your SVG artwork simple. The fewer shapes the better. Avoid transparencies.
+
+
+
 <br>
 <br>
-## Removed Features
+## What's Dead?
 
 
 ### 1. ~~Smartphone Support~~
@@ -171,34 +184,18 @@ In addition to dropping support for IE9, we're also no longer checking whether t
 
 
 ### 5. ~~SWFs~~
-SWF support has been removed from cd-module. If you need to use a SWF in a module, please install the [cd-swf-pack](/cdig/cd-swf-pack). TODO: If you try to use a SWF without the pack installed, we should issue a warning.
+SWF support has been removed from cd-module. If you need to use a SWF in a module, please talk to Ivan.
 
 
 ### 6. ~~`<main>`~~
-Using `<main>` the way we were was a minor violation of the HTML spec. In v2, you must use `<cd-main>`, as many of the new features depend on it.
+Using multiple `<main>` elements was a violation of the HTML spec. In v2, you must use `<cd-main>`, and many of the new features depend on it.
 
 
 ### 7. ~~Audio~~
 Audio is temporarily removed, as part of killing the HUD. In the future, it will be added back.
 
 
-
-<br>
-<br>
-## Internal / Design Changes
-
-
-### Performance
-The load-time performance of cd-module has been considerably improved, but there's still lots of waste. Here are some guidelines for ongoing development:
-
-* Don't Take "load" unless you absolutely must. Instead, Take "DOMContentLoaded", or just run immediately as your script loads. Do your work and get out of the way.
-* On the contrary, defer work until (long) after load time. There's a lot of front-of-line congestion, so if you can do your work rather lazily, that's excellent. Especially if you're touching the DOM or loading assets.
-* Aggressively pursue better HTTP performance. Use cache-friendly precompiled scripts. We'll take the hit on additional request/response for now, given that we'll have CDN support and HTTP2 in the next six months.
-
-The runtime performance of cd-module has also been improved. It's pretty much as good as it can be right now — it's important that we try really hard to keep it this way. Test frequently on terrible hardware.
-
-
-### ~~cd-foundation~~
+### 8. ~~cd-foundation~~
 We now have [cd-library](https://github.com/cdig/cd-library), which is a better version of the same idea.
 
 
@@ -223,9 +220,8 @@ No sourcemaps, perhaps some URL rewriting with asset fingerprinting.
 We could do some of these things, maybe:
 
 * Lazy load images based on scroll position
-* Adapt frameworks and scripts to work assuming an async/lazy page environment
-* Load scripts for activities on-demand
-* Don't make assumptions about the size/layout of the module as a whole — restrict scripts to working within a page, with appropriate guarantees about when page assets become available
+* Adapt things that read/write the DOM to work assuming an async/lazy page environment
+* Load activities just-in-time, rather than up-front
 
 ### Modular Scale
 Text size should be based on a well-chosen rhythm, rather than the current "wing it" approach I've taken.
@@ -236,7 +232,6 @@ Modules work well as standalone, isolated pieces of content, but that's not the 
 * Support for standardized metadata (title, description, icon, etc) that can be automatically discovered and used in menus, link previews, etc
 * A standard for GUI elements provided by the environment (eg: an LBS header and footer that bookends the module, or a floating HUD provided by a launcher — NOT baked into the module itself)
 * Tight integration with Hyperzine as a source of media assets
-    * If we're using JS to lazy-load media, that's a good hook for adding extra control over how the media gets loaded (eg: you supply a normal relative URL that refers to a piece of media included in the module bundle, but it has query params that the JS can use to change the URL dynamically, to load a particular version from Hyperzine, perhaps using versioning rules like Bower)
 * Tight integration with the data lake / scoring services for storing and displaying facts from the user's history
 
 
