@@ -291,21 +291,21 @@ Here's a breakdown of everything in the module — who it's for, and what it's f
 
 File or Folder     | Who Uses It     | Purpose
 -------------------|-----------------|----------------
-bower_components/  | bower & gulp    | Reusable HTML, CSS, and JS, compiled into the module by gulp.
-bower.json         | bower           | Tells bower what components to install.
-dev/               | Ivan & Sean     | A safe place to test new systems and tools.
-dist/              | Content Devs    | In v3, this will be where the deployable build of the module goes.
-gulpfile.coffee    | gulp            | Tells gulp how to compile the module.
-node_modules/      | gulp & npm      | Plugins for gulp, installed by npm.
-package.json       | npm             | Tells npm what gulp plugins to install.
-public/            | gulp & browsers | The compiled module, loaded by the browser.
-resources/         | Content Devs    | Raw art assets.
-source/            | Content Devs    | All the content for this module.
-source/activities/ | Content Devs    | Activity JS and SVG files.
-source/index.kit   | Content Devs    | Ties together all the page HTML files for the module.
-source/pages/      | Content Devs    | Page-specific HTML, CSS, and JS files.
-source/scripts/    | Content Devs    | CoffeeScript files for the entire module.
-source/styles/     | Content Devs    | Stylesheets for the entire module.
+bower_components/  | bower/gulp   | Reusable HTML, CSS, and JS.
+bower.json         | bower        | Tells bower what components to install.
+dev/               | Ivan/Sean    | A safe place to test new systems and tools.
+dist/              | You          | In v3, the deployable build of the module.
+gulpfile.coffee    | gulp         | Tells gulp how to compile the module.
+node_modules/      | gulp/npm     | Plugins for gulp, installed by npm.
+package.json       | npm          | Tells npm what gulp plugins to install.
+public/            | gulp/browser | The compiled module, loaded by the browser.
+resources/         | You          | Raw art assets.
+source/            | You          | All the content for this module.
+source/activities/ | You          | Activity JS and SVG files.
+source/index.kit   | You          | Ties together all the page HTML files for the module.
+source/pages/      | You          | Page-specific HTML, CSS, and JS files.
+source/scripts/    | You          | CoffeeScript files for the entire module.
+source/styles/     | You          | Stylesheets for the entire module.
 
 
 <br>
