@@ -10,6 +10,10 @@ A Framework for LBS Lessons
 - [What's Dead?](#what-s-dead)
 - [Planned For v3+](#planned-for-v3)
 - [Design Decisions](#design-decisions)
+  - [Browser Support](#browser-support)
+  - [Naming Conventions](#naming-conventions)
+  - [Z-Index Values](#z-index-values)
+  - [Files & Folders](#files--folders)
 - [Documentation](#documentation)
   - [SCSS Variables](#scss-variables)
   - [cd-page](#cd-page)
@@ -281,6 +285,27 @@ z-index | CSS Selector              | System
 
 * call-outs have been given a z-index of ~100 so that you can layer content above or below them.
 
+
+### Files & Folders
+Here's a breakdown of what each folder is, who it's for, and what it's for. These items won't all be present in every module — some of them are just for special occasions.
+
+Folder             | Used By         | Purpose
+------------------:|:---------------:|----------------
+bower_components/  | bower & gulp    | Reusable HTML, CSS, and JS, compiled into the module by gulp.
+bower.json         | bower           | Tells bower what components to install.
+dev/               | Ivan & Sean     | A safe place to test new systems and tools.
+dist/              | Content Devs    | In v3, this will be where the deployable build of the module goes.
+gulpfile.coffee    | gulp            | Tells gulp how to compile the module.
+node_modules/      | gulp & npm      | Plugins for gulp, installed by npm.
+package.json       | npm             | Tells npm what gulp plugins to install.
+public/            | gulp & browsers | The compiled module, loaded by the browser.
+resources/         | Content Devs    | Raw art assets.
+source/            | Content Devs    | All the content for this module.
+source/activities/ | Content Devs    | Activity JS and SVG files.
+source/index.kit   | Content Devs    | Ties together all the page HTML files for the module.
+source/pages/      | Content Devs    | Page-specific HTML, CSS, and JS files.
+source/scripts/    | Content Devs    | CoffeeScript files for the entire module.
+source/styles/     | Content Devs    | Stylesheets for the entire module.
 
 
 <br>
