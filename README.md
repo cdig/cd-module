@@ -289,23 +289,23 @@ z-index | CSS Selector              | System
 ### Files & Folders
 Here's a breakdown of everything in the module — who it's for, and what it's for. These items won't all be present in every module. Some of them are just for special occasions.
 
-File or Folder     | Who Uses It    | Purpose
--------------------|----------------|----------------
-bower_components/  | bower & gulp   | Boilerplate HTML, CSS, and JS.
-bower.json         | bower          | Tells bower what components to install.
-dev/               | Ivan & Sean    | A safe place to test new systems and tools.
-dist/              | You            | In v3, the deployable build of the module.
-gulpfile.coffee    | gulp           | Tells gulp how to compile the module.
-node_modules/      | gulp & npm     | Plugins for gulp, installed by npm.
-package.json       | npm            | Tells npm what gulp plugins to install.
-public/            | gulp & browser | The compiled module, loaded by the browser.
-resources/         | You            | Raw art assets.
-source/            | You            | All the content for this module.
-source/activities/ | You            | Activity JS and SVG files.
-source/index.kit   | You            | Ties together all the page HTML files.
-source/pages/      | You            | Page-specific HTML, CSS, and JS files.
-source/scripts/    | You            | CoffeeScript files for the entire module.
-source/styles/     | You            | Stylesheets for the entire module.
+File or Folder     | Who Uses It     | Purpose
+-------------------|-----------------|----------------
+bower_components/  | bower & gulp    | Boilerplate HTML, CSS, and JS.
+bower.json         | bower           | Tells bower what components to install.
+dev/               | Ivan & Sean     | A safe place to test new systems and tools.
+dist/              | You             | In v3, the deployable build of the module.
+gulpfile.coffee    | gulp            | Tells gulp how to compile the module.
+node_modules/      | gulp & npm      | Plugins for gulp, installed by npm.
+package.json       | npm             | Tells npm what gulp plugins to install.
+public/            | browsers & gulp | The compiled module, loaded by the browser.
+resources/         | You             | Raw art assets.
+source/            | You             | All the content for this module.
+source/activities/ | You             | Activity JS and SVG files.
+source/index.kit   | You             | Ties together all the page HTML files.
+source/pages/      | You             | Page-specific HTML, CSS, and JS files.
+source/scripts/    | You             | CoffeeScript files for the entire module.
+source/styles/     | You             | Stylesheets for the entire module.
 
 
 <br>
