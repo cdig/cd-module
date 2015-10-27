@@ -166,6 +166,13 @@ Here are some guidelines you can follow to help things go fast.
 * For now, keep your SVG artwork simple. The fewer shapes the better. Avoid transparencies.
 
 
+### 7. Asset Compilation
+In cd-module of yore, you'd put some of your files in `public/`, and some of your files in `source/`. In v2, you put everything in `source/`. When you run `gulp`, we'll copy all your assets over to the `public/` folder. This means, in v2, you should NOT put anything in the `public` folder. We're making this change in preparation for some powerful features in upcoming versions of cd-module.
+
+1. In v3, `gulp` will take care of optimizing your assets for you. You should still use ImageAlpha and follow the relevant [guide](https://github.com/cdig/lunchboxsessions/wiki/Guide-to-Asset-Optimization), but in case you forget, we'll cover your butt.
+2. In v4, `gulp` will fingerprint your assets and rewrite your URLs so that they're loaded from the Hyperzine CDN. This is some next-level craziness right here. The future is pretty cool.
+
+
 
 <br>
 <br>
@@ -301,12 +308,14 @@ package.json       | npm             | Tells npm what gulp plugins to install.
 public/            | browsers & gulp | The compiled module, loaded by the browser.
 resources/         | You             | Raw art assets.
 source/            | You             | All the content for this module.
-source/activities/ | You             | Activity JS and SVG files.
+source/activities/ | You             | Pre-compiled activity JS and SVG files.
+source/assets/     | You             | Images, audio, videos, etc.
 source/index.kit   | You             | Ties together all the page HTML files.
 source/pages/      | You             | Page-specific HTML, CSS, and JS files.
 source/scripts/    | You             | CoffeeScript files for the entire module.
 source/styles/     | You             | Stylesheets for the entire module.
 
+Everything inside the `source/` folder is for content authors. Everything else (other than the upcoming `dist/` folder) is part of the module system, and should be left alone.
 
 <br>
 <br>
