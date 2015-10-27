@@ -287,7 +287,7 @@ z-index | CSS Selector              | System
 
 
 ### Files & Folders
-Here's a breakdown of what each folder is, who it's for, and what it's for. These items won't all be present in every module — some of them are just for special occasions.
+Here's a breakdown of everything in the module — who it's for, and what it's for. These items won't all be present in every module. Some of them are just for special occasions.
 
 Folder             | Used By         | Purpose
 -------------------|-----------------|----------------
