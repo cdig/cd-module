@@ -289,7 +289,7 @@ z-index | CSS Selector              | System
 ### Files & Folders
 Here's a breakdown of everything in the module — who it's for, and what it's for. These items won't all be present in every module. Some of them are just for special occasions.
 
-Folder             | Used By         | Purpose
+File or Folder     | Who Uses It     | Purpose
 -------------------|-----------------|----------------
 bower_components/  | bower & gulp    | Reusable HTML, CSS, and JS, compiled into the module by gulp.
 bower.json         | bower           | Tells bower what components to install.
