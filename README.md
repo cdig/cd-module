@@ -28,15 +28,18 @@ A Framework for LBS Lessons
 Command        | Description
 --------------:|--------------------------
 bower update   | Downloads files for cd-module into bower_components
+cd             | Lets you "change directory"
 gulp           | Compiles the module & starts browser sync
 gulp update    | Updates the gulpfile
 npm install    | Downloads files for gulp into node_modules
 
+Once `gulp` is running, you need to press `control-c` to stop it.
+
 
 ### Hyperzine
 
-* Before adding a module to Hyperzine, delete the `node_modules` folder.
-* After taking a module out of Hyperzine, `cd` into the module folder and run `npm install`.
+* Before adding a v2 module to Hyperzine, delete the `node_modules` folder, the `public` folder, and the `dist` folder (if there is one).
+* After taking a v2 module out of Hyperzine, `cd` into the module folder and run `npm install` first. Then run `gulp` as normal.
 
 
 
