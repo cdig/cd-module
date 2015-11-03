@@ -2,9 +2,8 @@
   "name": "cd-module",
   "description": "A Framework For LBS Lessons",
   "dependencies": {
-    "cd-library": "cdig/cd-library",
-    "cd-reset": "cdig/cd-reset#v2",
-    "editor": "cdig/editor",
+    "backend": "cdig/backend#v2",
+    "cd-library": "cdig/cd-library#v2",
     "take-and-make": "cdig/take-and-make#v2"
   },
   "main": [],
