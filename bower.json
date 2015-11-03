@@ -9,7 +9,8 @@
   "main": [],
   "ignore": [
     "**/*",
-    "!dist/**/*"
+    "!dist/**/*",
+    "!pack/**/*"
   ],
   "license": "UNLICENSED",
   "private": true
