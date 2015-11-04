@@ -52,6 +52,17 @@ Grab the [starter](https://github.com/cdig/cd-module-starter/tree/v2), and follo
 <br>
 ## Upgrading An Existing v1 Module
 
+### Prelude
+
+If this is the first module you've updated in a while, please open Terminal and run `nvm current`. If it displays something less than `v5.0.0`, please run the following two commands:
+
+```bash
+nvm install stable
+npm update -g bower coffee-script gulp npm
+```
+
+If you have any trouble with this, you'll need to get help from Ivan before continuing.
+
 ### Phase One
 
 #### 1. Make a fresh COPY of your module.
@@ -77,8 +88,6 @@ Now, we're going to activate the module time machine, sending your module into t
 Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space at the end!*
 
 ```bash
-nvm install stable
-npm update -g bower coffee-script gulp npm
 rm -rf node_modules package.json gulpfile.js gulpfile.coffee gulp-svg.coffee
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
