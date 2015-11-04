@@ -46,7 +46,7 @@ Once `gulp` is running, you need to press `control-c` to stop it.
 <br>
 ## Starting A New v2 Module
 
-Grab the [starter](https://github.com/cdig/cd-module-starter/tree/v2), and follow the instructions there.
+Grab the [starter](https://github.com/cdig/cd-module-starter), and follow the instructions there.
 
 
 <br>
