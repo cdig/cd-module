@@ -80,7 +80,7 @@ Open the Terminal, and `cd` into your module folder. Copy this entire block, *in
 rm -rf node_modules package.json gulpfile.js gulpfile.coffee gulp-svg.coffee
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
-curl -fsS https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip
+curl https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip
 unzip node_modules.zip
 rm node_modules.zip
 npm update
