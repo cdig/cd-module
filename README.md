@@ -106,7 +106,7 @@ We've changed the standard font to Lato, which flows a little differently than t
 #### Colors
 We've automatically changed all references to the old, non-standard colors like "cdDarkRed" to the new standard LBS colors. Make sure all your colored text, or text on colored backgrounds, is still readable. It should be, but if not, fix accordingly. Reminder: all the new colors are designed to work as a background for both white text and black text, so aim for consistency within a given layout (eg: all white or all black).
 
-#### `main` Styles
+#### `<main>` Styles
 We've automatically replaced the `<main>` element with `<cd-main>` in all your HTML and Kit files. However, if you refer to the `main` element anywhere in your CSS, you'll need to update that to target the `cd-main` element instead.
 
 
