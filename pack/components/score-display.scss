@@ -14,9 +14,9 @@ score-display {
   
   [score-display-text] {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 51%;
+    top: 48%;
+    transform: translate(-45%, -50%);
     font-size: .75rem;
     color: black;
     
@@ -56,9 +56,10 @@ score-display {
       transform: rotate(0deg); // This might not work in IE, because this is an inline SVG
     }
     
-    [score-display-disk], [score-display-ring] {
+    [score-display-disk], [score-display-ring], [score-display-text] {
       opacity: 0;
     }
+    
     [score-display-check] {
       opacity: 1;
     }

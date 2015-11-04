@@ -2,7 +2,7 @@ Take ["cdHUD", "Scoring", "ScoreDisplayGraphic", "ModalPopup", "DOMContentLoaded
   hasActivities = document.querySelector("cd-activity")?
   
   display = document.createElement("score-display")
-  display.innerHTML = Graphic + "<div score-display-text></div>"
+  display.innerHTML = Graphic
   
   cdHUD.addElement display, ()->
     if hasActivities
@@ -48,4 +48,5 @@ Make "ScoreDisplayGraphic",
       <circle score-display-ring r="8" cx="10" cy="10"></circle>
     </g>
     <path score-display-check d="M4.78,19 L8.2,19 C9.64,14.72 15.21,4.51 20,0.93 C19.08,0.64 18.1,0.40 16.49,0 C13.46,1.24 7.75,10.70 6.69,12.98 C5.17,13.37 3.58,10.5 3.58,10.5 L0,12.83 C0,12.83 3.98,17.21 4.78,19 L4.78,19 Z"></path>
-  </svg>'
+  </svg>
+  <div score-display-text></div>'
