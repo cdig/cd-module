@@ -1,4 +1,5 @@
 score-display {
+  position: relative;
   display: block;
   order: 2;
   
@@ -7,8 +8,22 @@ score-display {
   svg {
     width: 3em;
     height: 3em;
-    transform: rotate(-90deg);
+    transform: rotate(-90deg); // This might not work in IE, because this is an inline SVG
     transition: transform 1s;
+  }
+  
+  [score-display-text] {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: .75rem;
+    color: black;
+    
+    span {
+      font-size: .5em;
+      vertical-align: .5em;
+    }
   }
   
   [score-display-disk] {
@@ -38,7 +53,7 @@ score-display {
   
   &.score-display-complete {
     svg {
-      transform: rotate(0deg);
+      transform: rotate(0deg); // This might not work in IE, because this is an inline SVG
     }
     
     [score-display-disk], [score-display-ring] {
