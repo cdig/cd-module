@@ -105,9 +105,9 @@ Paste it in to your Terminal. Stuff will start running. After about 30 seconds, 
 
 
 ### Lemma Three
-You wrote down some fonts earlier, yes? There's a new file, `source/styles/fonts.scss` — open that file and uncomment the fonts you need.
+Did you write down any fonts earlier, in step 3? There's a new file, `source/styles/fonts.scss` — open that file and uncomment the fonts you need.
 
-Back in the Terminal, run the `gulp` command. You'll either have a spectacular display of error fireworks — call Ivan! — or your newly upgraded module will pop up in your favorite web browser with a ton of new features and super-fast, hopefully-more-reliable compiling and reloading via gulp. Welcome to the future!
+Back in the Terminal, run the `gulp` command. The Terminal might flood with errors — call Ivan! Otherwise, your browser should open up with your newly upgraded module. The first time it loads, it might have a few cobwebs, or it might show an error. Just reload, and it should be good to go. Welcome to the future!
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/party.jpg)
 
