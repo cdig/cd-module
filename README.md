@@ -99,7 +99,7 @@ gulp to-the-future
      
 ```
 
-Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk to Mark for a bit. A few minutes later, the upgrade process will finish, and it'll clear the screen. Then you're ready to ~~ride your hoverboard~~ get to work on your v2 module.
+Paste it in to your Terminal. Stuff will start running. After about 30 seconds, the upgrade process will finish. If it looks like things succeeded, then you're ready to ~~ride your hoverboard~~ get to work on your v2 module.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
