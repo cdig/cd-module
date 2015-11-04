@@ -80,12 +80,15 @@ Open the Terminal, and `cd` into your module folder. Copy this entire block, *in
 rm -rf node_modules package.json gulpfile.js gulpfile.coffee gulp-svg.coffee
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
-npm install
+curl -fsS https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip
+unzip node_modules.zip
+rm node_modules.zip
+npm update
 gulp to-the-future
      
 ```
 
-Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk to Mark for a bit. Minutes later (like, fricking, half an hour), the upgrade process will finish, and it'll clear the screen. Then you're ready to ~~ride your hoverboard~~ get to work on your v2 module.
+Paste it in to your Terminal. Stuff will start running. Go make a coffee. Talk to Mark for a bit. A few minutes later, the upgrade process will finish, and it'll clear the screen. Then you're ready to ~~ride your hoverboard~~ get to work on your v2 module.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
