@@ -1,11 +1,15 @@
 cd-hud {
   display: flex;
+  min-height: 138px; // Hack: avoid shuffling layout when JS adds buttons
   padding: 1em;
   justify-content: center;
   align-items: center;
   color: white;
   
-  & > * { margin: 1em; }
+  & > * {
+    margin: 1em;
+    animation: cd-hud-fade-in 1s both;
+  }
   
   [cd-hud-button] {
     display: inline-block;
@@ -23,4 +27,9 @@ cd-hud {
     &:hover { background-color: $navy-dim; box-shadow: 0 0 12px -4px inset; }
     &:focus, &:active { background-color: $navy-dark; box-shadow: 0 0 14px -4px inset; }
   }
+}
+
+@keyframes cd-hud-fade-in {
+  from { opacity: 0 }
+  to   { opacity: 1 }
 }
