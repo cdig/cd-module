@@ -39,6 +39,10 @@ Take ["KVStore", "Params", "PureDom", "Pages", "DOMContentLoaded"], (KVStore, Pa
       getModuleScore: ()->
         return moduleNode.score
       
+      resetModuleScore: ()->
+        createScoringTree()
+        saveScoringTree()
+      
       onUpdate: (callback)->
         updateCallbacks.push(callback)
     
@@ -66,12 +70,16 @@ Take ["KVStore", "Params", "PureDom", "Pages", "DOMContentLoaded"], (KVStore, Pa
 
 # MUTATION
   
+  createScoringTree = ()->
+    moduleNode = createScoringNode "pages", v: SCORING_API_VERSION, name: moduleName
+  
+  
   initializeScoringTree = ()->
-    console.log moduleNode = KVStore.get moduleName
+    moduleNode = KVStore.get moduleName
     
     # If we've found an out-of-date version of the module scores, wipe them and start over
     if not moduleNode?.v or moduleNode?.v < SCORING_API_VERSION
-      moduleNode = createScoringNode "pages", v: SCORING_API_VERSION, name: moduleName
+      createScoringTree()
     
   
   crawlModuleAndSetUpScoring = ()->

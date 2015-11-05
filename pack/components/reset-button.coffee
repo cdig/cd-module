@@ -1,4 +1,4 @@
-Take ["cdHUD", "KVStore", "Env"], (cdHUD, KVStore, Env)->
+Take ["cdHUD", "Scoring", "Env"], (cdHUD, Scoring, Env)->
   
   cdHUD.addButton
     text: "Reset"
@@ -6,6 +6,5 @@ Take ["cdHUD", "KVStore", "Env"], (cdHUD, KVStore, Env)->
     click: ()->
       if Env.dev or Env.debug or window.confirm "Do you really want to start over?"
         document.body.scrollTop = 0
-        KVStore.save() # need to save the store before we clear it to set the flag for it having unsaved changes to be false. Otherwise, the data will save before the reload happens.
-        window.localStorage.clear()
+        Scoring.resetModuleScore()
         document.location.reload true
