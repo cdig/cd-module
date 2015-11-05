@@ -17,6 +17,7 @@ Take "DOMContentLoaded", ()->
     addButton: (options)->
       button = document.createElement "div"
       button.setAttribute "cd-hud-button", true
+      button.setAttribute(options.attr, true) if options.attr?
       button.innerHTML = options.text
       button.style.order = options.order
       buttons = cdHud.addElement button, options.click
