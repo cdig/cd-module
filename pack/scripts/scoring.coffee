@@ -1,8 +1,7 @@
-Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
-  SCORING_API_VERSION = 1
+Take ["KVStore", "Params", "PureDom", "Pages", "DOMContentLoaded"], (KVStore, Params, PureDom, Pages)->
+  SCORING_API_VERSION = 2
   hasActivities = document.querySelector("cd-activity")?
-  projectNode = null
-  chapterNode = null
+  moduleName = document.querySelector("title").textContent
   moduleNode = null
   updateCallbacks = []
   
@@ -55,48 +54,46 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
   
   
   findActivitiyNodeFor = (cdActivity)->
-    activityName = cdActivity.getAttribute("name")
-    pageElement = PureDom.querySelectorParent(cdActivity, "cd-page")
+    activityName = cdActivity.getAttribute "name"
+    pageElement = PureDom.querySelectorParent cdActivity, "cd-page"
     pageId = pageElement.id
     return moduleNode.pages[pageId].activities[activityName]
     
     
   runCallbacks = (pointsAwarded)->
-    call(pointsAwarded) for call in updateCallbacks
+    call pointsAwarded for call in updateCallbacks
       
 
 # MUTATION
   
-  loadScoringTree = ()->
-    projectNode = KVStore.get(Params.project) or createScoringNode("chapters")
-    chapterNode = projectNode.chapters[Params.chapter] ?= createScoringNode("modules")
-    moduleNode = chapterNode.modules[Params.module] ?= createScoringNode("pages", {v: SCORING_API_VERSION})
+  initializeScoringTree = ()->
+    console.log moduleNode = KVStore.get moduleName
     
     # If we've found an out-of-date version of the module scores, wipe them and start over
-    if not moduleNode.v or moduleNode.v < SCORING_API_VERSION
-      console.log "Out of date scores found — erasing"
-      moduleNode = chapterNode.modules[Params.module] = createScoringNode("pages")
-      moduleNode.v = SCORING_API_VERSION
+    if not moduleNode?.v or moduleNode?.v < SCORING_API_VERSION
+      moduleNode = createScoringNode "pages", v: SCORING_API_VERSION, name: moduleName
     
   
   crawlModuleAndSetUpScoring = ()->
+    
     # Recompute the total points, as they may have changed
     moduleNode.totalPoints = 0
     
-    for page in document.querySelectorAll("cd-page")
-      pageActivities = page.querySelectorAll("cd-activity")
+    for page in Pages
+      pageActivities = page.querySelectorAll "cd-activity"
       
       # Don't add a node for a page unless it has activities
       if pageActivities.length > 0
         
         pageId = page.id
-        pageNode = moduleNode.pages[pageId] ?= createScoringNode("activities")
+        pageNode = moduleNode.pages[pageId] ?= createScoringNode "activities"
+        
         # Recompute the total points, as they may have changed
         pageNode.totalPoints = 0
         
         for activityElement in pageActivities
-          activityName = activityElement.getAttribute("name")
-          activityPoints = parseInt(activityElement.getAttribute("points"))
+          activityName = activityElement.getAttribute "name"
+          activityPoints = parseInt activityElement.getAttribute "points"
           activityNode = pageNode.activities[activityName] ?= createScoringNode()
           
           # Always overwrite and recompute these, because the points attribute may have changed
@@ -112,7 +109,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
     pointsBefore = activityNode.earnedPoints
     
     activityNode.earnedPoints += pointsToAward
-    activityNode.earnedPoints = Math.min(activityNode.earnedPoints, activityNode.totalPoints)
+    activityNode.earnedPoints = Math.min activityNode.earnedPoints, activityNode.totalPoints
     
     activityNode.score = activityNode.earnedPoints / activityNode.totalPoints
     activityNode.score = Math.round(10000 * activityNode.score)/10000 # Corrects floating point errors
@@ -126,7 +123,7 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
   
   updateModuleScore = ()->
     moduleNode.earnedPoints = 0
-
+    
     for pageName, pageNode of moduleNode.pages
       pageNode.earnedPoints = 0
       
@@ -140,15 +137,15 @@ Take ["KVStore", "Params", "PureDom"], (KVStore, Params, PureDom)->
     
   
   saveScoringTree = ()->
-    KVStore.set(Params.project, projectNode)
+    KVStore.set moduleName, moduleNode
     
     
 # SETUP
   
-  loadScoringTree()
+  initializeScoringTree()
   if hasActivities
     crawlModuleAndSetUpScoring()
     updateModuleScore()
     saveScoringTree()
-    runCallbacks(0)
+    runCallbacks 0
   makeAPI()
