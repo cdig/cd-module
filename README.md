@@ -88,7 +88,7 @@ Now, we're going to activate the module time machine, sending your module into t
 Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space at the end!*
 
 ```bash
-rm -rf node_modules package.json gulpfile.js gulpfile.coffee gulp-svg.coffee
+rm -rf node_modules gulpfile.js gulp-svg.coffee
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
 curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
 curl https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip
