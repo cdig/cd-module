@@ -1,5 +1,9 @@
-Take "DOMContentLoaded", ()->
+Take ["Config", "DOMContentLoaded"], (Config)->
   huds = document.querySelectorAll "cd-hud"
+  
+  if Config "hide-hud"
+    for hud in huds
+      hud.style.display = "none"
   
   Make "cdHUD", cdHud =
     

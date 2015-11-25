@@ -14,6 +14,7 @@ A Framework for LBS Lessons
   - [Naming Conventions](#naming-conventions)
   - [Z-Index Values](#z-index-values)
   - [Files & Folders](#files--folders)
+  - [Configuration API](#configuration-api)
 - [Documentation](#documentation)
   - [SCSS Variables](#scss-variables)
   - [cd-page](#cd-page)
@@ -330,6 +331,16 @@ source/scripts/    | You             | CoffeeScript files for the entire module.
 source/styles/     | You             | Stylesheets for the entire module.
 
 Everything inside the `source/` folder is for content authors. Everything else (other than the upcoming `dist/` folder) is part of the module system, and should be left alone.
+
+
+### Configuration API
+cd-module allows for configuration via the [Config](https://github.com/cdig/cd-library#config) system, with the following values:
+
+Name               | Type            | Purpose
+-------------------|-----------------|----------------
+hide-hud           | Boolean         | If set to true, we make the HUD invisible
+
+Ha. Not much at the moment. More to come!
 
 <br>
 <br>
