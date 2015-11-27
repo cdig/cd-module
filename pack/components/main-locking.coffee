@@ -4,9 +4,9 @@
 # TODO: This code is very gross and imperative and stateful. It should be handled with gloves.
 
 
-Take ["Pages", "Scoring", "Params", "DOMContentLoaded"], (Pages, Scoring, Params)->
+Take ["Pages", "Scoring", "Config", "DOMContentLoaded"], (Pages, Scoring, Config)->
   mains = document.querySelectorAll "cd-page > *"
-  lockingEnabled = Params.locking isnt "false"
+  lockingEnabled = Config("locking") isnt "false"
   lockedMain = null
   hiddenMains = []
   callbacks = []

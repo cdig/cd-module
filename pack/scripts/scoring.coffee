@@ -1,4 +1,4 @@
-Take ["KVStore", "Params", "PureDom", "Pages", "DOMContentLoaded"], (KVStore, Params, PureDom, Pages)->
+Take ["KVStore", "PureDom", "Pages", "DOMContentLoaded"], (KVStore, PureDom, Pages)->
   SCORING_API_VERSION = 2
   hasActivities = document.querySelector("cd-activity")?
   moduleName = document.querySelector("title").textContent
