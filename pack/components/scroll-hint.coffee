@@ -75,11 +75,13 @@ Take ["MainLocking", "DOMContentLoaded"], (MainLocking)->
 # EVENT HANDLING
   
   updateScroll = ()->
-    body = document.body
-    scrollRange = body.scrollHeight - window.innerHeight
-    nearTop = body.scrollTop < deadband
-    nearEnd = body.scrollTop + deadband >= scrollRange
-    moved = Math.abs(body.scrollTop - lastSetPosition) > deadband
+    # Safari/Chrome scroll <body>, Firefox scrolls <html>
+    scrollTop = document.body.scrollTop + document.body.parentNode.scrollTop
+    
+    scrollRange = document.body.scrollHeight - window.innerHeight
+    nearTop = scrollTop < deadband
+    nearEnd = scrollTop + deadband >= scrollRange
+    moved = Math.abs(scrollTop - lastSetPosition) > deadband
     
     if showing
       hide() if moved and not (nearTop or nearEnd)
