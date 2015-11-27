@@ -5,7 +5,7 @@
 # pageYOffset is an IE-compatable version of scrollY
 
 
-Take ["Pages", "MainLocking", "DOMContentLoaded"], (Pages, MainLocking)->
+Take ["MainLocking", "DOMContentLoaded"], (MainLocking)->
 
 # STATE
   lastSetPosition = 0
@@ -22,6 +22,7 @@ Take ["Pages", "MainLocking", "DOMContentLoaded"], (Pages, MainLocking)->
   scrollHint.appendChild(scrollHintTab)
   document.body.appendChild(scrollHint)
   
+  mains = document.querySelectorAll "cd-main"
   
 # PUBLIC
   
@@ -63,8 +64,7 @@ Take ["Pages", "MainLocking", "DOMContentLoaded"], (Pages, MainLocking)->
   
   
   showBeginHint = ()->
-    if Pages.length > 1
-      ScrollHint.show("Scroll down to begin", "⇣")
+    ScrollHint.show("Scroll down to begin", "⇣")
   
   
   showLockedHint = ()->
@@ -96,7 +96,7 @@ Take ["Pages", "MainLocking", "DOMContentLoaded"], (Pages, MainLocking)->
   
 # INIT
   
-  if Pages.length > 1
+  if mains.length > 1
     window.addEventListener("scroll", updateScroll)
     window.addEventListener("resize", updateScroll)
     scrollHintTab.addEventListener("click", hide)
