@@ -1,107 +1,44 @@
-# ScrollHint
-# A little popup at the bottom of the window that gives users hints about whether or not to scroll.
-#
-# Compatability:
-# pageYOffset is an IE-compatable version of scrollY
-
-
-Take ["MainLocking", "DOMContentLoaded"], (MainLocking)->
-
-# STATE
-  lastSetPosition = 0
-  locked = false
-  showing = false
-  suppressed = false
-  deadband = 20
-  icon = null
-
+Take ["Config", "Params", "ScrollHint", "DOMContentLoaded"], (Config, Params, ScrollHint)->
   
-# ELEMENTS
-  scrollHint = document.createElement("scroll-hint")
-  scrollHintTab = document.createElement("scroll-hint-tab")
-  scrollHint.appendChild(scrollHintTab)
-  document.body.appendChild(scrollHint)
+  elements = [] # Store a reference to elements so we can save and restore by index via Params
   
-  mains = document.querySelectorAll "cd-main"
+  getId = (elm)->
+    for e, id in elements when e is elm
+      return id
   
-# PUBLIC
-  
-  Make "ScrollHint", ScrollHint =
-    show: (text, iconText, fast = false)->
-      scrollHintTab.textContent = text
-      if iconText?
-        scrollHintTab.setAttribute("icon-text", iconText)
-      else
-        scrollHintTab.removeAttribute("icon-text")
-      lastSetPosition = window.pageYOffset
-      show(fast)
-      
-    hide: ()->
-      hide()
+  toggle = (elm)->
+    # Store the position of the elm in the window
+    top = elm.offsetTop - document.body.scrollTop
     
-    suppress: (enable = true)->
-      suppressed = enable
-      if suppressed then hide() else updateScroll()
+    # Turn on focus
+    if not elm.hasAttribute "focus-mode"
+      elm.setAttribute "focus-mode", true
+      elm.parentElement.setAttribute "focus-mode", true
+      document.body.setAttribute "focus-mode", true
+      Params "focus-mode", getId(elm)
+      ScrollHint.suppress true
     
-
-# PRIVATE
-  
-  show = (fast)->
-    if not showing and not suppressed
-      showing = true
-      scrollHint.setAttribute("showing", true)
-      
-      if fast
-        scrollHint.setAttribute("fast", true)
-      else
-        scrollHint.removeAttribute("fast")
-    
-  
-  hide = ()->
-    if showing
-      showing = false
-      scrollHint.removeAttribute("showing")
-  
-  
-  showBeginHint = ()->
-    ScrollHint.show("Scroll down to begin", "⇣")
-  
-  
-  showLockedHint = ()->
-    if locked
-      ScrollHint.show("Complete the activity on this page", "!", true)
-
-  
-# EVENT HANDLING
-  
-  updateScroll = ()->
-    # Safari/Chrome scroll <body>, Firefox scrolls <html>
-    scrollTop = document.body.scrollTop + document.body.parentNode.scrollTop
-    
-    scrollRange = document.body.scrollHeight - window.innerHeight
-    nearTop = scrollTop < deadband
-    nearEnd = scrollTop + deadband >= scrollRange
-    moved = Math.abs(scrollTop - lastSetPosition) > deadband
-    
-    if showing
-      hide() if moved and not (nearTop or nearEnd)
+    # Turn off focus mode
     else
-      showBeginHint() if nearTop
-      showLockedHint() if nearEnd
-
+      elm.removeAttribute "focus-mode"
+      elm.parentElement.removeAttribute "focus-mode"
+      document.body.removeAttribute "focus-mode"
+      Params "focus-mode", null
+      ScrollHint.suppress false
+    
+    # Restore the position of the elm in the window
+    document.body.scrollTop = elm.offsetTop - top
   
-  updateLockedPage = ()->
-    if locked
-      ScrollHint.show("Scroll down to continue", "✓")
-    locked = MainLocking.getLockedMain()?
+  # Closure over the reference to elm
+  setup = (elm)->
+    elm.addEventListener "click", (e)->
+      toggle elm if e.altKey # Only activate on option-click
   
+  # Setup on all children of cd-page elements
+  for elm in document.querySelectorAll "cd-page > *"
+    elements.push elm
+    setup elm
   
-# INIT
-  
-  if mains.length > 1
-    window.addEventListener("scroll", updateScroll)
-    window.addEventListener("resize", updateScroll)
-    scrollHintTab.addEventListener("click", hide)
-    MainLocking.onUpdate(updateLockedPage)
-    updateLockedPage()
-    updateScroll()
+  # Immediately activate focus-mode if Config tells us to
+  if savedFocus = Config "focus-mode"
+    toggle elements[savedFocus]
