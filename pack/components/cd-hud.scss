@@ -1,19 +1,28 @@
 cd-hud {
+  position: fixed;
   display: flex;
-  min-height: 138px; // Hack: avoid shuffling layout when JS adds buttons
-  padding: 1em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3rem; // Hack: avoid shuffling layout when JS adds buttons
   justify-content: center;
   align-items: center;
   color: white;
+  background: url("images/gears-mask.png"), hsl(235, 52%, 25%);
+  background-size: 500px;
+  z-index: 2000;
   
   & > * {
-    margin: 1em;
+    margin: 0 1em;
     animation: cd-hud-fade-in 1s both;
   }
   
   [cd-hud-button] {
-    display: inline-block;
-    padding: .5em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 .5em;
+    height: 2.4em;
     border: currentColor 1px solid;
     text-decoration: none;
     color: $orange;
