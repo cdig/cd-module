@@ -1,0 +1,70 @@
+scroll-hint {
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1003;
+  text-align: center;
+  transform: translateY(150%);
+  transition: transform .3s cubic-bezier(.8,.8,.5,1.0);
+  pointer-events: none; // Safe — just prevents weird interactions with stuff near the bottom
+  
+  &[showing] {
+    transform: translateY(-1em);
+    transition-delay: 3s;
+    
+    scroll-hint-tab {
+      animation: scroll-hint-wiggle .5s;
+      animation-delay: 3s;
+    }
+    
+    &[fast] {
+      transition-delay: 1s;
+      scroll-hint-tab {
+        animation-delay: 1s;
+      }
+    }
+  }
+  
+  scroll-hint-tab {
+    position: relative;
+    display: inline-block;
+    padding: .6em .8em;
+    color: white;
+    background: $navy;
+    background-size: 500px;
+    cursor: pointer;
+    pointer-events: auto; // Safe
+    
+    &[icon-text]::before {
+      content: attr(icon-text);
+      display: inline-block;
+      margin-right: .4em;
+      vertical-align: -.1em;
+      font-size: 1.2em;
+    }
+    
+    &::after {
+      content: "x";
+      display: none;
+      position: absolute;
+      top: 0px;
+      right: 1px;
+      line-height: 1ex;
+      color: $orange;
+    }
+    
+    &:hover::after {
+      display: inline-block;
+    }
+  }
+}
+
+@keyframes scroll-hint-wiggle {
+  from { transform: rotate( -3deg); }
+  25%  { transform: rotate(  6deg); }
+  50%  { transform: rotate( -4deg); }
+  75%  { transform: rotate(  1deg); }
+  to   { transform: rotate(  0deg); }
+}

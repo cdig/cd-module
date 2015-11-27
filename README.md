@@ -303,7 +303,8 @@ z-index | CSS Selector              | System
 100     | call-out[open]            | call-outs
 101     | call-out-point            | call-outs
 1000    | cd-modal                  | ModalPopup
-2000    | cd-hud                    | cd-hud
+1003    | scroll-hint               | ScrollHint
+2000    | cd-hud                    | cdHUD
 10000   | editor-container textarea | [Editor](https://github.com/cdig/editor)
 
 * call-outs have been given a z-index of ~100 so that you can layer content above or below them.
