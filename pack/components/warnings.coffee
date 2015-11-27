@@ -24,3 +24,4 @@ Take ["Env", "cdHUD", "ModalPopup", "load"], (Env, cdHUD, ModalPopup)->
   check "cd-page:not([id])", "All cd-pages must have a unique id"
   check "cd-row > img", "Don't put images directly in cd-row — wrap them in a div"
   check "main", "Use cd-main instead of main"
+  check "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
