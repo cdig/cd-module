@@ -39,8 +39,13 @@ Once `gulp` is running, you need to press `control-c` to stop it.
 
 ### Hyperzine
 
-* Before adding a v2 module to Hyperzine, delete the `node_modules` folder, the `public` folder, and the `dist` folder (if there is one).
-* After taking a v2 module out of Hyperzine, `cd` into the module folder and run `npm install` first. Then run `gulp` as normal.
+* Before adding a v2 module to Hyperzine, delete the following (if they exist):
+  * `bower_components`
+  * `node_modules`
+  * `dist`
+  * `public`
+* After taking a v2 module out of Hyperzine, `cd` into the module folder and run:
+  * `npm install && bower update`
 
 
 
