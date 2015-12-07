@@ -60,7 +60,7 @@ Grab the [starter](https://github.com/cdig/cd-module-starter), and follow the in
 
 ### Prelude
 
-If this is the first module you've updated in a while, please open Terminal and run `nvm current`. If it displays something less than `v5.0.0`, please run the following two commands:
+If this is the first module you've updated in a while, please open Terminal and run `nvm current`. If it displays something less than `v5.1.1`, please run the following two commands:
 
 ```bash
 nvm install stable
