@@ -24,6 +24,17 @@ A Framework for LBS Lessons
 <br>
 ## Quick Reference
 
+### Hyperzine
+
+* Before adding a v2 module to Hyperzine, delete the following (if they exist):
+  * `bower_components`
+  * `node_modules`
+  * `dist`
+  * `public`
+* After taking a v2 module out of Hyperzine, `cd` into the module folder and run:
+  * `npm install && bower update`
+
+
 ### Command Line
 
 Command        | Description
@@ -35,17 +46,6 @@ gulp update    | Updates the gulpfile (which tells gulp what to do)
 npm install    | Downloads files for gulp into node_modules
 
 Once `gulp` is running, you need to press `control-c` to stop it.
-
-
-### Hyperzine
-
-* Before adding a v2 module to Hyperzine, delete the following (if they exist):
-  * `bower_components`
-  * `node_modules`
-  * `dist`
-  * `public`
-* After taking a v2 module out of Hyperzine, `cd` into the module folder and run:
-  * `npm install && bower update`
 
 
 
