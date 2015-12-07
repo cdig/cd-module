@@ -59,7 +59,7 @@ If this is the first module you've updated in a while, please open Terminal and 
 
 ```bash
 nvm install stable
-npm update -g bower coffee-script gulp npm
+npm install -g bower coffee-script gulp npm
 ```
 
 If you have any trouble with this, you'll need to get help from Ivan before continuing.
