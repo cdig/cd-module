@@ -29,7 +29,7 @@ A Framework for LBS Lessons
 Command        | Description
 --------------:|--------------------------
 bower update   | Downloads files for cd-module into bower_components
-cd             | Lets you "change directory"
+cd             | "change directory" aka: go to a folder
 gulp           | Compiles the module & starts browser sync
 gulp update    | Updates the gulpfile (which tells gulp what to do)
 npm install    | Downloads files for gulp into node_modules
