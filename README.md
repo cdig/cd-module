@@ -60,11 +60,12 @@ Grab the [starter](https://github.com/cdig/cd-module-starter), and follow the in
 
 ### Prelude
 
-If this is the first module you've updated in a while, please open Terminal and run `nvm current`. If it displays something less than `v5.1.1`, please run the following two commands:
+If this is the first module you've updated in a while, please open Terminal and run `nvm current`. If it displays something less than `v5.1.1`, please run the following commands:
 
 ```bash
 nvm install stable
-npm install -g bower coffee-script gulp npm
+npm install -g npm
+npm install -g bower coffee-script gulp
 ```
 
 If you have any trouble with this, you'll need to get help from Ivan before continuing.
