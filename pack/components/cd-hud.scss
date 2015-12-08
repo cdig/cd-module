@@ -49,28 +49,9 @@ cd-hud {
     
     [cd-hud-button] {
       text-align: center;
-      padding: 0 .5em;
       height: 2.4em;
       line-height: 2.3em;
-      border: currentColor 1px solid;
-      text-decoration: none;
-      color: $orange;
-      background-color: $navy;
-      transition: background-color .2s, box-shadow .2s;
-      cursor: pointer;
-      
-      // Reminder to periodically check these against current values on LBS
-      $navy-dim: hsl(235,  60%, 19%);
-      $navy-dark: hsl(240, 100%, 10%);
-      
-      &:hover {
-        background-color: $navy-dim;
-        box-shadow: 0 0 12px -4px $orange inset;
-      }
-      &:focus, &:active {
-        background-color: $navy-dark;
-        box-shadow: 0 0 12px -4px black inset;
-      }
+      padding: 0 .5em;
     }
   }
 }

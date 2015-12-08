@@ -19,6 +19,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
     # Options: text (string), order (int), click (fn)
     addButton: (options)->
       button = document.createElement "div"
+      button.className = "lbs-button"
       button.setAttribute "cd-hud-button", true
       button.setAttribute(options.attr, true) if options.attr?
       button.innerHTML = options.text
