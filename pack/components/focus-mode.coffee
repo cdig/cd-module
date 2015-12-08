@@ -1,4 +1,4 @@
-Take ["Config", "Params", "DOMContentLoaded"], (Config, Params)->
+Take ["Config", "Params", "ScrollHint", "DOMContentLoaded"], (Config, Params, ScrollHint)->
   
   elements = [] # Store a reference to elements so we can save and restore by index via Params
   
@@ -16,6 +16,7 @@ Take ["Config", "Params", "DOMContentLoaded"], (Config, Params)->
       elm.parentElement.setAttribute "focus-mode", true
       document.body.setAttribute "focus-mode", true
       Params "focus-mode", getId(elm)
+      ScrollHint.suppress true
     
     # Turn off focus mode
     else
@@ -23,6 +24,7 @@ Take ["Config", "Params", "DOMContentLoaded"], (Config, Params)->
       elm.parentElement.removeAttribute "focus-mode"
       document.body.removeAttribute "focus-mode"
       Params "focus-mode", null
+      ScrollHint.suppress false
     
     # Restore the position of the elm in the window
     document.body.scrollTop = elm.offsetTop - top
