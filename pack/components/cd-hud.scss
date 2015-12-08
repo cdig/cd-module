@@ -20,47 +20,57 @@ cd-hud {
   
   .cd-hud-lbs-brand {
     flex: 0 0 auto;
-    width: 15em;
+    width: 10em;
     opacity: .7;
     img { width: 2em; }
     span { font-size: .8em; }
   }
   
   .cd-hud-icon-spacer {
-    flex: 0 0 auto;
-    width: 15em;
+    flex: 0 1 10em;
   }
   
   .cd-hud-buttons {
-    flex: 1 0 0;
+    flex: 1 0 24em; // If we add more stuff to the HUD, we should increase the width here
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
     
+    // This manually centers the (current) HUD contents a bit.
+    // If we change the stuff in the HUD, we should tweak this.
+    padding-right: 1em;
+    
     & > * {
+      flex: 0 0 auto;
       margin: 0 1em;
       animation: cd-hud-fade-in 1s both;
     }
     
     [cd-hud-button] {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+      text-align: center;
       padding: 0 .5em;
       height: 2.4em;
+      line-height: 2.3em;
       border: currentColor 1px solid;
       text-decoration: none;
       color: $orange;
       background-color: $navy;
-      box-shadow: 0 0 8px -4px inset;
-      transition: background-color .2s, box-shadow .2s, color .2s, border .2s;
+      transition: background-color .2s, box-shadow .2s;
       cursor: pointer;
       
+      // Reminder to periodically check these against current values on LBS
       $navy-dim: hsl(235,  60%, 19%);
       $navy-dark: hsl(240, 100%, 10%);
-      &:hover { background-color: $navy-dim; box-shadow: 0 0 12px -4px inset; }
-      &:focus, &:active { background-color: $navy-dark; box-shadow: 0 0 14px -4px inset; }
+      
+      &:hover {
+        background-color: $navy-dim;
+        box-shadow: 0 0 12px -4px $orange inset;
+      }
+      &:focus, &:active {
+        background-color: $navy-dark;
+        box-shadow: 0 0 12px -4px black inset;
+      }
     }
   }
 }
