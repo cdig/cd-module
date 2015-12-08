@@ -34,9 +34,9 @@ score-display {
   [score-display-back],
   [score-display-ring] {
     stroke: currentColor;
-    stroke-width: 4;
+    stroke-width: 3;
     stroke-dashoffset: 0;
-    stroke-dasharray: 50.24;
+    stroke-dasharray: 47.1; // This was determined by guess-and-check
     fill: transparent;
     transition: opacity 1s;
   }
