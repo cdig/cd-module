@@ -43,10 +43,10 @@ Take ["cdHUD", "Scoring", "ScoreDisplayGraphic", "ModalPopup", "DOMContentLoaded
 Make "ScoreDisplayGraphic",
   '<svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g score-display-progress>
-      <circle score-display-back class="glass" r="7.5" cx="10" cy="10"></circle>
+      <circle score-display-back r="7.5" cx="10" cy="10"></circle>
       <circle score-display-disk r="5.5" cx="10" cy="10"></circle>
       <circle score-display-ring r="7.5" cx="10" cy="10"></circle>
     </g>
-    <path score-display-check d="M4.78,19 L8.2,19 C9.64,14.72 15.21,4.51 20,0.93 C19.08,0.64 18.1,0.40 16.49,0 C13.46,1.24 7.75,10.70 6.69,12.98 C5.17,13.37 3.58,10.5 3.58,10.5 L0,12.83 C0,12.83 3.98,17.21 4.78,19 L4.78,19 Z"></path>
+    <path score-display-check d="M4,20 L8,20 C9,15 15,5 20,1 C19,1 18,1 16,1 C13,2 7,11 6,13 C5,14 3,10 3,10 L0,12 C0,13 3,18 4,20 Z"></path>
   </svg>
   <div score-display-text></div>'
