@@ -57,6 +57,14 @@ cd-hud {
       height: 2.4em;
       line-height: 2.4em;
       padding: 0 .8em;
+
+      @supports (backdrop-filter:blur(10px)) {
+        backdrop-filter: blur(1px);
+      }
+
+      @supports (-webkit-backdrop-filter:blur(10px)) {
+        -webkit-backdrop-filter: blur(1px);
+      }
     }
   }
 }
