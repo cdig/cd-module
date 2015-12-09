@@ -20,8 +20,8 @@ cd-hud {
   
   .cd-hud-lbs-brand {
     flex: 0 0 auto;
-    width: 10em;
-    img { width: 2em; }
+    width: 12em;
+    img { width: 44px; }
     span { font-size: .8em; }
     @media (max-width: 580px) { display: none; }
   }
