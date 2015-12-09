@@ -41,8 +41,11 @@ Take ["Pages", "Scoring", "Config", "DOMContentLoaded"], (Pages, Scoring, Config
   
 
   shouldBeLocked = (main)->
-    activity = main.querySelector "cd-activity"
-    return activity? and Scoring.getActivityScore(activity) < 1
+    childActivity = main.querySelector "cd-activity"
+    if childActivity?
+      return Scoring.getActivityScore(childActivity) < 1
+    else if main.matches "cd-activity"
+      return Scoring.getActivityScore(main) < 1
   
   
   unlock = ()->
