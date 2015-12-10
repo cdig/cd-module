@@ -62,11 +62,12 @@ Take ["Pages", "Scoring", "Config", "DOMContentLoaded"], (Pages, Scoring, Config
   setHidden = (main, hide)->
     if hide
       main.setAttribute("main-locking-hidden", true)
-      if main.parentElement isnt lockedMain.parentElement
+      if main.parentElement? and (main.parentElement isnt lockedMain.parentElement)
         main.parentElement.setAttribute("main-locking-hidden", true)
     else
       main.removeAttribute("main-locking-hidden")
-      main.parentElement.removeAttribute("main-locking-hidden")
+      if main.parentElement?
+        main.parentElement.removeAttribute("main-locking-hidden")
   
   
   runCallbacks = ()->
