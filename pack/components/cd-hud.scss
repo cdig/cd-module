@@ -70,7 +70,7 @@ cd-hud {
       text-align: center;
       height: 2em;
       line-height: 2em;
-      padding: 0 .4em;
+      padding: 0 .45em;
 
       @supports (backdrop-filter:blur(10px)) {
         backdrop-filter: blur(1px);
