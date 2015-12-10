@@ -32,7 +32,7 @@ scroll-hint {
     display: inline-block;
     padding: .6em .8em;
     color: white;
-    background: $navy;
+    background: url("cd-module-images/gears-mask.png"), hsl(235, 52%, 25%);
     background-size: 500px;
     cursor: pointer;
     pointer-events: auto; // Safe
