@@ -24,15 +24,13 @@ A Framework for LBS Lessons
 <br>
 ## Quick Reference
 
-### Hyperzine
+### Project Folders
 
-* Before adding a v2 module to Hyperzine, delete the following (if they exist):
-  * `bower_components`
-  * `node_modules`
-  * `dist`
-  * `public`
-* After taking a v2 module out of Hyperzine, `cd` into the module folder and run:
-  * `npm install && bower update`
+Module [project folders](#files--folders) should live in `Dropbox/Client Projects/LunchBox Sessions/cd-modules`.
+When you're working on a project, it's safe to make a copy of the folder outside of the Dropbox, to avoid Dropbox weirdness.
+When you're done, please make sure the Dropbox copy is up-to-date.
+
+This is different from before — we're no longer keeping cd-module (and svg-activity) projects in Hyperzine, since they all need to be updated in lock-step by Ivan and Sean (and keeping them in Hyperzine makes this much, much harder to do).
 
 
 ### Command Line
