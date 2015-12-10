@@ -68,9 +68,10 @@ cd-hud {
     
     [cd-hud-button] {
       text-align: center;
-      height: 2em;
-      line-height: 2em;
-      padding: 0 .45em;
+      height: 2.1em;
+      font-size: 0.95em;
+      line-height: 2.1em;
+      padding: 0 .5em;
       color: $silver;
       
       @supports (backdrop-filter:blur(10px)) {
