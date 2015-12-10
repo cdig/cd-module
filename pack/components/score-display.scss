@@ -60,6 +60,10 @@ score-display {
       opacity: 0;
     }
     
+    [score-display-back] {
+      opacity: 0.1;
+    }
+    
     [score-display-check] {
       opacity: 1;
     }

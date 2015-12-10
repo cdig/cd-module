@@ -18,16 +18,30 @@ cd-hud {
   @media (min-width: 900px) { font-size: .91em; }
   @media (min-width: 1200px) { font-size: .83em; }
   
+  $side-space: 8em;
+  
   .cd-hud-lbs-brand {
     flex: 0 0 auto;
-    width: 12em;
-    img { width: 44px; }
-    span { font-size: .8em; }
+    width: $side-space;
+    
+    img {
+      vertical-align: middle;
+      width: 44px;
+    }
+    
+    span {
+      display: inline-block;
+      font-size: .8em;
+      line-height: 1;
+      letter-spacing: 1px;
+      vertical-align: middle;
+    }
+    
     @media (max-width: 580px) { display: none; }
   }
   
   .cd-hud-icon-spacer {
-    flex: 0 1 12em;
+    flex: 0 1 $side-space;
     @media (max-width: 580px) { display: none; }
   }
   
@@ -54,9 +68,9 @@ cd-hud {
     
     [cd-hud-button] {
       text-align: center;
-      height: 2.4em;
-      line-height: 2.4em;
-      padding: 0 .8em;
+      height: 2em;
+      line-height: 2em;
+      padding: 0 .4em;
 
       @supports (backdrop-filter:blur(10px)) {
         backdrop-filter: blur(1px);

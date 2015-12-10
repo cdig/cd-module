@@ -47,6 +47,8 @@ Make "ScoreDisplayGraphic",
       <circle score-display-disk r="5.5" cx="10" cy="10"></circle>
       <circle score-display-ring r="7.5" cx="10" cy="10"></circle>
     </g>
-    <path score-display-check d="M4,20 L8,20 C9,15 15,5 20,1 C19,1 18,1 16,1 C13,2 7,11 6,13 C5,14 3,10 3,10 L0,12 C0,13 3,18 4,20 Z"></path>
+    <g transform="matrix(.7, 0, 0, .7, 2, 3)">
+      <path score-display-check d="M4,20 L8,20 C9,15 15,5 20,1 C19,1 18,1 16,1 C13,2 7,11 6,13 C5,14 3,10 3,10 L0,12 C0,13 3,18 4,20 Z"></path>
+    </g>
   </svg>
   <div score-display-text></div>'
