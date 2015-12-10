@@ -30,6 +30,8 @@ Module [project folders](#files--folders) should live in `Dropbox/Client Project
 When you're working on a project, it's safe to make a copy of the folder outside of the Dropbox, to avoid Dropbox weirdness.
 When you're done, please make sure the Dropbox copy is up-to-date.
 
+Project folders in Dropbox should still include bower_components and node_modules — don't sweat the duplication.
+
 This is different from before — we're no longer keeping cd-module (and svg-activity) projects in Hyperzine, since they all need to be updated in lock-step by Ivan and Sean (and keeping them in Hyperzine makes this much, much harder to do).
 
 
