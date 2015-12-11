@@ -554,7 +554,7 @@ This section is a work-in-progress. In the future, as we diagnose and resolve is
 
 Try the following steps in order. After each step, check to see if it fixed the problem by running `gulp`.
 
-* Delete the `node_modules` folder, then run `npm install` (takes a few minutes).
+* Delete the `node_modules` folder, then `cd` into your project and run `npm install` (takes a few minutes).
 * Ask Ivan :(
 
 
