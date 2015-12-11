@@ -23,6 +23,7 @@ A Framework for LBS Lessons
 - [Troubleshooting](#troubleshooting)
 
 <br>
+<br>
 ## Quick Reference
 
 ### Project Folders
@@ -51,11 +52,15 @@ Once `gulp` is running, you need to press `control-c` to stop it.
 
 
 <br>
+<br>
+<br>
 ## Starting A New v2 Module
 
 Grab the [starter](https://github.com/cdig/cd-module-starter), and follow the instructions there.
 
 
+<br>
+<br>
 <br>
 ## Upgrading An Existing v1 Module
 
@@ -136,6 +141,7 @@ We've automatically replaced the `<main>` element with `<cd-main>` in all your H
 
 <br>
 <br>
+<br>
 ## What's New?
 
 
@@ -198,6 +204,7 @@ In cd-module of yore, you'd put some of your files in `public/`, and some of you
 
 <br>
 <br>
+<br>
 ## What's Dead?
 
 
@@ -240,6 +247,7 @@ We now have [cd-library](https://github.com/cdig/cd-library), which is a better 
 
 <br>
 <br>
+<br>
 ## Planned For v3+
 
 ### Audio
@@ -261,9 +269,6 @@ We could do some of these things, maybe:
 * Adapt things that read/write the DOM to work assuming an async/lazy page environment
 * Load activities just-in-time, rather than up-front
 
-### Modular Scale
-Text size should be based on a well-chosen rhythm, rather than the current "wing it" approach I've taken.
-
 ### Integration
 Modules work well as standalone, isolated pieces of content, but that's not the ambition. We want modules to be aware of their surroundings, and both pull in elements of their environment, and offer aspects of themselves for outside use.
 
@@ -274,6 +279,7 @@ Modules work well as standalone, isolated pieces of content, but that's not the 
 
 
 
+<br>
 <br>
 <br>
 ## Design Decisions
@@ -351,6 +357,10 @@ hide-hud           | Boolean         | If set to true, we make the HUD invisible
 
 Ha. Not much at the moment. More to come!
 
+
+
+
+<br>
 <br>
 <br>
 ## Documentation
@@ -535,6 +545,7 @@ Attribute | Description
 
 <br>
 <br>
+<br>
 ## Troubleshooting
 
 This section is a work-in-progress. In the future, as we diagnose and resolve issues, Ivan will populate this section with good advice accordingly.
@@ -548,6 +559,7 @@ Try the following steps in order. After each step, check to see if it fixed the 
 
 
 
+<br>
 <br>
 <br>
 ## License
