@@ -28,13 +28,13 @@ A Framework for LBS Lessons
 
 ### Project Folders
 
-Module [project folders](#files--folders) should live in `Dropbox/Client Projects/LunchBox Sessions/cd-modules`.
-When you're working on a project, it's safe to make a copy of the folder outside of the Dropbox, to avoid Dropbox weirdness.
+Module project folders should live in `Dropbox/Client Projects/LunchBox Sessions/cd-modules`.
+When you're working on a module, it's safe to make a copy of the project folder outside of Dropbox, if you'd prefer.
 When you're done, please make sure the Dropbox copy is up-to-date.
 
-Project folders in Dropbox should still include bower_components and node_modules — don't sweat the duplication.
+Module project folders in Dropbox should still have bower_components and node_modules — don't sweat the duplication.
 
-This is different from before — we're no longer keeping cd-module (and svg-activity) projects in Hyperzine, since they all need to be updated in lock-step by Ivan and Sean (and keeping them in Hyperzine makes this much, much harder to do).
+This is different from before — we're no longer keeping cd-module (and svg-activity) projects in Hyperzine, since they all need to be updated in lock-step by Ivan and Sean (and keeping them in Hyperzine makes this much, much harder to do).
 
 
 ### Command Line
@@ -129,7 +129,7 @@ Back in the Terminal, run the `gulp` command. The Terminal might flood with erro
 While you're reviewing your newly upgraded module, here are some trouble spots to look out for.
 
 #### Text in cd-map
-We've changed the standard font to Lato, which flows a little differently than the previous standard font(s) like Myriad. The change can be particularly painful in cd-maps, especially ones where the text is "bare" — that is, not placed in a box.
+We've changed the standard font to Lato, which flows a little differently than the previous standard font(s) like Myriad. The change can be particularly painful in cd-maps, especially ones where the text is "bare" — that is, not placed in a box.
 
 #### Colors
 We've automatically changed all references to the old, non-standard colors like "cdDarkRed" to the new standard LBS colors. Make sure all your colored text, or text on colored backgrounds, is still readable. It should be, but if not, fix accordingly. Reminder: all the new colors are designed to work as a background for both white text and black text, so aim for consistency within a given layout (eg: all white or all black).
@@ -160,7 +160,7 @@ Gulp (and the browser reloading system we're using, browser-sync) should be much
 
 
 ### 2. Asset Packs
-In v2, you can enhance your module with Asset Packs — reusable bundles that contain styles, scripts, and components. Instead of cd-module having built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
+In v2, you can enhance your module with Asset Packs — reusable bundles that contain styles, scripts, and components. Instead of cd-module having built-in styles, we now include a default Asset Pack: [lbs-pack](//github.com/cdig/lbs-pack). You can use other packs in addition to it. You can replace the lbs-pack with an entirely different pack (eg: for client-specific modules that don't share much at all with lbs-modules).
 
 Asset Packs are intended to help you take your favorite design patterns and make them reusable across all your modules, without having to go through Sean or Ivan.
 
@@ -168,13 +168,13 @@ You are free to make changes to the [lbs-pack](//github.com/cdig/lbs-pack), so t
 
 
 ### 3. Focus Mode
-Option-click on a cd-main to toggle focus mode. All other stuff will be hidden. This makes it super easy to check how your layout looks as you resize the window. Even better — when you make the window narrower than the minimum size we care about (768px — iPad Portrait), we change the background color around the edges, so you know when you can stop giving a crap about stuff breaking — woo!
+Option-click on a cd-main to toggle focus mode. All other stuff will be hidden. This makes it super easy to check how your layout looks as you resize the window. Even better — when you make the window narrower than the minimum size we care about (768px — iPad Portrait), we change the background color around the edges, so you know when you can stop giving a crap about stuff breaking — woo!
 
 
 ### 4. Activity Emphasis
 Over the next few months, we'll get some real scoring infrastructure in LBS. Along the way, there'll probably be a few revisions to how activities are handled. Here are the changes in v2:
 
-* We "lock" scrolling at the `cd-main` containing your current activity — whereas in v1, we locked on `cd-page`, which sucked. While it'd be nice to "lock" right at the activity, this would actually be worse for UX.
+* We "lock" scrolling at the `cd-main` containing your current activity — whereas in v1, we locked on `cd-page`, which sucked. While it'd be nice to "lock" right at the activity, this would actually be worse for UX.
 * The current activity's `cd-main` gets a blue border, giving it a nice bit of emphasis.
 * The green bubble points animation has been removed. We'll be replacing it with something more effective in the future.
 
@@ -273,7 +273,7 @@ We could do some of these things, maybe:
 Modules work well as standalone, isolated pieces of content, but that's not the ambition. We want modules to be aware of their surroundings, and both pull in elements of their environment, and offer aspects of themselves for outside use.
 
 * Support for standardized metadata (title, description, icon, etc) that can be automatically discovered and used in menus, link previews, etc
-* A standard for GUI elements provided by the environment (eg: an LBS header and footer that bookends the module, or a floating HUD provided by a launcher — NOT baked into the module itself)
+* A standard for GUI elements provided by the environment (eg: an LBS header and footer that bookends the module, or a floating HUD provided by a launcher — NOT baked into the module itself)
 * Tight integration with Hyperzine as a source of media assets
 * Tight integration with the data lake / scoring services for storing and displaying facts from the user's history
 
@@ -298,7 +298,7 @@ Classes are reserved for styling content. Don't use them as hooks for JS, and do
 Attributes on elements are reserved for JS and low-level systems. The JS targeting an attribute should enhance the element, but not do anything too crazy. Attributes should be namespaced with the name of the system.
 
 #### 3. Custom Elements are for Components
-Custom elements are reserved for components (html + css + js). All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
+Custom elements are reserved for components (html + css + js). All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
 
 | Name       | Type            | Written As | Example      |
 |------------|-----------------|------------|--------------|
