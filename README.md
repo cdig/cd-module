@@ -9,7 +9,6 @@ Documentation can be found in the Wiki: https://github.com/cdig/lunchboxsessions
 - [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
 - [What's New In v2?](#whats-new-in-v2)
 - [Planned For v3+](#planned-for-v3)
-- [Troubleshooting](#troubleshooting)
 
 <br>
 <br>
@@ -220,31 +219,6 @@ Modules work well as standalone, isolated pieces of content, but that's not the 
 * A standard for GUI elements provided by the environment (eg: an LBS header and footer that bookends the module, or a floating HUD provided by a launcher — NOT baked into the module itself)
 * Tight integration with Hyperzine as a source of media assets
 * Tight integration with the data lake / scoring services for storing and displaying facts from the user's history
-
-
-
-<br>
-<br>
-<br>
-## Troubleshooting
-
-This section is a work-in-progress. In the future, as we diagnose and resolve issues, Ivan will populate this section with good advice accordingly.
-
-#### I ran `gulp` and got an error
-
-Try the following steps in order. After each step, check to see if it fixed the problem by running `gulp`.
-
-* Delete the `node_modules` folder, then `cd` into your project and run `npm install` (takes a few minutes).
-* Ask Ivan for help :(
-
-#### My v1-to-v2 upgrade failed
-
-1. Is your computer plugged in?
-2. Did you `cd` into the correct folder?
-3. Do you have a working internet connection?
-4. Delete the `node_modules` folder, then retry [Chapter Two](#chapter-two)
-5. Delete your v2 module project folder, and [start the upgrade process over again](#upgrading-an-existing-v1-module).
-6. Ask Ivan for help :(
 
 
 
