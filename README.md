@@ -1,11 +1,11 @@
 # cd-module v2
 A Framework for LBS Lessons
 
+### RECENT CHANGE!
+Getting Started, Troubleshooting, and other documentation have been moved to the Wiki, under `cd-module` in the sidebar: https://github.com/cdig/lunchboxsessions/wiki
 
-Getting Started, Troubleshooting, and other documentation can be found in the Wiki, under `cd-module` in the sidebar: https://github.com/cdig/lunchboxsessions/wiki
 
-
-
+<br>
 <br>
 ## What's New In v2?
 
