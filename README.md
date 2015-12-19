@@ -3,94 +3,13 @@ A Framework for LBS Lessons
 
 ### Table of Contents
 
-- [Starting A New v2 Module](#starting-a-new-v2-module)
-- [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
 - [What's New In v2?](#whats-new-in-v2)
 - [Planned For v3+](#planned-for-v3)
 
-Documentation can be found in the Wiki: https://github.com/cdig/lunchboxsessions/wiki
-
-
-<br>
-<br>
-## Starting A New v2 Module
-
-There's a great writeup in the Wiki: https://github.com/cdig/lunchboxsessions/wiki/How-To-Make-a-Module
-
-
-<br>
-<br>
-<br>
-## Upgrading An Existing v1 Module
-
-### READ_ME_FIRST.txt
-
-Open Terminal and run `nvm current`. If it displays something less than `v5.3.0`, please run the following commands one at a time:
-
-```bash
-nvm install stable
-npm install -g npm
-npm install -g bower coffee-script gulp
-```
-
-If you have any trouble with this, you'll need to get help from Ivan before continuing.
-
-### Phase One
-
-#### 1. Make a fresh COPY of your module.
-If anything goes wrong, you should feel comfortable just trashing the upgraded version, and falling back to the original.
-
-#### 2. Move your SVG Activities
-Move the activity folder completely out of your module. Put it somewhere else. Activities are now stand-alone things. You'll develop them in isolation, and then add the compiled result to your module. (Here's why we're making this change: in the not too distant future, you'll just be able to directly "include" an activity from Hyperzine in your module).
-
-#### 3. Write down your fonts (except Varela Round)
-For some modules, the fonts are imported in your `source/styles.scss` file. In other modules, you may have uncommented a line the `bower_components/_project/dist/styles.scss` file. Before upgrading, you need to check both of these places and write down the fonts that your module is using. You probably aren't using Varela Round, but for some reason it was uncommented by default in _project, so I'd ignore that unless you know you need it.
-
-#### 4. Pull CSS rules out of styles.scss
-Also, while you're in `source/styles.scss`, make sure there are no actual CSS rules in here. Normally, the file is just full of import statements and comments. If you have any actual CSS, you need to move it to a different file (I recommend making a `source/styles/module.scss` file, and dumping it in there).
-
-#### 5. Pull coffee code out of scripts.coffee
-Finally, open `source/scripts.coffee`. Again, this file is normally just full of `# @codekit-blubber 'blah.coffee'` statements and comments. If you have any actual CoffeeScript code in here, you need to copy that to a different file (I recommend `source/scripts/module.coffee`).
-
-![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/onward.jpg)
-
-### Chapter Two
-Now, we're going to activate the module time machine, sending your module into the future.
-
-1. Open the Terminal, and `cd` into your module folder. Triple-click the following line, and paste it into the Terminal.
-  ```bash
-  rm -rf node_modules gulpfile.js gulp-svg.coffee && curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json && curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee && curl https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip && unzip -nq node_modules.zip && rm node_modules.zip && npm update && gulp to-the-future
-  ```
-2. Paste it in to your Terminal. Stuff will start running. After about 30 seconds, the upgrade process will finish.
-3. If you see "Your jacket is now dry", then the upgrade succeeded! You're ready to ~~ride your hoverboard~~ get to work on your v2 module. Otherwise, please consult the [upgrade failed](#my-v1-to-v2-upgrade-failed) troubleshooting guide.
-
-![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
-
-
-### Lemma Three
-Did you write down any fonts earlier, in step 3? There's a new file, `source/styles/fonts.scss` — open that file and uncomment the fonts you need.
-
-Back in the Terminal, run the `gulp` command. The Terminal might flood with errors — call Ivan! Otherwise, your browser should open up with your newly upgraded module. Welcome to the future!
-
-![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/party.jpg)
-
-
-### Epilogue
-While you're reviewing your newly upgraded module, here are some trouble spots to look out for.
-
-#### Text in cd-map
-We've changed the standard font to Lato, which flows a little differently than the previous standard font(s) like Myriad. The change can be particularly painful in cd-maps, especially ones where the text is "bare" — that is, not placed in a box.
-
-#### Colors
-We've automatically changed all references to the old, non-standard colors like "cdDarkRed" to the new standard LBS colors. Make sure all your colored text, or text on colored backgrounds, is still readable. It should be, but if not, fix accordingly. Reminder: all the new colors are designed to work as a background for both white text and black text, so aim for consistency within a given layout (eg: all white or all black).
-
-#### `<main>` Styles
-We've automatically replaced the `<main>` element with `<cd-main>` in all your HTML and Kit files. However, if you refer to the `main` element anywhere in your CSS, you'll need to update that to target the `cd-main` element instead.
+Getting Started, Troubleshooting, and other documentation can be found in the Wiki, under `cd-module` in the sidebar: https://github.com/cdig/lunchboxsessions/wiki
 
 
 
-<br>
-<br>
 <br>
 ## What's New In v2?
 
