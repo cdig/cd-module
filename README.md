@@ -68,17 +68,12 @@ Finally, open `source/scripts.coffee`. Again, this file is normally just full of
 ### Chapter Two
 Now, we're going to activate the module time machine, sending your module into the future.
 
-Open the Terminal, and `cd` into your module folder. Triple-click the following line, and paste it into the Terminal.
-
-```bash
-rm -rf node_modules gulpfile.js gulp-svg.coffee && curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json && curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee && curl https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip && unzip -nq node_modules.zip && rm node_modules.zip && npm update && gulp to-the-future
-```
-
-Paste it in to your Terminal. Stuff will start running. After about 30 seconds, the upgrade process will finish.
-
-If you see "Your jacket is now dry", then the upgrade succeeded! You're ready to ~~ride your hoverboard~~ get to work on your v2 module.
-
-Otherwise, please consult the [upgrade failed](#my-v1-to-v2-upgrade-failed) troubleshooting guide.
+1. Open the Terminal, and `cd` into your module folder. Triple-click the following line, and paste it into the Terminal.
+  ```bash
+  rm -rf node_modules gulpfile.js gulp-svg.coffee && curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json && curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee && curl https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip && unzip -nq node_modules.zip && rm node_modules.zip && npm update && gulp to-the-future
+  ```
+2. Paste it in to your Terminal. Stuff will start running. After about 30 seconds, the upgrade process will finish.
+3. If you see "Your jacket is now dry", then the upgrade succeeded! You're ready to ~~ride your hoverboard~~ get to work on your v2 module. Otherwise, please consult the [upgrade failed](#my-v1-to-v2-upgrade-failed) troubleshooting guide.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
