@@ -3,12 +3,13 @@ A Framework for LBS Lessons
 
 ### Table of Contents
 
-Documentation can be found in the Wiki: https://github.com/cdig/lunchboxsessions/wiki
-
 - [Starting A New v2 Module](#starting-a-new-v2-module)
 - [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
 - [What's New In v2?](#whats-new-in-v2)
 - [Planned For v3+](#planned-for-v3)
+
+Documentation can be found in the Wiki: https://github.com/cdig/lunchboxsessions/wiki
+
 
 <br>
 <br>
