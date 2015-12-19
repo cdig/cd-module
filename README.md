@@ -3,55 +3,26 @@ A Framework for LBS Lessons
 
 ### Table of Contents
 
-- [Quick Reference](#quick-reference)
 - [Starting A New v2 Module](#starting-a-new-v2-module)
 - [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
 - [What's New?](#whats-new)
 - [What's Dead?](#whats-dead)
 - [Planned For v3+](#planned-for-v3)
-- [Design Decisions](#design-decisions)
+- [Documentation](#documentation)
   - [Browser Support](#browser-support)
   - [Naming Conventions](#naming-conventions)
   - [Z-Index Values](#z-index-values)
-  - [Files & Folders](#files--folders)
+  - [Project Folder](#project-folder)
   - [Configuration API](#configuration-api)
-- [Documentation](#documentation)
+  - [Terminal Commands](#terminal-commands)
   - [SCSS Variables](#scss-variables)
   - [cd-page](#cd-page)
   - [cd-main](#cd-main)
   - [cd-row](#cd-row)
 - [Troubleshooting](#troubleshooting)
 
-<br>
-<br>
-## Quick Reference
-
-### Project Folders
-
-Module project folders should live in `Dropbox/Client Projects/LunchBox Sessions/cd-modules`.
-When you're working on a module, it's safe to make a copy of the project folder outside of Dropbox, if you'd prefer.
-When you're done, please make sure the Dropbox copy is up-to-date.
-
-Module project folders in Dropbox should still have bower_components and node_modules — don't sweat the duplication.
-
-This is different from before — we're no longer keeping cd-module (and svg-activity) projects in Hyperzine, since they all need to be updated in lock-step by Ivan and Sean (and keeping them in Hyperzine makes this much, much harder to do).
 
 
-### Command Line
-
-Command        | Description
---------------:|--------------------------
-bower update   | Downloads files for cd-module into bower_components
-cd             | "change directory" aka: go to a folder
-gulp           | Compiles the module & starts browser sync
-gulp update    | Updates the gulpfile (which tells gulp what to do)
-npm install    | Downloads files for gulp into node_modules
-
-Once `gulp` is running, you need to press `control-c` to stop it.
-
-
-
-<br>
 <br>
 <br>
 ## Starting A New v2 Module
@@ -98,21 +69,17 @@ Finally, open `source/scripts.coffee`. Again, this file is normally just full of
 ### Chapter Two
 Now, we're going to activate the module time machine, sending your module into the future.
 
-Open the Terminal, and `cd` into your module folder. Copy this entire block, *including the empty space at the end!*
+Open the Terminal, and `cd` into your module folder. Triple-click the following line, and paste it into the Terminal.
 
 ```bash
-rm -rf node_modules gulpfile.js gulp-svg.coffee
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json
-curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee
-curl https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip
-unzip -nq node_modules.zip
-rm node_modules.zip
-npm update
-gulp to-the-future
-     
+rm -rf node_modules gulpfile.js gulp-svg.coffee && curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/package.json > package.json && curl -fsS https://raw.githubusercontent.com/cdig/cd-module-starter/v2/dist/gulpfile.coffee > gulpfile.coffee && curl https://lunchboxsessions.s3.amazonaws.com/static/cd-module/node_modules.zip > node_modules.zip && unzip -nq node_modules.zip && rm node_modules.zip && npm update && gulp to-the-future
 ```
 
-Paste it in to your Terminal. Stuff will start running. After about 30 seconds, the upgrade process will finish. If it looks like things succeeded, then you're ready to ~~ride your hoverboard~~ get to work on your v2 module.
+Paste it in to your Terminal. Stuff will start running. After about 30 seconds, the upgrade process will finish.
+
+If you see "Your jacket is now dry", then the upgrade succeeded! You're ready to ~~ride your hoverboard~~ get to work on your v2 module.
+
+Otherwise, please consult the [upgrade failed](#My-v1-to-v2-upgrade-failed) troubleshooting guide.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
@@ -282,11 +249,12 @@ Modules work well as standalone, isolated pieces of content, but that's not the 
 <br>
 <br>
 <br>
-## Design Decisions
+## Documentation
 
 
 ### Browser Support
 We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
+
 
 
 ### Naming Conventions
@@ -309,6 +277,7 @@ Custom elements are reserved for components (html + css + js). All bets are off 
 | Style Rule | CSS Only        | Selector   | .text-center |
 
 
+
 ### Z-Index Values
 z-index | CSS Selector              | System
 -------:| ------------------------- | ------
@@ -323,29 +292,43 @@ z-index | CSS Selector              | System
 * call-outs have been given a z-index of ~100 so that you can layer content above or below them.
 
 
-### Files & Folders
-Here's a breakdown of everything in the module — who it's for, and what it's for. These items won't all be present in every module. Some of them are just for special occasions.
 
-File or Folder     | Who Uses It     | Purpose
--------------------|-----------------|----------------
-bower_components/  | bower & gulp    | Boilerplate HTML, CSS, and JS.
-bower.json         | bower           | Tells bower what components to install.
-dev/               | Ivan & Sean     | A safe place to test new systems and tools.
-dist/              | You             | In v3, the deployable build of the module.
-gulpfile.coffee    | gulp            | Tells gulp how to compile the module.
-node_modules/      | gulp & npm      | Plugins for gulp, installed by npm.
-package.json       | npm             | Tells npm what gulp plugins to install.
-public/            | browsers & gulp | The compiled module, loaded by the browser.
-resources/         | You             | Raw art assets.
-source/            | You             | All the content for this module.
-source/activities/ | You             | Pre-compiled activity JS and SVG files.
-source/assets/     | You             | Images, audio, videos, etc.
-source/index.kit   | You             | Ties together all the page HTML files.
-source/pages/      | You             | Page-specific HTML, CSS, and JS files.
-source/scripts/    | You             | CoffeeScript files for the entire module.
-source/styles/     | You             | Stylesheets for the entire module.
+### Module Project Folder
+Your **module project folder** contains everything needed to build your module.
 
-Everything inside the `source/` folder is for content authors. Everything else (other than the upcoming `dist/` folder) is part of the module system, and should be left alone.
+File or Folder      | Who Uses It     | Purpose
+--------------------|-----------------|----------------
+bower_components/   | bower & gulp    | Boilerplate HTML, CSS, and JS.
+bower.json          | bower           | Tells bower what components to install.
+gulpfile.coffee     | gulp            | Tells gulp how to compile the module.
+node_modules/       | gulp & npm      | Plugins for gulp, installed by npm.
+package.json        | npm             | Also tells npm what gulp plugins to install.
+public/             | browsers & gulp | The compiled module. Don't change anything in here.
+resources/          | You             | Raw art assets.
+source/             | You             | All the content for this module.
+source/index.kit    | You             | Ties together all the page HTML files.
+
+You are *encouraged* to organize the `source` folder however you'd like.
+
+#### Where should my module project folder live?
+The "official" copy of the module project should live in `Dropbox/Client Projects/LunchBox Sessions/cd-modules`.
+When you're working on a module, it's safe to make a *copy* of the project folder outside of Dropbox, if you'd prefer.
+When you're done, please make sure the Dropbox copy is up-to-date. Ivan and Sean may need to make changes to it (though they'll always ask first). Do not add the module to Hyperzine.
+
+
+
+
+### Terminal Commands
+Command        | Description
+--------------:|--------------------------
+bower update   | Downloads files for cd-module into bower_components
+cd             | "change directory" aka: go to a folder
+gulp           | Compiles the module & starts browser sync
+gulp update    | Updates the gulpfile (which tells gulp what to do)
+npm install    | Downloads files for gulp into node_modules
+
+Once `gulp` is running, you need to press `control-c` to stop it.
+
 
 
 ### Configuration API
@@ -353,17 +336,13 @@ cd-module allows for configuration via the [Config](https://github.com/cdig/cd-l
 
 Name               | Type            | Purpose
 -------------------|-----------------|----------------
-hide-hud           | Boolean         | If set to true, we make the HUD invisible
+dev                | Boolean         | If true, the module runs in dev mode (Editor, etc)
+hide-hud           | Boolean         | If true, we make the HUD invisible
 
 Ha. Not much at the moment. More to come!
 
 
 
-
-<br>
-<br>
-<br>
-## Documentation
 
 ### SCSS Variables
 Here's a complete list of SCSS variables in cd-module v2. These variables are provided by the [lbs-pack](https://github.com/cdig/lbs-pack). The definitive source file is [here](https://github.com/cdig/lbs-pack/blob/v2/pack/styles/vars.scss).
@@ -555,7 +534,16 @@ This section is a work-in-progress. In the future, as we diagnose and resolve is
 Try the following steps in order. After each step, check to see if it fixed the problem by running `gulp`.
 
 * Delete the `node_modules` folder, then `cd` into your project and run `npm install` (takes a few minutes).
-* Ask Ivan :(
+* Ask Ivan for help :(
+
+#### My v1-to-v2 upgrade failed
+
+1. Is your computer plugged in?
+2. Did you `cd` into the correct folder?
+3. Do you have a working internet connection?
+4. Delete the `node_modules` folder, then retry [Chapter Two](#Chapter-Two)
+5. Delete your v2 module project folder, and [start the upgrade process over again](#Upgrading-An-Existing-v1-Module).
+6. Ask Ivan for help :(
 
 
 
