@@ -16,7 +16,7 @@ A Framework for LBS Lessons
   - [Terminal Commands](#terminal-commands)
 - [Troubleshooting](#troubleshooting)
 
-
+For more documentation, please see the cd-module section of the Wiki: https://github.com/cdig/lunchboxsessions/wiki
 
 <br>
 <br>
@@ -235,6 +235,7 @@ Modules work well as standalone, isolated pieces of content, but that's not the 
 <br>
 ## Documentation
 
+For more documentation, please see the cd-module section of the Wiki: https://github.com/cdig/lunchboxsessions/wiki
 
 ### Browser Support
 We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
@@ -325,7 +326,11 @@ hide-hud           | Boolean         | If true, we make the HUD invisible
 
 Ha. Not much at the moment. More to come!
 
+<br>
+<br>
+<br>
 
+For more documentation, please see the cd-module section of the Wiki: https://github.com/cdig/lunchboxsessions/wiki
 
 
 <br>
