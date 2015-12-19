@@ -36,7 +36,7 @@ There's a great writeup in the Wiki: https://github.com/cdig/lunchboxsessions/wi
 
 ### READ_ME_FIRST.txt
 
-Open Terminal and run `nvm current`. If it displays something less than `v5.3.0`, please run the following commands:
+Open Terminal and run `nvm current`. If it displays something less than `v5.3.0`, please run the following commands one at a time:
 
 ```bash
 nvm install stable
