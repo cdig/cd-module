@@ -5,8 +5,7 @@ A Framework for LBS Lessons
 
 - [Starting A New v2 Module](#starting-a-new-v2-module)
 - [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
-- [What's New?](#whats-new)
-- [What's Dead?](#whats-dead)
+- [What's New In v2?](#whats-new-in-v2)
 - [Planned For v3+](#planned-for-v3)
 - [Documentation](#documentation)
   - [Browser Support](#browser-support)
@@ -109,7 +108,7 @@ We've automatically replaced the `<main>` element with `<cd-main>` in all your H
 <br>
 <br>
 <br>
-## What's New?
+## What's New In v2?
 
 
 ### 1. Gulp
@@ -169,13 +168,7 @@ In cd-module of yore, you'd put some of your files in `public/`, and some of you
 
 
 
-<br>
-<br>
-<br>
-## What's Dead?
-
-
-### 1. ~~Smartphone Support~~
+### 8. ~~Smartphone Support~~
 As discussed, we're dropping support for Smartphones. But there are consequences!
 
 You should no longer use @media rules in your CSS, ideally. You should be able to make everything work well with `%` units and other "fluid" techniques. If this is too difficult, please ask for help.
@@ -183,31 +176,31 @@ You should no longer use @media rules in your CSS, ideally. You should be able t
 We've also removed column orientation from cd-row. Any `col="blah"` attributes are ignored. For a complete list of current cd-row attributes, check the documentation below on [cd-row](#cd-row).
 
 
-### 2. ~~Non-Standard SCSS Variables~~
+### 9. ~~Non-Standard SCSS Variables~~
 We've standardized all the variables you'll use in your SCSS. For a complete list, check the documentation below on [SCSS Variables](#scss-variables).
 
 
-### 3. ~~SCORM~~
+### 10. ~~SCORM~~
 We no longer support environments other than LBS. If we need to do another big content project, we'll extend cd-module to support that at that time.
 
 
-### 4. ~~IE9~~
+### 11. ~~IE9~~
 In addition to dropping support for IE9, we're also no longer checking whether the user's browser is good enough to run our stuff (since the code needed to do that was NOT light). LBS will serve as the gatekeeper, withholding our content from unworthy browsers.
 
 
-### 5. ~~SWFs~~
+### 12. ~~SWFs~~
 SWF support has been removed from cd-module. If you need to use a SWF in a module, please talk to Ivan.
 
 
-### 6. ~~`<main>`~~
+### 13. ~~`<main>`~~
 Using multiple `<main>` elements was a violation of the HTML spec. In v2, you must use `<cd-main>`, and many of the new features depend on it.
 
 
-### 7. ~~Audio~~
+### 14. ~~Audio~~
 Audio is temporarily removed, as part of killing the HUD. In the future, it will be added back.
 
 
-### 8. ~~cd-foundation~~
+### 15. ~~cd-foundation~~
 We now have [cd-library](https://github.com/cdig/cd-library), which is a better version of the same idea.
 
 
