@@ -2,7 +2,7 @@
 A Framework for LBS Lessons
 
 ### RECENT CHANGE!
-Getting Started, Troubleshooting, and other documentation have been moved to the Wiki, under `cd-module` in the sidebar: https://github.com/cdig/lunchboxsessions/wiki
+Getting Started, Troubleshooting, and other documentation has been moved to the Wiki, under `cd-module` in the sidebar: https://github.com/cdig/lunchboxsessions/wiki
 
 
 <br>
