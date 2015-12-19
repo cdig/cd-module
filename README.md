@@ -3,6 +3,8 @@ A Framework for LBS Lessons
 
 ### Table of Contents
 
+Documentation can be found in the Wiki: https://github.com/cdig/lunchboxsessions/wiki
+
 - [Starting A New v2 Module](#starting-a-new-v2-module)
 - [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
 - [What's New In v2?](#whats-new-in-v2)
@@ -15,8 +17,6 @@ A Framework for LBS Lessons
   - [Configuration API](#configuration-api)
   - [Terminal Commands](#terminal-commands)
 - [Troubleshooting](#troubleshooting)
-
-For more documentation, please see the cd-module section of the Wiki: https://github.com/cdig/lunchboxsessions/wiki
 
 <br>
 <br>
@@ -228,109 +228,6 @@ Modules work well as standalone, isolated pieces of content, but that's not the 
 * Tight integration with Hyperzine as a source of media assets
 * Tight integration with the data lake / scoring services for storing and displaying facts from the user's history
 
-
-
-<br>
-<br>
-<br>
-## Documentation
-
-For more documentation, please see the cd-module section of the Wiki: https://github.com/cdig/lunchboxsessions/wiki
-
-### Browser Support
-We support: `last 5 Chrome versions, last 2 ff versions, IE >= 10, Safari >= 8, iOS >= 8`. We'll probably bump this spring 2016, depending on how Edge adoption goes. We're supporting quite a few Chrome versions, because I'm not convinced that our users run Chrome often enough to stay reasonably up-to-date. This should only affect code volume (because of prefixes), not behavior.
-
-
-
-### Naming Conventions
-
-#### 1. CSS Classes are for Content Styling
-Classes are reserved for styling content. Don't use them as hooks for JS, and don't use them in low-level systems. If you must use a class for a non-content purpose, namespace it with the exact name of your system.
-
-#### 2. HTML Attributes are for JS Services
-Attributes on elements are reserved for JS and low-level systems. The JS targeting an attribute should enhance the element, but not do anything too crazy. Attributes should be namespaced with the name of the system.
-
-#### 3. Custom Elements are for Components
-Custom elements are reserved for components (html + css + js). All bets are off for anything inside a custom element — the JS has total freedom to wildly manipulate the element, restructure any internal DOM, introduce styling, etc.
-
-| Name       | Type            | Written As | Example      |
-|------------|-----------------|------------|--------------|
-| Component  | HTML, CSS, & JS | kebab-case | call-out     |
-| Element    | HTML Only       | singleword | figcaption   |
-| Mixin      | CSS Only        | kebab-case | magic-unders |
-| Service    | JS Only         | CamelCase  | PageLocking  |
-| Style Rule | CSS Only        | Selector   | .text-center |
-
-
-
-### Z-Index Values
-z-index | CSS Selector              | System
--------:| ------------------------- | ------
-0-999   |                           | your module content
-100     | call-out[open]            | call-outs
-101     | call-out-point            | call-outs
-1000    | cd-modal                  | ModalPopup
-1003    | scroll-hint               | ScrollHint
-2000    | cd-hud                    | cdHUD
-10000   | editor-container textarea | [Editor](https://github.com/cdig/editor)
-
-* call-outs have been given a z-index of ~100 so that you can layer content above or below them.
-
-
-
-### Module Project Folder
-Your **module project folder** contains everything needed to build your module.
-
-File or Folder      | Who Uses It     | Purpose
---------------------|-----------------|----------------
-bower_components/   | bower & gulp    | Boilerplate HTML, CSS, and JS.
-bower.json          | bower           | Tells bower what components to install.
-gulpfile.coffee     | gulp            | Tells gulp how to compile the module.
-node_modules/       | gulp & npm      | Plugins for gulp, installed by npm.
-package.json        | npm             | Also tells npm what gulp plugins to install.
-public/             | browsers & gulp | The compiled module. Don't change anything in here.
-resources/          | You             | Raw art assets.
-source/             | You             | All the content for this module.
-source/index.kit    | You             | Ties together all the page HTML files.
-
-You are *encouraged* to organize the `source` folder however you'd like.
-
-#### Where should my module project folder live?
-The "official" copy of the module project should live in `Dropbox/Client Projects/LunchBox Sessions/cd-modules`.
-When you're working on a module, it's safe to make a *copy* of the project folder outside of Dropbox, if you'd prefer.
-When you're done, please make sure the Dropbox copy is up-to-date. Ivan and Sean may need to make changes to it (though they'll always ask first). Do not add the module to Hyperzine.
-
-
-
-
-### Terminal Commands
-Command        | Description
---------------:|--------------------------
-bower update   | Downloads files for cd-module into bower_components
-cd             | "change directory" aka: go to a folder
-gulp           | Compiles the module & starts browser sync
-gulp update    | Updates the gulpfile (which tells gulp what to do)
-npm install    | Downloads files for gulp into node_modules
-
-Once `gulp` is running, you need to press `control-c` to stop it.
-
-
-
-### Configuration API
-cd-module allows for configuration via the [Config](https://github.com/cdig/cd-library#config) system, with the following values:
-
-Name               | Type            | Purpose
--------------------|-----------------|----------------
-dev                | Boolean         | If true, the module runs in dev mode (Editor, etc)
-hide-hud           | Boolean         | If true, we make the HUD invisible
-
-Ha. Not much at the moment. More to come!
-
-<br>
-<br>
-<br>
-
-For more documentation, please see the cd-module section of the Wiki: https://github.com/cdig/lunchboxsessions/wiki
 
 
 <br>
