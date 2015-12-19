@@ -9,13 +9,6 @@ Documentation can be found in the Wiki: https://github.com/cdig/lunchboxsessions
 - [Upgrading An Existing v1 Module](#upgrading-an-existing-v1-module)
 - [What's New In v2?](#whats-new-in-v2)
 - [Planned For v3+](#planned-for-v3)
-- [Documentation](#documentation)
-  - [Browser Support](#browser-support)
-  - [Naming Conventions](#naming-conventions)
-  - [Z-Index Values](#z-index-values)
-  - [Project Folder](#project-folder)
-  - [Configuration API](#configuration-api)
-  - [Terminal Commands](#terminal-commands)
 - [Troubleshooting](#troubleshooting)
 
 <br>
