@@ -78,7 +78,7 @@ Paste it in to your Terminal. Stuff will start running. After about 30 seconds, 
 
 If you see "Your jacket is now dry", then the upgrade succeeded! You're ready to ~~ride your hoverboard~~ get to work on your v2 module.
 
-Otherwise, please consult the [upgrade failed](#My-v1-to-v2-upgrade-failed) troubleshooting guide.
+Otherwise, please consult the [upgrade failed](#my-v1-to-v2-upgrade-failed) troubleshooting guide.
 
 ![](http://lunchboxsessions.s3.amazonaws.com/static/github-cd-module-readme/jacket.jpg)
 
@@ -534,8 +534,8 @@ Try the following steps in order. After each step, check to see if it fixed the 
 1. Is your computer plugged in?
 2. Did you `cd` into the correct folder?
 3. Do you have a working internet connection?
-4. Delete the `node_modules` folder, then retry [Chapter Two](#Chapter-Two)
-5. Delete your v2 module project folder, and [start the upgrade process over again](#Upgrading-An-Existing-v1-Module).
+4. Delete the `node_modules` folder, then retry [Chapter Two](#chapter-two)
+5. Delete your v2 module project folder, and [start the upgrade process over again](#upgrading-an-existing-v1-module).
 6. Ask Ivan for help :(
 
 
