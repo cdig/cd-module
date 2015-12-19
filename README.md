@@ -34,9 +34,9 @@ There's a great writeup in the Wiki: https://github.com/cdig/lunchboxsessions/wi
 <br>
 ## Upgrading An Existing v1 Module
 
-### Prelude
+### READ_ME_FIRST.txt
 
-If this is the first module you've updated in a while, please open Terminal and run `nvm current`. If it displays something less than `v5.1.1`, please run the following commands:
+Open Terminal and run `nvm current`. If it displays something less than `v5.3.0`, please run the following commands:
 
 ```bash
 nvm install stable
