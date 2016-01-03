@@ -1,9 +1,9 @@
 menu-button {
   display: inline-block;
-  padding: 0 1vw;
+  padding: 0 .5em;
+  margin: 0 .2em;
   line-height: 3em;
   color: $white;
-  margin: 0 1vw;
   
   &, * { cursor: pointer; }
     
