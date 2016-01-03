@@ -1,87 +1,41 @@
 cd-hud {
   position: fixed;
+  
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  
   top: 0;
   left: 0;
   width: 100%;
   height: 3em;
+  line-height: 2.9em;
   padding: 0 .5em;
-  color: $silver;
-  background: url("cd-module-images/gears-mask.png"), hsl(235, 52%, 25%);
-  background-size: 500px;
+  font-size: 16px;
+  
+  color: $white;
+  background: linear-gradient(to right, hsl(228,  45%, 35%), hsl(221,  45%, 50%), hsl(228,  45%, 35%));
+  box-shadow: 0 2px 8px rgba($navy, .4);
   z-index: 2000;
   
-  // These negate the effect of the rules in html.scss
-  @media (min-width: 900px) { font-size: .91em; }
-  @media (min-width: 1200px) { font-size: .83em; }
+  // padding-right: 2.5vw; // Tweak to bring things closer to the center
   
-  $side-space: 8em;
+  @media (max-width: 580px) { padding: 0; }
   
-  .cd-hud-lbs-brand {
+  & > *, .button {
     flex: 0 0 auto;
-    width: $side-space;
-    
-    img {
-      vertical-align: middle;
-      width: 44px;
-    }
-    
-    span {
-      display: inline-block;
-      font-size: .8em;
-      line-height: 1;
-      letter-spacing: 1px;
-      vertical-align: middle;
-    }
-    
-    @media (max-width: 580px) { display: none; }
+    margin: 0 2vw;
+    animation: cd-hud-fade-in 1s both;
   }
   
-  .cd-hud-icon-spacer {
-    flex: 0 1 $side-space;
-    @media (max-width: 580px) { display: none; }
-  }
-  
-  .cd-hud-buttons {
-    flex: 1 0 28em; // If we add more stuff to the HUD, we should increase the width here
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    
-    // This manually centers the (current) HUD contents a bit.
-    // If we change the stuff in the HUD, we should tweak this.
-    padding-right: .5em;
-
-    @media (max-width: 700px) { font-size: .9em; }
-    @media (max-width: 580px) { padding: 0; }
-    @media (max-width: 400px) { font-size: .7em; }
-    
-    & > * {
-      flex: 0 0 auto;
-      margin: 0 2vw;
-      animation: cd-hud-fade-in 1s both;
-    }
-    
-    [cd-hud-button] {
-      text-align: center;
-      height: 2.1em;
-      font-size: 0.95em;
-      line-height: 2.1em;
-      padding: 0 .5em;
-      color: $silver;
-      
-      @supports (backdrop-filter:blur(10px)) {
-        backdrop-filter: blur(1px);
-      }
-
-      @supports (-webkit-backdrop-filter:blur(10px)) {
-        -webkit-backdrop-filter: blur(1px);
-      }
-    }
+  [cd-hud-button] {
+    text-align: center;
+    height: 2.1em;
+    font-size: 0.95em;
+    line-height: 2.1em;
+    padding: 0 .5em;
+    color: $white;
   }
 }
 

@@ -1,5 +1,4 @@
 Take ["cdHUD", "Scoring", "Env"], (cdHUD, Scoring, Env)->
-  
   cdHUD.addButton
     text: "Reset Progress"
     order: 3

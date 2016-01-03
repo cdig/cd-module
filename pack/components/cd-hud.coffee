@@ -1,6 +1,5 @@
 Take ["Config", "DOMContentLoaded"], (Config)->
   hud = document.querySelector "cd-hud"
-  buttons = hud.querySelector ".cd-hud-buttons"
   
   if Config "hide-hud"
     hud.style.display = "none"
@@ -13,7 +12,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
       clone = element.cloneNode true
       if clickHandler?
         clone.addEventListener "click", clickHandler
-      buttons.appendChild clone
+      hud.appendChild clone
       clone
     
     # Options: text (string), order (int), click (fn)

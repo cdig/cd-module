@@ -12,8 +12,8 @@ Take ["cdHUD", "KVStore", "DOMContentLoaded"], (cdHUD, KVStore)->
   for button in document.querySelectorAll "[menu-button]"
     button.addEventListener "click", doClick
   
-  # Add a HUD button
-  cdHUD.addButton
-    text: "⬅︎ Back to Menu"
-    order: 1
-    click: doClick
+  # Add a HUD Element
+  menuButton = document.createElement "menu-button"
+  menuButton.innerHTML = "<img src='cd-module-images/lbs-icon.png'> <span>Back to Menu</span>"
+  menuButton.style.order = 1
+  cdHUD.addElement menuButton, doClick

@@ -10,12 +10,13 @@ score-display {
     height: 3em;
     transform: rotate(-90deg); // This might not work in IE, because this is an inline SVG
     transition: transform 1s;
+    vertical-align: -1em;
   }
   
   [score-display-text] {
     position: absolute;
     left: 51%;
-    top: 48%;
+    top: 50%;
     transform: translate(-45%, -50%);
     font-size: .75rem;
     color: black;

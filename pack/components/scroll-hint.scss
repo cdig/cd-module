@@ -32,8 +32,8 @@ scroll-hint {
     display: inline-block;
     padding: .6em .8em;
     color: white;
-    background: url("cd-module-images/gears-mask.png"), hsl(235, 52%, 25%);
-    background-size: 500px;
+    background: linear-gradient(to right, hsl(222,  45%, 47%), hsl(221,  45%, 50%), hsl(222,  45%, 47%));
+    box-shadow: 0 3px 8px rgba($navy, .4);
     cursor: pointer;
     pointer-events: auto; // Safe
     
@@ -52,7 +52,6 @@ scroll-hint {
       top: 0px;
       right: 1px;
       line-height: 1ex;
-      color: $orange;
     }
     
     &:hover::after {
