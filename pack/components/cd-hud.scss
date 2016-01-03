@@ -24,7 +24,6 @@ cd-hud {
   & > *, .button {
     flex: 0 0 auto;
     margin: 0 1em;
-    animation: cd-hud-fade-in 1s both;
   }
   
   .button {
@@ -39,9 +38,4 @@ cd-hud {
     padding: 0 .5em;
     color: $white;
   }
-}
-
-@keyframes cd-hud-fade-in {
-  from { opacity: 0 }
-  to   { opacity: 1 }
 }
