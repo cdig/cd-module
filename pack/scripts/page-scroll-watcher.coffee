@@ -18,7 +18,8 @@ Take "Pages", (Pages)->
   pageIsCurrent = (page)->
     pageTop = page.offsetTop
     pageBottom = page.offsetTop + page.offsetHeight
-    scrollPosition = document.body.scrollTop + window.innerHeight / 2
+    top = document.body.scrollTop + document.body.parentNode.scrollTop
+    scrollPosition = top + window.innerHeight / 2
     return pageTop < scrollPosition and scrollPosition < pageBottom
   
   
