@@ -1,8 +1,8 @@
 Take "Pages", (Pages)->
   
   pageChangeCallbacks = []
-  prevPageIndex = null
-  prevPage = null
+  prevPageIndex = 0
+  prevPage = Pages[0]
   
   
   Make "PageScrollWatcher", PageScrollWatcher =
