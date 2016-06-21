@@ -1,3 +1,5 @@
+# Note: There is a forked version of this file used in svg-activity-starter. Please keep them in sync.
+
 Take ["cdHUD", "KVStore", "DOMContentLoaded"], (cdHUD, KVStore)->
   
   doClick = ()->
