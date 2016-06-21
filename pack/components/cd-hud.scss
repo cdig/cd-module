@@ -1,3 +1,5 @@
+// NOTE: This file is also used by svg-activity, via the Daily Command
+
 cd-hud {
   position: fixed;
   
@@ -14,9 +16,9 @@ cd-hud {
   padding-right: 1em; // visually center icons
   font-size: 16px;
   
-  color: $white;
+  color: white;
   background: linear-gradient(to right, hsl(227, 45%, 38%), hsl(220, 45%, 53%), hsl(227, 45%, 38%));
-  box-shadow: 0 0 5px rgba($black, .5);
+  box-shadow: 0 0 5px rgba(black, .5);
   z-index: 2000;
   
   
@@ -36,6 +38,6 @@ cd-hud {
     font-size: 0.95em;
     line-height: 2.1em;
     padding: 0 .5em;
-    color: $white;
+    color: white;
   }
 }
