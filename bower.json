@@ -3,8 +3,8 @@
   "description": "A Framework For LBS Lessons",
   "dependencies": {
     "backend": "cdig/backend#v2",
-    "cd-library": "cdig/cd-library#v2",
-    "take-and-make": "cdig/take-and-make#v2"
+    "cd-library": "cdig/cd-library#v3",
+    "take-and-make": "cdig/take-and-make#v3"
   },
   "main": [],
   "ignore": [
