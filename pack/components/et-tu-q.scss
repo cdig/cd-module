@@ -1,0 +1,61 @@
+cd-activity[type="Et Tu, Q?"] {
+  .question {
+    text-align: left;
+  }
+
+  .subtitle {
+    font-size: .9em;
+    margin-bottom: 1em;
+  }
+
+  .answers {
+    font-size: .9em;
+
+    label {
+      display: block;
+      margin: 1.2em 0;
+      line-height: 1.424;
+      text-indent: -1.6em;
+    }
+
+    input {
+      position: relative;
+      margin-right: .5em;
+    }
+  }
+
+  button {
+    margin: .4em auto;
+    padding: .4em 0;
+    width: 6em;
+    border: none;
+    color: white;
+    background-color: #0063be;
+    transition: .2s background-color;
+    appearance: none;
+
+    &:hover {
+      background-color: #049;
+    }
+  }
+
+  &.complete {
+    button {
+      background-color: #F8F8F8;
+      color: #2DD52D;
+      cursor: default;
+    }
+    
+    .answers input {
+      cursor: default;
+    }
+    
+    label {
+      cursor: default;
+    }
+    
+    label[x-incorrect] {
+      opacity: 0.1;
+    }
+  }
+}
