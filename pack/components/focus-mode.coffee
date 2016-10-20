@@ -1,4 +1,5 @@
-Take ["Config", "Params", "ScrollHint", "DOMContentLoaded"], (Config, Params, ScrollHint)->
+Take ["Config", "Env", "Params", "ScrollHint", "DOMContentLoaded"], (Config, Env, Params, ScrollHint)->
+  return if Env.dev
   
   elements = [] # Store a reference to elements so we can save and restore by index via Params
   
