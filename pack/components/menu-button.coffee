@@ -1,9 +1,13 @@
-Take ["cdHUD", "KVStore", "DOMContentLoaded"], (cdHUD, KVStore)->
+Take ["cdHUD", "Config", "KVStore", "DOMContentLoaded"], (cdHUD, Config, KVStore)->
   
   doClick = ()->
     success = KVStore.save()
     if success
-      window.history.back() # TODO: Should probably use Config.parent (or something) here
+      menuUrl = Config "menu"
+      if menuUrl?
+        window.location = menuUrl
+      else
+        window.history.back()
     else
       ModalPopup.open "Saving Failed", "Check your internet connection and try again."
   
