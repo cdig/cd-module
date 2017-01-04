@@ -5,9 +5,9 @@ Take ["cdHUD", "Config", "KVStore", "DOMContentLoaded"], (cdHUD, Config, KVStore
     if success
       menuUrl = Config "menu"
       if menuUrl?
-        window.location = menuUrl
+        window.top.location = menuUrl
       else
-        window.history.back()
+        window.top.history.back()
     else
       ModalPopup.open "Saving Failed", "Check your internet connection and try again."
   
