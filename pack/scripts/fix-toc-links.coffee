@@ -4,9 +4,9 @@
 Take "DOMContentLoaded", ()->
   
   jump = (hash)-> ()->
-    window.location.hash = link
+    window.location.hash = hash
   
   for a in document.querySelectorAll "a"
-    if a.href.indexOf("#") is 0
+    if a.hash?.length > 0
       a.addEventListener "click", jump a.hash
       a.removeAttribute "href"
