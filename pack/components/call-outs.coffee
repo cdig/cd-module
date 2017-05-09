@@ -75,33 +75,8 @@ Take "DOMContentLoaded", ()->
   
   handleBodyTouch = (e)->
     closeLastOpened() unless e.target.matches("call-out-point")
-    
-    
-# SCORING
   
-  # If we have scoring, wrap the open() function with points
-  Take ["Scoring", "PureDom"], (Scoring, PureDom)->
-    
-    # Store the original open function so we can still refer to it
-    oldOpen = open
-    
-    hasBeenSeen = (callout)->
-      callout.hasAttribute("seen")
-    
-    open = (callout)->
-      shouldAwardPoint = not hasBeenSeen(callout)
-      
-      oldOpen(callout)
-      
-      activity = PureDom.querySelectorParent(callout, "cd-activity")
-      if activity?
-        callouts = PureDom.querySelectorAll(activity, "call-out")
-        if callouts?
-          if callouts.every(hasBeenSeen)
-            Scoring.addScore(activity, 1)
-          else if shouldAwardPoint
-            Scoring.addPoints(activity, 1)
-
+  
 # SETUP
   
   for callout in document.querySelectorAll("call-out")

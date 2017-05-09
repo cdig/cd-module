@@ -1,4 +1,4 @@
-Take ["PureArray", "Scoring", "DOMContentLoaded"], (PureArray, Scoring)->
+Take ["PureArray", "DOMContentLoaded"], (PureArray)->
 
   setup = (activity)->
     timeoutId = null
@@ -41,7 +41,6 @@ Take ["PureArray", "Scoring", "DOMContentLoaded"], (PureArray, Scoring)->
       submit.disabled = true
       for answer, i in answers
         answer.disabled = true
-      Scoring.addScore activity, 1
 
     failure = ()->
       submit.textContent = "Not Quite"

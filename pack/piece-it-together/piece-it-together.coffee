@@ -1,4 +1,4 @@
-Take ["ComputePanelProperties", "Curry", "MainScrollWatcher","Panel", "PieceDrag", "PiecesSetup", "PieceAnimations","ScaleAnimation", "Scoring",  "load"], (ComputePanelProperties, Curry, MainScrollWatcher, Panel, PieceDrag, PiecesSetup,PieceAnimations,ScaleAnimation, Scoring)->
+Take ["ComputePanelProperties", "Curry", "MainScrollWatcher","Panel", "PieceDrag", "PiecesSetup", "PieceAnimations","ScaleAnimation",  "load"], (ComputePanelProperties, Curry, MainScrollWatcher, Panel, PieceDrag, PiecesSetup,PieceAnimations,ScaleAnimation)->
   
   pitActivities = document.querySelectorAll("cd-activity[type='piece-it-together']")
   
@@ -79,7 +79,6 @@ Take ["ComputePanelProperties", "Curry", "MainScrollWatcher","Panel", "PieceDrag
       piece.element.style.visibility = "hidden"
     
     Panel.victoryDance(game.panel)
-    Scoring.addScore(game.element, 1)
   
   panelUpdate = (game, animate = false)->
     ComputePanelProperties(game.pieces, game.panel)
