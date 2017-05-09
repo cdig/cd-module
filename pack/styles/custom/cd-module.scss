@@ -1,0 +1,4 @@
+cd-module {
+  display: block;
+  overflow: hidden; // This keeps piece-it-together elements that spill off the right edge from causing horizontal scroll
+}

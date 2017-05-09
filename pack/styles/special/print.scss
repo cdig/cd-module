@@ -1,0 +1,35 @@
+@media print {
+	h1 { font-size: 2.0em; }
+	h2 { font-size: 1.6em; }
+	h3 { font-size: 1.4em; }
+	
+	html, body {
+		background: none;
+		margin: 0!important;
+		max-width: none!important;
+	}
+	
+	cd-hud {
+		display: none;
+	}
+	
+	cd-page {
+		max-width: none!important;
+		width: auto;
+		display: block;
+		margin: 0 auto!important;
+		page-break-after: always;
+		box-shadow: none;
+		border: 0;
+	}
+	
+	main {
+		display: block;
+		margin: 0 auto!important;
+		border: 0;
+	}
+	
+	main + main {
+		page-break-before: always;
+	}
+}

@@ -1,0 +1,7 @@
+.framed {
+  border: 3px solid $blue;
+}
+
+.framed + .framed {
+  margin-left: 1em;
+}

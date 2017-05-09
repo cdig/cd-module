@@ -1,0 +1,81 @@
+// VARS ///////////////////////////////////////////////////////////////////////////////////////////
+
+// SIZES
+$maxPageWidth: 64rem;
+$maxLineLength: 42em;
+$iPadLandscape: 1024px;
+$iPadPortrait: 768px;
+$iPhoneLandscape: 667px;
+$iPhonePortrait: 375px;
+
+// CD MODULE COLORS
+$dark-blue: #0045AF;
+$light-blue: #0084AF;
+$light-green: #99ff66;
+
+// HYDRAULIC PRESSURE COLORS
+$atmospheric-pressure: #00F;
+$no-pressure: #00F;
+$low-pressure: #FF0;
+$medium-pressure: #F70;
+$high-pressure: #F00;
+$vacuum-pressure: #F0F;
+
+// LBS COLORS
+$white:  white;
+$silver: hsl(210,  12%, 80%);
+$grey:   hsl(210,   9%, 52%);
+$smoke:  hsl(210,  12%, 26%);
+$black:  black;
+
+$red:    hsl(  2,  75%, 53%);
+$orange: hsl( 25, 100%, 59%);
+$yellow: hsl( 43, 100%, 50%);
+$green:  hsl(130,  85%, 35%);
+$blue: 	 #0063be; // approx 209, 100%, 37%
+$indigo: hsl(270,  50%, 58%);
+$violet: hsl(330,  55%, 50%);
+
+$teal:   hsl(180, 100%, 29%);
+$mint:   hsl(153,  80%, 41%);
+$pink:   hsl(357, 100%, 75%);
+$brown:  hsl( 23,  40%, 46%);
+$navy:   hsl(235,  52%, 22%);
+$maroon: hsl(359,  65%, 40%);
+
+$transparent: transparent;
+
+
+// MIXINS /////////////////////////////////////////////////////////////////////////////////////////
+
+@mixin magic-underline($color, $backgroundColor, $selectionColor) {
+  @include textShadowToCropUnderline($backgroundColor);
+  background-image:
+    linear-gradient($backgroundColor, $backgroundColor),
+    linear-gradient($backgroundColor, $backgroundColor),
+    linear-gradient($color, $color);
+  background-size: .05em 2px, .05em 2px, 1px 2px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  background-position: left bottom .1em, right bottom .1em, left bottom .1em;
+  
+  &::selection {
+    @include textShadowToCropUnderline($selectionColor);
+    background: $selectionColor;
+  }
+  
+  &:before, &:after, *, *:before, *:after {
+    text-shadow: none;
+  }
+}
+
+@mixin textShadowToCropUnderline($shadowColor) {
+  text-shadow:
+    0  2px $shadowColor,
+    0 -2px $shadowColor,
+    0 -3px $shadowColor, // Helps  g
+     2px 0 $shadowColor,
+    -2px 0 $shadowColor,
+     3px 0 $shadowColor, // Helps y
+     4px 0 $shadowColor,
+    -4px 0 $shadowColor;
+}

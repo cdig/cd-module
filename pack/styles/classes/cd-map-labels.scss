@@ -1,0 +1,17 @@
+cd-map {
+  .dark {
+    color: $smoke;
+  }
+
+  .light {
+    color: white;
+    text-shadow: 1px 1px 2px $smoke;
+    background-color: $grey;
+    padding: .2em .4em;
+  }
+
+  .controls {
+    font-size: 0.9em;
+    color: $smoke;
+  }
+}

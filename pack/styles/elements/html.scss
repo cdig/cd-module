@@ -1,0 +1,16 @@
+html {
+  // Limit the min-width to iPhone Landscape.
+  // This provides a not-terible experience for smartphones.
+  // Pinch-to-zoom works well. The viewport (device-width) works well with this.
+  // Any layouts that work at 768px should be _okay_ at 667px.
+  min-width: 667px;
+
+  font-family: 'Lato', sans-serif;
+  background: $silver;
+  padding-top: 3rem; // Account for the cd-hud
+  
+  @media (min-width: 900px) { font-size: 1.1em; }
+  @media (min-width: 1200px) { font-size: 1.2em; }
+  
+  -webkit-tap-highlight-color: rgba(white, 0.1);
+}

@@ -1,0 +1,43 @@
+// Modular Scale: Minor Second (1.125:1)
+
+cd-module {
+  h1 {
+    margin: 0 2rem .3em;
+    text-align: center;
+    font-size: 2.027em; // ms 6
+    font-family: serif;
+    font-weight: 100;
+    color: $blue;
+    @include magic-underline(currentColor, white, #AAA);
+  }
+
+  h2 {
+    margin: 0.2em 0 0.4em;
+    text-align: center;
+    font-size: 1.602em; // ms 4
+  }
+
+  h3 {
+    margin: 0.2em 0 0.4em;
+    text-align: center;
+    font-size: 1.424em; // ms 3
+  }
+
+  h4 {
+    margin: 0.2em 0 0.4em;
+    text-align: center;
+    font-size: 1.266em; // ms 2
+  }
+
+  h5 {
+    margin: 0.2em 0 0.4em;
+    text-align: center;
+    font-size: 1.125em; // ms 1
+  }
+
+  h6 {
+    margin: 0.2em 0 0.4em;
+    text-align: center;
+    font-size: 1em; // ms 0
+  }
+}

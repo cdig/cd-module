@@ -1,0 +1,23 @@
+cd-module {
+  p {
+    max-width: $maxLineLength;
+    margin: 1em auto;
+    padding: 0 1em;
+    line-height: 1.424; // MS 3, Minor Second (1.125:1)
+  }
+  
+  cd-map p {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+  }
+
+  cd-text-bubble p {
+    padding: 0;
+    line-height: normal;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

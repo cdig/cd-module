@@ -1,0 +1,70 @@
+// CD MODULE //////////////////////////////////////////////////////////////////////////////////////
+
+.dark-blue { background-color: $dark-blue; }
+.light-blue { background-color: $light-blue; }
+.light-green { background-color: $light-green; }
+
+.dark-blue-text { color: $dark-blue; }
+.light-blue-text { color: $light-blue; }
+.light-green-text { color: $light-green; }
+
+
+// HYDRAULIC PRESSURE //////////////////////////////////////////////////////////////////////////////
+
+// Note: These are applied as text colors, not bg-colors, to support currentColor.
+.atmospheric-pressure { color: $atmospheric-pressure; }
+.no-pressure { color: $no-pressure; }
+.low-pressure { color: $low-pressure; }
+.medium-pressure { color: $medium-pressure; }
+.high-pressure { color: $high-pressure; }
+.vacuum-pressure { color: $vacuum-pressure; }
+
+
+// LBS ////////////////////////////////////////////////////////////////////////////////////////////
+
+.white  { background-color: $white; }
+.silver { background-color: $silver; }
+.grey   { background-color: $grey; }
+.smoke  { background-color: $smoke; }
+.black  { background-color: $black; }
+
+.red    { background-color: $red; }
+.orange { background-color: $orange; }
+.yellow { background-color: $yellow; }
+.green  { background-color: $green; }
+.blue   { background-color: $blue; }
+.indigo { background-color: $indigo; }
+.violet { background-color: $violet; }
+
+.navy   { background-color: $navy; }
+.maroon { background-color: $maroon; }
+.teal   { background-color: $teal; }
+.mint   { background-color: $mint; }
+.pink   { background-color: $pink; }
+.brown  { background-color: $brown; }
+
+.transparent { background-color: $transparent; }
+
+
+.white-text  { color: $white; }
+.silver-text { color: $silver; }
+.grey-text   { color: $grey; }
+.smoke-text  { color: $smoke; }
+.black-text  { color: $black; }
+
+.red-text    { color: $red; }
+.orange-text { color: $orange; }
+.yellow-text { color: $yellow; }
+.green-text  { color: $green; }
+.blue-text   { color: $blue; }
+.indigo-text { color: $indigo; }
+.violet-text { color: $violet; }
+
+.navy-text   { color: $navy; }
+.maroon-text { color: $maroon; }
+.teal-text   { color: $teal; }
+.mint-text   { color: $mint; }
+.pink-text   { color: $pink; }
+.brown-text  { color: $brown; }
+
+.transparent-text { color: $transparent; }

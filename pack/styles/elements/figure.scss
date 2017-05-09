@@ -1,0 +1,10 @@
+// TODO: Are we using this, or the figure class?
+
+cd-module figcaption {
+  font-style: italic;
+  color: $smoke;
+}
+
+cd-module figure + figure {
+  margin-left: 1em;
+}

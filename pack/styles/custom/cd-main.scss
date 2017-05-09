@@ -1,0 +1,9 @@
+main, cd-main {
+  display: block;
+  margin: 1em 0;
+  padding: 1.5em;
+  background: white;
+  
+  // The +1 accounts for the .5em of margin on either side
+  @media (max-width: $maxPageWidth + 1) { margin: 1em .5em; }
+}

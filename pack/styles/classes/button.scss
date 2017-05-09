@@ -1,0 +1,25 @@
+.button {
+  // Customization:
+  // text and borders: class="button white-text"
+  // background: class="red button"
+  
+  display: inline-block;
+  margin: 1em;
+  padding: .6em .8em;
+  outline: 1px solid currentColor;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $navy;
+  cursor: pointer;
+  user-select: none;
+  
+  &:hover {
+    outline: 2px solid currentColor;
+  }
+  
+  &:focus, &:active {
+    outline: 3px solid currentColor;
+  }
+}
