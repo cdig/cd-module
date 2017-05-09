@@ -2,6 +2,7 @@
   "name": "cd-module",
   "description": "A Framework For LBS Lessons",
   "dependencies": {
+    "cd-reset": "cdig/cd-reset#v4",
     "take-and-make": "cdig/take-and-make#v4"
   },
   "main": [],
