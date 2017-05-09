@@ -1,0 +1,38 @@
+html[env-dev] {
+  [editable], [editable] * { cursor: move; }
+  body[editor="ct"]      * { cursor: ew-resize; } //s-resize; }
+  body[editor="rt"]      * { cursor: ew-resize; } //sw-resize; }
+  body[editor="rc"]      * { cursor: ew-resize; } //w-resize; }
+  body[editor="rb"]      * { cursor: ew-resize; } //nw-resize; }
+  body[editor="cb"]      * { cursor: ew-resize; } //n-resize; }
+  body[editor="lb"]      * { cursor: ew-resize; } //ne-resize; }
+  body[editor="lc"]      * { cursor: ew-resize; } //e-resize; }
+  body[editor="lt"]      * { cursor: ew-resize; } //se-resize; }
+  body[editor="cc"]      * { cursor: ew-resize; } //not-allowed; }
+  body[editor="drag"]  	 * { cursor: none; }
+
+  editor-button {
+    cursor: pointer;
+  }
+
+  editor-container {
+    display: none;
+    
+    &.show { display: block; }
+    
+    textarea {
+      display: block;
+      position: fixed;
+      right: .5rem;
+      top: 3rem;
+      width: 13em;
+      height: calc(100vh - 3.5rem);
+      min-width: 10rem;
+      padding: .5em;
+      padding-right: 0;
+      font-size: 0.8em;
+      border: 2px solid hsl(210,  12%, 80%);
+      &::-webkit-input-placeholder { color: hsl(210,  12%, 80%); }
+    }
+  }
+}

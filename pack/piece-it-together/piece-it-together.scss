@@ -1,0 +1,41 @@
+cd-activity[type="piece-it-together"] {
+  padding-top: 8em;
+  position: relative;
+  
+  piece-panel {
+    position: absolute;
+    display: block;
+    top: .33em;
+    left: calc(50% - 50vw);
+    width: 100vw;
+    font-size: 3em; // Sets the size of the Good Job text
+    height: calc(2em + 6px);
+    background: hsl(209, 10%, 97%);
+    border-top: 3px solid #0063be;
+    border-bottom: 3px solid #0063be;
+    
+    &[message]:after {
+      content: attr(message);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      line-height: 2em;
+      z-index: 10;
+      color: hsl(142, 84%, 38%);
+      animation: piece-it-together-fade-in .5s both;
+    }
+    
+    .panelButton {
+      cursor: pointer;
+      visibility: hidden;
+    }
+  }
+}
+
+@keyframes piece-it-together-fade-in {
+  from { opacity: 0;  transform: scale(0.70); }
+  50%  { opacity: .5; transform: scale(1.10); }
+  80%  { opacity: 1; transform:  scale(0.98); }
+  to   { opacity: 1;  transform: scale(1.00); }
+}

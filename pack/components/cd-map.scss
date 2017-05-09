@@ -1,0 +1,26 @@
+cd-map {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+cd-map [pin] {
+  position: absolute;
+  top: 50%;
+  
+  /* Overridden by per-element styles — these are just helpful defaults to avoid 'auto' errors */
+  left: 0;
+  margin-top: 0;
+  transform: translate(0%, 0%);
+}
+
+/* Alignments */
+cd-map [pin="top left"], cd-map [pin="left top"] { transform: translate(0%, 0%); } /* DEFAULT */
+cd-map [pin="top right"], cd-map [pin="right top"] { transform: translate(-100%, 0%); }
+cd-map [pin="bottom left"], cd-map [pin="left bottom"] { transform: translate(0%, -100%); }
+cd-map [pin="bottom right"], cd-map [pin="right bottom"] { transform: translate(-100%, -100%); }
+cd-map [pin="top"], cd-map [pin="top center"], cd-map [pin="center top"] { transform: translate(-50%, 0%); }
+cd-map [pin="left"], cd-map [pin="left center"], cd-map [pin="center left"] { transform: translate(0%, -50%); }
+cd-map [pin="right"], cd-map [pin="right center"], cd-map [pin="center right"] { transform: translate(-100%, -50%); }
+cd-map [pin="bottom"], cd-map [pin="bottom center"], cd-map [pin="center bottom"] { transform: translate(-50%, -100%); }
+cd-map [pin="center"], cd-map [pin="center center"] { transform: translate(-50%, -50%); }
