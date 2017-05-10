@@ -1,7 +1,13 @@
 #title {
   padding: 0;
   
+  cd-main {
+    max-width: calc(50vw + 500px);
+    text-align: center;
+  }
+  
   h1 {
+    display: inline-block;
     margin: 0;
     border: none;
     text-align: left;
