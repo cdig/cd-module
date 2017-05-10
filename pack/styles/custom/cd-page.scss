@@ -1,14 +1,8 @@
 cd-page {
   display: block;
-  max-width: $maxPageWidth;
-  margin: 0 auto;
-  padding: 25vh 0;
-  
-  @media (max-width: $iPadLandscape) {
-    padding: 10em 0;
-  }
+  padding: 5vw 0;
   
   &.standalone {
-    padding: 0;
+    // Hook for styles to apply to standalone content
   }
 }

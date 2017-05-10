@@ -1,17 +1,7 @@
-Take ["Env", "cdHUD", "ModalPopup", "load"], (Env, cdHUD, ModalPopup)->
+Take ["Env", "ModalPopup", "load"], (Env, ModalPopup)->
   
   return unless Env.dev or Env.debug
   hasWarnings = false
-  
-  
-  showWarningIndicator = ()->
-    if not hasWarnings
-      hasWarnings = true
-      cdHUD.addButton
-        text: "Warnings"
-        attr: "cd-hud-warnings"
-        order: 4
-        click: ()-> ModalPopup.open "Oh No", "1. Open the console to see the warnings.<br>2. Fix the warnings.<br>3. Profit."
   
   
   check = (selector, message)->

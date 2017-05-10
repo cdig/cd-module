@@ -1,10 +1,5 @@
 body[focus-mode] {
 
-  // Hide huds
-  cd-hud {
-    display: none;
-  }
-  
   // Hide non-focussed pages
   cd-page:not([focus-mode]) {
     display: none;

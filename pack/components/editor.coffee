@@ -25,7 +25,6 @@ Take ["Env", "PureDom", "Vector", "DOMContentLoaded"], (Env, PureDom, Vector)->
   
   resizeDirectionVec = null
   
-  activateHUDButton = null
   containerShowing = false
   
   
@@ -128,10 +127,7 @@ Take ["Env", "PureDom", "Vector", "DOMContentLoaded"], (Env, PureDom, Vector)->
     outputContainer.style.display = if containerShowing then "block" else "none"
   
   initializeOutput = ()->
-    if activateHUDButton?
-      activateHUDButton()
-    else
-      toggleContainer true
+    toggleContainer true
   
 # CURSOR MANAGEMENT
   
@@ -284,15 +280,3 @@ Take ["Env", "PureDom", "Vector", "DOMContentLoaded"], (Env, PureDom, Vector)->
   window.addEventListener("keydown", keyDownHandler)
   window.addEventListener("keyup", keyUpHandler)
   
-  
-  # HUD Button
-  hasButton = false
-  
-  Take "cdHUD", (cdHUD)->
-    activateHUDButton = ()->
-      unless hasButton
-        hasButton = true
-        cdHUD.addButton
-          text: "Editor"
-          order: 4
-          click: ()-> toggleContainer()
