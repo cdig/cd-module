@@ -5,11 +5,10 @@
 # pageYOffset is an IE-compatable version of scrollY
 
 
-Take ["MainLocking", "DOMContentLoaded"], (MainLocking)->
+Take ["DOMContentLoaded"], ()->
 
 # STATE
   lastSetPosition = 0
-  locked = false
   showing = false
   suppressed = false
   deadband = 20
@@ -24,26 +23,6 @@ Take ["MainLocking", "DOMContentLoaded"], (MainLocking)->
   
   mains = document.querySelectorAll "cd-main"
   
-# PUBLIC
-  
-  Make "ScrollHint", ScrollHint =
-    show: (text, iconText, fast = false)->
-      scrollHintTab.textContent = text
-      if iconText?
-        scrollHintTab.setAttribute("icon-text", iconText)
-      else
-        scrollHintTab.removeAttribute("icon-text")
-      lastSetPosition = window.pageYOffset
-      show(fast)
-      
-    hide: ()->
-      hide()
-    
-    suppress: (enable = true)->
-      suppressed = enable
-      if suppressed then hide() else updateScroll()
-    
-
 # PRIVATE
   
   show = (fast)->
@@ -67,11 +46,6 @@ Take ["MainLocking", "DOMContentLoaded"], (MainLocking)->
     ScrollHint.show("Scroll down to begin", "⇣")
   
   
-  showLockedHint = ()->
-    if locked
-      ScrollHint.show("Complete the activity on this page", "!", true)
-
-  
 # EVENT HANDLING
   
   updateScroll = ()->
@@ -88,14 +62,27 @@ Take ["MainLocking", "DOMContentLoaded"], (MainLocking)->
       hide() if moved and not (nearTop or nearEnd)
     else
       showBeginHint() if nearTop
-      showLockedHint() if nearEnd
 
+
+# PUBLIC
   
-  updateLockedPage = ()->
-    if locked
-      ScrollHint.show("Scroll down to continue", "✓")
-    locked = MainLocking.getLockedMain()?
-  
+  Make "ScrollHint", ScrollHint =
+    show: (text, iconText, fast = false)->
+      scrollHintTab.textContent = text
+      if iconText?
+        scrollHintTab.setAttribute("icon-text", iconText)
+      else
+        scrollHintTab.removeAttribute("icon-text")
+      lastSetPosition = window.pageYOffset
+      show(fast)
+      
+    hide: ()->
+      hide()
+    
+    suppress: (enable = true)->
+      suppressed = enable
+      if suppressed then hide() else updateScroll()
+      
   
 # INIT
   
@@ -103,6 +90,4 @@ Take ["MainLocking", "DOMContentLoaded"], (MainLocking)->
     window.addEventListener("scroll", updateScroll)
     window.addEventListener("resize", updateScroll)
     scrollHintTab.addEventListener("click", hide)
-    MainLocking.onUpdate(updateLockedPage)
-    updateLockedPage()
     updateScroll()

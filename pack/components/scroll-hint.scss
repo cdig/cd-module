@@ -8,7 +8,7 @@ scroll-hint {
   text-align: center;
   transform: translateY(150%);
   transition: transform .3s cubic-bezier(.8,.8,.5,1.0);
-  pointer-events: none; // Safe — just prevents weird interactions with stuff near the bottom
+  pointer-events: none;
   
   &[showing] {
     transform: translateY(-1em);
@@ -30,12 +30,12 @@ scroll-hint {
   scroll-hint-tab {
     position: relative;
     display: inline-block;
-    padding: .6em .8em;
-    color: white;
-    background: linear-gradient(to right, hsl(222,  45%, 47%), hsl(221,  45%, 50%), hsl(222,  45%, 47%));
-    box-shadow: 0 3px 8px rgba($navy, .4);
+    padding: .8em;
+    color: hsl(220, 45%, 50%);
+    background: white;
+    border: 5px solid currentColor;
     cursor: pointer;
-    pointer-events: auto; // Safe
+    pointer-events: auto;
     
     &[icon-text]::before {
       content: attr(icon-text);
@@ -49,8 +49,9 @@ scroll-hint {
       content: "x";
       display: none;
       position: absolute;
-      top: 0px;
-      right: 1px;
+      font-weight: bold;
+      top: 1px;
+      right: 2px;
       line-height: 1ex;
     }
     

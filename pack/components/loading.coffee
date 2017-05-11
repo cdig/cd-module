@@ -3,5 +3,4 @@
 # This way, CSS can hook into that event and change their display (eg: hiding/unhiding stuff) as necessary.
 
 Take "DOMContentLoaded", ()->
-  html = document.querySelector "html"
-  html.setAttribute "dom-content-loaded", true
+  document.documentElement.setAttribute "dom-content-loaded", ""

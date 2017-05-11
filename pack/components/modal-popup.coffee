@@ -9,7 +9,9 @@ Take "DOMContentLoaded", ()->
   buttons = document.createElement("modal-buttons")
   okayButton = document.createElement("okay-button")
   
+  buttons.className = "new-buttons"
   okayButton.textContent = "Okay"
+  okayButton.className = "new-button"
   
   buttons.appendChild(okayButton)
   popup.appendChild(title)

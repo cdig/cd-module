@@ -10,7 +10,9 @@ cd-module {
     font-variant: small-caps;
     color: $blue;
     @media (max-width: $iPhoneLandscape - 1) {
-      margin: 1rem 0;
+      margin: 2rem 0 1rem;
+      border-top: .2em solid currentColor;
+      border-bottom: .2em solid currentColor;
     }
   }
 

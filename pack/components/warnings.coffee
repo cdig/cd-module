@@ -1,15 +1,13 @@
 Take ["Env", "ModalPopup", "load"], (Env, ModalPopup)->
   
   return unless Env.dev or Env.debug
-  hasWarnings = false
-  
+  warningIndicator = document.querySelector "warning-indicator"
   
   check = (selector, message)->
     violations = document.querySelectorAll selector
     if violations.length > 0
       console.log "Warning: #{message}", violations
-      showWarningIndicator()
-  
+      warningIndicator.style.display = "block"
   
   check "cd-page:not([id])", "All cd-pages must have a unique id"
   check "cd-row > img", "Don't put images directly in cd-row — wrap them in a div"

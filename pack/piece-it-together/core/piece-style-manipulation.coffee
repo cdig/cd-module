@@ -11,7 +11,7 @@ Take ["Panel","Piece","Transitioner", "Vector"], (Panel, Piece, Transitioner, Ve
       Transitioner[call](piece.transitioner, "transform", duration)
 
     enablePointerEvents: (piece, enable = true)->
-      piece.element.style['pointer-events'] = if enable then '' else 'none' # UNSAFE
+      piece.element.style['pointer-events'] = if enable then '' else 'none'
 
     setZIndex: (piece, zIndex)->
       piece.element.style['z-index'] = zIndex

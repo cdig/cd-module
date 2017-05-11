@@ -2,7 +2,8 @@
   padding: 0;
   
   cd-main {
-    max-width: calc(50vw + 500px);
+    max-width: $maxPageWidth;
+    padding: 5vw 3vw 0;
     text-align: center;
   }
   
@@ -11,13 +12,17 @@
     margin: 0;
     border: none;
     text-align: left;
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: black;
+
+    @media (min-width: $maxPageWidth) {
+      font-size: 3em;
+    }
     
-    @media (max-width: $iPhoneLandscape) {
+    @media (max-width: 500px) {
       font-size: 1.5em;
     }
   }

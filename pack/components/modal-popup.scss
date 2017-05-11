@@ -50,18 +50,6 @@ cd-modal {
   
   modal-buttons {
     align-self: flex-end;
-    font-weight: bold;
-    padding-top: 1em;
-    
-    & > * {
-      display: inline-block;
-      padding: .4em .8em;
-      border: 2px solid black;
-      cursor: pointer;
-      
-      &:hover {
-        background: #F6F6F6;
-      }
-    }
+    margin-top: 1em;
   }
 }
