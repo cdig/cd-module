@@ -43,7 +43,7 @@ Take ["DOMContentLoaded"], ()->
   
   
   showBeginHint = ()->
-    ScrollHint.show("Scroll down to begin", "⇣")
+    ScrollHint.show("Scroll down to continue", "⇣")
   
   
 # EVENT HANDLING

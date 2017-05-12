@@ -6,8 +6,9 @@ $call-out-center-color: rgba(black, .4) !default;
 $call-out-seen-center-color: rgba(black, .4) !default;
 $call-out-label-background: #f9f9f9 !default;
 
-call-out {
+call-out, cd-map call-out {
   position: absolute;
+  display: block;
   top: 0;
   
   // Overridden by local styles — these are just helpful defaults to avoid 'auto' errors
