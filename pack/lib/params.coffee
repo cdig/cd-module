@@ -20,10 +20,7 @@ do ()->
         when rawVal is "false"
           false
         when not isNaN (+rawVal)
-          # This is a crazy hack for detecting numbers, but it seems to be more "right" than any regex I've come across.
-          # See here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Converting_strings_to_numbers
-          # It works for all sorts of weird-but-valid numbers, like "-1." and "0b10", and fails for invalid numbers, like "10a"
-          +rawVal
+          +rawVal # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Converting_strings_to_numbers
         else
           rawVal
   

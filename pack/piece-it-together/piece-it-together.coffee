@@ -1,4 +1,4 @@
-Take ["ComputePanelProperties", "Curry", "MainScrollWatcher","Panel", "PieceDrag", "PiecesSetup", "PieceAnimations","ScaleAnimation",  "load"], (ComputePanelProperties, Curry, MainScrollWatcher, Panel, PieceDrag, PiecesSetup,PieceAnimations,ScaleAnimation)->
+Take ["ComputePanelProperties", "Curry", "OnScreen", "Panel", "PieceDrag", "PiecesSetup", "PieceAnimations", "ScaleAnimation", "load"], (ComputePanelProperties, Curry, OnScreen, Panel, PieceDrag, PiecesSetup, PieceAnimations, ScaleAnimation)->
   
   pitActivities = document.querySelectorAll("cd-activity[type='piece-it-together']")
   
@@ -36,8 +36,8 @@ Take ["ComputePanelProperties", "Curry", "MainScrollWatcher","Panel", "PieceDrag
     # Bugfix: Without the setTimeout, the activity might not initialize properly
     # if it is already on screen right as the code finishes loading.
     setTimeout ()->
-      handleActivation(game)
-
+      OnScreen game.element, attemptActivation game
+    
     return game
     
     
@@ -52,24 +52,15 @@ Take ["ComputePanelProperties", "Curry", "MainScrollWatcher","Panel", "PieceDrag
     
 # ACTIVATION
   
-  handleActivation = (game)->
-    attemptActivation(game)
-    MainScrollWatcher.onMainChange ()->
-      attemptActivation(game)
-  
-  attemptActivation = (game)->
-    if not game.activated and onCurrentMain(game.element)
+  attemptActivation = (game)-> (elm, visible)->
+    if visible and not game.activated
       game.activated = true
       ComputePanelProperties(game.pieces, game.panel)
       for item in game.pieces
         PieceAnimations.introAnimation(item)
       # Only handle resizes after the intro animation begins, otherwise it might skip the animation
       handleResize(game)
-  
-  onCurrentMain = (gameElement)->
-    main = MainScrollWatcher.getCurrentMain()
-    return main?.contains(gameElement)
-  
+    
 # GAME STATE CHANGE
   
   gameComplete = (game)->

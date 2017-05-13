@@ -1,4 +1,4 @@
-Take ["PureArray", "DOMContentLoaded"], (PureArray)->
+Take ["Shuffle", "DOMContentLoaded"], (Shuffle)->
 
   setup = (activity)->
     timeoutId = null
@@ -13,7 +13,7 @@ Take ["PureArray", "DOMContentLoaded"], (PureArray)->
     
     # Shuffle the answers
     unless noShuffle or labels[0].textContent.toLowerCase().trim() is "true"
-      labels = PureArray.shuffle labels
+      Shuffle labels
       container = activity.querySelector ".answers"
       container.appendChild label for label in labels
       # Rebuild this array now that stuff has moved

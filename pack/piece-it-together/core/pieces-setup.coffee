@@ -1,4 +1,4 @@
-Take ["Piece","PieceDrag","PureArray", "ScaleAnimation", "Vector", "load"], (Piece, PieceDrag,PureArray, ScaleAnimation, Vector)->
+Take ["Piece","PieceDrag","Shuffle", "ScaleAnimation", "Vector", "load"], (Piece, PieceDrag,Shuffle, ScaleAnimation, Vector)->
   SELECTOR = "[piece]"
   Make "PiecesSetup", PiecesSetup =
     makePieces: (gameElement, gameInstance)->
@@ -12,5 +12,4 @@ Take ["Piece","PieceDrag","PureArray", "ScaleAnimation", "Vector", "load"], (Pie
         piece.drag = PieceDrag(piece)
         piece.scaleAnimation = ScaleAnimation(piece)
         piece
-      pieces = PureArray.shuffle(pieces) #put the pieces in a randomised order
-      return pieces
+      return Shuffle pieces

@@ -1,7 +1,7 @@
-Take ["Config", "Env", "Params", "ScrollHint", "DOMContentLoaded"], (Config, Env, Params, ScrollHint)->
-  return unless Env.dev
+Take ["Config", "ScrollHint", "DOMContentLoaded"], (Config, ScrollHint)->
+  return unless Config "dev"
   
-  elements = [] # Store a reference to elements so we can save and restore by index via Params
+  elements = [] # Store a reference to elements so we can save and restore by index via Config
   
   getId = (elm)->
     for e, id in elements when e is elm
@@ -16,7 +16,7 @@ Take ["Config", "Env", "Params", "ScrollHint", "DOMContentLoaded"], (Config, Env
       elm.setAttribute "focus-mode", true
       elm.parentElement.setAttribute "focus-mode", true
       document.body.setAttribute "focus-mode", true
-      Params "focus-mode", getId(elm)
+      Config "focus-mode", getId(elm)
       ScrollHint.suppress true
     
     # Turn off focus mode
@@ -24,7 +24,7 @@ Take ["Config", "Env", "Params", "ScrollHint", "DOMContentLoaded"], (Config, Env
       elm.removeAttribute "focus-mode"
       elm.parentElement.removeAttribute "focus-mode"
       document.body.removeAttribute "focus-mode"
-      Params "focus-mode", null
+      Config "focus-mode", null
       ScrollHint.suppress false
     
     # Restore the position of the elm in the window

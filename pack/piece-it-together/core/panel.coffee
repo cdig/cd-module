@@ -1,9 +1,4 @@
-Take ["Vector", "Curry", "load"], (Vector, Curry)->
-  dot = Curry 2, (prop, obj)->
-    return obj[prop]
-
-  dotX = dot "x"
-  dotY = dot "y"
+Take ["Vector", "load"], (Vector)->
   
   Make "Panel", Panel =
     makePanel: (gameElement, gameInstance)->
@@ -14,7 +9,7 @@ Take ["Vector", "Curry", "load"], (Vector, Curry)->
     x: (panel)->
       return panel.element.getBoundingClientRect().left#@panel.element.offsetLeft
     
-    y: (panel)-> 
+    y: (panel)->
       return panel.element.getBoundingClientRect().top #@panel.element.offsetTop
     
     width: (panel)->

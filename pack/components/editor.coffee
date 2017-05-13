@@ -1,6 +1,6 @@
-Take ["Env", "PureDom", "Vector", "DOMContentLoaded"], (Env, PureDom, Vector)->
+Take ["Config", "Vector", "DOMContentLoaded"], (Config, Vector)->
   
-  return unless Env.dev
+  return unless Config "dev"
   return unless document.querySelector("[editable]")?
   
 # LOCALS / STATE
@@ -39,6 +39,18 @@ Take ["Env", "PureDom", "Vector", "DOMContentLoaded"], (Env, PureDom, Vector)->
   
   
 # (ALMOST) PURE FUNCTIONS
+  
+  # Basically https://developer.mozilla.org/en-US/docs/Web/API/Element.closest
+  querySelectorParent = (element, selector)->
+    # Polyfill matches right here :)
+    if element.matches?(selector) or element.matchesSelector?(selector) or element.msMatchesSelector?(selector) or element.oMatchesSelector?(selector) or element.mozMatchesSelector?(selector) or element.webkitMatchesSelector?(selector)
+      return element
+    
+    else if element.parentNode?
+      return querySelectorParent(element.parentNode, selector)
+      
+    else
+      return null
   
   extractLastClass = (elm)->
     return "." + elm.className.split(" ").pop()
@@ -176,7 +188,7 @@ Take ["Env", "PureDom", "Vector", "DOMContentLoaded"], (Env, PureDom, Vector)->
 # DRAG WORK
   
   updateDragTarget = (mouseTarget)->
-    dragTarget = PureDom.querySelectorParent(mouseTarget, "[editable]")
+    dragTarget = querySelectorParent(mouseTarget, "[editable]")
   
   prepareDragTarget = ()->
     targetParentPos = vecFromElmPosWindow(dragTarget.offsetParent)
@@ -226,7 +238,7 @@ Take ["Env", "PureDom", "Vector", "DOMContentLoaded"], (Env, PureDom, Vector)->
   updateHoverElm = (e)->
     overElm = document.elementFromPoint(e.clientX, e.clientY)
     if overElm?
-      hoverElm = PureDom.querySelectorParent(overElm, "[editable]")
+      hoverElm = querySelectorParent(overElm, "[editable]")
     else
       hoverElm = null
 

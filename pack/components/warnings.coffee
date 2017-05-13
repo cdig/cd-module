@@ -1,6 +1,6 @@
-Take ["Env", "ModalPopup", "load"], (Env, ModalPopup)->
+Take ["Config", "ModalPopup", "DOMContentLoaded"], (Config, ModalPopup)->
   
-  return unless Env.dev or Env.debug
+  return unless Config "dev"
   warningIndicator = document.querySelector "warning-indicator"
   
   check = (selector, message)->
