@@ -1,4 +1,4 @@
-Take ["Config", "ModalPopup", "DOMContentLoaded"], (Config, ModalPopup)->
+Take ["Config", "DOMContentLoaded"], (Config)->
   
   return unless Config "dev"
   warningIndicator = document.querySelector "warning-indicator"

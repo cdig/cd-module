@@ -1,4 +1,4 @@
-Take "Curry", (Curry)->
+Take [], ()->
   Make "Vector", Vector =
     
     # Constructors
@@ -36,7 +36,7 @@ Take "Curry", (Curry)->
     
     # Higher-Order Functions
     
-    map: Curry 2, (fn, v)->
+    map: (fn, v)->
       return Vector.create(fn(v.x), fn(v.y))
     
     

@@ -14,11 +14,4 @@ body[focus-mode] {
   cd-page {
     padding: 1px 0;
   }
-  
-  // Indicate when we're small enough to not care anymore
-  @media (max-width: $iPadPortrait) {
-    cd-module {
-      background: $teal;
-    }
-  }
 }

@@ -1,4 +1,4 @@
-Take ["ComputePanelProperties", "Curry", "OnScreen", "Panel", "PieceDrag", "PiecesSetup", "PieceAnimations", "ScaleAnimation", "load"], (ComputePanelProperties, Curry, OnScreen, Panel, PieceDrag, PiecesSetup, PieceAnimations, ScaleAnimation)->
+Take ["ComputePanelProperties", "OnScreen", "Panel", "PieceDrag", "PiecesSetup", "PieceAnimations", "ScaleAnimation", "load"], (ComputePanelProperties, OnScreen, Panel, PieceDrag, PiecesSetup, PieceAnimations, ScaleAnimation)->
   
   pitActivities = document.querySelectorAll("cd-activity[type='piece-it-together']")
   
@@ -6,14 +6,14 @@ Take ["ComputePanelProperties", "Curry", "OnScreen", "Panel", "PieceDrag", "Piec
   
 # THESE ARE DUMB AND SHOULD BE REFACTORED AWAY
   
-  droppedItemCorrectly = Curry 2, (game, item)->
+  droppedItemCorrectly = (game)-> (item)->
     game.pieces.splice(game.pieces.indexOf(item), 1)
     if game.pieces.length is game.nWrongPieces
       gameComplete(game)
     else
       panelUpdate(game, true)
   
-  getMatchingGroupPairNearItem = Curry 2, (game, droppedItem)->
+  getMatchingGroupPairNearItem = (game)-> (droppedItem)->
     for item in game.pieces when (item isnt droppedItem and item.matchGroup isnt "") #need to check for "" for match groups
       if item.matchGroup is droppedItem.matchGroup
         if droppedItem.drag.isCloseTo(item)
