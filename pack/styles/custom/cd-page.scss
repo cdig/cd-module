@@ -6,7 +6,7 @@ cd-page {
     // Hook for styles to apply to standalone content
   }
   
-  & > img, & > iframe, & > video {
+  & > img, & > iframe, & > video, & > object, & > cd-activity {
     display: block;
     width: 100%;
     vertical-align: middle;
