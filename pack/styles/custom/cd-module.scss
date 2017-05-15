@@ -1,4 +1,5 @@
 cd-module {
+  position: relative; // This contains any absolutely positioned elements in pages
   display: block;
   overflow: hidden; // This keeps piece-it-together elements that spill off the right edge from causing horizontal scroll
 }
