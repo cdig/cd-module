@@ -1,9 +1,10 @@
 #title {
   padding: 0;
+  background: hsl(227, 15%, 25%);
   
   cd-main {
     max-width: $maxPageWidth;
-    padding: 5vw 3vw 0;
+    padding: 3vw;
     text-align: center;
   }
   
@@ -16,14 +17,14 @@
     font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: black;
+    color: white;
 
     @media (min-width: $maxPageWidth) {
       font-size: 3em;
     }
     
-    @media (max-width: 500px) {
-      font-size: 1.5em;
+    @media (max-width: 550px) {
+      font-size: 1.7em;
     }
   }
 }

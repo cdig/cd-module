@@ -3,17 +3,13 @@
 cd-module {
   h1 {
     margin: 0.5em 0;
+    border-top: .2em solid currentColor;
+    border-bottom: .2em solid currentColor;
     text-align: center;
-    border-bottom: .1em solid currentColor;
     font-size: 2.027em; // ms 6
-    font-weight: normal;
+    font-weight: bold;
     font-variant: small-caps;
-    color: $blue;
-    @media (max-width: $iPhoneLandscape - 1) {
-      margin: 1em 0 0.5em;
-      border-top: .2em solid currentColor;
-      border-bottom: .2em solid currentColor;
-    }
+    color: hsl(220, 45%, 50%);
   }
 
   h2 {
