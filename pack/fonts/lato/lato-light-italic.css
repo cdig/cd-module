@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "Lato";
+  src: url("lato-light-italic.woff2") format("woff2"),
+       url("lato-light-italic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
