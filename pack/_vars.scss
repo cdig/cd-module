@@ -8,7 +8,7 @@ $iPadPortrait: 768px;
 $iPhoneLandscape: 667px;
 $iPhonePortrait: 375px;
 
-// CD MODULE COLORS
+// CD MODULE COLORS - deprecated
 $dark-blue: #0045AF;
 $light-blue: #0084AF;
 $light-green: #99ff66;
@@ -20,6 +20,10 @@ $low-pressure: #FF0;
 $medium-pressure: #F70;
 $high-pressure: #F00;
 $vacuum-pressure: #F0F;
+
+// ELECTRICAL COLORS
+$electric: #00DAFF;
+$magnetic: #8D02FF;
 
 // LBS COLORS
 $white:  white;
@@ -44,38 +48,3 @@ $navy:   hsl(235,  52%, 22%);
 $maroon: hsl(359,  65%, 40%);
 
 $transparent: transparent;
-
-
-// MIXINS /////////////////////////////////////////////////////////////////////////////////////////
-
-@mixin magic-underline($color, $backgroundColor, $selectionColor) {
-  @include textShadowToCropUnderline($backgroundColor);
-  background-image:
-    linear-gradient($backgroundColor, $backgroundColor),
-    linear-gradient($backgroundColor, $backgroundColor),
-    linear-gradient($color, $color);
-  background-size: .05em 2px, .05em 2px, 1px 2px;
-  background-repeat: no-repeat, no-repeat, repeat-x;
-  background-position: left bottom .1em, right bottom .1em, left bottom .1em;
-  
-  &::selection {
-    @include textShadowToCropUnderline($selectionColor);
-    background: $selectionColor;
-  }
-  
-  &:before, &:after, *, *:before, *:after {
-    text-shadow: none;
-  }
-}
-
-@mixin textShadowToCropUnderline($shadowColor) {
-  text-shadow:
-    0  2px $shadowColor,
-    0 -2px $shadowColor,
-    0 -3px $shadowColor, // Helps  g
-     2px 0 $shadowColor,
-    -2px 0 $shadowColor,
-     3px 0 $shadowColor, // Helps y
-     4px 0 $shadowColor,
-    -4px 0 $shadowColor;
-}
