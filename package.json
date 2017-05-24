@@ -2,16 +2,10 @@
   "name": "cd-module",
   "version": "4.0.0",
   "description": "A Framework For LBS Lessons",
+  "license": "UNLICENSED",
+  "private": true,
   "dependencies": {
     "cd-reset": "cdig/cd-reset#v4",
     "take-and-make": "cdig/take-and-make#v4"
-  },
-  "main": [],
-  "ignore": [
-    "**/*",
-    "!dist/**/*",
-    "!pack/**/*"
-  ],
-  "license": "UNLICENSED",
-  "private": true
+  }
 }
