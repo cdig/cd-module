@@ -1,31 +1,21 @@
-#title {
+#ending {
   padding: 0;
   background: hsl(227, 15%, 25%);
   
   cd-main {
-    max-width: $maxPageWidth;
     padding: 4vw;
     text-align: center;
   }
   
-  h1 {
+  h3 {
     display: inline-block;
     margin: 0;
     border: none;
     text-align: left;
-    font-size: 5vw;
     font-weight: 900;
-    line-height: 1.4;
     letter-spacing: 2px;
+    line-height: 1.4;
     text-transform: uppercase;
     color: white;
-
-    @media (min-width: $maxPageWidth) {
-      font-size: 3.6em;
-    }
-    
-    @media (max-width: 550px) {
-      font-size: 1.7em;
-    }
   }
 }
