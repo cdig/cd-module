@@ -13,7 +13,8 @@ cd-module {
 
   ul, ol {
     margin: 0 auto;
-    padding: .3em .3em .3em 1em;
+    padding: .3em;
+    padding-left: 1em;
     max-width: $maxLineLength;
     
     ul, ol {
