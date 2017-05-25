@@ -11,8 +11,8 @@ cd-activity[type="piece-it-together"] {
     font-size: 3em; // Sets the size of the Good Job text
     height: calc(2em + 6px);
     background: hsl(209, 10%, 97%);
-    border-top: 3px solid #0063be;
-    border-bottom: 3px solid #0063be;
+    border-top: 3px solid $blue;
+    border-bottom: 3px solid $blue;
     
     &[message]:after {
       content: attr(message);

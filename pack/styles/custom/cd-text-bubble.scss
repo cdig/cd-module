@@ -4,20 +4,13 @@ cd-text-bubble {
   max-width: $maxLineLength;
   padding: 1em;
   color: white;
-  background-color: #AAA;
+  background-color: $silver;
   
   em {
     color: inherit;
     font-style: italic;
   }
   
-  // Not sure if these are needed (for specificity?)
-  &.dark-blue   { background-color: $dark-blue; }
-  &.blue        { background-color: $blue; }
-  &.light-blue  { background-color: $light-blue; }
-  &.green       { background-color: $green; }
   &.light-green { background-color: $light-green; color: black; }
-  &.orange      { background-color: $orange; }
   &.yellow      { background-color: $yellow; color: black; }
-  &.red         { background-color: $red; color: black; }
 }

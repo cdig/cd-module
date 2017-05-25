@@ -25,26 +25,16 @@ cd-activity[type="Et Tu, Q?"] {
       margin-right: .5em;
     }
   }
-
+  
   button {
-    margin: .4em auto;
-    padding: .4em 0;
-    width: 6em;
-    border: none;
-    color: white;
-    background-color: #0063be;
-    transition: .2s background-color;
-    appearance: none;
-
-    &:hover {
-      background-color: #049;
-    }
+    border-radius: 4px;
   }
-
+  
   &.complete {
     button {
-      background-color: #F8F8F8;
+      background-color: white;
       color: #2DD52D;
+      border: none;
       cursor: default;
     }
     
