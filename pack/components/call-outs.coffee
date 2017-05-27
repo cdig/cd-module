@@ -1,86 +1,82 @@
 Take "DOMContentLoaded", ()->
   
-  wasTouched = false
+  minDistance = 30
   lastOpened = null
   
   
+  setup = (callout)->
+    label = document.createElement "call-out-label"
+    label.innerHTML = callout.innerHTML
+    callout.innerHTML = ""
+    callout.appendChild label
+    point = document.createElement "call-out-point"
+    callout.appendChild point
+    return callout._point = point
+  
+  
   open = (callout)->
-    unless callout.hasAttribute("open")
+    unless callout.hasAttribute "open"
       closeLastOpened()
       lastOpened = callout
-      callout.setAttribute("open", true)
-      callout.setAttribute("seen", true)
-      callout.removeAttribute("closing")
-  
-  
-  beginClosing = (callout)->
-    if callout.hasAttribute("open") and not callout.hasAttribute("closing")
-      callout.setAttribute("closing", true)
-      callout.removeAttribute("open")
-      setTimeout((()-> finishClosing(callout)), 200)
-  
-  
-  finishClosing = (callout)->
-    if callout.hasAttribute("closing")
-      callout.removeAttribute("closing")
+      callout.setAttribute "open", true
+      callout.setAttribute "seen", true
+      callout.removeAttribute "closing"
   
   
   closeLastOpened = ()->
     if lastOpened?
-      beginClosing(lastOpened)
+      beginClosing lastOpened
       lastOpened = null
-  
-  
-  touchOpen = (callout)->
-    wasTouched = true
-    setTimeout(clearTouched, 333)
-    open(callout)
-  
-  
-  clearTouched = ()->
-    wasTouched = false
-  
-  
-  extractLabel = (callout)->
-    label = document.createElement("call-out-label")
-    label.innerHTML = callout.innerHTML
-    callout.innerHTML = ""
-    callout.appendChild(label)
-  
-  
-  makePoint = (callout)->
-    point = document.createElement("call-out-point")
-    callout.appendChild(point)
-    point.addEventListener("touchstart", (e)-> handleTouchStart(e, callout))
-    point.addEventListener("mouseover", (e)-> handleMouseOver(e, callout))
-    point.addEventListener("mouseout", (e)-> handleMouseOut(e, callout))
 
-
-# EVENT HANDLING
   
-  handleTouchStart = (e, callout)->
-    e.preventDefault()
-    touchOpen(callout)
+  beginClosing = (callout)->
+    if callout.hasAttribute "open"
+      callout.setAttribute "closing", true
+      callout.removeAttribute "open"
+      setTimeout finishClosing(callout), 200
   
+  
+  finishClosing = (callout)-> ()->
+    if callout.hasAttribute "closing"
+      callout.removeAttribute "closing"
+  
+  
+  distanceToPoint = (point, x, y)->
+    pos = point.getBoundingClientRect()
+    dx = x - pos.left - pos.width/2
+    dy = y - pos.top - pos.height/2
+    Math.sqrt dx*dx + dy*dy
+  
+  
+  calloutToOpen = (map, x, y)->
+    closestCallout = null
+    closestDistance = Infinity
+    for point in map._points
+      d = distanceToPoint point, x, y
+      if d < closestDistance && d < minDistance
+        closestCallout = point.parentNode
+        closestDistance = d
+    return closestCallout
+  
+  
+  move = (map, x, y)->
+    if closest = calloutToOpen map, x, y
+      open closest
+    else
+      closeLastOpened()
     
-  handleMouseOver = (e, callout)->
-    e.preventDefault()
-    open(callout) unless wasTouched
-    
-    
-  handleMouseOut = (e, callout)->
-    e.preventDefault()
-    beginClosing(callout)
+  
+  mousemove = (e)->
+    move e.currentTarget, e.clientX, e.clientY
   
   
-  handleBodyTouch = (e)->
-    closeLastOpened() unless e.target.matches("call-out-point")
+  touchmove = (e)->
+    move e.currentTarget, e.touches[0].clientX, e.touches[0].clientY
   
   
-# SETUP
-  
-  for callout in document.querySelectorAll("call-out")
-    extractLabel(callout) # Gross Mutation
-    makePoint(callout) # Less gross Mutation
-  
-  document.body.addEventListener("touchstart", handleBodyTouch)
+  for map in document.querySelectorAll "cd-map"
+    if map.querySelector("call-out")?
+      map.addEventListener "touchmove", touchmove
+      map.addEventListener "mousemove", mousemove
+      map._points = for callout in map.querySelectorAll "call-out"
+        setup callout
