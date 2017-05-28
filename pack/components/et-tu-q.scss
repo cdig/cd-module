@@ -1,28 +1,63 @@
 cd-activity[type="Et Tu, Q?"] {
   margin: 1em 0;
+  padding: 1em;
+  background: hsl(224, 45%, 95%);
+  border-radius: 4px;
   
   .question {
+    margin: 0;
     text-align: left;
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: $smoke;
   }
 
   .subtitle {
+    margin: 1em 0;
     font-size: .9em;
-    margin-bottom: 1em;
   }
 
-  .answers {
-    font-size: .9em;
+  .answers[x-short] {
+    display: flex;
+    flex-flow: row wrap;
+  }
 
+  .answers[x-long] {
+    display: block;
     label {
-      display: block;
-      margin: 1.2em 0 1.2em 1.5em;
-      line-height: 1.424;
-      text-indent: -1.6em;
+      margin: 6px 0;
     }
-
-    input {
-      position: relative;
-      margin-right: .5em;
+  }
+  
+  .answers {
+    margin: -3px;
+    margin-bottom: 1em;
+    
+    label {
+      flex: 0 1 auto;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: .6em;
+      margin: 3px;
+      text-align: left;
+      border: 1px solid hsl(220, 45%, 70%);
+      border-radius: 4px;
+      background: white;
+      &:hover {
+        background: hsl(0, 0%, 97%);
+      }
+      
+      input {
+        flex: 0 0 auto;
+        margin-right: .5em;
+      }
+      
+      span {
+        flex: 1 1 auto;
+        margin-left: .5em;
+        margin-right: .3em;
+      }
     }
   }
   
@@ -44,6 +79,7 @@ cd-activity[type="Et Tu, Q?"] {
     
     label {
       cursor: default;
+      pointer-events: none;
     }
     
     label[x-incorrect] {

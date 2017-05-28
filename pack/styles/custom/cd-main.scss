@@ -2,5 +2,9 @@ cd-main {
   display: block;
   max-width: $maxPageWidth;
   margin: 0 auto;
-  padding: 3vw;
+  padding: 4vw 3vw;
+  
+  @media (max-width: $iPhoneLandscape) {
+    padding: 1.5em 0;
+  }
 }

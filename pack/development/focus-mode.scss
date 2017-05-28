@@ -10,8 +10,14 @@ body[focus-mode] {
     display: none;
   }
   
-  // Remove the excess padding above and below pages, so you can focus on the content
-  cd-page {
-    padding: 1px 0;
+  // Remove the excess padding, so you can focus on the content
+  cd-page, cd-main {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  
+  // Hide other gunk
+  #title, #ending {
+    display: none;
   }
 }

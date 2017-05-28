@@ -1,35 +1,53 @@
 cd-module {
-  li + li {
-    margin-top: 0.5em;
-  }
-
-  ul {
-    list-style-type: square;
-    
-    ul {
-      list-style-type: circle;
-    }
-  }
-
   ul, ol {
     margin: 0 auto;
     padding: .3em;
-    padding-left: 1em;
-    max-width: $maxLineLength;
+
+    li + li { margin-top: .5em; }
     
     ul, ol {
       padding: 0 0 0 1em;
+      margin: 0.5em 0; // This might be unnecessary due to margin collapsing
       
-      li + li {
-        margin-top: .2em;
-      }
+      li + li { margin-top: .2em; }
     }
   }
 
-  ul ul,
-  ol ol,
-  ol ul,
-  ul ol {
-    margin: 0.5em 0; // This might be unnecessary due to margin collapsing
+  ul {
+    max-width: $maxLineLength;
+    padding-left: 1.5em;
+    list-style-type: square;
+    
+    ul { list-style-type: circle; }
+  }
+  
+  ol {
+    counter-reset: item;
+    padding-left: 1em;
+    
+    li {
+      display: flex;
+      align-items: center;
+      
+      &:before {
+        counter-increment: item;
+        content: counter(item) " ";
+        flex: 0 0 auto;
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8em;
+        margin-right: .5em;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 0.7em;
+        border-radius: 1em;
+        color: white;
+        background: black;
+
+        // Override module styles
+        font-weight: normal;
+        font-style: normal;
+      }
+    }
   }
 }

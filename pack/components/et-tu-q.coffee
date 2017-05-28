@@ -7,22 +7,29 @@ Take ["Shuffle", "DOMContentLoaded"], (Shuffle)->
     noShuffle = activity.querySelector("[no-shuffle]")?
     
     subtitle = activity.querySelector ".subtitle"
-    labels = activity.querySelectorAll ".answers label"
-    answers = activity.querySelectorAll ".answers input"
+    answers = activity.querySelector ".answers"
+    labels = answers.querySelectorAll "label"
+    inputs = answers.querySelectorAll "input"
     submit = activity.querySelector "button"
     
     # Shuffle the answers
     unless noShuffle or labels[0].textContent.toLowerCase().trim() is "true"
       Shuffle labels
-      container = activity.querySelector ".answers"
-      container.appendChild label for label in labels
+      answers.appendChild label for label in labels
       # Rebuild this array now that stuff has moved
-      answers = activity.querySelectorAll ".answers input"
+      inputs = answers.querySelectorAll "input"
     
-    # This is used to style incorrect answers as faded out once the game ends
-    for answer, i in answers
-      labels[i].setAttribute("x-incorrect", "true") unless answer.hasAttribute "x-correct"
-
+    totalAnswerLength = 0
+    
+    for input, i in inputs
+      # This is used to style incorrect answers as faded out once the game ends
+      labels[i].setAttribute("x-incorrect", "true") unless input.hasAttribute "x-correct"
+      
+    # This styles answers differently when they're short
+    for label, i in labels
+      totalAnswerLength += label.textContent.length
+    answers.setAttribute (if totalAnswerLength < 100 then "x-short" else "x-long"), ""
+    
     # Set up the subtitle
     if multiple
       subtitle.textContent = "Select all that apply"
@@ -30,8 +37,8 @@ Take ["Shuffle", "DOMContentLoaded"], (Shuffle)->
     # Set up the one-at-a-time behaviour
     else
       activeAnswer = null
-      for answer in answers
-        answer.addEventListener "change", (e)->
+      for input in inputs
+        input.addEventListener "change", (e)->
           activeAnswer?.checked = false if activeAnswer isnt e.target
           activeAnswer = e.target
 
@@ -39,8 +46,8 @@ Take ["Shuffle", "DOMContentLoaded"], (Shuffle)->
       activity.className += " complete"
       submit.textContent = "Correct"
       submit.disabled = true
-      for answer, i in answers
-        answer.disabled = true
+      for input, i in inputs
+        input.disabled = true
 
     failure = ()->
       submit.textContent = "Not Quite"
@@ -48,8 +55,8 @@ Take ["Shuffle", "DOMContentLoaded"], (Shuffle)->
 
     submit.addEventListener "click", ()->
       victory = true
-      for answer in answers
-        victory = false if answer.checked isnt answer.hasAttribute "x-correct"
+      for input in inputs
+        victory = false if input.checked isnt input.hasAttribute "x-correct"
       
       clearTimeout timeoutId
       if victory then success() else failure()
