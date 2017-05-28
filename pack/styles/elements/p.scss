@@ -1,6 +1,6 @@
 cd-module {
   p {
-    margin: 1em auto;
+    margin: 0 auto 1em;
     padding: 0 1em;
     line-height: 1.424; // MS 3, Minor Second (1.125:1)
     @media (max-width: $iPhoneLandscape) {

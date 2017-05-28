@@ -39,5 +39,5 @@ Take ["Config", "DOMContentLoaded"], (Config)->
     setup elm
   
   # Immediately activate focus-mode if Config tells us to
-  if savedFocus = Config "focus-mode"
-    toggle elements[savedFocus]
+  savedFocus = Config "focus-mode"
+  toggle elements[savedFocus] if savedFocus?
