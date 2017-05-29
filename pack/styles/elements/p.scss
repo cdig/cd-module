@@ -1,10 +1,11 @@
 cd-module {
   p {
+    max-width: $maxLineLength;
     margin: 0 auto 1em;
     padding: 0 1em;
     line-height: 1.424; // MS 3, Minor Second (1.125:1)
     @media (max-width: $iPhoneLandscape) {
-      padding: none;
+      padding: 0;
     }
   }
   
@@ -14,6 +15,7 @@ cd-module {
   }
 
   cd-text-bubble p {
+    padding: 0;
     line-height: normal;
     
     &:last-child {

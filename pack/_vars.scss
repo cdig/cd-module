@@ -1,11 +1,11 @@
 // VARS ///////////////////////////////////////////////////////////////////////////////////////////
 
 // SIZES
-$maxPageWidth: 50rem;
-$maxLineLength: 42rem;
+$maxPageWidth: 60rem;
+$maxLineLength: 44rem;
 $iPadLandscape: 1024px;
 $iPadPortrait: 768px;
-$iPhoneLandscape: 667px;
+$iPhoneLandscape: 666px; // This is cheesed by 1px, because when we say (max-width: $iPhoneLandscape) we want it to apply to things smaller than a sideways iPhone
 $iPhonePortrait: 375px;
 
 // UI COLORS
