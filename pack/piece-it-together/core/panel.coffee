@@ -22,5 +22,5 @@ Take ["Vector", "load"], (Vector)->
       return Vector.fromRectPos(panel.element.getBoundingClientRect())
   
     victoryDance: (panel)->
-      panel.element.setAttribute("message", "Good job!")
+      panel.element.setAttribute("message", "Correct!")
   
