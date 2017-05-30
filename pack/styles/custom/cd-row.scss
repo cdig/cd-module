@@ -74,16 +74,12 @@ cd-row {
     & > *,
     & > [row] {
       flex: 1 1 auto;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: center;
       width: 100%;
       min-width: 0;
       max-width: none!important;
       margin: 0 auto!important;
       & + *,
       & + [row] { margin-top: 1.5em!important; }
-      & > * { flex: 1 1 100%; }
       
       &[row="Sx"] { flex: 0 1 auto; }
     }
@@ -92,11 +88,13 @@ cd-row {
     & > * > img,
     & > [row] > svg,
     & > [row] > img {
-      flex: 0 0 auto;
+      display: block;
       width: auto;
       height: auto;
       max-width: 94vw;
       max-height: 90vh;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
