@@ -57,6 +57,14 @@ cd-row {
   & > [row~="4th"] { order: 4; }
   & > [row~="5th"] { order: 5; }
   
+  & > *,
+  & > [row] {
+    & + *,
+    & + [row] {
+      margin-left: 1.5em;
+    }
+  }
+  
   @media (max-width: $iPhoneLandscape) {
     flex-flow: row wrap;
     justify-content: center;
