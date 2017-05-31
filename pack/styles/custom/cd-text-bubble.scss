@@ -13,6 +13,8 @@ cd-text-bubble {
     font-style: italic;
   }
   
-  &.light-green { background-color: $light-green; color: black; }
-  &.yellow      { background-color: $yellow; color: black; }
+  &.red,
+  &.green,
+  &.blue,
+  &.light-blue { color: white; }
 }
