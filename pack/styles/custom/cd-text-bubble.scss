@@ -4,12 +4,6 @@ cd-text-bubble {
   color: white;
   background-color: $silver;
   
-  @media(max-width: $iPhoneLandscape) {
-    &, &[row] {
-      margin: 0 -3vw!important;
-    }
-  }
-  
   em {
     color: inherit;
     font-style: italic;
