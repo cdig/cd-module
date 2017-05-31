@@ -1,11 +1,14 @@
 cd-legend {
   position: absolute; // Position is set by the JS
   display: block;
+  top: 0;
+  left: 0;
   width: 11em;
   margin-top: 1em;
   padding: .5em;
   border: 1px solid black;
-  background-color: rgba(white, .95);
+  line-height: 1.3;
+  background-color: white;
   transform: translate(-50%) scale(0.8);
   transform-origin: top;
   opacity: 0;
@@ -39,15 +42,16 @@ cd-legend {
   
   .cd-legend-name {
     display: inline-block;
-    font-size: .8em;
     margin-left: .3em;
+    font-size: .8em;
+    color: #333;
   }
   
   .cd-legend-color {
     display: inline-block;
     width: 1em;
     height: 1em;
-    border: 1px solid black;
+    outline: 1px solid #444;
     vertical-align: middle;
   }
   
