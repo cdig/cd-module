@@ -84,7 +84,8 @@ cd-row {
       &[row="Sx"] { flex: 0 1 auto; }
     }
     
-    & > cd-text-bubble {
+    & > cd-text-bubble,
+    & > cd-text-bubble[row] {
       margin-left: -3vw!important;
       margin-right: -3vw!important;
     }
