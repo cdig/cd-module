@@ -13,8 +13,9 @@ cd-text-bubble {
     font-style: italic;
   }
   
-  &.red,
-  &.green,
   &.blue,
-  &.light-blue { color: white; }
+  &.green,
+  &.light-blue,
+  &.maroon,
+  &.red { color: white; }
 }
