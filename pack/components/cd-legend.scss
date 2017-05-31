@@ -1,6 +1,7 @@
 cd-legend {
   position: absolute; // Position is set by the JS
   display: block;
+  width: 11em;
   margin-top: 1em;
   padding: .5em;
   border: 1px solid black;
@@ -36,20 +37,17 @@ cd-legend {
     border-right: 15px solid transparent;
   }
   
-  @media (max-width: $iPadLandscape) {
-    font-size: .75em;
-  }
-  
   .cd-legend-name {
     display: inline-block;
-    font-size: .75em; // TODO: This looks a bit small on iPad
-    color: #666;
+    font-size: .8em;
+    margin-left: .3em;
   }
   
   .cd-legend-color {
     display: inline-block;
     width: 1em;
     height: 1em;
+    border: 1px solid black;
     vertical-align: middle;
   }
   
@@ -59,9 +57,9 @@ cd-legend {
   .cd-legend-medium-pressure      { background-color: #F70; }
   .cd-legend-high-pressure        { background-color: #F00; }
   
-  .cd-legend-ground-voltage      { background-color: #000; }
-  .cd-legend-low-voltage         { background-color: #FFD800; }
-  .cd-legend-medium-voltage      { background-color: #7fd97f; }
-  .cd-legend-high-voltage        { background-color: #00DAFF; }
-  .cd-legend-magnetic-field      { background-color: #8D02FF; }
+  .cd-legend-ground-voltage       { background-color: #000; }
+  .cd-legend-low-voltage          { background-color: #FFD800; }
+  .cd-legend-medium-voltage       { background-color: #7fd97f; }
+  .cd-legend-high-voltage         { background-color: #00DAFF; }
+  .cd-legend-magnetic-field       { background-color: #8D02FF; }
 }
