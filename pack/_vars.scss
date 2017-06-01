@@ -8,28 +8,6 @@ $iPadPortrait: 768px;
 $iPhoneLandscape: 666px; // This is cheesed by 1px, because when we say (max-width: $iPhoneLandscape) we want it to apply to things smaller than a sideways iPhone
 $iPhonePortrait: 375px;
 
-// UI COLORS
-$newButtonBlue: hsl(220, 55%, 55%);
-$newButtonBlueHover: hsl(220, 55%, 52%);
-$newButtonBlueActive: hsl(180, 100%, 32%);
-
-// CD MODULE COLORS
-$dark-blue: #0045AF;
-$light-blue: #0084AF;
-$light-green: #99ff66;
-
-// HYDRAULIC PRESSURE COLORS
-$atmospheric-pressure: #00F;
-$no-pressure: #00F;
-$low-pressure: #FF0;
-$medium-pressure: #F70;
-$high-pressure: #F00;
-$vacuum-pressure: #F0F;
-
-// ELECTRICAL COLORS
-$electric: #00DAFF;
-$magnetic: #8D02FF;
-
 // LBS COLORS
 $white:  white;
 $silver: hsl(220,  15%, 80%);
@@ -53,3 +31,25 @@ $navy:   hsl(235,  52%, 22%);
 $maroon: hsl(359,  65%, 40%);
 
 $transparent: transparent;
+
+// HYDRAULIC PRESSURE COLORS
+$atmospheric-pressure: #00F;
+$no-pressure: #00F;
+$low-pressure: #FF0;
+$medium-pressure: #F70;
+$high-pressure: #F00;
+$vacuum-pressure: #F0F;
+
+// ELECTRICAL COLORS
+$electric: #00DAFF;
+$magnetic: #8D02FF;
+
+// UI COLORS
+$newButtonBlue: hsl(220, 55%, 55%);
+$newButtonBlueHover: hsl(220, 55%, 52%);
+$newButtonBlueActive: hsl(180, 100%, 32%);
+
+// OTHER COLORS
+$dark-blue: #0045AF;
+$light-blue: #0084AF;
+$light-green: #99ff66;
