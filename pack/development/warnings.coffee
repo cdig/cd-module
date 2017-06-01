@@ -13,6 +13,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   check "cd-row > img", "Don't put images directly in cd-row — wrap them in a div"
   check "main", "Use cd-main instead of main"
   check "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
+  check "center-block cd-row", "Don't put cd-row inside a center-block"
   
   names = {}
   for activity in document.querySelectorAll "cd-activity"
