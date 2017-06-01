@@ -2,6 +2,7 @@ cd-text-bubble {
   display: block;
   padding: 1em;
   background-color: $silver;
+  text-align: center;
   
   @media (max-width: $iPhoneLandscape) {
     margin-left: -3vw;
