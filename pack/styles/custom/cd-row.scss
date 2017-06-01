@@ -20,7 +20,7 @@ cd-row {
   &[row~="baseline"] { align-items: baseline; }
   
   // ITEM IN ROW: X size
-  & > *         { flex: 1 1 auto; width: 0%; } // Grow to fit available space
+  & > *             { flex: 1 1 auto; width: 0%; } // Grow to fit available space
   & > [row~="Sx"]   { flex: 0 1 auto; width: inherit; } // Shrink to fit content
   & > [row~="1x"]   { flex: 1 1 auto; width: 0%; } // DEFAULT
   & > [row~="2x"]   { flex: 2 1 auto; width: 0%; }
