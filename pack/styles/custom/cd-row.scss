@@ -74,6 +74,7 @@ cd-row {
     & > *,
     & > [row] {
       flex: 1 1 auto;
+      order: 1;
       width: 100%;
       min-width: 0;
       max-width: none!important;
