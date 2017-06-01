@@ -2,6 +2,7 @@ html {
   font-family: 'Lato', sans-serif;
   background: white;
   font-size: 17px;
+  line-height: 1.424; // MS 3, Minor Second (1.125:1)
   
   @media (min-width: 1000px) { font-size: 18px; }
   @media (min-width: 1100px) { font-size: 19px; }
