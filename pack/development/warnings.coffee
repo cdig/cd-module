@@ -14,6 +14,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   check "main", "Use cd-main instead of main"
   check "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
   check "center-block cd-row", "Don't put cd-row inside a center-block"
+  check ":not(cd-page) > cd-main", "It looks like you're missing a closing tag"
   
   names = {}
   for activity in document.querySelectorAll "cd-activity"
