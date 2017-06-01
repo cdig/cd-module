@@ -1,20 +1,22 @@
 cd-module {
   ul, ol {
-    margin: 0 auto;
-    padding: .3em;
+    max-width: $maxLineLength;
+    margin: 1em auto;
+    padding-left: 1em;
+    padding-right: .3em;
 
     li + li { margin-top: .5em; }
     
     ul, ol {
-      padding: 0 0 0 1em;
-      margin: 0.5em 0; // This might be unnecessary due to margin collapsing
+      margin-top: .5em;
+      padding-left: 0;
+      padding-right: 0;
       
       li + li { margin-top: .2em; }
     }
   }
 
   ul {
-    padding-left: 1em;
     list-style-type: square;
     
     ul { list-style-type: circle; }
@@ -22,7 +24,6 @@ cd-module {
   
   ol {
     counter-reset: item;
-    padding-left: 1em;
     
     li {
       display: flex;
