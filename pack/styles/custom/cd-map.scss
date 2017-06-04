@@ -5,10 +5,8 @@ cd-map {
   margin-top: 1em;
   margin-bottom: 1em;
 
-  &[scale-text] {
-    @media (max-width: $iPhoneLandscape) {
-      font-size: 2.5vw;
-    }
+  @media (max-width: $iPhoneLandscape) {
+    font-size: 2.5vw;
   }
   
   [pin] {
