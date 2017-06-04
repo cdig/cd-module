@@ -15,6 +15,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   check "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
   check "center-block cd-row", "Don't put cd-row inside a center-block"
   check ":not(cd-page) > cd-main", "It looks like you're missing a closing tag"
+  check ".framed > *", "Please use the `framed` class directly on your images, not on container elements."
   
   names = {}
   for activity in document.querySelectorAll "cd-activity"
