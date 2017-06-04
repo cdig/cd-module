@@ -18,6 +18,10 @@ cd-text-bubble {
     font-style: italic;
   }
   
+  p:first-child {
+    margin-top: 0;
+  }
+  
   &.blue,
   &.dark-blue,
   &.green,
