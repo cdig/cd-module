@@ -1,7 +1,3 @@
 object {
-  // I suspect this % was causing issues with the iframe on LBS
-  // max-height: 90%;
-  @media (max-width: $iPhoneLandscape) {
-    max-height: 550px;
-  }
+  max-height: 90vh;
 }
