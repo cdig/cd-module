@@ -2,8 +2,8 @@ $call-out-point-size: 3em !default;
 $call-out-arrow-size: .8em !default;
 $call-out-ring-color: #0F7 !default;
 $call-out-seen-ring-color: #777 !default;
-$call-out-center-color: transparent !default; //rgba(black, .4) !default;
-$call-out-seen-center-color: transparent !default; //rgba(black, .4) !default;
+$call-out-center-color: transparent !default;
+$call-out-seen-center-color: transparent !default;
 $call-out-label-background: #f9f9f9 !default;
 
 call-out, cd-map call-out {
@@ -25,7 +25,7 @@ call-out, cd-map call-out {
     border: 4px solid $call-out-ring-color;
     border-radius: $call-out-point-size;
     background: radial-gradient($call-out-point-size at center, rgba($call-out-ring-color, 0), $call-out-ring-color);
-    animation: call-out-pulse 4s linear infinite;
+    animation: call-out-pulse 4s cubic-bezier(.1,.4,.5,1) infinite;
   }
   
   call-out-label {
@@ -68,7 +68,7 @@ call-out, cd-map call-out {
   &[seen] call-out-point {
     border-color: $call-out-seen-ring-color;
     background: radial-gradient($call-out-point-size at center, rgba($call-out-seen-ring-color, 0), $call-out-seen-ring-color);
-    animation: call-out-pulse 4s linear infinite;
+    animation: call-out-pulse 4s cubic-bezier(.1,.4,.5,1) infinite;
   }
   
   &[top] {

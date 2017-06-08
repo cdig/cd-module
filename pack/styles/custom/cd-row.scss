@@ -1,11 +1,11 @@
 cd-row {
   display: flex;
   
-  @media (min-width: $iPhoneLandscape + 0.5) {
+  @media (min-width: $iPhoneLandscape + 1) {
     flex-flow: row nowrap;
     margin-top: 1em;
-    margin-left: -.75em;
-    margin-right: -.75em;
+    margin-left: -1em;
+    margin-right: -1em;
     
     & > *,
     & > [row],
@@ -14,8 +14,8 @@ cd-row {
     & > p,
     & > ol,
     & > ul {
-      margin-left: .75em;
-      margin-right: .75em;
+      margin-left: 1em;
+      margin-right: 1em;
     }
     
     // Row: X alignment
@@ -145,7 +145,9 @@ cd-row {
     // All of the above use width rather than flex-basis: https://github.com/philipwalton/flexbugs#7-flex-basis-doesnt-account-for-box-sizingborder-box
     & > * { max-width: 100%; } // Using max-width gives us the desired behaviour, but it also prevents a flexbug: https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container
     & > p { max-width: 100%; } // The above rule doesn't hit "p" elements, since they're included after this file at an equal specificity
-    & > * { min-width: 0%; } // https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored
+    
+    // Disabled because I don't think we have this problem
+    // & > * { min-width: 0%; } // https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored
     
     // Item in column: Y size & alignment
     & > *                 { align-self: center; } // DEFAULT
