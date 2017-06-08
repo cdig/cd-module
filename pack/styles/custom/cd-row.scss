@@ -1,134 +1,166 @@
 cd-row {
   display: flex;
-  flex-flow: row nowrap;
-  margin-top: 1em;
-  margin-left: -.75em;
-  margin-right: -.75em;
   
-  & > *,
-  & > [row],
-  & > cd-text-bubble,
-  & > cd-map,
-  & > p,
-  & > ol,
-  & > ul {
-    margin-left: .75em;
-    margin-right: .75em;
+  @media (min-width: $iPhoneLandscape + 0.5) {
+    flex-flow: row nowrap;
+    margin-top: 1em;
+    margin-left: -.75em;
+    margin-right: -.75em;
+    
+    & > *,
+    & > [row],
+    & > cd-text-bubble,
+    & > cd-map,
+    & > p,
+    & > ol,
+    & > ul {
+      margin-left: .75em;
+      margin-right: .75em;
+    }
+    
+    // Row: X alignment
+    justify-content: center;
+    &[row~="center"]        { justify-content: center; } // Must come first: it applies to both X and Y and needs to be easily overridden
+    &[row~="left"]          { justify-content: flex-start; }
+    &[row~="right"]         { justify-content: flex-end; }
+    &[row~="space-around"]  { justify-content: space-around; }
+    &[row~="space-between"] { justify-content: space-between; }
+    
+    // Row: Y size & alignment
+    align-items: center;
+    &.text { align-items: flex-start; }
+    &[row~="center"]   { align-items: center; } // DEFAULT - must come first: it needs to be easily overridden
+    &[row~="top"]      { align-items: flex-start; }
+    &[row~="bottom"]   { align-items: flex-end; }
+    &[row~="stretch"]  { align-items: stretch; } // Matches largest item
+    &[row~="baseline"] { align-items: baseline; }
+    
+    // Item in row: X size
+    & > *,
+    & > [row~="Sx"]   { flex: 0 1 auto; width: inherit; } // DEFAULT - Shrink to fit content
+    & > [row~="1x"]   { flex: 1 1 auto; width: 0%; }
+    & > [row~="2x"]   { flex: 2 1 auto; width: 0%; }
+    & > [row~="3x"]   { flex: 3 1 auto; width: 0%; }
+    & > [row~="4x"]   { flex: 4 1 auto; width: 0%; }
+    & > [row~="5x"]   { flex: 5 1 auto; width: 0%; }
+    & > [row~="1/2"]  { flex: 0 0 auto; width: 50%; }
+    & > [row~="1/3"]  { flex: 0 0 auto; width: 33.3%; }
+    & > [row~="2/3"]  { flex: 0 0 auto; width: 66.6%; }
+    & > [row~="1/4"]  { flex: 0 0 auto; width: 25%; }
+    & > [row~="2/4"]  { flex: 0 0 auto; width: 50%; }
+    & > [row~="3/4"]  { flex: 0 0 auto; width: 75%; }
+    & > [row~="1/5"]  { flex: 0 0 auto; width: 20%; }
+    & > [row~="2/5"]  { flex: 0 0 auto; width: 40%; }
+    & > [row~="3/5"]  { flex: 0 0 auto; width: 60%; }
+    & > [row~="4/5"]  { flex: 0 0 auto; width: 80%; }
+    & > [row~="1/6"]  { flex: 0 0 auto; width: 16.6%; }
+    & > [row~="2/6"]  { flex: 0 0 auto; width: 33.3%; }
+    & > [row~="3/6"]  { flex: 0 0 auto; width: 50%; }
+    & > [row~="4/6"]  { flex: 0 0 auto; width: 66.6%; }
+    & > [row~="5/6"]  { flex: 0 0 auto; width: 83.3%; }
+    & > [row~="1/7"]  { flex: 0 0 auto; width: 14.3%; }
+    & > [row~="2/7"]  { flex: 0 0 auto; width: 28.6%; }
+    & > [row~="3/7"]  { flex: 0 0 auto; width: 42.9%; }
+    & > [row~="4/7"]  { flex: 0 0 auto; width: 57.1%; }
+    & > [row~="5/7"]  { flex: 0 0 auto; width: 71.4%; }
+    & > [row~="6/7"]  { flex: 0 0 auto; width: 85.7%; }
+    & > [row~="1/8"]  { flex: 0 0 auto; width: 12.5%; }
+    & > [row~="2/8"]  { flex: 0 0 auto; width: 25%; }
+    & > [row~="3/8"]  { flex: 0 0 auto; width: 37.5%; }
+    & > [row~="4/8"]  { flex: 0 0 auto; width: 50%; }
+    & > [row~="5/8"]  { flex: 0 0 auto; width: 62.5%; }
+    & > [row~="6/8"]  { flex: 0 0 auto; width: 75%; }
+    & > [row~="7/8"]  { flex: 0 0 auto; width: 87.5%; }
+    // All of the above use width rather than flex-basis: https://github.com/philipwalton/flexbugs#7-flex-basis-doesnt-account-for-box-sizingborder-box
+    & > * { max-width: 100%; } // Using max-width gives us the desired behaviour, but it also prevents a flexbug: https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container
+    & > p { max-width: 100%; } // The above rule doesn't hit "p" elements, since they're included after this file at an equal specificity
+    & > * { min-width: 0%; } // https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored
+    
+    // Item in row: Y size & alignment
+    & > [row~="top"]      { align-self: flex-start; }
+    & > [row~="center"]   { align-self: center; } // DEFAULT
+    & > [row~="bottom"]   { align-self: flex-end; }
+    & > [row~="stretch"]  { align-self: stretch; } // Matches largest item
+    & > [row~="baseline"] { align-self: baseline; }
+    
+    // Item in row: ordering
+    & > *            { order: 1; }
+    & > [row~="1st"] { order: 1; } // DEFAULT
+    & > [row~="2nd"] { order: 2; }
+    & > [row~="3rd"] { order: 3; }
+    & > [row~="4th"] { order: 4; }
+    & > [row~="5th"] { order: 5; }
   }
-
-  // Row: X alignment
-  justify-content: center;
-  &[row~="center"]        { justify-content: center; } // Must come first: it applies to both X and Y and needs to be easily overridden
-  &[row~="left"]          { justify-content: flex-start; }
-  &[row~="right"]         { justify-content: flex-end; }
-  &[row~="space-around"]  { justify-content: space-around; }
-  &[row~="space-between"] { justify-content: space-between; }
-  
-  // Row: Y size & alignment
-  align-items: center;
-  &.text { align-items: flex-start; }
-  &[row~="center"]   { align-items: center; } // DEFAULT - must come first: it needs to be easily overridden
-  &[row~="top"]      { align-items: flex-start; }
-  &[row~="bottom"]   { align-items: flex-end; }
-  &[row~="stretch"]  { align-items: stretch; } // Matches largest item
-  &[row~="baseline"] { align-items: baseline; }
-  
-  // Item in row: X size
-  & > *,
-  & > [row~="Sx"]   { flex: 0 1 auto; width: inherit; } // DEFAULT - Shrink to fit content
-  & > [row~="1x"]   { flex: 1 1 auto; width: 0%; }
-  & > [row~="2x"]   { flex: 2 1 auto; width: 0%; }
-  & > [row~="3x"]   { flex: 3 1 auto; width: 0%; }
-  & > [row~="4x"]   { flex: 4 1 auto; width: 0%; }
-  & > [row~="5x"]   { flex: 5 1 auto; width: 0%; }
-  & > [row~="1/2"]  { flex: 0 0 auto; width: 50%; }
-  & > [row~="1/3"]  { flex: 0 0 auto; width: 33.3%; }
-  & > [row~="2/3"]  { flex: 0 0 auto; width: 66.6%; }
-  & > [row~="1/4"]  { flex: 0 0 auto; width: 25%; }
-  & > [row~="2/4"]  { flex: 0 0 auto; width: 50%; }
-  & > [row~="3/4"]  { flex: 0 0 auto; width: 75%; }
-  & > [row~="1/5"]  { flex: 0 0 auto; width: 20%; }
-  & > [row~="2/5"]  { flex: 0 0 auto; width: 40%; }
-  & > [row~="3/5"]  { flex: 0 0 auto; width: 60%; }
-  & > [row~="4/5"]  { flex: 0 0 auto; width: 80%; }
-  & > [row~="1/6"]  { flex: 0 0 auto; width: 16.6%; }
-  & > [row~="2/6"]  { flex: 0 0 auto; width: 33.3%; }
-  & > [row~="3/6"]  { flex: 0 0 auto; width: 50%; }
-  & > [row~="4/6"]  { flex: 0 0 auto; width: 66.6%; }
-  & > [row~="5/6"]  { flex: 0 0 auto; width: 83.3%; }
-  & > [row~="1/7"]  { flex: 0 0 auto; width: 14.3%; }
-  & > [row~="2/7"]  { flex: 0 0 auto; width: 28.6%; }
-  & > [row~="3/7"]  { flex: 0 0 auto; width: 42.9%; }
-  & > [row~="4/7"]  { flex: 0 0 auto; width: 57.1%; }
-  & > [row~="5/7"]  { flex: 0 0 auto; width: 71.4%; }
-  & > [row~="6/7"]  { flex: 0 0 auto; width: 85.7%; }
-  & > [row~="1/8"]  { flex: 0 0 auto; width: 12.5%; }
-  & > [row~="2/8"]  { flex: 0 0 auto; width: 25%; }
-  & > [row~="3/8"]  { flex: 0 0 auto; width: 37.5%; }
-  & > [row~="4/8"]  { flex: 0 0 auto; width: 50%; }
-  & > [row~="5/8"]  { flex: 0 0 auto; width: 62.5%; }
-  & > [row~="6/8"]  { flex: 0 0 auto; width: 75%; }
-  & > [row~="7/8"]  { flex: 0 0 auto; width: 87.5%; }
-  // All of the above use width rather than flex-basis: https://github.com/philipwalton/flexbugs#7-flex-basis-doesnt-account-for-box-sizingborder-box
-  & > * { max-width: 100%; } // Using max-width gives us the desired behaviour, but it also prevents a flexbug: https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container
-  & > p { max-width: 100%; } // The above rule doesn't hit "p" elements, since they're included after this file at an equal specificity
-  & > * { min-width: 0%; } // https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored
-  
-  // Item in row: Y size & alignment
-  & > [row~="top"]      { align-self: flex-start; }
-  & > [row~="center"]   { align-self: center; } // DEFAULT
-  & > [row~="bottom"]   { align-self: flex-end; }
-  & > [row~="stretch"]  { align-self: stretch; } // Matches largest item
-  & > [row~="baseline"] { align-self: baseline; }
-  
-  // Item in row: ordering
-  & > *            { order: 1; }
-  & > [row~="1st"] { order: 1; } // DEFAULT
-  & > [row~="2nd"] { order: 2; }
-  & > [row~="3rd"] { order: 3; }
-  & > [row~="4th"] { order: 4; }
-  & > [row~="5th"] { order: 5; }
   
   @media (max-width: $iPhoneLandscape) {
     flex-flow: row wrap;
     justify-content: center;
-    max-width: none!important;
-    width: auto!important;
-    margin-left: 0;
-    margin-right: 0;
+
+    // Column: X alignment
+    justify-content: center;
+    &[col~="center"]        { justify-content: center; } // Must come first: it applies to both X and Y and needs to be easily overridden
+    &[col~="left"]          { justify-content: flex-start; }
+    &[col~="right"]         { justify-content: flex-end; }
+    &[col~="space-around"]  { justify-content: space-around; }
+    &[col~="space-between"] { justify-content: space-between; }
     
-    & > *,
-    & > [row] {
-      flex: 1 1 auto;
-      order: 1;
-      width: 100%;
-      min-width: 0;
-      max-width: none!important;
-      margin: 0 auto!important;
-      & + *,
-      & + [row] { margin-top: 1.5em!important; }
-      
-      &[row="Sx"] { flex: 0 1 auto; }
-    }
+    // Column: Y size & alignment
+    align-items: center;
+    &.text { align-items: flex-start; }
+    &[col~="center"]   { align-items: center; } // DEFAULT - must come first: it needs to be easily overridden
+    &[col~="top"]      { align-items: flex-start; }
+    &[col~="bottom"]   { align-items: flex-end; }
+    &[col~="stretch"]  { align-items: stretch; } // Matches largest item
+    &[col~="baseline"] { align-items: baseline; }
     
-    & > cd-text-bubble,
-    & > cd-text-bubble[row] {
-      width: 100vw;
-      margin-left: -3vw!important;
-      margin-right: -3vw!important;
-    }
+    // Item in column: X size
+    & > [col~="1/2"]  { max-width: 50%; }
+    & > [col~="1/3"]  { max-width: 33.3%; }
+    & > [col~="2/3"]  { max-width: 66.6%; }
+    & > [col~="1/4"]  { max-width: 25%; }
+    & > [col~="2/4"]  { max-width: 50%; }
+    & > [col~="3/4"]  { max-width: 75%; }
+    & > [col~="1/5"]  { max-width: 20%; }
+    & > [col~="2/5"]  { max-width: 40%; }
+    & > [col~="3/5"]  { max-width: 60%; }
+    & > [col~="4/5"]  { max-width: 80%; }
+    & > [col~="1/6"]  { max-width: 16.6%; }
+    & > [col~="2/6"]  { max-width: 33.3%; }
+    & > [col~="3/6"]  { max-width: 50%; }
+    & > [col~="4/6"]  { max-width: 66.6%; }
+    & > [col~="5/6"]  { max-width: 83.3%; }
+    & > [col~="1/7"]  { max-width: 14.3%; }
+    & > [col~="2/7"]  { max-width: 28.6%; }
+    & > [col~="3/7"]  { max-width: 42.9%; }
+    & > [col~="4/7"]  { max-width: 57.1%; }
+    & > [col~="5/7"]  { max-width: 71.4%; }
+    & > [col~="6/7"]  { max-width: 85.7%; }
+    & > [col~="1/8"]  { max-width: 12.5%; }
+    & > [col~="2/8"]  { max-width: 25%; }
+    & > [col~="3/8"]  { max-width: 37.5%; }
+    & > [col~="4/8"]  { max-width: 50%; }
+    & > [col~="5/8"]  { max-width: 62.5%; }
+    & > [col~="6/8"]  { max-width: 75%; }
+    & > [col~="7/8"]  { max-width: 87.5%; }
+    // All of the above use width rather than flex-basis: https://github.com/philipwalton/flexbugs#7-flex-basis-doesnt-account-for-box-sizingborder-box
+    & > * { max-width: 100%; } // Using max-width gives us the desired behaviour, but it also prevents a flexbug: https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container
+    & > p { max-width: 100%; } // The above rule doesn't hit "p" elements, since they're included after this file at an equal specificity
+    & > * { min-width: 0%; } // https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored
     
-    & > * > svg,
-    & > * > img,
-    & > [row] > svg,
-    & > [row] > img {
-      display: block;
-      width: auto;
-      height: auto;
-      max-width: 94vw;
-      max-height: 90vh;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    // Item in column: Y size & alignment
+    & > *                 { align-self: center; } // DEFAULT
+    & > [col~="top"]      { align-self: flex-start; }
+    & > [col~="center"]   { align-self: center; } // DEFAULT
+    & > [col~="bottom"]   { align-self: flex-end; }
+    & > [col~="stretch"]  { align-self: stretch; } // Matches largest item
+    & > [col~="baseline"] { align-self: baseline; }
+    
+    // Item in column: ordering
+    & > *            { order: 1; }
+    & > [col~="1st"] { order: 1; } // DEFAULT
+    & > [col~="2nd"] { order: 2; }
+    & > [col~="3rd"] { order: 3; }
+    & > [col~="4th"] { order: 4; }
+    & > [col~="5th"] { order: 5; }
   }
 }
