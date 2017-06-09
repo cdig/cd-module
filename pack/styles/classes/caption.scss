@@ -1,11 +1,8 @@
 .caption {
   margin-top: .25em;
+  margin-bottom: 2em;
   padding-top: .25em;
   border-top: 2px solid hsl(220, 45%, 95%);
   text-align: center;
   color: $grey;
-  
-  @media (max-width: $iPhoneLandscape) {
-    margin-bottom: 2em;
-  }
 }

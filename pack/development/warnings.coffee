@@ -16,6 +16,11 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   check "center-block cd-row", "Don't put cd-row inside a center-block"
   check ":not(cd-page) > cd-main", "It looks like you're missing a closing tag"
   check ".framed > *", "Please use the `framed` class directly on your images, not on container elements."
+  check "cd-text-bubble cd-row", "Don't use cd-row inside a cd-text-bubble. If you want to put an image beside your bubble text, float it using the float-left or float-right class."
+  check ".width-auto", "The width-auto class has been removed. Please set precise widths, or don't set a width at all."
+  check "p[pin]", "Don't use <p> tags as your cd-map pinned items. Use <div>."
+  check "cd-row > cd-map", "Don't put cd-map as a direct child of cd-row. Wrap it with a div."
+  
   
   names = {}
   for activity in document.querySelectorAll "cd-activity"

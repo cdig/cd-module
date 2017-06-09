@@ -1,9 +1,3 @@
 .framed {
-  // Using outline instead of border means less weirdness when used
-  // on a cd-row item (eg: accumulator-basisc)
-  outline: 3px solid $smoke;
-}
-
-.framed + .framed {
-  margin-left: 1em;
+  border: 3px solid $smoke;
 }

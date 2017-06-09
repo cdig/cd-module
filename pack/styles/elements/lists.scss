@@ -1,53 +1,51 @@
-cd-module {
-  ul, ol {
-    max-width: $maxLineLength;
-    margin: 1em auto;
-    padding-left: 1em;
-    padding-right: .3em;
+ul, ol {
+  max-width: $maxLineLength;
+  margin: 1em auto;
+  padding-left: 1em;
+  padding-right: .3em;
 
-    li + li { margin-top: .5em; }
-    
-    ul, ol {
-      margin-top: .5em;
-      padding-left: 0;
-      padding-right: 0;
-      
-      li + li { margin-top: .2em; }
-    }
-  }
-
-  ul {
-    list-style-type: square;
-    
-    ul { list-style-type: circle; }
-  }
+  li + li { margin-top: .5em; }
   
-  ol {
-    counter-reset: item;
+  ul, ol {
+    margin-top: .5em;
+    padding-left: 0;
+    padding-right: 0;
     
-    li {
-      display: flex;
-      align-items: center;
-      
-      &:before {
-        counter-increment: item;
-        content: counter(item) " ";
-        flex: 0 0 auto;
-        width: 1.8em;
-        height: 1.8em;
-        line-height: 1.8em;
-        margin-right: .5em;
-        text-align: center;
-        vertical-align: middle;
-        font-size: 0.7em;
-        border-radius: 1em;
-        color: white;
-        background: black;
+    li + li { margin-top: .2em; }
+  }
+}
 
-        // Override module styles
-        font-weight: normal;
-        font-style: normal;
-      }
+ul {
+  list-style-type: square;
+  
+  ul { list-style-type: circle; }
+}
+
+ol {
+  counter-reset: item;
+  
+  li {
+    display: flex;
+    align-items: center;
+    
+    &:before {
+      counter-increment: item;
+      content: counter(item) " ";
+      flex: 0 0 auto;
+      width: 1.8em;
+      height: 1.8em;
+      line-height: 1.8em;
+      margin-right: .5em;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 0.7em;
+      border-radius: 1em;
+      color: white;
+      background: black;
+      
+      // Override any module author styling
+      font-weight: normal;
+      font-style: normal;
     }
   }
 }

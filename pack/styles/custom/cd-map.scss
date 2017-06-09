@@ -8,13 +8,18 @@ cd-map {
   [pin] {
     position: absolute;
     top: 50%;
+    white-space: nowrap;
 
     /* Overridden by per-element styles — these are just helpful defaults to avoid 'auto' errors */
     left: 0;
     margin-top: 0;
     transform: translate(0%, 0%);
   }
-
+  
+  @media (max-width: $maxPageWidthPx) {
+    font-size: 1.5vw;
+  }
+  
   /* Alignments */
   [pin="top left"], [pin="left top"] { transform: translate(0%, 0%); } /* DEFAULT */
   [pin="top right"], [pin="right top"] { transform: translate(-100%, 0%); }
@@ -25,4 +30,10 @@ cd-map {
   [pin="right"], [pin="right center"], [pin="center right"] { transform: translate(-100%, -50%); }
   [pin="bottom"], [pin="bottom center"], [pin="center bottom"] { transform: translate(-50%, -100%); }
   [pin="center"], [pin="center center"] { transform: translate(-50%, -50%); }
+}
+
+cd-row cd-map {
+  @media (max-width: $iPhoneLandscape) {
+    font-size: 3vw;
+  }
 }

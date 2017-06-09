@@ -1,21 +1,4 @@
-cd-module {
-  p {
-    max-width: $maxLineLength;
-    margin: 1em auto;
-    
-    @media (min-width: $iPhoneLandscape + 1) {
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  }
-  
-  cd-map p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  cd-text-bubble p {
-    padding: 0;
-    &:last-child { margin-bottom: 0; }
-  }
+p {
+  max-width: $maxLineLength;
+  margin: 1em auto;
 }

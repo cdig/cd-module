@@ -2,12 +2,13 @@ cd-page {
   display: block;
   padding: 3vw 0;
   
-  & > img, & > iframe, & > video, & > object, & > cd-activity {
+  & > :not(cd-main) {
     display: block;
     width: 100%;
     vertical-align: middle;
     margin-left: auto;
     margin-right: auto;
+
     &:not(.full) {
       max-width: calc(#{$maxPageWidth} - 6vw);
       border: 3px solid $smoke;

@@ -15,4 +15,4 @@ do ()->
   
   if Env.dev
     document.querySelector "html"
-            .setAttribute "env-dev", "env-dev"
+            .setAttribute "env-dev", ""
