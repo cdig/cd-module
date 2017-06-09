@@ -2,5 +2,11 @@ cd-main {
   display: block;
   max-width: $maxPageWidth;
   margin: 0 auto;
-  padding: calc(3vw + 1em) 3vw;
+  
+  padding: calc(3vw + 1em) 0;
+
+  @media (max-width: 1200px) {
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
 }

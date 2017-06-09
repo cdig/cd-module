@@ -19,25 +19,25 @@ cd-row {
     }
     
     // Row: X alignment
-    justify-content: center;
-    &[row~="center"]        { justify-content: center; } // Must come first: it applies to both X and Y and needs to be easily overridden
+    &,
+    &[row~="space-between"] { justify-content: space-between; }
+    &[row~="center"]        { justify-content: center; }
     &[row~="left"]          { justify-content: flex-start; }
     &[row~="right"]         { justify-content: flex-end; }
     &[row~="space-around"]  { justify-content: space-around; }
-    &[row~="space-between"] { justify-content: space-between; }
     
     // Row: Y size & alignment
-    align-items: center;
-    &.text { align-items: flex-start; }
-    &[row~="center"]   { align-items: center; } // DEFAULT - must come first: it needs to be easily overridden
+    &,
+    &[row~="center"]   { align-items: center; }
     &[row~="top"]      { align-items: flex-start; }
     &[row~="bottom"]   { align-items: flex-end; }
-    &[row~="stretch"]  { align-items: stretch; } // Matches largest item
+    &[row~="stretch"]  { align-items: stretch; }
     &[row~="baseline"] { align-items: baseline; }
+    &.text             { align-items: flex-start; }
     
     // Item in row: X size
     & > *,
-    & > [row~="Sx"]   { flex: 0 1 auto; width: inherit; } // DEFAULT - Shrink to fit content
+    & > [row~="Sx"]   { flex: 0 1 auto; width: inherit; } // Shrink to fit content
     & > [row~="1x"]   { flex: 1 1 auto; width: 0%; }
     & > [row~="2x"]   { flex: 2 1 auto; width: 0%; }
     & > [row~="3x"]   { flex: 3 1 auto; width: 0%; }
@@ -78,14 +78,14 @@ cd-row {
     
     // Item in row: Y size & alignment
     & > [row~="top"]      { align-self: flex-start; }
-    & > [row~="center"]   { align-self: center; } // DEFAULT
+    & > [row~="center"]   { align-self: center; }
     & > [row~="bottom"]   { align-self: flex-end; }
-    & > [row~="stretch"]  { align-self: stretch; } // Matches largest item
+    & > [row~="stretch"]  { align-self: stretch; }
     & > [row~="baseline"] { align-self: baseline; }
     
     // Item in row: ordering
-    & > *            { order: 1; }
-    & > [row~="1st"] { order: 1; } // DEFAULT
+    & > *,
+    & > [row~="1st"] { order: 1; }
     & > [row~="2nd"] { order: 2; }
     & > [row~="3rd"] { order: 3; }
     & > [row~="4th"] { order: 4; }
@@ -95,23 +95,33 @@ cd-row {
   @media (max-width: $iPhoneLandscape) {
     flex-flow: row wrap;
     justify-content: center;
-
+    
+    & > *,
+    & > [row],
+    & > cd-text-bubble,
+    & > cd-map,
+    & > p,
+    & > ol,
+    & > ul {
+      margin-top: 1em;
+    }
+    
     // Column: X alignment
-    justify-content: center;
-    &[col~="center"]        { justify-content: center; } // Must come first: it applies to both X and Y and needs to be easily overridden
+    &,
+    &[col~="center"]        { justify-content: center; }
     &[col~="left"]          { justify-content: flex-start; }
     &[col~="right"]         { justify-content: flex-end; }
     &[col~="space-around"]  { justify-content: space-around; }
     &[col~="space-between"] { justify-content: space-between; }
     
     // Column: Y size & alignment
-    align-items: center;
-    &.text { align-items: flex-start; }
-    &[col~="center"]   { align-items: center; } // DEFAULT - must come first: it needs to be easily overridden
+    &,
+    &[col~="center"]   { align-items: center; }
     &[col~="top"]      { align-items: flex-start; }
     &[col~="bottom"]   { align-items: flex-end; }
-    &[col~="stretch"]  { align-items: stretch; } // Matches largest item
+    &[col~="stretch"]  { align-items: stretch; }
     &[col~="baseline"] { align-items: baseline; }
+    &.text             { align-items: flex-start; }
     
     // Item in column: X size
     & > [col~="1/2"]  { max-width: 50%; }
@@ -150,16 +160,14 @@ cd-row {
     // & > * { min-width: 0%; } // https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored
     
     // Item in column: Y size & alignment
-    & > *                 { align-self: center; } // DEFAULT
-    & > [col~="top"]      { align-self: flex-start; }
-    & > [col~="center"]   { align-self: center; } // DEFAULT
-    & > [col~="bottom"]   { align-self: flex-end; }
-    & > [col~="stretch"]  { align-self: stretch; } // Matches largest item
-    & > [col~="baseline"] { align-self: baseline; }
+    & > [col~="center"]   { align-self: center; }
+    & > [col~="left"]     { align-self: flex-start; }
+    & > [col~="right"]    { align-self: flex-end; }
+    & > [col~="stretch"]  { align-self: stretch; }
     
     // Item in column: ordering
-    & > *            { order: 1; }
-    & > [col~="1st"] { order: 1; } // DEFAULT
+    & > *,
+    & > [col~="1st"] { order: 1; }
     & > [col~="2nd"] { order: 2; }
     & > [col~="3rd"] { order: 3; }
     & > [col~="4th"] { order: 4; }

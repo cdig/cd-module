@@ -29,5 +29,5 @@ Take "DOMContentLoaded", ()->
       state[type] = button
   
   # Setup all buttons
-  setup btn, hydraulicLegend, "hydraulic" for btn in document.querySelectorAll "cd-pressure-legend-btn" # Named `pressure` for backwards compat
-  setup btn, electricalLegend, "electrical" for btn in document.querySelectorAll "cd-electrical-legend-btn"
+  setup btn, hydraulicLegend, "hydraulic" for btn in document.querySelectorAll "[hydraulic-legend]"
+  setup btn, electricalLegend, "electrical" for btn in document.querySelectorAll "[electrical-legend]"
