@@ -15,7 +15,7 @@ cd-legend {
   pointer-events: none;
   transition: opacity .2s, transform .2s;
   
-  &[cd-legend-init] {
+  &[cd-legend-hide] {
     display: none;
   }
   

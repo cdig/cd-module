@@ -8,6 +8,9 @@ Take "DOMContentLoaded", ()->
   setup = (button, legend, type)->
     throw "Element [cd-legend-#{type}] was not found in the DOM, and is needed by a legend button" unless legend?
     
+    hide = (e)->
+      e.currentTarget.setAttribute "cd-legend-hide", ""
+    
     button.addEventListener "click", (e)->
       
       # Move the legend into position
@@ -15,16 +18,17 @@ Take "DOMContentLoaded", ()->
       legend.style.left = (rect.left + document.body.scrollLeft + document.body.parentNode.scrollLeft + rect.width/2) + "px"
       legend.style.top = (rect.top + document.body.scrollTop + document.body.parentNode.scrollTop + rect.height) + "px"
       
-      # Turn off the load-time hiding
-      legend.removeAttribute "cd-legend-init"
-      
       # Toggle on
       if not legend.hasAttribute "cd-legend-show"
-        legend.setAttribute "cd-legend-show", true
+        legend.removeAttribute "cd-legend-hide"
+        legend.removeEventListener "transitionend", hide
+        setTimeout ()->
+          legend.setAttribute "cd-legend-show", ""
       
       # Toggle off (if we clicked the same button twice)
       else if button is state[type]
         legend.removeAttribute "cd-legend-show"
+        legend.addEventListener "transitionend", hide
       
       state[type] = button
   
