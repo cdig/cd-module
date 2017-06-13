@@ -8,8 +8,9 @@
   text-transform: uppercase;
   color: white;
   background: $smoke;
-  @media (max-width: $iPhoneLandscape) {
-    text-align: left;
+  
+  em {
+    display: inline-block;
   }
 }
 
