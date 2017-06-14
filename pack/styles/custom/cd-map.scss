@@ -16,6 +16,10 @@ cd-map {
     transform: translate(0%, 0%);
   }
   
+  [fit] {
+    width: 100%;
+  }
+  
   @media (max-width: $maxPageWidthPx) {
     font-size: 1.5vw;
   }

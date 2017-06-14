@@ -6,9 +6,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2em; // ms 5
-  font-variant: small-caps;
+  font-size: 2.1em; // ms 5
+  // font-variant: small-caps;
   color: hsl(220, 45%, 50%);
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1.1;
 }
 
 h2 { font-size: 1.6em; } // ms 4

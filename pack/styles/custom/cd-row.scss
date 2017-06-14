@@ -9,6 +9,10 @@ cd-row {
     margin-left: -$space;
     margin-right: -$space;
     
+    & + & {
+      margin-top: 2em;
+    }
+    
     & > *,
     & > cd-text-bubble,
     & > center-block,
