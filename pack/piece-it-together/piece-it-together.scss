@@ -2,6 +2,12 @@ cd-activity[type="piece-it-together"] {
   padding-top: 8em;
   position: relative;
   
+  
+  [piece] {
+    // This fixes rendering artifacts in Safari by expanding the area that is redrawn when we drag the piece
+    box-shadow: 0 0 1px transparent;
+  }
+  
   piece-panel {
     position: absolute;
     display: block;
