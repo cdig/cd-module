@@ -10,8 +10,12 @@ cd-page {
     margin-right: auto;
 
     &:not(.full) {
-      max-width: calc(#{$maxPageWidth} - 6vw);
+      width: $maxPageWidth;
       border: 3px solid $smoke;
+      
+      @media (max-width: $maxPageWidthPx) {
+        width: 94vw;
+      }
     }
   }
 }
