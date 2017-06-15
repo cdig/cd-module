@@ -35,7 +35,7 @@ call-out, cd-map call-out {
     display: none;
     position: relative;
     padding: .5em;
-    max-width: 12em;
+    width: 12em;
     text-align: center;
     background-color: $call-out-label-background;
     box-shadow: 0 .2em 2em -.5em black;
@@ -46,6 +46,11 @@ call-out, cd-map call-out {
       width: 0;
       height: 0;
       border: $call-out-arrow-size solid transparent;
+    }
+    
+    & > * {
+      margin-top: .5em;
+      margin-bottom: .5em;
     }
   }
   
