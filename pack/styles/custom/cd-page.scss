@@ -19,8 +19,6 @@ cd-page {
   }
 }
 
-@media (min-width: $iPhoneLandscape + 1) {
-  cd-page + cd-page {
-    border-top: 1em solid hsl(220, 45%, 96%);
-  }
+cd-page + cd-page {
+  border-top: 1em solid hsl(220, 45%, 96%);
 }
