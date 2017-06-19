@@ -1,6 +1,6 @@
 cd-page {
   display: block;
-  padding: calc(#{3vw} + 1em) 0;
+  padding: calc(#{4vw} + 1em) 0;
   
   & > :not(cd-main) {
     display: block;
@@ -19,6 +19,8 @@ cd-page {
   }
 }
 
-cd-page + cd-page {
-  border-top: 10px solid hsl(220, 25%, 95%);
+@media (min-width: $iPhoneLandscape + 1) {
+  cd-page + cd-page {
+    border-top: 1em solid hsl(220, 45%, 96%);
+  }
 }
