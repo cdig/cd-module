@@ -22,7 +22,6 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence ".width-auto", "The width-auto class has been removed. Please set precise widths, or don't set a width at all."
   assertNonexistence "p[pin]", "Don't use <p> tags as your cd-map pinned items. Use <div>."
   assertNonexistence "cd-row > cd-map", "Don't put cd-map as a direct child of cd-row. Wrap it with a div."
-  assertNonexistence "cd-row > [row] > [type=\"Et Tu, Q?\"]", "When you put a QnA inside a cd-row, it's best to not customize the row item containing the QnA. The defaults are good enough, hey?"
   
   # Uniqueness
   
