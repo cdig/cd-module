@@ -23,6 +23,9 @@ cd-row {
       margin-right: $space;
     }
     
+    // This looks super nice when placed in a row above a paragraph.
+    h1 { text-align: left; }
+    
     &.text {
       align-items: flex-start;
       
