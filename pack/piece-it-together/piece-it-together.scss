@@ -4,8 +4,8 @@ cd-activity[type="piece-it-together"] {
   
   
   [piece] {
-    // This fixes rendering artifacts in Safari by expanding the area that is redrawn when we drag the piece
-    box-shadow: 0 0 1px transparent;
+    padding: .5em 1em; // This makes text pieces easier to drag and easier to drop on the right spot
+    box-shadow: 0 0 1px transparent; // This fixes rendering artifacts in Safari by expanding the area that is redrawn when we drag the piece
     &, * { cursor: pointer; }
     &:hover { opacity: 0.9; }
   }
