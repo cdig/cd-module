@@ -12,7 +12,7 @@ cd-map {
     /* Overridden by per-element styles — these are just helpful defaults to avoid 'auto' errors */
     left: 0;
     margin-top: 0;
-    transform: translate(0%, 0%);
+    transform: translate(-50%, -50%);
   }
   
   [fit] {
@@ -26,7 +26,8 @@ cd-map {
   }
   
   /* Alignments */
-  [pin="top left"], [pin="left top"] { transform: translate(0%, 0%); } /* DEFAULT */
+  [pin="center"], [pin="center center"] { transform: translate(-50%, -50%); } /* DEFAULT */
+  [pin="top left"], [pin="left top"] { transform: translate(0%, 0%); }
   [pin="top right"], [pin="right top"] { transform: translate(-100%, 0%); }
   [pin="bottom left"], [pin="left bottom"] { transform: translate(0%, -100%); }
   [pin="bottom right"], [pin="right bottom"] { transform: translate(-100%, -100%); }
@@ -34,7 +35,6 @@ cd-map {
   [pin="left"], [pin="left center"], [pin="center left"] { transform: translate(0%, -50%); }
   [pin="right"], [pin="right center"], [pin="center right"] { transform: translate(-100%, -50%); }
   [pin="bottom"], [pin="bottom center"], [pin="center bottom"] { transform: translate(-50%, -100%); }
-  [pin="center"], [pin="center center"] { transform: translate(-50%, -50%); }
 }
 
 cd-row cd-map:not([no-scale]) {
