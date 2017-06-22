@@ -13,6 +13,8 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   
   assertNonexistence "cd-page:not([id])", "All cd-pages must have a unique id"
   assertNonexistence "cd-row > img", "Don't put images directly in cd-row — wrap them in a div"
+  assertNonexistence "cd-row > object", "Don't put objects directly in cd-row — wrap them in a div"
+  assertNonexistence "cd-row > video", "Don't put videos directly in cd-row — wrap them in a div"
   assertNonexistence "main", "Use cd-main instead of main"
   assertNonexistence "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
   assertNonexistence "center-block cd-row", "Don't put cd-row inside a center-block"
