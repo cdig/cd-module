@@ -5,13 +5,9 @@ cd-row {
     $space: 1em;
     
     flex-flow: row nowrap;
-    margin-top: 1em;
+    margin-top: 2em;
     margin-left: -$space;
     margin-right: -$space;
-    
-    & + & {
-      margin-top: 2em;
-    }
     
     & > *,
     & > cd-text-bubble,
@@ -111,7 +107,7 @@ cd-row {
     & > p,
     & > ol,
     & > ul {
-      margin-top: 1em;
+      margin-top: 2em;
     }
     
     // Column: X alignment
