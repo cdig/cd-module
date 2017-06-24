@@ -4,6 +4,7 @@ cd-activity[type="Et Tu, Q?"] {
   padding: 1em;
   background: hsl(224, 45%, 95%);
   border-radius: 4px;
+  text-align: center;
   
   .question {
     margin: 0 0 .8em;
@@ -11,6 +12,7 @@ cd-activity[type="Et Tu, Q?"] {
     font-size: 1.1rem;
     font-weight: normal;
     color: $blue;
+    text-align: left;
   }
 
   .subtitle {
@@ -22,6 +24,7 @@ cd-activity[type="Et Tu, Q?"] {
   .answers[x-short] {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
   }
 
   .answers[x-long] {
