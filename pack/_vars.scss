@@ -4,10 +4,13 @@
 $maxPageWidth: 60rem;
 $maxPageWidthPx: 1200px;
 $maxLineLength: 44rem;
-$iPadLandscape: 1024px;
-$iPadPortrait: 768px;
-$iPhoneLandscape: 666px; // This is cheesed by 1px, because when we say (max-width: $iPhoneLandscape) we want it to apply to things smaller than a sideways iPhone
-$iPhonePortrait: 375px;
+
+// These are cheesed by 1px, because when we say @media(max-width: $iPhoneLandscape) we want it to apply to things smaller than a sideways iPhone
+// To use these with min-width, add 1 px: @media(min-width: $iPhoneLandscape + 1)
+$iPadLandscape: 1023px;
+$iPadPortrait: 767px;
+$iPhoneLandscape: 666px;
+$iPhonePortrait: 374px;
 
 // LBS COLORS
 $white:  white;
@@ -51,6 +54,7 @@ $newButtonBlueHover: hsl(220, 55%, 52%);
 $newButtonBlueActive: hsl(180, 100%, 32%);
 
 // OTHER COLORS
+$cdig-blue: #0063BE;
 $dark-blue: #0045AF;
 $light-blue: #0084AF;
 $light-green: #99ff66;

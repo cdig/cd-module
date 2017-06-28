@@ -19,13 +19,13 @@
 		border: 0;
 	}
 	
-	main {
+	cd-main {
 		display: block;
 		margin: 0 auto!important;
 		border: 0;
 	}
 	
-	main + main {
+	cd-main + cd-main {
 		page-break-before: always;
 	}
 }

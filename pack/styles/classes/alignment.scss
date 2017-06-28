@@ -4,12 +4,3 @@
 
 // Deprecated
 .center-text { text-align: center; }
-
-// Convenience
-left { text-align: left; }
-center { text-align: center; }
-right { text-align: right; }
-left, center, right {
-  display: block;
-  margin: 1em auto;
-}

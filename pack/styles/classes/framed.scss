@@ -1,9 +1,0 @@
-.framed {
-  // By using outline, if the image ends up touching the edges of the screen, we don't have a weird border right at the edge, which looks ugly.
-  outline: 3px solid $smoke;
-  
-  &.circle, &.oval {
-    outline: none;
-    border: 3px solid $smoke;
-  }
-}

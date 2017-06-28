@@ -1,0 +1,29 @@
+.caption {
+  margin-top: .25em;
+  margin-bottom: 2em;
+  padding-top: .25em;
+  border-top: 2px solid hsl(220, 25%, 92%);
+  text-align: center;
+  color: $grey;
+}
+
+.caution {
+  color: $red;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.formula {
+  display: inline-block;
+  color: $navy;
+}
+
+.framed {
+  // By using outline, if the image ends up touching the edges of the screen, we don't have a weird border right at the edge, which looks ugly.
+  outline: 3px solid $smoke;
+  
+  &.circle, &.oval {
+    outline: none;
+    border: 3px solid $smoke;
+  }
+}

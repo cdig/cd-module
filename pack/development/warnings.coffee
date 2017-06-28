@@ -11,7 +11,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
       console.log "Warning: #{message}", violations
       warningIndicator.style.display = "block"
   
-  assertNonexistence "cd-page:not([id])", "All cd-pages must have a unique id"
+  assertNonexistence "cd-page:not([id])", "All cd-pages must have an id"
   assertNonexistence "cd-row > img", "Don't put images directly in cd-row — wrap them in a div"
   assertNonexistence "cd-row > object", "Don't put objects directly in cd-row — wrap them in a div"
   assertNonexistence "cd-row > video", "Don't put videos directly in cd-row — wrap them in a div"
@@ -22,6 +22,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence ".framed > *", "Please use the `framed` class directly on your images, not on container elements."
   assertNonexistence "cd-text-bubble cd-row", "Don't use cd-row inside a cd-text-bubble. If you want to put an image beside your bubble text, float it using the float-left or float-right class."
   assertNonexistence ".width-auto", "The width-auto class has been removed. Please set precise widths, or don't set a width at all."
+  assertNonexistence ".inbl", "The inbl class has been removed."
   assertNonexistence "p[pin]", "Don't use <p> tags as your cd-map pinned items. Use <div>."
   assertNonexistence "cd-row > cd-map", "Don't put cd-map as a direct child of cd-row. Wrap it with a div."
   assertNonexistence "[onclick]", "Don't use inline JavaScript. Use external CoffeeScript for lightweight interactivity, or SVGA for richer interactivity."

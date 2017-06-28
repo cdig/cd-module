@@ -1,8 +1,9 @@
 # Config
 # Aggregates info supplied by various sources at initialization time, making it available behind a unified interface.
 
+window.config ?= {}
+
 Take ["Env", "Params"], (Env, Params)->
-  window.config ?= {}
   
   Make "Config", (key, value)->
     if value isnt undefined

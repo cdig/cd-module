@@ -1,7 +1,0 @@
-// Loading
-// After the DOM content has loaded, our companion script will add an attr to the <html> element.
-// This way, our CSS can hook into that event and change display (eg: hiding/unhiding stuff) as necessary.
-
-html:not([dom-content-loaded]) [hide-loading] {
-  display: none!important; // Or visibility: hidden ??
-}

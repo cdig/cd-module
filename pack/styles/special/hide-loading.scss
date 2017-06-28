@@ -1,0 +1,5 @@
+// After the DOM content has loaded, a script will add a [dom-content-loaded] attr to the <html> element.
+
+html:not([dom-content-loaded]) [hide-loading] {
+  display: none!important;
+}
