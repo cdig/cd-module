@@ -16,6 +16,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "cd-row > object", "Don't put objects directly in cd-row — wrap them in a div"
   assertNonexistence "cd-row > video", "Don't put videos directly in cd-row — wrap them in a div"
   assertNonexistence "main", "Use cd-main instead of main"
+  assertNonexistence "[fit]", "You no longer need to use the 'fit' attribute."
   assertNonexistence "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
   assertNonexistence "center-block cd-row", "Don't put cd-row inside a center-block"
   assertNonexistence ":not(cd-page) > cd-main", "It looks like you're missing a closing tag"
