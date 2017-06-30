@@ -4,7 +4,13 @@ cd-map {
   width: 100%;
   margin: 1em auto;
   
-  [pin] {
+  &:not([no-scale]) {
+    @media (max-width: $maxPageWidthPx) {
+      font-size: 1.5vw;
+    }
+  }
+  
+  & > [pin] {
     position: absolute;
     top: 50%;
     white-space: nowrap;
@@ -15,14 +21,8 @@ cd-map {
     transform: translate(-50%, -50%);
   }
   
-  [fit] {
+  & > :not([pin]) {
     width: 100%;
-  }
-  
-  &:not([no-scale]) {
-    @media (max-width: $maxPageWidthPx) {
-      font-size: 1.5vw;
-    }
   }
   
   /* Alignments */
@@ -37,7 +37,7 @@ cd-map {
   [pin="bottom"], [pin="bottom center"], [pin="center bottom"] { transform: translate(-50%, -100%); }
 }
 
-cd-row cd-map:not([no-scale]) {
+cd-row cd-map:not([no-scale]):not([no-col]) {
   @media (max-width: $iPhoneLandscape) {
     font-size: 3vw;
   }
