@@ -11,3 +11,7 @@
 	font-weight: bold;
 	font-style: normal;
 }
+
+.varela-round,
+.varela-round-regular { font-family: "Varela Round"; }
+.varela-round-bold { font-family: "Varela Round"; font-weight: bold; }

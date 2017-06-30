@@ -18,3 +18,8 @@
 	font-weight: bold;
 	font-style: normal;
 }
+
+.quicksand,
+.quicksand-regular { font-family: "Quicksand"; }
+.quicksand-light { font-family: "Quicksand"; font-weight: 100; }
+.quicksand-bold { font-family: "Quicksand"; font-weight: bold; }
