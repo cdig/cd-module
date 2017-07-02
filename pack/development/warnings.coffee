@@ -28,6 +28,9 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "cd-row > cd-map", "Don't put cd-map as a direct child of cd-row. Wrap it with a div."
   assertNonexistence "[onclick]", "Don't use inline JavaScript. Use external CoffeeScript for lightweight interactivity, or SVGA for richer interactivity."
   assertNonexistence "object[height]", "Don't give objects a height. Use x-autosize instead."
+  assertNonexistence "object:not([x-autosize]):not([height])", "You must put x-autosize on your objects."
+  assertNonexistence "[row=\"1x\"],[row=\"2x\"],[row=\"3x\"],[row=\"4x\"],[row=\"5x\"]", "The row=\"1x\"-style cd-row sizes have been removed. Either delete this row=\"\" attribute to use the default content-based sizing, or specify a row=\"1/2\"-style size."
+  assertNonexistence "[col=\"1x\"],[col=\"2x\"],[col=\"3x\"],[col=\"4x\"],[col=\"5x\"]", "The col=\"1x\"-style cd-row sizes have been removed. Either delete this col=\"\" attribute to use the default content-based sizing, or specify a col=\"1/2\"-style size."
   
   # Uniqueness
   

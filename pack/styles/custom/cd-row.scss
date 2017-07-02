@@ -49,26 +49,32 @@ cd-row {
     & > *             { flex: 0 1 auto; width: inherit; } // Shrink to fit content
     & > [row~="1/1"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
     & > [row~="1/2"]  { flex: 0 0 auto; width: calc(50% - #{$space * 2}); }
+    & > [row~="2/2"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
     & > [row~="1/3"]  { flex: 0 0 auto; width: calc(33.3% - #{$space * 2}); }
     & > [row~="2/3"]  { flex: 0 0 auto; width: calc(66.6% - #{$space * 2}); }
+    & > [row~="3/3"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
     & > [row~="1/4"]  { flex: 0 0 auto; width: calc(25% - #{$space * 2}); }
     & > [row~="2/4"]  { flex: 0 0 auto; width: calc(50% - #{$space * 2}); }
     & > [row~="3/4"]  { flex: 0 0 auto; width: calc(75% - #{$space * 2}); }
+    & > [row~="4/4"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
     & > [row~="1/5"]  { flex: 0 0 auto; width: calc(20% - #{$space * 2}); }
     & > [row~="2/5"]  { flex: 0 0 auto; width: calc(40% - #{$space * 2}); }
     & > [row~="3/5"]  { flex: 0 0 auto; width: calc(60% - #{$space * 2}); }
     & > [row~="4/5"]  { flex: 0 0 auto; width: calc(80% - #{$space * 2}); }
+    & > [row~="5/5"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
     & > [row~="1/6"]  { flex: 0 0 auto; width: calc(16.6% - #{$space * 2}); }
     & > [row~="2/6"]  { flex: 0 0 auto; width: calc(33.3% - #{$space * 2}); }
     & > [row~="3/6"]  { flex: 0 0 auto; width: calc(50% - #{$space * 2}); }
     & > [row~="4/6"]  { flex: 0 0 auto; width: calc(66.6% - #{$space * 2}); }
     & > [row~="5/6"]  { flex: 0 0 auto; width: calc(83.3% - #{$space * 2}); }
+    & > [row~="6/6"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
     & > [row~="1/7"]  { flex: 0 0 auto; width: calc(14.3% - #{$space * 2}); }
     & > [row~="2/7"]  { flex: 0 0 auto; width: calc(28.6% - #{$space * 2}); }
     & > [row~="3/7"]  { flex: 0 0 auto; width: calc(42.9% - #{$space * 2}); }
     & > [row~="4/7"]  { flex: 0 0 auto; width: calc(57.1% - #{$space * 2}); }
     & > [row~="5/7"]  { flex: 0 0 auto; width: calc(71.4% - #{$space * 2}); }
     & > [row~="6/7"]  { flex: 0 0 auto; width: calc(85.7% - #{$space * 2}); }
+    & > [row~="7/7"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
     & > [row~="1/8"]  { flex: 0 0 auto; width: calc(12.5% - #{$space * 2}); }
     & > [row~="2/8"]  { flex: 0 0 auto; width: calc(25% - #{$space * 2}); }
     & > [row~="3/8"]  { flex: 0 0 auto; width: calc(37.5% - #{$space * 2}); }
@@ -76,6 +82,23 @@ cd-row {
     & > [row~="5/8"]  { flex: 0 0 auto; width: calc(62.5% - #{$space * 2}); }
     & > [row~="6/8"]  { flex: 0 0 auto; width: calc(75% - #{$space * 2}); }
     & > [row~="7/8"]  { flex: 0 0 auto; width: calc(87.5% - #{$space * 2}); }
+    & > [row~="8/8"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
+    & > [row~="1/16"]  { flex: 0 0 auto; width: calc(6.25% - #{$space * 2}); }
+    & > [row~="2/16"]  { flex: 0 0 auto; width: calc(12.5% - #{$space * 2}); }
+    & > [row~="3/16"]  { flex: 0 0 auto; width: calc(18.75% - #{$space * 2}); }
+    & > [row~="4/16"]  { flex: 0 0 auto; width: calc(25% - #{$space * 2}); }
+    & > [row~="5/16"]  { flex: 0 0 auto; width: calc(31.25% - #{$space * 2}); }
+    & > [row~="6/16"]  { flex: 0 0 auto; width: calc(37.5% - #{$space * 2}); }
+    & > [row~="7/16"]  { flex: 0 0 auto; width: calc(43.75% - #{$space * 2}); }
+    & > [row~="8/16"]  { flex: 0 0 auto; width: calc(50% - #{$space * 2}); }
+    & > [row~="9/16"]  { flex: 0 0 auto; width: calc(56.25% - #{$space * 2}); }
+    & > [row~="10/16"]  { flex: 0 0 auto; width: calc(62.5% - #{$space * 2}); }
+    & > [row~="11/16"]  { flex: 0 0 auto; width: calc(68.75% - #{$space * 2}); }
+    & > [row~="12/16"]  { flex: 0 0 auto; width: calc(75% - #{$space * 2}); }
+    & > [row~="13/16"]  { flex: 0 0 auto; width: calc(81.25% - #{$space * 2}); }
+    & > [row~="14/16"]  { flex: 0 0 auto; width: calc(87.5% - #{$space * 2}); }
+    & > [row~="15/16"]  { flex: 0 0 auto; width: calc(93.75% - #{$space * 2}); }
+    & > [row~="16/16"]  { flex: 0 0 auto; width: calc(100% - #{$space * 2}); }
     // All of the above use width rather than flex-basis: https://github.com/philipwalton/flexbugs#7-flex-basis-doesnt-account-for-box-sizingborder-box
     & > * { max-width: 100%; } // Using max-width gives us the desired behaviour, but it also prevents a flexbug: https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container
     & > p { max-width: 100%; } // The above rule doesn't hit "p" elements, since they're included after this file at an equal specificity
@@ -120,27 +143,34 @@ cd-row {
     & > * { max-width: 100%; } // Using max-width gives us the desired behaviour, but it also prevents a flexbug: https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container
     
     // Item in column: X size
+    & > [col~="1/1"]  { max-width: 100%; }
     & > [col~="1/2"]  { max-width: 50%; }
+    & > [col~="2/2"]  { max-width: 100%; }
     & > [col~="1/3"]  { max-width: 33.3%; }
     & > [col~="2/3"]  { max-width: 66.6%; }
+    & > [col~="3/3"]  { max-width: 100%; }
     & > [col~="1/4"]  { max-width: 25%; }
     & > [col~="2/4"]  { max-width: 50%; }
     & > [col~="3/4"]  { max-width: 75%; }
+    & > [col~="4/4"]  { max-width: 100%; }
     & > [col~="1/5"]  { max-width: 20%; }
     & > [col~="2/5"]  { max-width: 40%; }
     & > [col~="3/5"]  { max-width: 60%; }
     & > [col~="4/5"]  { max-width: 80%; }
+    & > [col~="5/5"]  { max-width: 100%; }
     & > [col~="1/6"]  { max-width: 16.6%; }
     & > [col~="2/6"]  { max-width: 33.3%; }
     & > [col~="3/6"]  { max-width: 50%; }
     & > [col~="4/6"]  { max-width: 66.6%; }
     & > [col~="5/6"]  { max-width: 83.3%; }
+    & > [col~="6/6"]  { max-width: 100%; }
     & > [col~="1/7"]  { max-width: 14.3%; }
     & > [col~="2/7"]  { max-width: 28.6%; }
     & > [col~="3/7"]  { max-width: 42.9%; }
     & > [col~="4/7"]  { max-width: 57.1%; }
     & > [col~="5/7"]  { max-width: 71.4%; }
     & > [col~="6/7"]  { max-width: 85.7%; }
+    & > [col~="7/7"]  { max-width: 100%; }
     & > [col~="1/8"]  { max-width: 12.5%; }
     & > [col~="2/8"]  { max-width: 25%; }
     & > [col~="3/8"]  { max-width: 37.5%; }
@@ -148,6 +178,23 @@ cd-row {
     & > [col~="5/8"]  { max-width: 62.5%; }
     & > [col~="6/8"]  { max-width: 75%; }
     & > [col~="7/8"]  { max-width: 87.5%; }
+    & > [col~="8/8"]  { max-width: 100%; }
+    & > [col~="1/16"]  { max-width: 6.25%; }
+    & > [col~="2/16"]  { max-width: 12.5%; }
+    & > [col~="3/16"]  { max-width: 18.75%; }
+    & > [col~="4/16"]  { max-width: 25%; }
+    & > [col~="5/16"]  { max-width: 31.25%; }
+    & > [col~="6/16"]  { max-width: 37.5%; }
+    & > [col~="7/16"]  { max-width: 43.75%; }
+    & > [col~="8/16"]  { max-width: 50%; }
+    & > [col~="9/16"]  { max-width: 56.25%; }
+    & > [col~="10/16"]  { max-width: 62.5%; }
+    & > [col~="11/16"]  { max-width: 68.75%; }
+    & > [col~="12/16"]  { max-width: 75%; }
+    & > [col~="13/16"]  { max-width: 81.25%; }
+    & > [col~="14/16"]  { max-width: 87.5%; }
+    & > [col~="15/16"]  { max-width: 93.75%; }
+    & > [col~="16/16"]  { max-width: 100%; }
     
     // Disabled because I don't think we have this problem
     // & > * { min-width: 0%; } // https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored
