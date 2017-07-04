@@ -31,7 +31,7 @@ html[env-dev] {
       padding-right: 0;
       font-size: 0.8em;
       border: 2px solid hsl(220, 45%, 80%);
-      background: hsla(220, 45%, 95%, .7);
+      background: rgba($off-white, .7);
       &::-webkit-input-placeholder { color: hsl(220, 45%, 80%); }
       
       -webkit-backdrop-filter: blur(3px);
