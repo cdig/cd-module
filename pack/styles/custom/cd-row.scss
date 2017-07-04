@@ -127,14 +127,20 @@ cd-row {
   @media (max-width: $iPhoneLandscape) {
     flex-direction: column;
     
-    & > *,
-    & > [row],
-    & > cd-text-bubble,
-    & > cd-map,
-    & > p,
-    & > ol,
-    & > ul {
-      margin-top: 2em;
+    &:not(.text) {
+      & > *,
+      & > [row],
+      & > cd-text-bubble,
+      & > cd-map,
+      & > p,
+      & > ol,
+      & > ul {
+        margin-top: 2em;
+      }
+    }
+    
+    &.text {
+      align-items: flex-start;
     }
     
     // Column: X alignment
