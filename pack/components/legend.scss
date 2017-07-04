@@ -24,6 +24,10 @@ cd-legend {
     transform: translate(-50%) scale(1);
   }
   
+  &[cd-legend-reset] {
+    transition: none;
+  }
+  
   &::before {
     content: "";
     position: relative;
