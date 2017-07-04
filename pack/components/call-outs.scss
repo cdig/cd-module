@@ -35,18 +35,18 @@ call-out, cd-map call-out {
     display: none;
     position: relative;
     padding: .5em;
-    font-size: 1rem;
+    font-size: 0.9rem;
     width: 12em;
     text-align: center;
     background-color: $call-out-label-background;
     box-shadow: 0 .2em 2em -.5em black;
     
     @media (max-width: $iPadPortrait) {
-      font-size: 1.5em; // This interacts nicely with the dynamic text sizing in cd-map
+      font-size: 1.4em; // This interacts nicely with the dynamic text sizing in cd-map
     }
     
     @media (max-width: $iPhoneLandscape) {
-      font-size: 1.8em;
+      font-size: 1.6em;
     }
     
     &::after {

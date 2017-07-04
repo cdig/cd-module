@@ -21,7 +21,7 @@ cd-map {
     transform: translate(-50%, -50%);
   }
   
-  & > :not([pin]) {
+  & > :not([pin]):not(call-out) {
     width: 100%;
   }
   
