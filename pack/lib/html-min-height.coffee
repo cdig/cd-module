@@ -5,14 +5,16 @@
 # to be at least that big. This seems to solve the problem nicely enough. Naturally, it'd be better
 # to solve this issue purely with CSS, but nothing I tried (in June 2017) worked.
 
-Take "load", ()->
-  
+do ()->
   html = document.documentElement
-  module = document.querySelector "cd-module"
-  
+
   resize = ()->
-    html.style["min-height"] = null
-    html.style.minHeight = module.getBoundingClientRect().height + "px"
+    module = document.querySelector("cd-module")
+    if module?
+      html.style.minHeight = null
+      setTimeout ()->
+        html.style.minHeight = module.getBoundingClientRect().height + "px"
 
   window.addEventListener "resize", resize
-  resize()
+  Take "DOMContentLoaded", resize
+  Take "load", resize
