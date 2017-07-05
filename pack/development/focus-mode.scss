@@ -15,6 +15,10 @@ body[focus-mode] {
     padding-top: 1px;
     padding-bottom: 1px;
   }
+
+  cd-page {
+    border-top: none;
+  }
   
   // Hide other gunk
   #title, #ending, #byline {
