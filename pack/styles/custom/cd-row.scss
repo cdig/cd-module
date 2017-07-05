@@ -10,6 +10,7 @@ cd-row {
       margin-top: 2em;
     }
     
+    max-width: calc(94vw + #{$space * 2}); // This prevents blowing out the width if row items have em-width greater than the screen width
     margin-left: -$space;
     margin-right: -$space;
     
@@ -126,6 +127,7 @@ cd-row {
   
   @media (max-width: $iPhoneLandscape) {
     flex-direction: column;
+    max-width: 94vw; // This prevents blowing out the width if row items have em-width greater than the screen width
     
     &:not(.text) {
       & > *,
