@@ -1,10 +1,16 @@
+// This needs to be out here, or you can't override the color in the HTML
+[text] {
+  padding: .5em 1em;
+  background-color: $off-white;
+  border: 2px dashed black;
+}
+
 cd-activity[type="piece-it-together"] {
   padding-top: 8em;
   position: relative;
   
   
   [piece] {
-    padding: .5em 1em; // This makes text pieces easier to drag and easier to drop on the right spot
     box-shadow: 0 0 1px transparent; // This fixes rendering artifacts in Safari by expanding the area that is redrawn when we drag the piece
     &, * { cursor: pointer; }
     &:hover { opacity: 0.9; }
