@@ -17,8 +17,11 @@ Take "DOMContentLoaded", ()->
       else
         lastClickedButtons[type] = button
         rect = button.getBoundingClientRect()
-        legend.style.left = (rect.left + document.body.scrollLeft + document.documentElement.scrollLeft + rect.width/2) + "px"
+        left = (rect.left + document.body.scrollLeft + document.documentElement.scrollLeft + rect.width/2)
+        legend.style.left = (Math.max 90, Math.min window.innerWidth - 90, left) + "px"
         legend.style.top = (rect.top + document.body.scrollTop + document.documentElement.scrollTop + rect.height) + "px"
+        
+        
         legend.removeEventListener "transitionend", hide
         legend.removeAttribute "cd-legend-hide"
         legend.removeAttribute "cd-legend-show"
