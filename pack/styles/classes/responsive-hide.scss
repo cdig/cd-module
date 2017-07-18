@@ -1,0 +1,11 @@
+.col-hide {
+  @media(max-width: $iPhoneLandscape) {
+    display: none;
+  }
+}
+
+.row-hide {
+  @media(min-width: $iPhoneLandscape + 1) {
+    display: none;
+  }
+}
