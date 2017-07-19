@@ -28,7 +28,9 @@ Take ["Shuffle", "DOMContentLoaded"], (Shuffle)->
     # This styles answers differently when they're short
     for label, i in labels
       totalAnswerLength += label.textContent.length
-    answers.setAttribute (if totalAnswerLength < 100 then "x-short" else "x-long"), ""
+    
+    # The limit of 120 is set to accomodate a quiz in the Open Circuit TSTP lesson
+    answers.setAttribute (if totalAnswerLength < 120 then "x-short" else "x-long"), ""
     
     # Set up the subtitle
     if multiple
