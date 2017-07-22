@@ -27,8 +27,6 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "p[pin]", "Don't use <p> tags as your cd-map pinned items. Use <div>."
   assertNonexistence "cd-row > cd-map", "Don't put cd-map as a direct child of cd-row. Wrap it with a div."
   assertNonexistence "cd-row cd-row", "Don't nest cd-rows."
-  assertNonexistence "p ul", "Don't put <ul> inside <p>. <p> should just contain text and basic text styling elements like <b>."
-  assertNonexistence "p ol", "Don't put <ol> inside <p>. <p> should just contain text and basic text styling elements like <b>."
   assertNonexistence "[onclick]", "Don't use inline JavaScript. Use external CoffeeScript for lightweight interactivity, or SVGA for richer interactivity."
   assertNonexistence "object[height]", "Don't give objects a height. Use x-autosize instead."
   assertNonexistence "object:not([x-autosize]):not([height])", "You must put x-autosize on your objects."
