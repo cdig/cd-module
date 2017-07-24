@@ -143,6 +143,8 @@ cd-row {
     
     &.text {
       align-items: flex-start;
+      
+      cd-text-bubble { width: 100vw; } // Without this, if the cd-text-bubble content isn't wide enough to wrap, the text bubble won't touch the right edge. Looks weird.
     }
     
     // Column: X alignment
