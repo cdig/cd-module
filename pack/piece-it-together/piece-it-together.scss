@@ -1,8 +1,9 @@
 // This needs to be out here, or you can't override the color in the HTML
 [text] {
   padding: .5em 1em;
-  background-color: $off-white;
-  border: 2px dashed black;
+  border: 2px dashed $grey;
+  text-align: center;
+  background-color: $dark-white;
 }
 
 cd-activity[type="piece-it-together"] {
