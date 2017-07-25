@@ -57,6 +57,10 @@ call-out, cd-map call-out {
       margin-top: .5em;
       margin-bottom: .5em;
     }
+    
+    p {
+      text-align: left;
+    }
   }
   
   &[seen][open], &[seen][closing] {
