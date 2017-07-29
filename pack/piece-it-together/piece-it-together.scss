@@ -1,11 +1,3 @@
-// This needs to be out here, or you can't override the color in the HTML
-[text] {
-  padding: .5em 1em;
-  border: 2px dashed $grey;
-  text-align: center;
-  background-color: $dark-white;
-}
-
 cd-activity[type="piece-it-together"] {
   padding-top: 8em;
   position: relative;
@@ -46,6 +38,23 @@ cd-activity[type="piece-it-together"] {
       visibility: hidden;
     }
   }
+}
+
+// These need to be out here, or you can't override the color in the HTML
+[text] {
+  padding: .5em 1em;
+  border: 2px dashed $grey;
+  text-align: center;
+  background-color: $dark-white;
+  border-radius: 8px;
+}
+
+[text][target] {
+  padding: calc(.5em + 2px) calc(1em + 2px);
+  border: 2px solid $silver;
+  background-color: $grey;
+  color: transparent;
+  box-shadow: 0 2px 32px $smoke inset;
 }
 
 @keyframes piece-it-together-fade-in {
