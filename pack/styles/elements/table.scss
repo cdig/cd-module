@@ -1,0 +1,26 @@
+table {
+  border-collapse: collapse;
+  border: 1px solid $smoke;
+}
+
+th, td {
+  padding: .4em .8em;
+}
+
+th {
+  background-color: $smoke;
+  color: white;
+}
+
+th, td {
+  border-left: 1px solid $smoke;
+  &:first-child { border-left: none; }
+}
+
+tr:nth-child(odd) {
+  background-color: hsl(218, 48%, 75%);
+}
+
+tr:nth-child(even) {
+  background-color: hsl(218, 45%, 70%);
+}
