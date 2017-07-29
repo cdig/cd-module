@@ -1,20 +1,17 @@
 table {
   border-collapse: collapse;
-  border: 1px solid $smoke;
+  border: 3px solid $smoke;
 }
 
 th, td {
   padding: .4em .8em;
+  border-left: 1px solid $smoke;
+  &:first-child { border-left: none; }
 }
 
 th {
   background-color: $smoke;
   color: white;
-}
-
-th, td {
-  border-left: 1px solid $smoke;
-  &:first-child { border-left: none; }
 }
 
 tr:nth-child(odd) {
