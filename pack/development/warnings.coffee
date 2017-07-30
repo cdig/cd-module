@@ -28,6 +28,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "cd-row cd-row", "Don't nest cd-rows."
   assertNonexistence "cd-text-bubble > p:first-child:last-child", "If a <p> is the only child of a cd-text-bubble, don't use a <p>"
   assertNonexistence "cd-text-bubble cd-row", "Don't use cd-row inside a cd-text-bubble. If you want to put an image beside your bubble text, float it using the float-left or float-right class."
+  assertNonexistence "cd-text-bubble cd-text-bubble", "Don't nest cd-text-bubbles"
   assertNonexistence "center-block cd-row", "Don't put cd-row inside a center-block"
   assertNonexistence "main", "Use cd-main instead of main"
   assertNonexistence "object:not([x-autosize]):not([height])", "You must put x-autosize on your objects."
