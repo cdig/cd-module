@@ -20,4 +20,4 @@ Take "DOMContentLoaded", ()->
   
   Make "OnScreen", (elm, cb)->
     items.push {elm: elm, cb: cb}
-    requestUpdate()
+    setTimeout requestUpdate, 50
