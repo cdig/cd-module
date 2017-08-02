@@ -1,7 +1,7 @@
 cd-module {
 
-  // This additional specificity makes it easier to override colors in cd-map-labels
-  &, cd-map {
+  // This additional specificity makes it easier to override colors in cd-map, PiT, etc
+  &, cd-map, [text][target] {
     
     // CD MODULE //////////////////////////////////////////////////////////////////////////////////////
 
