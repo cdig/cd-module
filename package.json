@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "cd-reset": "cdig/cd-reset#v4",
-    "take-and-make": "cdig/take-and-make#v4"
+    "cd-reset": "cdig/cd-reset#v4-1",
+    "take-and-make": "cdig/take-and-make#v4-1"
   }
 }
