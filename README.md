@@ -1,4 +1,4 @@
-# cd-module v4
+# cd-module v4.1
 A Framework for LBS Lessons
 
 ## License
