@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Lato";
-  src: url("lato-hairline.woff2") format("woff2"),
-       url("lato-hairline.woff") format("woff");
+  src: url("https://lunchboxsessions.s3.amazonaws.com/fonts/lato/lato-hairline.woff2") format("woff2"),
+       url("https://lunchboxsessions.s3.amazonaws.com/fonts/lato/lato-hairline.woff") format("woff");
   font-weight: 100;
   font-style: normal;
 }

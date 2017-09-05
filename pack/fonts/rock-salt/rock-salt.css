@@ -1,6 +1,6 @@
 @font-face {
-	font-family: 'Rock Salt';
-	src: url('rock-salt.woff');
+	font-family: "Rock Salt";
+	src: url("https://lunchboxsessions.s3.amazonaws.com/fonts/rock-salt/rock-salt.woff");
 	font-weight: normal;
 	font-style: normal;
 }
