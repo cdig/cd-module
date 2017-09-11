@@ -1,15 +1,9 @@
 object {
   margin-left: auto;
   margin-right: auto;
-  max-height: 90vh;
   
   // These are experimental rules that might solve some problems
   // Introduced during v4.1
   width: 100vw;
   max-width: 100%;
-}
-
-cd-map object {
-  // The above max-height rule causes cd-map layouts to break, unfortunately.
-  max-height: none;
 }
