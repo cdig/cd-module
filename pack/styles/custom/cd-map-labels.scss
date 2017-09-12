@@ -4,7 +4,7 @@ cd-map {
     color: $smoke;
   }
   
-  .light {
+  .light, .label {
     color: white;
     text-shadow: 1px 1px 2px $smoke;
     background-color: $grey;
