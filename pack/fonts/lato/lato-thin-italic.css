@@ -1,9 +1,0 @@
-@font-face {
-  font-family: "Lato";
-  src: url("https://lunchboxsessions.s3.amazonaws.com/fonts/lato/lato-thin-italic.woff2") format("woff2"),
-       url("https://lunchboxsessions.s3.amazonaws.com/fonts/lato/lato-thin-italic.woff") format("woff");
-  font-weight: 200;
-  font-style: italic;
-}
-
-.lato-thin-italic { font-family: "Lato"; font-weight: 200; font-style: italic; }

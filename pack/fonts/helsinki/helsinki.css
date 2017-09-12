@@ -1,8 +1,0 @@
-@font-face {
-	font-family: "Helsinki";
-	src: url("https://lunchboxsessions.s3.amazonaws.com/fonts/helsinki/helsinki.woff");
-	font-weight: normal;
-	font-style: normal;
-}
-
-.helsinki { font-family: "Helsinki"; }
