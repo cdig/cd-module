@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "cd-reset": "cdig/cd-reset#v4-1",
+    "fonts": "cdig/fonts#v4-1",
     "take-and-make": "cdig/take-and-make#v4-1"
   }
 }
