@@ -34,6 +34,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "object:not([x-autosize]):not([height])", "You must put x-autosize on your objects."
   assertNonexistence "object[height]", "Don't give objects a height. Use x-autosize instead."
   assertNonexistence "p[pin]", "Don't use <p> tags as your cd-map pinned items. Use <div>."
+  assertNonexistence "[type=\"Et Tu, Q?\"] label > :not(input):not(div)", "Don't put any HTML elements directly inside a QnA <label> — wrap them in a div"
   
   # Uniqueness
   
