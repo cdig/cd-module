@@ -19,6 +19,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "[fit]", "You no longer need to use the 'fit' attribute."
   assertNonexistence "[onclick]", "Don't use inline JavaScript. Use external CoffeeScript for lightweight interactivity, or SVGA for richer interactivity."
   assertNonexistence "[row=\"1x\"],[row=\"2x\"],[row=\"3x\"],[row=\"4x\"],[row=\"5x\"]", "The row=\"1x\"-style cd-row sizes have been removed. Either delete this row=\"\" attribute to use the default content-based sizing, or specify a row=\"1/2\"-style size."
+  assertNonexistence "[type=\"Et Tu, Q?\"] label > :not(input):not(div)", "Don't put any HTML elements directly inside a QnA <label> — wrap them in a div"
   assertNonexistence "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
   assertNonexistence "cd-page:not([id])", "All cd-pages must have an id"
   assertNonexistence "cd-row > cd-map", "Don't put cd-map as a direct child of cd-row. Wrap it with a div."
@@ -34,7 +35,8 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "object:not([x-autosize]):not([height])", "You must put x-autosize on your objects."
   assertNonexistence "object[height]", "Don't give objects a height. Use x-autosize instead."
   assertNonexistence "p[pin]", "Don't use <p> tags as your cd-map pinned items. Use <div>."
-  assertNonexistence "[type=\"Et Tu, Q?\"] label > :not(input):not(div)", "Don't put any HTML elements directly inside a QnA <label> — wrap them in a div"
+  assertNonexistence "small-row > :not(div)", "The items in small-row must be divs (or wrapped in divs)."
+  assertNonexistence "small-row > [class]", "Don't put any classes on your small-row items."
   
   # Uniqueness
   
