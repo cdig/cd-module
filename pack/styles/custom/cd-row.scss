@@ -20,6 +20,7 @@ cd-row {
     & > center-block,
     & > h1, & > h2, & > h3, & > h4, & > h5, & > h6,
     & > p,
+    & > small-row,
     & > ul, & > ol {
       margin-left: $space;
       margin-right: $space;
@@ -137,6 +138,7 @@ cd-row {
       & > cd-text-bubble,
       & > cd-map,
       & > p,
+      & > small-row,
       & > ol,
       & > ul {
         margin-top: 2em;
