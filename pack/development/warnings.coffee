@@ -3,13 +3,18 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   return unless Config "dev"
   warningIndicator = document.querySelector "warning-indicator"
   
+  warn = (message, violations)->
+    console.log "Warning: #{message}", violations
+    warningIndicator.style.display = "block"
+  
+  Make "Warning", warn
+  
   # Existence
   
   assertNonexistence = (selector, message)->
     violations = document.querySelectorAll selector
     if violations.length > 0
-      console.log "Warning: #{message}", violations
-      warningIndicator.style.display = "block"
+      warn message, violations
   
   assertNonexistence ".framed > *", "Please use the `framed` class directly on your images, not on container elements."
   assertNonexistence ".inbl", "The inbl class has been removed."
@@ -37,6 +42,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "p[pin]", "Don't use <p> tags as your cd-map pinned items. Use <div>."
   assertNonexistence "small-row > :not(div)", "The items in small-row must be divs (or wrapped in divs)."
   assertNonexistence "small-row > [class]", "Don't put any classes on your small-row items."
+  assertNonexistence "[content-link]:not(a)", "Don't use the content-link attribute on elements other than <a>."
   
   # Uniqueness
   
@@ -44,13 +50,10 @@ Take ["Config", "DOMContentLoaded"], (Config)->
     vals = {}
     for elm in document.querySelectorAll selector
       val = elm.getAttribute attr
-      if vals[val]?
-        if vals[val] isnt "warned"
-          console.log msgFn val
-          warningIndicator.style.display = "block"
-          vals[val] = "warned"
-      else
-        vals[val] = true
+      (vals[val] ?= []).push elm
+    for val, elms of vals
+      if elms.length > 1
+        warn msgFn(val), elms
   
-  assertAttrUnique "cd-activity", "name", (val)-> "Error: You have more than one cd-activity named \"#{val}\". Each activity must have a unique name."
-  assertAttrUnique "[id]", "id", (val)-> "Error: You have more than one element with the id \"#{val}\". Each id must be unique."
+  assertAttrUnique "cd-activity", "name", (val)-> "You have more than one cd-activity named \"#{val}\". Each activity must have a unique name."
+  assertAttrUnique "[id]", "id", (val)-> "You have more than one element with the id \"#{val}\". Each id must be unique."
