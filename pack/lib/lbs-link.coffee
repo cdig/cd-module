@@ -14,7 +14,7 @@ Take "DOMContentLoaded", ()->
   
   for linkElm in document.querySelectorAll "a[lbs-link]"
     path = linkElm.getAttribute "lbs-link"
-    warn linkElm if path.indexOf("http") >= 0 or path.indexOf("www") >= 0 or path.indexOf(".com") >= 0
+    warn linkElm if path.indexOf("http") >= 0 or path.indexOf("www") >= 0 or path.indexOf(".") >= 0 or path.indexOf("?") >= 0
     path = path.replace /^\/*/, "/" # start with exactly 1 slash
                .replace /\/+$/ # remove trailing slashes
     source = window.location.pathname
