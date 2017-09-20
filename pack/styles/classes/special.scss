@@ -28,6 +28,10 @@
     outline: none;
     border: 3px solid $smoke;
   }
+  
+  & + .caption {
+    border-top: none;
+  }
 }
 
 .strike {
