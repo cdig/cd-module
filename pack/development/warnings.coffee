@@ -25,6 +25,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "[onclick]", "Don't use inline JavaScript. Use external CoffeeScript for lightweight interactivity, or SVGA for richer interactivity."
   assertNonexistence "[row=\"1x\"],[row=\"2x\"],[row=\"3x\"],[row=\"4x\"],[row=\"5x\"]", "The row=\"1x\"-style cd-row sizes have been removed. Either delete this row=\"\" attribute to use the default content-based sizing, or specify a row=\"1/2\"-style size."
   assertNonexistence "[type=\"Et Tu, Q?\"] label > :not(input):not(div)", "Don't put any HTML elements directly inside a QnA <label> — wrap them in a div"
+  assertNonexistence "[type=\"Et Tu, Q?\"] .answers:not([no-shuffle]) > :not(label)", "If you customize the answers list in a QnA, please disable shuffling."
   assertNonexistence "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
   assertNonexistence "cd-map > :first-child:last-child", "Your cd-map should have more than 1 child, hey?"
   assertNonexistence "cd-page:not([id])", "All cd-pages must have an id"

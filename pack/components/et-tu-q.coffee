@@ -14,23 +14,24 @@ Take ["Shuffle", "DOMContentLoaded"], (Shuffle)->
     
     # Shuffle the answers
     unless noShuffle or labels[0].textContent.toLowerCase().trim() is "true"
-      Shuffle labels
+      labels = Shuffle labels
       answers.appendChild label for label in labels
       # Rebuild this array now that stuff has moved
       inputs = answers.querySelectorAll "input"
     
-    totalAnswerLength = 0
-    
+    # This is used to style incorrect answers as faded out once the game ends
     for input, i in inputs
-      # This is used to style incorrect answers as faded out once the game ends
       labels[i].setAttribute("x-incorrect", "true") unless input.hasAttribute "x-correct"
-      
-    # This styles answers differently when they're short
-    for label, i in labels
-      totalAnswerLength += label.textContent.length
     
-    # The limit of 120 is set to accomodate a quiz in the Open Circuit TSTP lesson
-    answers.setAttribute (if totalAnswerLength < 120 then "x-short" else "x-long"), ""
+    # There are two layout modes for answers — short and long.
+    # We allow the author to specify which they want.
+    # Otherwise, we'll use a heuristic to decide which mode to use.
+    unless answers.hasAttribute("x-short") or answers.hasAttribute("x-long")
+      totalAnswerLength = 0
+      for label, i in labels
+        totalAnswerLength += label.textContent.length
+      # The limit of 120 is set to accomodate a quiz in the Open Circuit TSTP lesson
+      answers.setAttribute (if totalAnswerLength < 120 then "x-short" else "x-long"), ""
     
     # Set up the subtitle
     if multiple
