@@ -41,6 +41,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "main", "Use cd-main instead of main"
   assertNonexistence "object:not([x-autosize]):not([height])", "You must put x-autosize on your objects."
   assertNonexistence "object[height]", "Don't give objects a height. Use x-autosize instead."
+  assertNonexistence "object[src]", "You used <object src=\"blah\"> instead of <object data=\"blah\">"
   assertNonexistence "p[pin]", "Don't use <p> tags as your cd-map pinned items. Use <div>."
   assertNonexistence "small-row > :not(div)", "The items in small-row must be divs (or wrapped in divs)."
   assertNonexistence "small-row > [class]", "Don't put any classes on your small-row items."
