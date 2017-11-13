@@ -6,4 +6,7 @@ object {
   // Introduced during v4.1
   width: 100vw;
   max-width: 100%;
+  
+  // This is also experimental — it might make SVGAs with backgrounds & control panels look more cohesive
+  border-radius: 6px;
 }
