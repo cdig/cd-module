@@ -24,5 +24,35 @@ cd-text-bubble {
   &.red,
   &.smoke,
   &.teal,
-  &.violet { color: white; }
+  &.violet {
+    color: white;
+  }
+  
+  &.white,
+  &.orange,
+  &.yellow,
+  &.silver,
+  &.green,
+  &.pink {
+    dfn { color: #546b99; }
+  }
+  
+  &.brown,
+  &.red,
+  &.teal,
+  &.indigo,
+  &.blue,
+  &.grey,
+  &.green,
+  &.violet {
+    dfn { color: #b6caf2; }
+  }
+  
+  &.navy,
+  &.maroon,
+  &.smoke,
+  &.black {
+    dfn { color: #acb7cd; }
+  }
+  
 }
