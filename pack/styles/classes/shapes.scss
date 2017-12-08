@@ -5,3 +5,16 @@
 .oval {
   border-radius: 100%;
 }
+
+.small-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 5em;
+  height: 5em;
+  border-radius: 5em;
+  line-height: 1;
+  background: black;
+  color: white;
+}
