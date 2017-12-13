@@ -4,14 +4,17 @@ cd-map {
   width: 100%;
   margin: 1em auto;
   
-  &:not([no-scale]) {
+  &:not([no-scale]):not([less-scale]) {
     @media (max-width: $maxPageWidthPx) {
       font-size: 1.5vw;
     }
   }
   
   &[less-scale] {
-    font-size: calc(0.75vw + 0.5rem);
+    font-size: 1rem;
+    @media (max-width: $maxPageWidthPx) {
+      font-size: calc(0.75vw + 0.5rem);
+    }
   }
   
   & > [pin] {
@@ -41,6 +44,7 @@ cd-map {
   [pin="bottom"], [pin="bottom center"], [pin="center bottom"] { transform: translate(-50%, -100%); }
 }
 
+// When the cd-row flips to column layout, double the font size
 cd-row cd-map:not([no-scale]):not([no-col]) {
   @media (max-width: $iPhoneLandscape) {
     font-size: 3vw;
