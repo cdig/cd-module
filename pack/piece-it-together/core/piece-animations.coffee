@@ -34,4 +34,4 @@ Take ["Panel","Piece", "PieceSettings","PieceStyle", "PieceTransformations", "Tr
     returnToPanel: (piece)->
       PieceSettings.setSettingsForPanel(piece)
       piece.scaleAnimation.animateToScale(piece.panelScale)
-      PieceTransformations.applyPosition(piece, piece.panelPositi
+      PieceTransformations.applyPosition(piece, piece.panelPosition)
