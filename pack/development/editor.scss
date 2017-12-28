@@ -9,7 +9,7 @@ html[env-dev] {
   body[editor="lc"]      * { cursor: ew-resize; } //e-resize; }
   body[editor="lt"]      * { cursor: ew-resize; } //se-resize; }
   body[editor="cc"]      * { cursor: ew-resize; } //not-allowed; }
-  body[editor="drag"]  	 * { cursor: none; }
+  body[editor="drag"]    * { cursor: none; }
 
   editor-button {
     cursor: pointer;
