@@ -1,7 +1,7 @@
-Take "OnScreen", (OnScreen)->
+Take ["Channel", "OnScreen", "DOMContentLoaded"], (Channel, OnScreen)->
   
   update = (object, visible)->
-    object.disableSVGA = not visible
+    Channel object, "disabled", visible
   
   for object in document.querySelectorAll "object"
     OnScreen object, update
