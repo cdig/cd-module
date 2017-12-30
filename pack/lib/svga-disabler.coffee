@@ -1,7 +1,7 @@
-Take ["Channel", "OnScreen", "DOMContentLoaded"], (Channel, OnScreen)->
+Take ["ChildData", "OnScreen", "DOMContentLoaded"], (ChildData, OnScreen)->
   
-  update = (object, visible)->
-    Channel object, "disabled", visible
+  update = (elm, visible)->
+    ChildData.send elm, "disabled", !visible
   
-  for object in document.querySelectorAll "object"
-    OnScreen object, update
+  for elm in document.querySelectorAll "object"
+    OnScreen elm, update
