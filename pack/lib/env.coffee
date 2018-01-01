@@ -7,7 +7,7 @@ do ()->
   parts = location.hostname.split(".")
   tld = parts[parts.length-1]
   
-  pow = tld is "dev"
+  pow = tld is "test"
   port = location.port.length > 0
   
   Make "Env", Object.freeze Env =
