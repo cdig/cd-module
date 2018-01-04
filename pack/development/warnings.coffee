@@ -61,3 +61,5 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertAttrUnique "cd-activity", "name", (val)-> "You have more than one cd-activity named \"#{val}\". Each activity must have a unique name."
   assertAttrUnique "[id]", "id", (val)-> "You have more than one element with the id \"#{val}\". Each id must be unique."
   assertAttrUnique "object", "data", (val)-> "You have more than one SVGA with the data url \"#{val}\". Please make these data urls unique by adding a #hash, eg: \"#{val}#review\". See the cd-module docs section on SVGA Configuration for more info."
+  
+  Make "WarningsDone"

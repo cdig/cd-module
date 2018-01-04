@@ -33,6 +33,11 @@ do ()->
     channel.inbox[parts[0]] = parts[1]
     cb channel.inbox for cb in channel.listeners # How does this cb know which <object> this is?
   
+  charToUpper = (match, char)->
+    char.toUpperCase()
+  
+  cleanAttrName = (name)->
+    name.replace("x-", "").replace /-(.)/g, charToUpper
   
   # INIT ##########################################################################################
   
@@ -48,7 +53,9 @@ do ()->
       for obj in document.querySelectorAll "object" when cleanId(obj.getAttribute "data") is cleanId id
         channel = getChannelForElement obj
         channel.port = e.ports[0]
+        channel.outbox[cleanAttrName attr.name] = attr.value for attr in obj.attributes
         channel.port.postMessage "#{k}:#{v}" for k,v of channel.outbox
+        channel.port.postMessage "INIT"
         channel.port.addEventListener "message", makeChannelListener channel
         channel.port.start()
         return
