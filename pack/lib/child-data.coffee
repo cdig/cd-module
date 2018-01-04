@@ -42,9 +42,6 @@ do ()->
   # INIT ##########################################################################################
   
   window.addEventListener "message", (e)->
-    # TODO: Add origin checks
-    # return unless e.origin is window.origin or e.origin.indexOf("https://cdn.lunchboxsessions.com") is 0
-    
     parts = e.data.split(":")
     messageType = parts[0]
     id = parts[1]
