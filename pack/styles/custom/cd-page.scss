@@ -2,6 +2,15 @@ cd-page {
   display: block;
   padding: calc(#{4vw} + 1em) 0;
   
+  // 1-page modules, like puzzles
+  &:first-child:last-child {
+    padding: 0;
+    
+    cd-main {
+      padding: calc(1vw + .5em) 0;
+    }
+  }
+  
   & > :not(cd-main) {
     display: block;
     width: 100%;
