@@ -39,13 +39,12 @@
 }
 
 .vimeo {
+  position: relative;
   width: 100%; // We don't have an intrinsic size, so this makes sure we're full-width even if placed inside a flex parent
-  height: 0;
   padding-bottom: 56.25%;
-  overflow: visible;
   
   iframe {
-    width: 100%;
+    position: absolute;
     height: 100%;
   }
 }
