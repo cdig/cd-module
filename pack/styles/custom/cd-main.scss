@@ -10,6 +10,8 @@ cd-main {
     padding-left: 3vw;
     padding-right: 3vw;
   }
+  
+  &[no-more-lookie-inside] { display: none; }
 }
 
 cd-main + :not(cd-main):not(.no-top-pad),
