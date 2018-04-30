@@ -177,5 +177,5 @@ do ()->
     elm.innerHTML = ""
 
 
-  # Integrate with Take&Make if possible
-  LBSMake "DOOM", DOOM if LBSMake?
+  # Init
+  Make "DOOM", DOOM
