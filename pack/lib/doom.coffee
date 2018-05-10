@@ -133,7 +133,7 @@ do ()->
   # The first arg can be an elm or array of elms
   # The second arg can be an object of stuff to update in the elm(s), in which case we'll return the elm(s).
   # Or it can be a string prop/attr/style to read from the elm(s), in which case we return the value(s).
-  @DOOM = (elms, opts)->
+  DOOM = (elms, opts)->
     elms = [elms] unless typeof elms is "array"
     throw new Error "DOOM was called with a null element" unless elm? for elm in elms
     throw new Error "DOOM was called with null options" unless opts?
