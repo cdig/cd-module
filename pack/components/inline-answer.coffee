@@ -14,6 +14,8 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
       top = DOOM.create "div", elm,
         top: ""
         textContent: labelText
+    else
+      DOOM elm, noLabel: ""
 
     bottom = DOOM.create "div", elm,
       bottom: ""
