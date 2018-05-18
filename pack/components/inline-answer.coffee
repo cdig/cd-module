@@ -2,7 +2,7 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
   setup = (elm)->
     timeout = null
 
-    type = DOOM elm, "type"
+    type = DOOM(elm, "type") or "number"
     hintText = DOOM elm, "hint"
     unitText = DOOM elm, "unit"
     labelText = DOOM elm, "label"
