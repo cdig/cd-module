@@ -1,0 +1,31 @@
+#adventure {
+  display: none;
+}
+
+html[adventure-mode] {
+  background: black;
+
+  #page {
+    margin: 0 auto;
+  }
+
+  #adventure {
+    display: block;
+    margin: 0 auto;
+    flex: 0 0 auto;
+  }
+
+  #adventure cd-main {
+    max-width: none;
+    padding: 0;
+
+    & > * {
+      display: block;
+      position: relative;
+      width: 100%;
+      max-width: none;
+      background: white;
+      margin: 0;
+    }
+  }
+}

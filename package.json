@@ -5,7 +5,9 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "cd-core": "cdig/cd-core",
     "cd-reset": "cdig/cd-reset#v4-1",
+    "doom": "ivanreese/doom",
     "fonts": "cdig/fonts#v4-1",
     "take-and-make": "cdig/take-and-make#v4-1"
   }

@@ -1,13 +1,13 @@
 # Params
 # Pull all the query params out of the URL and turn them into a hash.
 # Also allows setting query params.
-# Note: For the sake of "least surprise", we attempt to safely parse all values as numbers or booleans. We don't coerce, though — "TRUE" is still a string.
+# Note: For the sake of "least surprise", we attempt to safely parse all values as numbers or booleans. We don't coerce, though — "TRUE" is still a string.
 # Note: because of the HTML history API, these values might change at runtime! We decidedly don't care about that (for now).
 
 do ()->
-  
+
   cache = {}
-  
+
   search = window.location.search
   if search.length > 1
     for paramString in search.substr(1).split("&")
@@ -23,7 +23,7 @@ do ()->
           +rawVal # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Converting_strings_to_numbers
         else
           rawVal
-  
+
   rebuildURL = ()->
     url = window.location.href.split("?")[0]
     parts = for k, v of cache
@@ -31,7 +31,7 @@ do ()->
     if parts.length > 0
       url += "?" + parts.join "&"
     history.replaceState null, null, url
-  
+
   Make "Params", Params = (name, value)->
     if value isnt undefined
       if value?

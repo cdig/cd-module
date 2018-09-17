@@ -1,0 +1,44 @@
+html:not([adventure-mode]) adventure-controls {
+  display: none;
+}
+
+adventure-controls {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  text-align: center;
+
+  button {
+    flex: 0 1 10em;
+    margin: 3px 0;
+    padding: .4em;
+    border: 0;
+    border-radius: 0;
+  }
+
+  progress-bar {
+    flex: 1 1 10em;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin: 3px;
+    text-align: left;
+    background: darken($smoke, 10%);
+    overflow: hidden;
+
+    [progress-fill] {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: $smoke;
+    }
+
+    [progress-text] {
+      display: inline-block;
+      padding: 0 .5em;
+      color: $grey;
+    }
+  }
+}

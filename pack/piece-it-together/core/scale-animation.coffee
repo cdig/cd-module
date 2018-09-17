@@ -22,7 +22,7 @@ Take ["PieceTransformations", "load"], (PieceTransformations)->
             elapsedTime = currentTime - piece.scaleAnimation.startTime
             
             if (elapsedTime < scaleAnimationDuration)
-              # This is gross because the ease function is gross — arguments 2 & 3 are unintuitive.
+              # This is gross because the ease function is gross — arguments 2 & 3 are unintuitive.
               newScale = easeScale(elapsedTime, piece.scale, piece.scaleAnimation.target - piece.scale)
               PieceTransformations.applyScale(piece, newScale)
               requestAnimationFrame(piece.scaleAnimation.runScaleAnimation)

@@ -12,11 +12,19 @@ $iPadPortrait: 767px;
 $iPhoneLandscape: 666px;
 $iPhonePortrait: 374px;
 
+// SITE COLORS
+$bg-d:       hsl(227, 45%, 38%);
+$bg-l:       hsl(220, 50%, 48%);
+$navy-dark:  hsl(227, 65%, 14%);
+$new-blue:   hsl(220, 57%, 57%);
+
 // LBS COLORS
 $white:  white;
-$silver: hsl(220,  15%, 80%);
-$grey:   hsl(220,   9%, 52%);
-$smoke:  hsl(227,  15%, 25%);
+$mist:   hsl(220, 10%, 92%);
+$silver: hsl(220, 15%, 80%);
+$grey:   hsl(220, 9%, 52%);
+$smoke:  hsl(227, 15%, 25%);
+$onyx:   hsl(240, 50%, 5%);
 $black:  black;
 
 $red:    hsl(  2,  75%, 53%);
@@ -33,6 +41,7 @@ $pink:   hsl(357, 100%, 75%);
 $brown:  hsl( 23,  40%, 46%);
 $navy:   hsl(235,  52%, 22%);
 $maroon: hsl(359,  65%, 40%);
+$olive:  hsl(166, 90%, 20%);
 
 $transparent: transparent;
 
