@@ -9,9 +9,14 @@ html[adventure-mode] {
     margin: 0 auto;
   }
 
+  #title, #ending, #byline {
+    display: none;
+  }
+
   #adventure {
     display: block;
     margin: 0 auto;
+    padding: 0;
     flex: 0 0 auto;
   }
 
