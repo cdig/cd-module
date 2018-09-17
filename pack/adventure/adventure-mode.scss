@@ -13,7 +13,13 @@ html[adventure-mode] {
     display: none;
   }
 
+  cd-module {
+    // height: 100%;
+  }
+
   #adventure {
+    position: relative;
+    height: 100%;
     display: block;
     margin: 0 auto;
     padding: 0;
@@ -21,6 +27,11 @@ html[adventure-mode] {
   }
 
   #adventure cd-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     max-width: none;
     padding: 0;
 
@@ -31,6 +42,10 @@ html[adventure-mode] {
       max-width: none;
       background: white;
       margin: 0;
+    }
+
+    object {
+      border-radius: 0;
     }
   }
 }

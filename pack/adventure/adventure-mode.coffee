@@ -1,12 +1,15 @@
-Take ["DOOM", "DOMContentLoaded"], (DOOM)->
+Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
+
+  bail = ()->
+    Make "AdventureMode", false
 
   pageContainer = document.querySelector "#page"
   module = pageContainer.querySelector "cd-module"
   adventurePage = module.querySelector "#adventure"
-  return unless adventurePage?
+  return bail() unless adventurePage?
 
   mains = (main for main in adventurePage.querySelectorAll "cd-main")
-  return unless mains.length > 0
+  return bail() unless mains.length > 0
 
   adventureControls = document.querySelector("adventure-controls")
   nextButton = adventureControls.querySelector("[next-page]")
@@ -19,9 +22,12 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
   historyDirty = false
 
   setVisibility = (elm, visible = true)->
-    elm.style.display = if visible then "block" else "none"
+    elm.style.visibility = if visible then "visible" else "hidden"
+    for obj in elm.querySelectorAll "object"
+      ChildData.send obj, "disabled", !visible
 
-  hideAll = ()-> setVisibility main, false for main in mains
+  hideAll = ()->
+    setVisibility main, false for main in mains
 
   updateProgress = ()->
     if mains.length > 1
@@ -71,14 +77,17 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
     controlBounds = adventureControls.getBoundingClientRect()
     w = window.innerWidth
     outerH = window.innerHeight - headerHeight
-    h = outerH - controlBounds.height
+    controlHeight = controlBounds.height
+    h = outerH - controlHeight
     scale = Math.min w/960, h/540
-    scaledW = scale * 960
-    scaledH = scale * 540 + controlBounds.height
+    scaledW = Math.round scale * 960
+    scaledH = Math.round scale * 540
     DOOM pageContainer,
       width: "#{scaledW}px"
+      height: "#{scaledH + controlHeight}px"
+      marginTop: "#{outerH/2 - (scaledH + controlHeight)/2}px"
+    DOOM module,
       height: "#{scaledH}px"
-      marginTop: "#{outerH/2 - scaledH/2}px"
     updateProgress()
 
 
@@ -94,3 +103,5 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
   resize()
 
   goToPage currentPage
+
+  Make "AdventureMode", true
