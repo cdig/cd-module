@@ -4,7 +4,7 @@ cd-text-bubble {
   margin: 1em auto;
   padding: .5em 1em;
   background-color: $off-white;
-  
+
   @media (max-width: $iPhoneLandscape) {
     margin-left: -3vw;
     margin-right: -3vw;
@@ -12,7 +12,7 @@ cd-text-bubble {
     padding-right: 3vw;
     text-align: left;
   }
-  
+
   &.blue,
   &.brown,
   &.dark-blue,
@@ -21,13 +21,14 @@ cd-text-bubble {
   &.indigo,
   &.light-blue,
   &.maroon,
+  &.purple,
   &.red,
   &.smoke,
   &.teal,
   &.violet {
     color: white;
   }
-  
+
   &.white,
   &.orange,
   &.yellow,
@@ -36,7 +37,7 @@ cd-text-bubble {
   &.pink {
     dfn { color: #546b99; }
   }
-  
+
   &.brown,
   &.red,
   &.teal,
@@ -47,12 +48,12 @@ cd-text-bubble {
   &.violet {
     dfn { color: #b6caf2; }
   }
-  
+
   &.navy,
   &.maroon,
   &.smoke,
   &.black {
     dfn { color: #acb7cd; }
   }
-  
+
 }
