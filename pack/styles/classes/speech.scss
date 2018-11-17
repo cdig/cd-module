@@ -1,6 +1,6 @@
 .speech {
-	position: relative;
-	border-radius: .5em;
+  position: relative;
+  border-radius: .5em;
   background-color: currentColor;
 
   &.right { text-align: left }
@@ -23,50 +23,50 @@
 
   &::after {
     content: '';
-  	position: absolute;
+    position: absolute;
     width: 0;
-  	height: 0;
+    height: 0;
     border: $pointerSize solid transparent;
   }
 
   &.left::after {
-  	left: 0;
-  	top: 50%;
-  	border-right-color: currentColor;
-  	border-left: 0;
-  	border-bottom: 0;
-  	margin-top: -$pointerSize/2;
-  	margin-left: -$pointerSize;
+    left: 0;
+    top: 50%;
+    border-right-color: currentColor;
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -$pointerSize/2;
+    margin-left: -$pointerSize;
   }
 
   &.right::after {
-  	right: 0;
-  	top: 50%;
-  	border-left-color: currentColor;
-  	border-right: 0;
-  	border-bottom: 0;
-  	margin-top: -$pointerSize/2;
-  	margin-right: -$pointerSize;
+    right: 0;
+    top: 50%;
+    border-left-color: currentColor;
+    border-right: 0;
+    border-bottom: 0;
+    margin-top: -$pointerSize/2;
+    margin-right: -$pointerSize;
   }
 
   &.top::after {
-  	top: 0;
-  	left: 50%;
-  	border-bottom-color: currentColor;
-  	border-top: 0;
-  	border-left: 0;
-  	margin-left: -$pointerSize/2;
-  	margin-top: -$pointerSize;
+    top: 0;
+    left: 50%;
+    border-bottom-color: currentColor;
+    border-top: 0;
+    border-left: 0;
+    margin-left: -$pointerSize/2;
+    margin-top: -$pointerSize;
   }
 
   &.bottom::after {
-  	bottom: 0;
-  	left: 50%;
-  	border-top-color: currentColor;
-  	border-bottom: 0;
-  	border-left: 0;
-  	margin-left: -$pointerSize/2;
-  	margin-bottom: -$pointerSize;
+    bottom: 0;
+    left: 50%;
+    border-top-color: currentColor;
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -$pointerSize/2;
+    margin-bottom: -$pointerSize;
   }
 
 }
