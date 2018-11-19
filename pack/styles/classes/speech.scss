@@ -13,7 +13,7 @@
   &.hank       { color: $navy; }
   &.jj         { color: $teal; }
   &.john       { color: $mint; & > * { color: $black; } }
-  &.morty      { color: $orange; }
+  &.morty      { color: $orange; & > * { color: $black; } }
   &.nathan     { color: $smoke; }
   &.pat        { color: $green; }
   &.ruth       { color: $light-blue; }
