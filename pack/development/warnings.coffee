@@ -1,21 +1,21 @@
 Take ["Config", "DOMContentLoaded"], (Config)->
-  
+
   return unless Config "dev"
   warningIndicator = document.querySelector "warning-indicator"
-  
+
   warn = (message, violations)->
     console.log "Warning: #{message}", violations
     warningIndicator.style.display = "block"
-  
+
   Make "Warning", warn
-  
+
   # Existence
-  
+
   assertNonexistence = (selector, message)->
     violations = document.querySelectorAll selector
     if violations.length > 0
       warn message, violations
-  
+
   assertNonexistence ".framed > *", "Please use the `framed` class directly on your images, not on container elements."
   assertNonexistence ".inbl", "The inbl class has been removed."
   assertNonexistence ".width-auto", "The width-auto class has been removed. Please set precise widths, or don't set a width at all."
@@ -27,7 +27,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "[type=\"Et Tu, Q?\"] label > :not(input):not(div)", "Don't put any HTML elements directly inside a QnA <label> — wrap them in a div"
   assertNonexistence "[type=\"Et Tu, Q?\"] .answers:not([no-shuffle]) > :not(label)", "If you customize the answers list in a QnA, please disable shuffling."
   assertNonexistence "call-out:not([top]):not([left]):not([right]):not([bottom])", "You must specify either top, left, right, or bottom on your call-out."
-  assertNonexistence "cd-map > :first-child:last-child", "Your cd-map should have more than 1 child, hey?"
+  assertNonexistence ":not(cd-activity) > cd-map > :first-child:last-child", "Your cd-map should have more than 1 child, hey?"
   assertNonexistence "cd-page:not([id])", "All cd-pages must have an id"
   assertNonexistence "cd-row > cd-map", "Don't put cd-map as a direct child of cd-row. Wrap it with a div."
   assertNonexistence "cd-row > img", "Don't put images directly in cd-row — wrap them in a div"
@@ -46,9 +46,9 @@ Take ["Config", "DOMContentLoaded"], (Config)->
   assertNonexistence "small-row > :not(div)", "The items in small-row must be divs (or wrapped in divs)."
   assertNonexistence "small-row > [class]", "Don't put any classes on your small-row items."
   assertNonexistence "[content-link]:not(a)", "Don't use the content-link attribute on elements other than <a>."
-  
+
   # Uniqueness
-  
+
   assertAttrUnique = (selector, attr, msgFn)->
     vals = {}
     for elm in document.querySelectorAll selector
@@ -57,9 +57,9 @@ Take ["Config", "DOMContentLoaded"], (Config)->
     for val, elms of vals
       if elms.length > 1
         warn msgFn(val), elms
-  
+
   assertAttrUnique "cd-activity", "name", (val)-> "You have more than one cd-activity named \"#{val}\". Each activity must have a unique name."
   assertAttrUnique "[id]", "id", (val)-> "You have more than one element with the id \"#{val}\". Each id must be unique."
   assertAttrUnique "object", "data", (val)-> "You have more than one SVGA with the data url \"#{val}\". Please make these data urls unique by adding a #hash, eg: \"#{val}#review\". See the cd-module docs section on SVGA Configuration for more info."
-  
+
   Make "WarningsDone"
