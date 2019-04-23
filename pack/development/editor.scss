@@ -17,13 +17,13 @@ html[env-dev] {
 
   editor-container {
     display: none;
-    
+
     &.show { display: block; }
-    
+
     textarea {
       display: block;
       position: fixed;
-      top: .5rem;
+      top: 3rem;
       right: .5rem;
       height: 5em;
       min-width: 10rem;
@@ -33,7 +33,7 @@ html[env-dev] {
       border: 2px solid hsl(220, 45%, 80%);
       background: rgba($off-white, .7);
       &::-webkit-input-placeholder { color: hsl(220, 45%, 80%); }
-      
+
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }
