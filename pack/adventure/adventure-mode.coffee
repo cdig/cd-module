@@ -22,7 +22,7 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
   historyDirty = false
 
   setVisibility = (elm, visible = true)->
-    elm.style.visibility = if visible then "visible" else "hidden"
+    elm.style.display = if visible then "block" else "none"
     for obj in elm.querySelectorAll "object"
       ChildData.send obj, "disabled", !visible
 
