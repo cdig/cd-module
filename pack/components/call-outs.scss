@@ -10,14 +10,14 @@ call-out, cd-map call-out {
   position: absolute;
   display: block;
   top: 0;
-  
+
   // Override cd-map white-space handling
   &, &[pin] { white-space: normal; }
-  
+
   // Overridden by local styles — these are just helpful defaults to avoid 'auto' errors
   margin-top: 0;
   left: 0;
-  
+
   call-out-point {
     position: absolute;
     display: block;
@@ -28,23 +28,33 @@ call-out, cd-map call-out {
     border: 4px solid $call-out-ring-color;
     border-radius: $call-out-point-size;
     background: radial-gradient($call-out-point-size at center, rgba($call-out-ring-color, 0), $call-out-ring-color);
-    animation: call-out-pulse 4s cubic-bezier(.1,.4,.5,1) infinite;
+    animation: call-out-pulse 4s linear infinite;
   }
-  
+
   call-out-label {
     display: none;
     position: relative;
-    padding: .5em;
-    font-size: 0.9rem;
-    width: 12em;
-    text-align: center;
-    background-color: $call-out-label-background;
-    box-shadow: 0 .2em 2em -.5em black;
-    
-    @media (max-width: $iPhoneLandscape) {
-      font-size: 1rem;
+
+    call-out-label-content {
+      display: block;
+      padding: .5em;
+      font-size: 0.9rem;
+      width: 12em;
+      max-width: 100vw;
+      text-align: center;
+      background-color: $call-out-label-background;
+      box-shadow: 0 .2em 2em -.5em black;
+
+      & > * {
+        margin-top: .5em;
+        margin-bottom: .5em;
+      }
+
+      p {
+        text-align: left;
+      }
     }
-    
+
     &::after {
       content: "";
       position: absolute;
@@ -52,17 +62,8 @@ call-out, cd-map call-out {
       height: 0;
       border: $call-out-arrow-size solid transparent;
     }
-    
-    & > * {
-      margin-top: .5em;
-      margin-bottom: .5em;
-    }
-    
-    p {
-      text-align: left;
-    }
   }
-  
+
   &[seen][open], &[seen][closing] {
     z-index: 100;
     call-out-label {
@@ -73,21 +74,21 @@ call-out, cd-map call-out {
       opacity: 0;
     }
   }
-  
+
   &[open] call-out-label {
     animation: call-out-appear .1s ease-out both;
   }
-  
+
   &[closing] call-out-label {
     animation: call-out-disappear .1s ease-in both;
   }
-  
+
   &[seen] call-out-point {
     border-color: $call-out-seen-ring-color;
     background: radial-gradient($call-out-point-size at center, rgba($call-out-seen-ring-color, 0), $call-out-seen-ring-color);
-    animation: call-out-pulse 4s cubic-bezier(.1,.4,.5,1) infinite;
+    animation: call-out-pulse 4s linear infinite;
   }
-  
+
   &[top] {
     transform: translate(-50%, -100%);
     call-out-point, call-out-label::after {
@@ -95,7 +96,7 @@ call-out, cd-map call-out {
       left: 50%;
     }
     call-out-label {
-      top: -$call-out-arrow-size -$call-out-point-size/6;
+      top: -$call-out-arrow-size -$call-out-point-size/3;
       transform-origin: bottom;
       &::after {
         transform: translate(-50%, 0%);
@@ -103,7 +104,7 @@ call-out, cd-map call-out {
       }
     }
   }
-  
+
   &[left] {
     transform: translate(-100%, -50%);
     call-out-point, call-out-label::after {
@@ -111,7 +112,7 @@ call-out, cd-map call-out {
       left: 100%;
     }
     call-out-label {
-      left: -$call-out-arrow-size -$call-out-point-size/6;
+      left: -$call-out-arrow-size -$call-out-point-size/3;
       transform-origin: right;
       &::after {
         transform: translate(0%, -50%);
@@ -119,7 +120,7 @@ call-out, cd-map call-out {
       }
     }
   }
-  
+
   &[right] {
     transform: translate(0%, -50%);
     call-out-point, call-out-label::after {
@@ -127,7 +128,7 @@ call-out, cd-map call-out {
       left: 0%;
     }
     call-out-label {
-      right: -$call-out-arrow-size -$call-out-point-size/6;
+      right: -$call-out-arrow-size -$call-out-point-size/3;
       transform-origin: left;
       &::after {
         transform: translate(-95%, -50%); // 95% because of crappy pixel rounding errors
@@ -135,7 +136,7 @@ call-out, cd-map call-out {
       }
     }
   }
-  
+
   &[bottom] {
     transform: translate(-50%, 0%);
     call-out-point, call-out-label::after {
@@ -143,7 +144,7 @@ call-out, cd-map call-out {
       left: 50%;
     }
     call-out-label {
-      bottom: -$call-out-arrow-size -$call-out-point-size/6;
+      bottom: -$call-out-arrow-size -$call-out-point-size/3;
       transform-origin: top;
       &::after {
         transform: translate(-50%, -95%); // 95% because of crappy pixel rounding errors
@@ -154,8 +155,9 @@ call-out, cd-map call-out {
 }
 
 @keyframes call-out-pulse {
-    0% { transform: scale(0.2); opacity: 0; }
-   30% { opacity: 1; }
+    0% { transform: scale(.5); opacity: 0; }
+   20% { opacity: 1; }
+   80% { opacity: 1; }
   100% { transform: scale(1); opacity: 0; }
 }
 
