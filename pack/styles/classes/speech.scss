@@ -1,3 +1,5 @@
+$pointerSize: 1em;
+
 .speech {
   position: relative;
   border-radius: .5em;
@@ -18,8 +20,6 @@
   &.pat        { color: $green; }
   &.ruth       { color: $light-blue; }
   &.treebeard  { color: $brown; }
-
-  $pointerSize: 1em;
 
   &::after {
     content: '';
@@ -68,5 +68,29 @@
     margin-left: -$pointerSize/2;
     margin-bottom: -$pointerSize;
   }
+}
 
+@media (max-width: $iPhoneLandscape) {
+  cd-row .speech {
+    order: -1;
+
+    &.top::after,
+    &.left::after,
+    &.right::after,
+    &.bottom::after {
+      top: auto;
+      right: auto;
+      margin-right: 0;
+      margin-top: 0;
+      border: $pointerSize solid transparent;
+
+      bottom: 0;
+      left: 50%;
+      border-top-color: currentColor;
+      border-bottom: 0;
+      border-left: 0;
+      margin-left: -$pointerSize/2;
+      margin-bottom: -$pointerSize;
+    }
+  }
 }
