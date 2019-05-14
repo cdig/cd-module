@@ -105,10 +105,9 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
 
   window.addEventListener "touchstart", closeLastOpened
 
-  for page in document.querySelectorAll "cd-page"
-    for map in page.querySelectorAll "cd-map"
-      if map.querySelector("call-out")?
-        page.addEventListener "mousemove", mousemove map # For mice
-        map.addEventListener "touchend", touchend map # For touch
-        map._points = for callout in map.querySelectorAll "call-out"
-          setup callout
+  for map in document.querySelectorAll "cd-map"
+    if map.querySelector("call-out")?
+      map.addEventListener "mousemove", mousemove map
+      map.addEventListener "touchend", touchend map
+      map._points = for callout in map.querySelectorAll "call-out"
+        setup callout
