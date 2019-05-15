@@ -6,10 +6,10 @@ Take ["Panel","Piece", "PieceSettings","PieceStyle", "PieceTransformations", "Tr
         PieceAnimations.introAnimation(piece)
       else
         PieceAnimations.animateToPanel(piece, 0.01)
-        
+
 
     introAnimation: (piece)->
-      PieceAnimations.animateToPanel(piece)
+      PieceAnimations.animateToPanel(piece, 1)
 
     animateToPanel: (piece, duration = 0.5)->
       PieceSettings.setSettingsForAnimation(piece)
@@ -21,7 +21,7 @@ Take ["Panel","Piece", "PieceSettings","PieceStyle", "PieceTransformations", "Tr
       Transitioner.afterTransition piece, ()->
         PieceStyle.enableTransformTransitions(piece, false)
       piece.scaleAnimation.stopScaleAnimation()
-      
+
       PieceTransformations.applyScale(piece, scale)
       PieceTransformations.applyPosition(piece, position)
 
