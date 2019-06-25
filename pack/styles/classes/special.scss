@@ -34,6 +34,10 @@
   }
 }
 
+.inbl, .inline-block {
+  display: inline-block; 
+}
+
 .strike {
   text-decoration: line-through;
 }
