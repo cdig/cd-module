@@ -38,7 +38,7 @@ inline-answer {
     }
 
     [unit] {
-      right: 4.2em;
+      right: 4.5em;
       color: $smoke;
     }
 
@@ -65,6 +65,7 @@ inline-answer {
     button {
       flex: 0 0 5em;
       width: 5em;
+      margin-right: .3em;
       padding: 0;
       border: 0;
       outline: 0;
