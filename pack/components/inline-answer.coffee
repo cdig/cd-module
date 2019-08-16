@@ -1,4 +1,5 @@
 Take ["DOOM", "DOMContentLoaded"], (DOOM)->
+
   setup = (elm)->
     timeout = null
 
@@ -79,4 +80,9 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
 
 
   # INIT
-  setup elm for elm in document.querySelectorAll "inline-answer"
+
+  # To give module scripts a chance to dynamically customize inline-answers,
+  # and to avoid a race condition, we delay initialization by one tick to
+  # guarantee that the module script has a chance to run before we grab the HTML.
+  setTimeout ()->
+    setup elm for elm in document.querySelectorAll "inline-answer"
