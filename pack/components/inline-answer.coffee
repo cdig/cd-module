@@ -8,6 +8,7 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
     unitText = DOOM elm, "unit"
     labelText = DOOM elm, "label"
     answerText = DOOM elm, "answer"
+    showAnswer = DOOM elm, "show-answer"
 
     DOOM elm, answer: null
 
@@ -69,13 +70,18 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
         e.preventDefault()
         submit()
 
+    if showAnswer is ""
+      input.value = answerText
+      input.disabled = true
+      update()
+      submit()
+    else
+      input.addEventListener "input", update
+      input.addEventListener "change", update
+      input.addEventListener "keydown", keydown
+      button.addEventListener "click", submit
 
-    input.addEventListener "input", update
-    input.addEventListener "change", update
-    input.addEventListener "keydown", keydown
-    button.addEventListener "click", submit
     window.addEventListener "resize", resize
-
     resize()
 
 
