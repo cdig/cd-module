@@ -86,8 +86,8 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
       width: "#{scaledW}px"
       height: "#{scaledH + controlHeight}px"
       marginTop: "#{outerH/2 - (scaledH + controlHeight)/2}px"
-    DOOM module,
-      height: "#{scaledH}px"
+    DOOM module, height: "#{scaledH}px"
+    DOOM object, height: "#{scaledH}px" for object in adventurePage.querySelectorAll "object"
     updateProgress()
 
 
