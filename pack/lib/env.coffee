@@ -3,16 +3,13 @@
 # Applies an attribute to the html element based on the current environment.
 
 do ()->
-  
-  parts = location.hostname.split(".")
-  tld = parts[parts.length-1]
-  
-  pow = tld is "test"
+
+  param = location.search.indexOf("dev=true") >= 0
   port = location.port.length > 0
-  
+
   Make "Env", Object.freeze Env =
-    dev: pow or port
-  
+    dev: param or port
+
   if Env.dev
     document.querySelector "html"
             .setAttribute "env-dev", ""
