@@ -1,11 +1,11 @@
 Take ["Config", "DOMContentLoaded", "WarningsDone"], (Config)->
-  return unless Config("dev") and window.top.location.href.indexOf("https://www.lunchboxsessions.com") isnt 0
+  return unless Config("dev") and window.top.location.href.indexOf("lunchboxsessions.com") is -1
 
   for obj in document.querySelectorAll "object"
     if obj.data.indexOf("lbs://") >= 0 or obj.data.indexOf("https://cdn.lunchboxsessions.com") >= 0
 
       obj.textContent = "(#{obj.data}) For security reasons, this SVGA will only be visible when the cd-module is deployed to LunchBox Sessions."
-      obj.setAttribute "svga-deploy-warning", ""
+      obj.setAttribute "svga-deploy-warning", obj.data
 
       # The following code was added in https://github.com/cdig/cd-module/commit/2005bf1
       # but I can't remember why. So if we have trouble with channel comms, we know what to look at first.
