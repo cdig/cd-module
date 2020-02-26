@@ -1,6 +1,7 @@
 [svga-deploy-warning] {
   padding: 2em;
   outline: 1px solid currentColor;
+  border-radius: 0px; // Override <object> style
   text-align: center;
   font-style: italic;
   word-break: break-word;
