@@ -1,15 +1,35 @@
+body[focus-mode-select=true] {
+  cd-page > * {
+    outline: 1px solid rgba($grey, 0.4);
+  }
+  cd-page > :hover {
+    position:relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($grey, 0.2);
+      z-index: 100;
+    }
+  }
+}
+
 body[focus-mode] {
 
   // Hide non-focussed pages
   cd-page:not([focus-mode]) {
     display: none;
   }
-  
+
   // Hide non-focussed mains and other top-level page items
   cd-page > :not([focus-mode]) {
     display: none;
   }
-  
+
   // Remove the excess padding, so you can focus on the content
   cd-page, cd-main {
     padding-top: 1px;
@@ -19,7 +39,7 @@ body[focus-mode] {
   cd-page {
     border-top: none;
   }
-  
+
   // Hide other gunk
   #title, #ending, #byline {
     display: none;
