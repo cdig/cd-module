@@ -1,50 +1,66 @@
 Take ["Config", "DOMContentLoaded"], (Config)->
 
-  updateSelect = (e)->
-    DOOM document.body, "focus-mode-select": e.altKey
-
-  window.addEventListener "keydown", updateSelect
-  window.addEventListener "keyup", updateSelect
-
-
+  showAllButton = document.querySelector("[focus-mode-button]") # This element is defined in top.kit
   elements = [] # Store a reference to elements so we can save and restore by index via Config
+  focussedElm = null
 
-  getId = (elm)->
-    for e, id in elements when e is elm
-      return id
+
+  # When holding the alt key, show the yellow focus-mode selector overlay
+  updateOverlay = (e)->
+    DOOM document.body, "focus-mode-overlay": e.altKey
+
+
+  turnOff = ()->
+    if focussedElm?
+      # Store the current window-relative position of the elm
+      top = focussedElm.offsetTop - document.scrollingElement.scrollTop
+
+      # Clear all focus mode state
+      focussedElm.removeAttribute "focus-mode"
+      focussedElm.parentElement.removeAttribute "focus-mode"
+      document.body.removeAttribute "focus-mode"
+      Config "focus", null
+
+      # Restore the window-relative position of the elm
+      document.scrollingElement.scrollTop = focussedElm.offsetTop - top
+
+      focussedElm = null
+
 
   toggle = (elm)->
-    # Store the position of the elm in the window
-    top = elm.offsetTop - document.body.scrollTop
+    # If we toggle an already-focussed element, just turn off focus mode
+    return turnOff() if elm is focussedElm
 
-    # Turn on focus
-    if not elm.hasAttribute "focus-mode"
-      elm.setAttribute "focus-mode", true
-      elm.parentElement.setAttribute "focus-mode", true
-      document.body.setAttribute "focus-mode", true
-      Config "focus-mode", getId(elm)
+    # If we're already focussed on some other element, clear it
+    if focussedElm?
+      focussedElm.removeAttribute "focus-mode"
+      focussedElm.parentElement.removeAttribute "focus-mode"
 
-    # Turn off focus mode
-    else
-      elm.removeAttribute "focus-mode"
-      elm.parentElement.removeAttribute "focus-mode"
-      document.body.removeAttribute "focus-mode"
-      Config "focus-mode", null
+    # Focus on the new element
+    focussedElm = elm
+    elm.setAttribute "focus-mode", true
+    elm.parentElement.setAttribute "focus-mode", true
+    document.body.setAttribute "focus-mode", true
+    Config "focus", elements.indexOf elm
 
-    # Restore the position of the elm in the window
-    document.body.scrollTop = elm.offsetTop - top
+    # Set the scroll position so that the Show All button is just tucked under the header
+    document.scrollingElement.scrollTop = showAllButton.offsetHeight
 
-  # Closure over the reference to elm
-  setup = (elm)->
-    elm.addEventListener "click", (e)->
-      updateSelect e
-      toggle elm if e.altKey # Only activate on option-click
 
-  # Setup on all children of cd-page elements
+  click = (e)->
+    updateOverlay e
+    toggle e.currentTarget if e.altKey # Only activate on option-click
+
+
+  # INIT
+
   for elm in document.querySelectorAll "cd-page > *"
+    elm.addEventListener "click", click
     elements.push elm
-    setup elm
 
-  # Immediately activate focus-mode if Config tells us to
-  savedFocus = Config "focus-mode"
-  toggle elements[savedFocus] if savedFocus?
+  showAllButton.addEventListener "click", turnOff
+  window.addEventListener "keydown", updateOverlay
+  window.addEventListener "keyup", updateOverlay
+
+  if (focussedIndex = Config "focus")?
+    toggle elements[focussedIndex]

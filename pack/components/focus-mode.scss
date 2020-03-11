@@ -1,9 +1,21 @@
-body[focus-mode-select=true] {
-  cd-page > * {
-    outline: 1px solid rgba($grey, 0.4);
+[focus-mode-button] {
+  position: relative;
+  display: none;
+  font-size: 16px;
+  border-top: 1em solid $off-white;
+  background-color: $off-white;
+
+  a {
+    position: absolute;
+    top: 1em;
+    left: calc(50% + 6em);
   }
-  cd-page > :hover {
-    position:relative;
+}
+
+body[focus-mode-overlay=true] {
+  cd-page > * {
+    position: relative;
+    cursor: pointer;
 
     &::after {
       content: "";
@@ -11,37 +23,34 @@ body[focus-mode-select=true] {
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background-color: rgba($grey, 0.2);
-      z-index: 100;
+      height: calc(100% - 3px);
+      outline: 3px solid $yellow;
+    }
+
+    &:hover::after {
+      background-color: rgba($yellow, 0.2);
     }
   }
 }
 
 body[focus-mode] {
 
-  // Hide non-focussed pages
-  cd-page:not([focus-mode]) {
+  cd-page,
+  cd-page > * {
     display: none;
   }
 
-  // Hide non-focussed mains and other top-level page items
-  cd-page > :not([focus-mode]) {
+  [focus-mode],
+  [focus-mode] ~ *,
+  [focus-mode] ~ cd-page > * {
+    display: block;
+  }
+
+  #title {
     display: none;
   }
 
-  // Remove the excess padding, so you can focus on the content
-  cd-page, cd-main {
-    padding-top: 1px;
-    padding-bottom: 1px;
-  }
-
-  cd-page {
-    border-top: none;
-  }
-
-  // Hide other gunk
-  #title, #ending, #byline {
-    display: none;
+  [focus-mode-button] {
+    display: block;
   }
 }
