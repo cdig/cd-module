@@ -1,4 +1,4 @@
-[focus-mode-button] {
+[focus-mode-controls] {
   position: relative;
   display: none;
   font-size: 16px;
@@ -35,6 +35,12 @@ body[focus-mode-overlay=true] {
 
 body[focus-mode] {
 
+  // Make sure all pages, even the first one, show the border,
+  // otherwise the focus-mode-controls looks weird when you focus-mode the first page in a module.
+  cd-page {
+    border-top: 1em solid $off-white;
+  }
+
   cd-page,
   cd-page > * {
     display: none;
@@ -50,7 +56,7 @@ body[focus-mode] {
     display: none;
   }
 
-  [focus-mode-button] {
+  [focus-mode-controls] {
     display: block;
   }
 }

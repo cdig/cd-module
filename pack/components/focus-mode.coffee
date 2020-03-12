@@ -1,6 +1,7 @@
 Take ["Config", "DOMContentLoaded"], (Config)->
 
-  showAllButton = document.querySelector("[focus-mode-button]") # This element is defined in top.kit
+  focusModeControls = document.querySelector("[focus-mode-controls]") # This element is defined in top.kit
+  showAllButton = focusModeControls.querySelector("button")
   elements = [] # Store a reference to elements so we can save and restore by index via Config
   focussedElm = null
 
@@ -44,7 +45,7 @@ Take ["Config", "DOMContentLoaded"], (Config)->
     Config "focus", elements.indexOf elm
 
     # Set the scroll position so that the Show All button is just tucked under the header
-    document.scrollingElement.scrollTop = showAllButton.offsetHeight
+    document.scrollingElement.scrollTop = focusModeControls.offsetHeight
 
 
   click = (e)->
