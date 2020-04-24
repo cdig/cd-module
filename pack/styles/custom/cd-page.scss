@@ -1,16 +1,7 @@
 cd-page {
   display: block;
   padding: calc(#{4vw} + 1em) 0;
-  
-  // 1-page modules, like puzzles
-  &:first-child:last-child {
-    padding: 0;
-    
-    cd-main {
-      padding: calc(1vw + .5em) 0;
-    }
-  }
-  
+
   & > :not(cd-main) {
     display: block;
     width: 100%;
@@ -20,7 +11,7 @@ cd-page {
 
     &:not(.full) {
       width: $maxPageWidth;
-      
+
       @media (max-width: $maxPageWidthPx) {
         width: 94vw;
       }
@@ -30,4 +21,14 @@ cd-page {
 
 cd-page + cd-page {
   border-top: 1em solid $off-white;
+}
+
+// 1-page modules, like puzzles
+cd-page:first-child:last-child,
+[focus-mode-controls] + cd-page:last-child {
+  padding: 0;
+
+  cd-main {
+    padding: calc(1vw + .5em) 0;
+  }
 }
