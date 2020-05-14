@@ -1,10 +1,7 @@
 Take ["Panel", "PieceSettings","Transformer", "Vector"], (Panel, PieceSettings,Transformer, Vector)->
   extractTransform = (element)->
     style = window.getComputedStyle(element)
-    webkit = style.getPropertyValue("-webkit-transform")
-    standard = style.getPropertyValue("transform")
-
-    return standard or webkit
+    return style.getPropertyValue("transform")
 
   extractTranslate = (transformString)->
     matches = transformString.match(/matrix\(([^-]*), 0, 0, ([^-]*), (.+), (.+)\)/)
@@ -19,7 +16,7 @@ Take ["Panel", "PieceSettings","Transformer", "Vector"], (Panel, PieceSettings,T
       return Vector.create()
 
   Make "PieceTransformations", PieceTransformations =
-    # TRANSFORMATIONS ##################################################################################
+    
     animateToPanel: ()->
       PieceSettings.setSettingsForAnimation(piece)
       transitionToPositionAndScale(panelPosition, panelScale, .5)

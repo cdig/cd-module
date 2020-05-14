@@ -1,26 +1,27 @@
-Take ["Vector", "load"], (Vector)->
-  
+Take ["Vector"], (Vector)->
+
   Make "Panel", Panel =
-    makePanel: (gameElement, gameInstance)->
-      panelElement = document.createElement("piece-panel")
-      gameElement.insertBefore(panelElement, gameElement.firstChild)
-      return {element:panelElement, gameInstance: gameInstance}
-  
+    makePanel: (game)->
+      panelElement = document.createElement "piece-panel"
+      game.element.insertBefore panelElement, game.element.firstChild
+      return
+        element: panelElement
+        gameInstance: game
+
     x: (panel)->
-      return panel.element.getBoundingClientRect().left#@panel.element.offsetLeft
-    
+      panel.element.getBoundingClientRect().left
+
     y: (panel)->
-      return panel.element.getBoundingClientRect().top #@panel.element.offsetTop
-    
+      panel.element.getBoundingClientRect().top
+
     width: (panel)->
-      return panel.element.offsetWidth
-    
+      panel.element.offsetWidth
+
     height: (panel)->
-      return panel.element.offsetHeight
-    
+      panel.element.offsetHeight
+
     position: (panel)->
-      return Vector.fromRectPos(panel.element.getBoundingClientRect())
-  
+      Vector.fromRectPos panel.element.getBoundingClientRect()
+
     victoryDance: (panel)->
-      panel.element.setAttribute("message", "Correct!")
-  
+      panel.element.setAttribute "message", "Correct!"

@@ -1,10 +1,8 @@
-Take ["ComputePanelProperties", "OnScreen", "Panel", "PieceDrag", "PiecesSetup", "PieceAnimations", "ScaleAnimation", "load"], (ComputePanelProperties, OnScreen, Panel, PieceDrag, PiecesSetup, PieceAnimations, ScaleAnimation)->
+Take ["ComputePanelProperties", "OnScreen", "Panel", "PiecesSetup", "PieceAnimations", "Shuffle", "load"], (ComputePanelProperties, OnScreen, Panel, PiecesSetup, PieceAnimations, Shuffle)->
 
-  pitActivities = document.querySelectorAll("cd-activity[type='piece-it-together']")
+  activities = document.querySelectorAll("cd-activity[type='piece-it-together']")
 
-  return unless pitActivities.length > 0
-
-# THESE ARE DUMB AND SHOULD BE REFACTORED AWAY
+  return unless activities.length > 0
 
   droppedItemCorrectly = (game)-> (item)->
     game.pieces.splice(game.pieces.indexOf(item), 1)
@@ -14,40 +12,21 @@ Take ["ComputePanelProperties", "OnScreen", "Panel", "PieceDrag", "PiecesSetup",
       panelUpdate(game, true)
 
   getMatchingGroupPairNearItem = (game)-> (droppedItem)->
-    for item in game.pieces when (item isnt droppedItem and item.matchGroup isnt "") #need to check for "" for match groups
-      if item.matchGroup is droppedItem.matchGroup
-        if droppedItem.drag.isCloseTo(item)
-          return item
+    for item in game.pieces
+      if item isnt droppedItem
+        if item.matchGroup isnt ""
+          if item.matchGroup is droppedItem.matchGroup
+            if droppedItem.drag.isCloseTo item
+              return item
     return null
-
-
-# Hey, it's a fake class instance!
-
-  createGame = (element)->
-    game =
-      element: element
-      activated: false
-    game.pieces = PiecesSetup.makePieces(game.element, game)
-    game.nWrongPieces = (piece for piece in game.pieces when piece.isWrong).length
-    game.panel = Panel.makePanel(game.element, game)
-    game.getMatchingGroupPairNearItem = getMatchingGroupPairNearItem(game)
-    game.droppedItemCorrectly = droppedItemCorrectly(game)
-
-    # Bugfix: Without the setTimeout, the activity might not initialize properly
-    # if it is already on screen right as the code finishes loading.
-    setTimeout ()->
-      OnScreen game.element, attemptActivation game
-
-    return game
-
 
 # RESIZE
 
   handleResize = (game)->
-    window.addEventListener("resize", ()-> resize(game))
+    window.addEventListener "resize", ()-> resize game
 
   resize = (game)->
-    panelUpdate(game, false)
+    panelUpdate game, false
 
 
 # ACTIVATION
@@ -61,6 +40,7 @@ Take ["ComputePanelProperties", "OnScreen", "Panel", "PieceDrag", "PiecesSetup",
       # Only handle resizes after the intro animation begins, otherwise it might skip the animation
       handleResize(game)
       game.element.setAttribute "ready", ""
+
 
 # GAME STATE CHANGE
 
@@ -78,8 +58,22 @@ Take ["ComputePanelProperties", "OnScreen", "Panel", "PieceDrag", "PiecesSetup",
       PieceAnimations.panelUpdate(item, animate)
 
 
-# INITIALIZATION
+  # INIT
 
-  # We store all the games in an array, to prevent the GC from collecting them
-  games = for pitActivity in pitActivities
-    createGame(pitActivity)
+  setup = (elm)->
+    game =
+      element: elm
+      activated: false
+    game.pieces = Shuffle PiecesSetup game
+    game.nWrongPieces = game.pieces.filter((p)-> p.isWrong).length
+    game.panel = Panel.makePanel game
+    game.getMatchingGroupPairNearItem = getMatchingGroupPairNearItem game
+    game.droppedItemCorrectly = droppedItemCorrectly game
+
+    # Bugfix: Without the setTimeout, the activity might not initialize properly
+    # if it is already on screen right as the code finishes loading.
+    setTimeout ()->
+      OnScreen game.element, attemptActivation game
+
+  for activity in activities
+    setup activity
