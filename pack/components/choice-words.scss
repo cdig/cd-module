@@ -1,0 +1,21 @@
+[type="choice-words"] {
+
+  line-height: 1.6;
+
+  select {
+    vertical-align: middle;
+  }
+
+  .result {
+    display: inline-block;
+    text-align: center;
+    color: $green;
+    border-bottom: 1px solid currentColor;
+    line-height: 1;
+  }
+
+  .finished {
+    transition: all 1s;
+  }
+
+}

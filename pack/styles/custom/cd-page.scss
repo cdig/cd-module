@@ -29,6 +29,7 @@ cd-page:first-child:last-child,
   padding: 0;
 
   cd-main {
-    padding: calc(1vw + .5em) 0;
+    padding-top: calc(1vw + .5em);
+    padding-bottom: calc(1vw + .5em);
   }
 }
