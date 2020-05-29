@@ -4,8 +4,8 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
     Make "AdventureMode", false
 
   pageContainer = document.querySelector "#page"
-  module = pageContainer.querySelector "cd-module"
-  adventurePage = module.querySelector "#adventure"
+  module = pageContainer?.querySelector "cd-module"
+  adventurePage = module?.querySelector "#adventure"
   return bail() unless adventurePage?
 
   mains = (main for main in adventurePage.querySelectorAll "cd-main")
