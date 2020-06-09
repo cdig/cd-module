@@ -25,11 +25,13 @@ do ()->
           rawVal
 
   rebuildURL = ()->
-    url = window.location.href.split("?")[0]
-    parts = for k, v of cache
-      k + "=" + v
-    if parts.length > 0
-      url += "?" + parts.join "&"
+    origin = window.location.origin
+    path = window.location.pathname
+    hash = window.location.hash
+    search = (k + "=" + v for k, v of cache).join "&"
+    url = origin + path
+    url += "?#{search}" if search?.length > 0
+    url += hash if hash?.length > 0
     history.replaceState null, null, url
 
   Make "Params", Params = (name, value)->
