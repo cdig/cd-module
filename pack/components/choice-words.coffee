@@ -1,25 +1,32 @@
 Take ["DOOM", "Shuffle", "DOMContentLoaded"], (DOOM, Shuffle)->
 
-  finishGame = (elm)->
+  finishGame = (elm)-> ()->
     for result in elm.querySelectorAll ".result"
       DOOM result, class: "finished"
 
 
   change = (elm)-> (e)->
-    select = e.currentTarget
-    correct = select.value is select._correctAnswer
-    if correct
-      select.replaceWith DOOM.create "span", null,
-        textContent: select._correctAnswer
-        class: "result"
-        minWidth: select.offsetWidth + "px"
+    selects = elm.querySelectorAll "select"
+    correctSelects = []
+    for select in selects
+      if select.value is select._correctAnswer
+        correctSelects.push select
+    if correctSelects.length >= Math.min selects.length, 3
+      for select in correctSelects
+        select.replaceWith DOOM.create "span", null,
+          textContent: select._correctAnswer
+          class: "result"
+          minWidth: select.offsetWidth + "px"
       rebuildAnswers elm
 
 
   rebuildAnswers = (elm)->
     selects = elm.querySelectorAll "select"
     words = (select._correctAnswer for select in selects)
-    return finishGame elm if words.length is 0
+    if words.length is 0
+      return setTimeout finishGame(elm), 1300
+    for wrong in elm.querySelectorAll "wrong-answer"
+      words.push wrong.textContent
     words = words.sort()
     words = Array.from new Set [].concat words
     words.unshift ""
@@ -36,10 +43,11 @@ Take ["DOOM", "Shuffle", "DOMContentLoaded"], (DOOM, Shuffle)->
 
 
   setup = (elm)->
-    selects = elm.querySelectorAll "select"
-    for select in selects
+    for select in elm.querySelectorAll "select"
       select._correctAnswer = select.textContent
       select.addEventListener "change", change elm
+    for wrong in elm.querySelectorAll "wrong-answer"
+      wrong.style.display = "none"
     rebuildAnswers elm
 
 
