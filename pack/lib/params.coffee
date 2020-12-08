@@ -36,9 +36,13 @@ do ()->
 
   Make "Params", Params = (name, value)->
     if value isnt undefined
-      if value?
+
+      if value? and cache[name] isnt value
         cache[name] = value
-      else
+        rebuildURL()
+
+      if !value? and cache[name]?
         delete cache[name]
-      rebuildURL()
+        rebuildURL()
+
     return cache[name]
