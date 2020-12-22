@@ -1,4 +1,5 @@
-Take ["Config", "DOMContentLoaded"], (Config)->
+Take ["AdventureMode", "Config", "DOMContentLoaded"], (AdventureMode, Config)->
+  return if AdventureMode
 
   focusModeControls = document.querySelector("[focus-mode-controls]") # This element is defined in top.kit
   showAllButton = focusModeControls.querySelector("button")

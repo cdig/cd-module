@@ -21,10 +21,17 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
   currentPage = (window.location.hash.replace("#","") or 1) - 1
   historyDirty = false
 
+  scaledW = 0
+  scaledH = 0
+
   setVisibility = (elm, visible = true)->
+    return if elm._adventure_mode_visible is visible
+    elm._adventure_mode_visible = visible
     elm.style.display = if visible then "block" else "none"
     for obj in elm.querySelectorAll "object"
       ChildData.send obj, "disabled", !visible
+      ChildData.send obj, "forcedWidth", scaledW
+      ChildData.send obj, "forcedHeight", scaledH
 
   hideAll = ()->
     setVisibility main, false for main in mains
@@ -54,10 +61,11 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
       historyDirty = false
 
   goToPage = (n)->
-    hideAll()
     currentPage = Math.max 0, Math.min mains.length-1, n
+    return unless currentPage is n # Avoid thrashing the layout if we try to go past the end
     nextButton.disabled = currentPage is mains.length-1
     prevButton.disabled = currentPage is 0
+    hideAll()
     setVisibility mains[currentPage]
     updateProgress()
     requestHistoryUpdate()
@@ -87,7 +95,10 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
       height: "#{scaledH + controlHeight}px"
       marginTop: "#{outerH/2 - (scaledH + controlHeight)/2}px"
     DOOM module, height: "#{scaledH}px"
-    DOOM object, height: "#{scaledH}px" for object in adventurePage.querySelectorAll "object"
+    for object in adventurePage.querySelectorAll "object"
+      DOOM object, height: "#{scaledH}px"
+      ChildData.send object, "forcedWidth", scaledW
+      ChildData.send object, "forcedHeight", scaledH
     updateProgress()
 
 
