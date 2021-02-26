@@ -47,7 +47,8 @@ $teal:   hsl(180, 100%, 29%);
 $transparent: transparent;
 
 // HYDRAULIC PRESSURE COLORS
-$atmospheric-pressure: #00F;
+$atmospheric-pressure: #00F; // Deprecated
+$drain-pressure: #00F;
 $no-pressure: #00F;
 $low-pressure: #FF0;
 $medium-pressure: #F70;

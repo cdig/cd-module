@@ -15,20 +15,20 @@ cd-legend {
   pointer-events: none;
   transition: opacity .2s, transform .2s;
   white-space: nowrap;
-  
+
   &[cd-legend-hide] {
     display: none;
   }
-  
+
   &[cd-legend-show] {
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
-  
+
   &[cd-legend-reset] {
     transition: none;
   }
-  
+
   &::before {
     content: "";
     position: relative;
@@ -44,26 +44,26 @@ cd-legend {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
   }
-  
+
   .cd-legend-name {
     display: inline-block;
     margin-left: .3em;
     font-size: .8em;
   }
-  
+
   .cd-legend-color {
     display: inline-block;
     width: 1em;
     height: 1em;
     vertical-align: middle;
   }
-  
+
   .cd-legend-vacuum-pressure      { background-color: #F0F; }
-  .cd-legend-atmospheric-pressure { background-color: #00F; }
+  .cd-legend-drain-pressure       { background-color: #00F; }
   .cd-legend-low-pressure         { background-color: #FF0; }
   .cd-legend-medium-pressure      { background-color: #F70; }
   .cd-legend-high-pressure        { background-color: #F00; }
-  
+
   .cd-legend-ground-voltage       { background-color: #000; }
   .cd-legend-low-voltage          { background-color: #FFD800; }
   .cd-legend-medium-voltage       { background-color: #7fd97f; }

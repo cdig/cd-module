@@ -23,7 +23,8 @@ cd-module {
     // DOMAIN COLORS //////////////////////////////////////////////////////////////////////////////
     // Note - these are text colors by default, and require "-bg" to be used as a background.
 
-    .atmospheric-pressure { color: $atmospheric-pressure; }
+    .atmospheric-pressure { color: $drain-pressure; } // Deprecated
+    .drain-pressure { color: $drain-pressure; }
     .no-pressure { color: $no-pressure; }
     .low-pressure { color: $low-pressure; }
     .medium-pressure { color: $medium-pressure; }
@@ -32,7 +33,8 @@ cd-module {
     .electric { color: $electric; }
     .magnetic { color: $magnetic; }
 
-    .atmospheric-pressure-bg { background-color: $atmospheric-pressure; }
+    .atmospheric-pressure-bg { background-color: $drain-pressure; } // Deprecated
+    .drain-pressure-bg { background-color: $drain-pressure; }
     .no-pressure-bg { background-color: $no-pressure; }
     .low-pressure-bg { background-color: $low-pressure; }
     .medium-pressure-bg { background-color: $medium-pressure; }
