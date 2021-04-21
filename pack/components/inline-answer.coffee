@@ -51,7 +51,13 @@ Take ["DOOM", "DOMContentLoaded"], (DOOM)->
       reset()
       v = input.value
       hasInput = v.length > 0
-      isCorrect = if type is "number" then +v is +answerText else v is answerText
+      isCorrect = switch type
+        when "text"
+          v.toLowerCase() is answerText.toLowerCase()
+        when "exact"
+          v is answerText
+        else # "number" is the default
+          +v is +answerText
       if hasInput and isCorrect
         DOOM elm, correct: ""
         DOOM button, textContent: "Correct"
