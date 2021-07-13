@@ -24,7 +24,7 @@ call-out, cd-map call-out {
     z-index: 101;
     width: $call-out-point-size;
     height: $call-out-point-size;
-    margin: -$call-out-point-size/2;
+    margin: calc(-#{$call-out-point-size} / 2);
     border: 4px solid $call-out-ring-color;
     border-radius: $call-out-point-size;
     background: radial-gradient($call-out-point-size at center, rgba($call-out-ring-color, 0), $call-out-ring-color);
@@ -96,7 +96,7 @@ call-out, cd-map call-out {
       left: 50%;
     }
     call-out-label {
-      top: -$call-out-arrow-size -$call-out-point-size/3;
+      top: calc(-#{$call-out-arrow-size} - #{$call-out-point-size} / 3);
       transform-origin: bottom;
       &::after {
         transform: translate(-50%, 0%);
@@ -112,7 +112,7 @@ call-out, cd-map call-out {
       left: 100%;
     }
     call-out-label {
-      left: -$call-out-arrow-size -$call-out-point-size/3;
+      left: calc(-#{$call-out-arrow-size} - #{$call-out-point-size} / 3);
       transform-origin: right;
       &::after {
         transform: translate(0%, -50%);
@@ -128,7 +128,7 @@ call-out, cd-map call-out {
       left: 0%;
     }
     call-out-label {
-      right: -$call-out-arrow-size -$call-out-point-size/3;
+      right: calc(-#{$call-out-arrow-size} - #{$call-out-point-size} / 3);
       transform-origin: left;
       &::after {
         transform: translate(-95%, -50%); // 95% because of crappy pixel rounding errors
@@ -144,7 +144,7 @@ call-out, cd-map call-out {
       left: 50%;
     }
     call-out-label {
-      bottom: -$call-out-arrow-size -$call-out-point-size/3;
+      bottom: calc(-#{$call-out-arrow-size} - #{$call-out-point-size} / 3);
       transform-origin: top;
       &::after {
         transform: translate(-50%, -95%); // 95% because of crappy pixel rounding errors

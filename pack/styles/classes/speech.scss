@@ -35,7 +35,7 @@ $pointerSize: 1em;
     border-right-color: currentColor;
     border-left: 0;
     border-bottom: 0;
-    margin-top: -$pointerSize/2;
+    margin-top: calc(-#{$pointerSize} / 2);
     margin-left: -$pointerSize;
   }
 
@@ -45,7 +45,7 @@ $pointerSize: 1em;
     border-left-color: currentColor;
     border-right: 0;
     border-bottom: 0;
-    margin-top: -$pointerSize/2;
+    margin-top: calc(-#{$pointerSize} / 2);
     margin-right: -$pointerSize;
   }
 
@@ -55,7 +55,7 @@ $pointerSize: 1em;
     border-bottom-color: currentColor;
     border-top: 0;
     border-left: 0;
-    margin-left: -$pointerSize/2;
+    margin-left: calc(-#{$pointerSize} / 2);
     margin-top: -$pointerSize;
   }
 
@@ -65,7 +65,7 @@ $pointerSize: 1em;
     border-top-color: currentColor;
     border-bottom: 0;
     border-left: 0;
-    margin-left: -$pointerSize/2;
+    margin-left: calc(-#{$pointerSize} / 2);
     margin-bottom: -$pointerSize;
   }
 }
@@ -89,7 +89,7 @@ $pointerSize: 1em;
       border-top-color: currentColor;
       border-bottom: 0;
       border-left: 0;
-      margin-left: -$pointerSize/2;
+      margin-left: calc(-#{$pointerSize} / 2);
       margin-bottom: -$pointerSize;
     }
   }
