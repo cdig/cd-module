@@ -14,7 +14,7 @@ $pointerSize: 1em;
   &.dimitri    { color: $yellow; & > * { color: $black; } }
   &.hank       { color: $navy; }
   &.jj         { color: $teal; }
-  &.john       { color: $mint; & > * { color: $black; } }
+  &.john       { color: $mint; }
   &.morty      { color: $orange; & > * { color: $black; } }
   &.nathan     { color: $smoke; }
   &.pat        { color: $green; }
