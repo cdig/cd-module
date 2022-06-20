@@ -12,6 +12,8 @@ $pointerSize: 1em;
   &.benjamin   { color: $purple; }
   &.billy      { color: $blue; }
   &.dimitri    { color: $yellow; & > * { color: $black; } }
+  &.frank      { color: #184933; }
+  &.kevin      { color: #966731; }
   &.hank       { color: $navy; }
   &.jj         { color: $teal; }
   &.john       { color: $mint; }
@@ -19,6 +21,7 @@ $pointerSize: 1em;
   &.nathan     { color: $smoke; }
   &.pat        { color: $green; }
   &.ruth       { color: $light-blue; }
+  &.sophie     { color: #5c1e3a; }
   &.treebeard  { color: $brown; }
 
   &::after {
