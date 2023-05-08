@@ -2,13 +2,12 @@
   "name": "cd-module",
   "version": "4.1.0",
   "description": "A Framework For LBS Lessons",
-  "license": "UNLICENSED",
-  "private": true,
   "dependencies": {
-    "cd-core": "cdig/cd-core#v4-1",
     "cd-reset": "cdig/cd-reset#v4-1",
     "doom": "ivanreese/doom",
     "fonts": "cdig/fonts#v4-1",
     "take-and-make": "cdig/take-and-make#93f4e15"
-  }
+  },
+  "license": "UNLICENSED",
+  "private": true
 }
