@@ -1,0 +1,11 @@
+// The below rules are being extracted from our global font stylesheets hosted on AWS.
+// We're reworking our global font setup to be more automated, and these hand-written
+// rules were present in the old sheets are only used by cd-module.
+
+// https://github.com/cdig/cd-module/wiki#semantic-fonts
+.handwriting { font-family: "Architect's Daughter" }
+.felt { font-family: "Helsinki" }
+
+.rock-salt {
+  line-height: 1.8;
+}
