@@ -5,7 +5,6 @@
   "dependencies": {
     "cd-reset": "cdig/cd-reset#v4-1",
     "doom": "ivanreese/doom",
-    "fonts": "cdig/fonts#v4-1",
     "take-and-make": "cdig/take-and-make#93f4e15"
   },
   "license": "UNLICENSED",
