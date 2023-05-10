@@ -50,11 +50,12 @@ Take [], ()->
           channel = getChannelForElement elm
           channel.port = e.ports[0]
           channel.port.addEventListener "message", makeChannelListener channel
-          channel.port.postMessage "INIT"
           for attr in elm.attributes
             channel.outbox[cleanAttrName attr.name] = attr.value
           for k,v of channel.outbox
             channel.port.postMessage "#{k}:#{v}"
+          # We send INIT after dumping the outbox, because SVGA systems (like Background) expect the configuration from cd-module to already exist in ParentData when they're being initialized
+          channel.port.postMessage "INIT"
           channel.port.start()
 
   makeChannelListener = (channel)-> (e)->
