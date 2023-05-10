@@ -1,4 +1,4 @@
-do ()->
+Take [], ()->
   channels = {}
 
   cleanId = (id)->
@@ -14,30 +14,22 @@ do ()->
       outbox: {}
       listeners: []
 
-  sendToChannel = (channel, k, v)->
-    if channel.outbox[k] isnt v
-      channel.outbox[k] = v
-      channel.port.postMessage "#{k}:#{v}" if channel.port?
+
+  # API ###########################################################################################
 
   Make "ChildData",
     send: (elm, k, v)->
-      sendToChannel getChannelForElement(elm), k, v
+      channel = getChannelForElement elm
+      if channel.outbox[k] isnt v
+        channel.outbox[k] = v
+        channel.port?.postMessage "#{k}:#{v}"
 
+    # Currently only used by svga-height.coffee so that the SVGA can set its own <object>'s height from inside
     listen: (elm, cb)->
       channel = getChannelForElement elm
       channel.listeners.push cb
       cb channel.inbox
 
-  makeChannelListener = (channel)-> (e)->
-    parts = e.data.split ":"
-    channel.inbox[parts[0]] = parts[1]
-    cb channel.inbox for cb in channel.listeners # How does this cb know which <object> this is?
-
-  charToUpper = (match, char)->
-    char.toUpperCase()
-
-  cleanAttrName = (name)->
-    name.replace("x-", "").replace /-(.)/g, charToUpper
 
   # INIT ##########################################################################################
 
@@ -47,17 +39,32 @@ do ()->
     # So, do a quick check to avoid null accesses.
     return unless e.data?.split?
 
-    parts = e.data.split(":")
-    messageType = parts[0]
-    id = parts[1]
+    if e.data is "Handshake"
+      e.source.postMessage "Handshake Received", "*"
 
-    if messageType is "Channel"
-      for obj in document.querySelectorAll "object" when cleanId(obj.getAttribute "data") is cleanId id
-        channel = getChannelForElement obj
-        channel.port = e.ports[0]
-        channel.outbox[cleanAttrName attr.name] = attr.value for attr in obj.attributes
-        channel.port.postMessage "#{k}:#{v}" for k,v of channel.outbox
-        channel.port.postMessage "INIT"
-        channel.port.addEventListener "message", makeChannelListener channel
-        channel.port.start()
-        return
+    else
+      [messageType, id] = e.data.split ":"
+      if messageType is "Channel"
+        cleanedId = cleanId id
+        for elm in document.querySelectorAll "object" when cleanedId is cleanId elm.getAttribute "data"
+          channel = getChannelForElement elm
+          channel.port = e.ports[0]
+          channel.port.addEventListener "message", makeChannelListener channel
+          channel.port.postMessage "INIT"
+          for attr in elm.attributes
+            channel.outbox[cleanAttrName attr.name] = attr.value
+          for k,v of channel.outbox
+            channel.port.postMessage "#{k}:#{v}"
+          channel.port.start()
+
+  makeChannelListener = (channel)-> (e)->
+    [k, v] = e.data.split ":"
+    if k? and v?
+      channel.inbox[k] = v
+      cb channel.inbox for cb in channel.listeners # How does this cb know which <object> this is?
+    else
+      console.log "ChildData received an unprocessable message:", e.data
+
+  cleanAttrName = (name)->
+    name.replace "x-", ""
+        .replace /-(.)/g, (match, char)-> char.toUpperCase()
