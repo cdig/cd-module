@@ -52,6 +52,7 @@ Take ["Shuffle", "DOMContentLoaded"], (Shuffle)->
       submit.disabled = true
       for input, i in inputs
         input.disabled = true
+      activity.dispatchEvent new Event "activity-completed"
 
     failure = ()->
       submit.textContent = "Not Quite"
