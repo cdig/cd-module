@@ -6,3 +6,4 @@ Take ["AdventureMode", "ChildData", "DOMContentLoaded"], (AdventureMode, ChildDa
 
   for elm in document.querySelectorAll "object"
     ChildData.listen elm, update elm
+    ChildData.send elm, "windowTopInnerHeight", window.top.innerHeight
