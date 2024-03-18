@@ -4,7 +4,7 @@
   "description": "A Framework For LBS Lessons",
   "dependencies": {
     "cd-reset": "cdig/cd-reset#v4-1",
-    "doom": "ivanreese/doom#3b91bf5",
+    "doom": "cdig/doom#3b91bf5",
     "take-and-make": "cdig/take-and-make#93f4e15"
   },
   "license": "UNLICENSED",
