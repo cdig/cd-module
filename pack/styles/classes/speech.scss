@@ -34,7 +34,7 @@ $pointerSize: 1em;
     border: $pointerSize solid transparent;
   }
 
-  &.left::after :not(.generic){
+  &.left::after {
     left: 0;
     top: 50%;
     border-right-color: currentColor;
@@ -44,7 +44,7 @@ $pointerSize: 1em;
     margin-left: -$pointerSize;
   }
 
-  &.right::after :not(.generic){
+  &.right::after {
     right: 0;
     top: 50%;
     border-left-color: currentColor;
@@ -54,7 +54,7 @@ $pointerSize: 1em;
     margin-right: -$pointerSize;
   }
 
-  &.top::after :not(.generic){
+  &.top::after {
     top: 0;
     left: 50%;
     border-bottom-color: currentColor;
@@ -64,7 +64,7 @@ $pointerSize: 1em;
     margin-top: -$pointerSize;
   }
 
-  &.bottom::after :not(.generic){
+  &.bottom::after {
     bottom: 0;
     left: 50%;
     border-top-color: currentColor;
