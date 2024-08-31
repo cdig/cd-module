@@ -7,9 +7,10 @@ $pointerSize: 1em;
 
   &.right { text-align: left }
 
-  & > * :not(.generic){ color: white; }
+  & > * { color: $white; }
   
-  &.generic    { color: $black; }
+  &.generic > * { color: $black; }
+  &.generic    { background-color: $white; }
   
   &.benjamin   { color: $purple; }
   &.billy      { color: $blue; }
