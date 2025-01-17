@@ -25,6 +25,7 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
   scaledH = 0
 
   setVisibility = (elm, visible = true)->
+		console.log elm
     return if elm._adventure_mode_visible is visible
     elm._adventure_mode_visible = visible
     elm.style.display = if visible then "block" else "none"
