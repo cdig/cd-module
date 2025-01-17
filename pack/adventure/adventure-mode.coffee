@@ -32,6 +32,10 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
         computedWidth = obj.offsetWidth
         computedHeight = obj.offsetHeight
         console.log computedWidth
+        hintWidth = obj.querySelector("[hint]").getBoundingClientRect().width
+        unitWidth = obj.querySelector("[unit]").getBoundingClientRect().width
+        width = hintWidth + 12 + unitWidth
+        DOOM obj.querySelector "input", width: width + "px"
       elm.style.display = if visible then "block" else "none"
       return 
     return if elm._adventure_mode_visible is visible
