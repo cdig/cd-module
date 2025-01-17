@@ -32,6 +32,7 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
         computedWidth = obj.offsetWidth
         computedHeight = obj.offsetHeight
         console.log obj
+        console.log(obj.querySelector("div[bottom] div[hint]"))
         hintWidth = obj.querySelector("div[bottom] div[hint]").getBoundingClientRect().width
         unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
         width = hintWidth + 12 + unitWidth
