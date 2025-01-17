@@ -26,6 +26,9 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
 
   setVisibility = (elm, visible = true)->
     console.log elm
+    if elm.hasAttribute "adventure-forced-style-reload"
+      for obj in elm.querySelectorAll "inline-answer"
+        console.log obj.offsetWidth
     return if elm._adventure_mode_visible is visible
     elm._adventure_mode_visible = visible
     elm.style.display = if visible then "block" else "none"
