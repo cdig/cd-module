@@ -31,7 +31,7 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
       for obj in elm.querySelectorAll "inline-answer"
         computedWidth = obj.offsetWidth
         computedHeight = obj.offsetHeight
-        console.log computedWidth
+        console.log obj
         hintWidth = obj.querySelector("div[bottom] div[hint]").getBoundingClientRect().width
         unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
         width = hintWidth + 12 + unitWidth
