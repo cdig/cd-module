@@ -31,12 +31,12 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
       for obj in elm.querySelectorAll "inline-answer"
         computedWidth = obj.offsetWidth
         computedHeight = obj.offsetHeight
-        console.log obj
-        console.log(obj.querySelector('div[bottom] div[hint]'))
-        hintWidth = obj.querySelector("div[bottom] div[hint]").getBoundingClientRect().width
-        unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
-        width = hintWidth + 12 + unitWidth
-        DOOM obj.querySelector "input", width: width + "px"
+        if obj.querySelector('div[bottom] div[hint]') != "null"
+          console.log(obj.querySelector('div[bottom] div[hint]'))
+          hintWidth = obj.querySelector("div[bottom] div[hint]").getBoundingClientRect().width
+          unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
+          width = hintWidth + 12 + unitWidth
+          DOOM obj.querySelector "input", width: width + "px"
       elm.style.display = if visible then "block" else "none"
       return 
     return if elm._adventure_mode_visible is visible
