@@ -32,9 +32,10 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
         computedWidth = obj.offsetWidth
         computedHeight = obj.offsetHeight
         console.log computedWidth
-      # elm.style.display = if visible then "block" else "none"
-      return
+      elm.style.display = if visible then "block" else "none"
+      return 
     return if elm._adventure_mode_visible is visible
+    return if elm.hasAttribute "adventure-forced-style-reload"
     elm._adventure_mode_visible = visible
     elm.style.display = if visible then "block" else "none"
     for obj in elm.querySelectorAll "object"
