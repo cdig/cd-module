@@ -27,7 +27,6 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
   setVisibility = (elm, visible = true)->
     return if elm._adventure_mode_visible is visible
     elm._adventure_mode_visible = visible
-    elm.style.display = if visible then "block" else "none"
     if elm.hasAttribute "adventure-forced-style-reload"
       elm.style.display = "block"
       return
