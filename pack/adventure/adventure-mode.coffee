@@ -29,7 +29,7 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
     return if elm.hasAttribute "adventure-forced-style-reload"
     elm._adventure_mode_visible = visible
     elm.style.display = if visible then "block" else "none"
-		if elm.hasAttribute "adventure-forced-style-reload"
+    if elm.hasAttribute "adventure-forced-style-reload"
       elm.style.display = "block"
       return
     for obj in elm.querySelectorAll "inline-answer"
