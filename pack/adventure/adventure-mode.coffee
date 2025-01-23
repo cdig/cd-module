@@ -28,8 +28,8 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
     return if elm._adventure_mode_visible is visible
     elm._adventure_mode_visible = visible
     if elm.hasAttribute "adventure-forced-style-reload"
-      # elm.style.display = "block"
       return
+    elm.style.display = if visible then "block" else "none"
     for obj in elm.querySelectorAll "inline-answer"
       if obj.querySelector('div[bottom] div[hint]')
         console.log(obj.querySelector('div[bottom] div[hint]'))
@@ -37,7 +37,6 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
         unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
         width = hintWidth + 12 + unitWidth
         DOOM obj.querySelector("input"), width: width + "px"
-    elm.style.display = if visible then "block" else "none"
     for obj in elm.querySelectorAll "object"
       ChildData.send obj, "disabled", !visible
       ChildData.send obj, "forcedWidth", scaledW
