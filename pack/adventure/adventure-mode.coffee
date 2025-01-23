@@ -37,7 +37,7 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
         unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
         width = hintWidth + 12 + unitWidth
         DOOM obj.querySelector("input"), width: width + "px"
-		elm.style.display = if visible then "block" else "none"
+    elm.style.display = if visible then "block" else "none"
     for obj in elm.querySelectorAll "object"
       ChildData.send obj, "disabled", !visible
       ChildData.send obj, "forcedWidth", scaledW
