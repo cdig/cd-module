@@ -25,24 +25,21 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
   scaledH = 0
 
   setVisibility = (elm, visible = true)->
-    console.log elm
     if elm.hasAttribute "adventure-forced-style-reload"
       elm.style.display = "block"
-      for obj in elm.querySelectorAll "inline-answer"
-        computedWidth = obj.offsetWidth
-        computedHeight = obj.offsetHeight
-        if obj.querySelector('div[bottom] div[hint]') != "null"
-          console.log(obj.querySelector('div[bottom] div[hint]'))
-          hintWidth = obj.querySelector("div[bottom] div[hint]").getBoundingClientRect().width
-          unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
-          width = hintWidth + 12 + unitWidth
-          DOOM obj.querySelector "input", width: width + "px"
-      elm.style.display = if visible then "block" else "none"
       return 
     return if elm._adventure_mode_visible is visible
     return if elm.hasAttribute "adventure-forced-style-reload"
     elm._adventure_mode_visible = visible
     elm.style.display = if visible then "block" else "none"
+		for obj in elm.querySelectorAll "inline-answer"
+			if obj.querySelector('div[bottom] div[hint]')
+				console.log(obj.querySelector('div[bottom] div[hint]'))
+				hintWidth = obj.querySelector("div[bottom] div[hint]").getBoundingClientRect().width
+				unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
+				width = hintWidth + 12 + unitWidth
+				DOOM obj.querySelector("input"), width: width + "px"
+		elm.style.display = if visible then "block" else "none"
     for obj in elm.querySelectorAll "object"
       ChildData.send obj, "disabled", !visible
       ChildData.send obj, "forcedWidth", scaledW
