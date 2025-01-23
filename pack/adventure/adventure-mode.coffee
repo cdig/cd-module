@@ -26,17 +26,18 @@ Take ["ChildData", "DOOM", "DOMContentLoaded"], (ChildData, DOOM)->
 
   setVisibility = (elm, visible = true)->
     return if elm._adventure_mode_visible is visible
+
     elm._adventure_mode_visible = visible
-    # if elm.hasAttribute "adventure-forced-style-reload"
-    #   return
     elm.style.display = if visible then "block" else "none"
-    for obj in elm.querySelectorAll "inline-answer"
-      if obj.querySelector('div[bottom] div[hint]')
-        console.log(obj.querySelector('div[bottom] div[hint]'))
-        hintWidth = obj.querySelector("div[bottom] div[hint]").getBoundingClientRect().width
-        unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
-        width = hintWidth + 12 + unitWidth
-        DOOM obj.querySelector("input"), width: width + "px"
+
+    if elm.hasAttribute "adventure-forced-ia-reload"
+      for obj in elm.querySelectorAll "inline-answer"
+        if obj.querySelector('div[bottom] div[hint]')
+          hintWidth = obj.querySelector("div[bottom] div[hint]").getBoundingClientRect().width
+          unitWidth = obj.querySelector("div[bottom] div[unit]").getBoundingClientRect().width
+          width = hintWidth + 12 + unitWidth
+          DOOM obj.querySelector("input"), width: width + "px"
+
     for obj in elm.querySelectorAll "object"
       ChildData.send obj, "disabled", !visible
       ChildData.send obj, "forcedWidth", scaledW
