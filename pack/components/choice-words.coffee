@@ -3,7 +3,7 @@ Take ["DOOM", "Shuffle", "DOMContentLoaded"], (DOOM, Shuffle)->
   finishGame = (elm)-> ()->
     for result in elm.querySelectorAll ".result"
       DOOM result, class: "finished"
-    result.parentNode.parentNode.dispatchEvent new Event "activity-completed" if result.parentNode
+    result.parentNode.parentNode.dispatchEvent new Event "activity-completed" if result
 
 
   change = (elm)-> (e)->
