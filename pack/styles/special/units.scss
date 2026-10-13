@@ -1,0 +1,6 @@
+// [lbs-imperial] or [lbs-si]
+
+html[units="si"] [lbs-imperial],
+html:not([units="si"]) [lbs-si] {
+  display: none!important;
+}
