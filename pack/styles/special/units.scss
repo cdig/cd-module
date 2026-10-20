@@ -1,6 +1,24 @@
-// [lbs-imperial] or [lbs-si]
+// [lbs-imperial], [lbs-si] or [lbs-bar]
+// An element can carry more than one, to serve those systems with the same content.
+// Imperial is the default when [units] is missing or unrecognized.
 
-html[units="si"] [lbs-imperial],
-html:not([units="si"]) [lbs-si] {
-  display: none!important;
+html:not([units="si"]):not([units="bar"]) {
+  [lbs-si]:not([lbs-imperial]),
+  [lbs-bar]:not([lbs-imperial]) {
+    display: none!important;
+  }
+}
+
+html[units="si"] {
+  [lbs-imperial]:not([lbs-si]),
+  [lbs-bar]:not([lbs-si]) {
+    display: none!important;
+  }
+}
+
+html[units="bar"] {
+  [lbs-imperial]:not([lbs-bar]),
+  [lbs-si]:not([lbs-bar]) {
+    display: none!important;
+  }
 }
